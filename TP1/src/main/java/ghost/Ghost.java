@@ -1,9 +1,28 @@
 package ghost;
+import character.IGhost;
+import ghostState.HunterState;
 
 /**
  *
  * @author ivan
  */
-public class Ghost {
+public class Ghost implements IGhost {
+    
+    GhostState state;
+    
+    public Ghost() {
+        state = HunterState();
+    }
+    
+    @Override
+    public void run(){
+        // Not implemented. Mock code for TDD
+    }
+    
+    @Override
+    public boolean isDead() {
+        // Not implemented. Mock code for TDD
+        return false;
+    }
     
 }

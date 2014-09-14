@@ -5,11 +5,23 @@
  */
 
 package ghostState;
+import ghost.GhostState;
 
 /**
  *
  * @author fibrizo
  */
-public class HunterState {
+public class HunterState extends GhostState {
+    
+    float time;
+    //Velocity here? or in the Rage (ira) classes?
+    
+    public HunterState() {
+        time = 0;
+    }
+    
+    public void move() {
+        time++;
+    }
     
 }

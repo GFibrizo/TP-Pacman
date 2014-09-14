@@ -10,6 +10,11 @@ package character;
  *
  * @author fibrizo
  */
-public interface Character {
+public abstract class Character {
+    
+    Coordinate position;
+    
+    public abstract void run();
+    public abstract boolean isDead();
     
 }

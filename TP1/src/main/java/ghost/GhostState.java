@@ -10,6 +10,8 @@ package ghost;
  *
  * @author fibrizo
  */
-public class GhostState {
+public abstract class GhostState {
+    
+    public abstract void move();
     
 }

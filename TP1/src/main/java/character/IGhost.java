@@ -10,6 +10,6 @@ package character;
  *
  * @author fibrizo
  */
-public interface Ghost {
+public interface IGhost {
     
 }

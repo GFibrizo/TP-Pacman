@@ -5,11 +5,16 @@
  */
 
 package ghostState;
+import ghost.GhostState;
 
 /**
  *
  * @author fibrizo
  */
-public class PreyState {
+public class PreyState extends GhostState {
+    
+    public void move() {
+        // Moves to random direction
+    }
     
 }

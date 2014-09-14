@@ -5,11 +5,16 @@
  */
 
 package ghostState;
+import ghost.GhostState;
 
 /**
  *
  * @author fibrizo
  */
-public class DeadState {
+public class DeadState extends GhostState {
+    
+    public void move() {
+        // Should move towards the ghost's cage.
+    }
     
 }
