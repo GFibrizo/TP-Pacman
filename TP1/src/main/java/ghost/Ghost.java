@@ -11,7 +11,7 @@ public class Ghost implements IGhost {
     GhostState state;
     
     public Ghost() {
-        state = HunterState();
+        state = new HunterState();
     }
     
     @Override
