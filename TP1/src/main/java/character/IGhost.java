@@ -11,5 +11,6 @@ package character;
  * @author fibrizo
  */
 public interface IGhost {
-    
+    public void run();
+    public boolean isDead();
 }
