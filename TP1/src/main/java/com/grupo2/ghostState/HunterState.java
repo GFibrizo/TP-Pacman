@@ -18,21 +18,41 @@ public class HunterState extends GhostState {
     Rage rage;
     //Velocity here? or in the Rage (ira) classes?
     
+    /***************************************************/
+    /***************************************************/
+    
     public HunterState() {
         time = 0;
         rage = new FirstLevelRage();
     }
+    
+    /***************************************************/
+    /***************************************************/
     
     @Override
     public void move() {
         time++;
     }
     
+    /***************************************************/
+    /***************************************************/
+    
+    /**
+     * @return False, because the State of the Ghost isn't "Dead".
+     */
     @Override
     public boolean isDead() {
         return false;
     }
     
+    /***************************************************/
+    /***************************************************/
+    
+    /**
+     * @return the next state of the Ghost.
+     * returns this always, since HunterState hasn't
+     * a next state.
+     */
     @Override
     public GhostState returnNextState() {
         return this;

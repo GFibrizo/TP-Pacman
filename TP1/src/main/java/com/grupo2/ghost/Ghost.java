@@ -1,14 +1,18 @@
 package com.grupo2.ghost;
 import com.grupo2.character.IGhost;
 import com.grupo2.ghostState.HunterState;
+import com.grupo2.character.Character;
 
 /**
  *
  * @author ivan
  */
-public class Ghost implements IGhost {
+public class Ghost extends Character implements IGhost {
     
     GhostState state;
+    
+    /***************************************************/
+    /***************************************************/
     
     /**
      * Create a new instance of the class Ghost in the
@@ -17,6 +21,9 @@ public class Ghost implements IGhost {
     public Ghost() {
         state = new HunterState();
     }
+    
+    /***************************************************/
+    /***************************************************/
     
     /**
      * Moves the Ghost in the direction specified and 
@@ -28,6 +35,9 @@ public class Ghost implements IGhost {
         state = state.returnNextState();
     }
     
+    /***************************************************/
+    /***************************************************/
+    
     /**
      * @return true if the Ghost is dead. False otherwise.
      */
@@ -35,6 +45,9 @@ public class Ghost implements IGhost {
     public boolean isDead() {
         return state.isDead();
     }
+    
+    /***************************************************/
+    /***************************************************/
     
     /**
      * Change the actual state of the Ghost for the 
