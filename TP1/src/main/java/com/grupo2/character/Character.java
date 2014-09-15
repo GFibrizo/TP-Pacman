@@ -12,9 +12,8 @@ package com.grupo2.character;
  */
 public abstract class Character {
     
-    Coordinate position;
+    Position position;
     
     public abstract void run();
     public abstract boolean isDead();
-    
 }
