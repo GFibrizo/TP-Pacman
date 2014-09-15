@@ -14,7 +14,7 @@ public abstract class Character {
     
     Coordinate position;
     
-    public abstract void run();
+    public abstract void move();
     public abstract boolean isDead();
     
 }

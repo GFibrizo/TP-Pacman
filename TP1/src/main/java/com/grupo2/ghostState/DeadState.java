@@ -6,6 +6,7 @@
 
 package com.grupo2.ghostState;
 import com.grupo2.ghost.GhostState;
+import com.grupo2.constants.Constants;
 
 /**
  *
@@ -13,9 +14,15 @@ import com.grupo2.ghost.GhostState;
  */
 public class DeadState extends GhostState {
     
+    float time;
+    
+    public DeadState() {
+        time = 0;
+    }
+    
     @Override
     public void move() {
-        // Should move towards the ghost's cage.
+        time++;
     }
 
     @Override
@@ -23,5 +30,11 @@ public class DeadState extends GhostState {
         return true;
     }
     
+    @Override
+    public GhostState returnNextState() {
+        if (time >= Constants.DEAD_LIMIT_TIME)
+            return new HunterState();
+        return this;
+    }
     
 }

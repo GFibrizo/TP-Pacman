@@ -6,6 +6,7 @@
 
 package com.grupo2.ghostState;
 import com.grupo2.ghost.GhostState;
+import com.grupo2.constants.Constants;
 
 /**
  *
@@ -13,13 +14,24 @@ import com.grupo2.ghost.GhostState;
  */
 public class PreyState extends GhostState {
     
+    float time = 0;
+    
+    
     public void move() {
-        // Moves to random direction
+        time++;
+        // Random movement
     }
     
     @Override
     public boolean isDead() {
         return false;
     }    
+    
+    @Override
+    public GhostState returnNextState() {
+        if (time >= Constants.PREY_LIMIT_TIME)
+            return new HunterState();
+        return this;
+    }
     
 }

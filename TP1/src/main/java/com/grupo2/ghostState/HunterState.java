@@ -6,6 +6,7 @@
 
 package com.grupo2.ghostState;
 import com.grupo2.ghost.GhostState;
+import com.grupo2.rage.FirstLevelRage;
 
 /**
  *
@@ -14,12 +15,15 @@ import com.grupo2.ghost.GhostState;
 public class HunterState extends GhostState {
     
     float time;
+    Rage rage;
     //Velocity here? or in the Rage (ira) classes?
     
     public HunterState() {
         time = 0;
+        rage = new FirstLevelRage();
     }
     
+    @Override
     public void move() {
         time++;
     }
@@ -27,5 +31,10 @@ public class HunterState extends GhostState {
     @Override
     public boolean isDead() {
         return false;
-    }    
+    }
+    
+    @Override
+    public GhostState returnNextState() {
+        return this;
+    }
 }
