@@ -13,6 +13,5 @@ import com.grupo2.ghostState.Rage;
  */
 public class FirstLevelRage extends Rage {
     
-    public void
     
 }
