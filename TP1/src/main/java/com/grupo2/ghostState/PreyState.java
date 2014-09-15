@@ -4,8 +4,8 @@
  * and open the template in the editor.
  */
 
-package ghostState;
-import ghost.GhostState;
+package com.grupo2.ghostState;
+import com.grupo2.ghost.GhostState;
 
 /**
  *

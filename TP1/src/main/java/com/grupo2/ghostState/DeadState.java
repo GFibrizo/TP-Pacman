@@ -4,28 +4,24 @@
  * and open the template in the editor.
  */
 
-package ghostState;
-import ghost.GhostState;
+package com.grupo2.ghostState;
+import com.grupo2.ghost.GhostState;
 
 /**
  *
  * @author fibrizo
  */
-public class HunterState extends GhostState {
-    
-    float time;
-    //Velocity here? or in the Rage (ira) classes?
-    
-    public HunterState() {
-        time = 0;
-    }
-    
-    public void move() {
-        time++;
-    }
+public class DeadState extends GhostState {
     
     @Override
+    public void move() {
+        // Should move towards the ghost's cage.
+    }
+
+    @Override
     public boolean isDead() {
-        return false;
-    }    
+        return true;
+    }
+    
+    
 }

@@ -1,6 +1,6 @@
-package ghost;
-import character.IGhost;
-import ghostState.HunterState;
+package com.grupo2.ghost;
+import com.grupo2.character.IGhost;
+import com.grupo2.ghostState.HunterState;
 
 /**
  *

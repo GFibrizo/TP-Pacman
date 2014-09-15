@@ -4,15 +4,17 @@
  * and open the template in the editor.
  */
 
-package character;
-import ghost.GhostState;
+package com.grupo2.character;
 
 /**
  *
  * @author fibrizo
  */
-public interface IGhost {
-    public void run();
-    public void changeState(GhostState aGhostStateArgument);
-    public boolean isDead();
+public abstract class Character {
+    
+    Coordinate position;
+    
+    public abstract void run();
+    public abstract boolean isDead();
+    
 }
