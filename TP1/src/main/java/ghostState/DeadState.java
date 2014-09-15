@@ -13,8 +13,15 @@ import ghost.GhostState;
  */
 public class DeadState extends GhostState {
     
+    @Override
     public void move() {
         // Should move towards the ghost's cage.
     }
+
+    @Override
+    public boolean isDead() {
+        return true;
+    }
+    
     
 }

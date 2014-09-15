@@ -5,6 +5,7 @@
  */
 
 package character;
+import ghost.GhostState;
 
 /**
  *
@@ -12,5 +13,6 @@ package character;
  */
 public interface IGhost {
     public void run();
+    public void changeState(GhostState aGhostStateArgument);
     public boolean isDead();
 }

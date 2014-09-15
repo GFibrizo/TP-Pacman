@@ -21,8 +21,12 @@ public class Ghost implements IGhost {
     
     @Override
     public boolean isDead() {
-        // Not implemented. Mock code for TDD
-        return false;
+        return this.state.isDead();
+    }
+    
+    @Override
+    public void changeState(GhostState aGhostState) {
+        this.state = aGhostState;
     }
     
 }

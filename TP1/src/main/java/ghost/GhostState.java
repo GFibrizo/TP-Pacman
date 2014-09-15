@@ -13,5 +13,6 @@ package ghost;
 public abstract class GhostState {
     
     public abstract void move();
+    public abstract boolean isDead();
     
 }

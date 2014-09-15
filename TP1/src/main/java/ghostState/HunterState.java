@@ -24,4 +24,8 @@ public class HunterState extends GhostState {
         time++;
     }
     
+    @Override
+    public boolean isDead() {
+        return false;
+    }    
 }

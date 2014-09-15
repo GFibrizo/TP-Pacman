@@ -17,4 +17,9 @@ public class PreyState extends GhostState {
         // Moves to random direction
     }
     
+    @Override
+    public boolean isDead() {
+        return false;
+    }    
+    
 }
