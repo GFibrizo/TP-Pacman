@@ -10,20 +10,18 @@ import com.grupo2.character.Character;
 public class Ghost extends Character implements IGhost {
     
     GhostState state;
-    
-    /***************************************************/
-    /***************************************************/
+    private static final float RADIUS=2;
     
     /**
      * Create a new instance of the class Ghost in the
      * HunterState.
+     * @param x: Position in the X axis
+     * @param y: Position in the Y axis
      */
-    public Ghost() {
+    public Ghost(float x,float y) {
+        super(x,y,Ghost.RADIUS);
         state = new HunterState();
     }
-    
-    /***************************************************/
-    /***************************************************/
     
     /**
      * Moves the Ghost in the direction specified and 
@@ -34,10 +32,7 @@ public class Ghost extends Character implements IGhost {
         state.move();
         state = state.returnNextState();
     }
-    
-    /***************************************************/
-    /***************************************************/
-    
+
     /**
      * @return true if the Ghost is dead. False otherwise.
      */
@@ -45,9 +40,6 @@ public class Ghost extends Character implements IGhost {
     public boolean isDead() {
         return state.isDead();
     }
-    
-    /***************************************************/
-    /***************************************************/
     
     /**
      * Change the actual state of the Ghost for the 
