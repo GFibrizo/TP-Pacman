@@ -1,5 +1,7 @@
 package com.grupo2.ghost;
 
+import com.grupo2.character.Coordinate;
+import com.grupo2.character.Position;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -34,14 +36,16 @@ public class GhostTest {
 
     @Test
     public void move() {
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Ghost ghost = new Ghost(0,0);
+        ghost.move();
+        assert(ghost.getPosition().isEqualTo(new Position(0,0,0)));
     }
     
     @Test
     public void GhostCollision(){
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Ghost ghost1 = new Ghost(0, 0);
+        Ghost ghost2 = new Ghost(0, 1);
+        assert(ghost1.getPosition().isCollindingWith(ghost2.getPosition()));
     }
 
 }
