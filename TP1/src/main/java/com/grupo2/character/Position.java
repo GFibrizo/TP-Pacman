@@ -12,11 +12,11 @@ public class Position {
     /**
      * @param x: the coordinate X of the Position
      * @param y: the coordinate Y of the Position
-     * @param radio: the radius of the Position.
+     * @param radius: the radius of the Position.
      */
-    public Position(int x, int y, float radio) {
+    public Position(float x, float y, float radius) {
         this.coordinates = new Coordinate(x, y);
-        this.radius = radio;
+        this.radius = radius;
     }
 
     /**
@@ -62,5 +62,9 @@ public class Position {
         //If distance² is greater than the sum of the radius of each circle squared
         //then the circles do not intersect.
         return distance * distance <= radiusSum * radiusSum;
+    }
+    
+    public boolean isEqualTo(Position otherPosition){
+        return this.coordinates.EqualTo(otherPosition.coordinates);
     }
 }
