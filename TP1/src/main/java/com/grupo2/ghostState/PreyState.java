@@ -7,7 +7,7 @@ package com.grupo2.ghostState;
 
 import com.grupo2.ghost.GhostState;
 import com.grupo2.constants.Constants;
-import com.grupo2.movementStrategies.PreyStrategy;
+import com.grupo2.movementStrategies.RandomStrategy;
 
 /**
  *
@@ -19,7 +19,7 @@ public class PreyState extends GhostState {
     PreyMovement movement;
 
     public PreyState() {
-        movement = new PreyStrategy();
+        movement = new RandomStrategy();
     }
 
     @Override
@@ -50,7 +50,7 @@ public class PreyState extends GhostState {
     
     @Override
     public GhostState convertToPrey() {
-        return this;
+        return new PreyState();
     }
     
     @Override

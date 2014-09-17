@@ -47,6 +47,7 @@ public class GhostTest {
         } catch (UnsupportedOperationException e) {
             notImplementedYet = true;
         }
+        assertTrue(notImplementedYet);
         assert(ghost.getPosition().isEqualTo(new Position(0,0,0)));
     }
     
@@ -59,8 +60,37 @@ public class GhostTest {
     @Test
     public void GhostIsEatedByOtherGhost() {
         IGhost ghost2 = new Ghost(0, 1);
-        ghost.beEated(ghost2);
+        ghost.beEaten(ghost2);
         assertFalse(ghost.isDead());
     }
+    
+    @Test
+    public void TryingToKillHunterGhost() {
+        try {
+            ghost.die();
+        } catch (AssertionError e) {
+            assert(true);
+        }
+    }
+    
+    @Test
+    public void TryingToKillPreyGhost() {
+        ghost.convertToPrey();
+        ghost.die();
+        assertTrue(ghost.isDead());
+    }
+    
+    @Test
+    public void TryingToConvertADeadToPrey() {
+        ghost.convertToPrey();
+        ghost.die();
+        try {
+            ghost.convertToPrey();
+        } catch (AssertionError e) {
+            assert(true);
+        }
+    }
+    
+    
 
 }

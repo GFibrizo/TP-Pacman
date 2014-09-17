@@ -17,7 +17,7 @@ public class SecondRageStrategy extends HunterStrategy implements RageMovement {
 
     @Override
     public HunterStrategy incrementRage() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new ThirdRageStrategy();
     }
 
 }

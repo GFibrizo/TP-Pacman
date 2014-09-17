@@ -5,9 +5,9 @@ import com.grupo2.ghostState.DeadMovement;
  *
  * @author ivan
  */
-public class DeadStrategy extends MovementStrategy implements DeadMovement {
+public class SearchCageStrategy extends MovementStrategy implements DeadMovement {
 
-    public DeadStrategy() {
+    public SearchCageStrategy() {
     }
 
     @Override

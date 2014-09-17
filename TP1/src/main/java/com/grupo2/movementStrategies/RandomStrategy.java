@@ -5,7 +5,7 @@ import com.grupo2.ghostState.PreyMovement;
  *
  * @author ivan
  */
-public class PreyStrategy extends MovementStrategy implements PreyMovement {
+public class RandomStrategy extends MovementStrategy implements PreyMovement {
 
     @Override
     public void move() {

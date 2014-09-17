@@ -8,7 +8,7 @@ package com.grupo2.ghostState;
 import com.grupo2.ghost.GhostState;
 import com.grupo2.constants.Constants;
 import com.grupo2.character.IGhost;
-import com.grupo2.movementStrategies.DeadStrategy;
+import com.grupo2.movementStrategies.SearchCageStrategy;
 
 /**
  *
@@ -21,7 +21,7 @@ public class DeadState extends GhostState {
 
     public DeadState() {
         time = 0;
-        movement = new DeadStrategy();
+        movement = new SearchCageStrategy();
     }
 
     @Override
