@@ -6,7 +6,7 @@ package com.grupo2.character;
  */
 public class Position {
 
-    private Coordinate coordinates;
+    private final Coordinate coordinates;
     private float radius;
 
     /**

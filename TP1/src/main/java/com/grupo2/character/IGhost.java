@@ -13,6 +13,7 @@ import com.grupo2.ghost.GhostState;
  */
 public interface IGhost {
     public void move();
-    public void changeState(GhostState aGhostState);
     public boolean isDead();
+    public void die();
+    public void convertToPrey();
 }

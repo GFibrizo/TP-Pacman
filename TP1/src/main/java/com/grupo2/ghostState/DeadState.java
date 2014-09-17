@@ -7,7 +7,8 @@ package com.grupo2.ghostState;
 
 import com.grupo2.ghost.GhostState;
 import com.grupo2.constants.Constants;
-import com.grupo2.movementStrategies.DeadMovement;
+import com.grupo2.ghost.Ghost;
+import com.grupo2.movementStrategies.DeadStrategy;
 
 /**
  *
@@ -15,16 +16,18 @@ import com.grupo2.movementStrategies.DeadMovement;
  */
 public class DeadState extends GhostState {
 
-    float time = 0;
+    float time;
+    DeadMovement movement;
 
     public DeadState() {
-        super(new DeadMovement());
+        time = 0;
+        movement = new DeadStrategy();
     }
 
     @Override
     public void move() {
-        this.time++;
-        this.movement.move();
+        time++;
+        movement.move();
     }
 
     /**
@@ -40,10 +43,19 @@ public class DeadState extends GhostState {
      */
     @Override
     public GhostState returnNextState() {
-        if (time >= Constants.DEAD_LIMIT_TIME) {
+        if (time >= Constants.getDEAD_LIMIT_TIME()) {
             return new HunterState();
         }
         return this;
+    }
+
+    /**
+     * Nothing happen, the state keeps the same.
+     * @param ghost is the ghost that is colliding with this.
+     */
+    @Override
+    public void beEaten(Ghost ghost) {
+        // Do nothing
     }
 
 }

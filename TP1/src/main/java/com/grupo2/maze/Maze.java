@@ -20,4 +20,5 @@ public class Maze {
         }
         return mazeInstance;
     }
+
 }

@@ -4,13 +4,14 @@
  * and open the template in the editor.
  */
 
-package com.grupo2.rage;
-import com.grupo2.ghostState.Rage;
+package com.grupo2.ghostState;
 
 /**
  *
  * @author fibrizo
  */
-public class ThirdLevelRage extends Rage {
+public interface DeadMovement {
+    
+    public void move();
     
 }

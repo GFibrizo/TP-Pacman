@@ -1,19 +1,13 @@
 package com.grupo2.movementStrategies;
-
-import com.grupo2.ghostState.Rage;
+import com.grupo2.ghostState.DeadMovement;
 
 /**
  *
- * @author fibrizo
+ * @author ivan
  */
-public class SecondLevelRage extends Rage {
+public class DeadStrategy extends MovementStrategy implements DeadMovement {
 
-    public SecondLevelRage() {
-    }
-
-    @Override
-    public Rage incrementRage() {
-        return new ThirdLevelRage();
+    public DeadStrategy() {
     }
 
     @Override
