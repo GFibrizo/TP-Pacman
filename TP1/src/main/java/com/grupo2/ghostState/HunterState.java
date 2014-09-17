@@ -40,5 +40,15 @@ public class HunterState extends GhostState {
         return this;
     }
 
+    @Override
+    public GhostState convertToPrey() {
+        return new PreyState();
+    }
+    
+    
+    @Override 
+    public GhostState die() {
+        throw new AssertionError("A hunter Ghost can't die");
+    }
    
 }

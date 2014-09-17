@@ -47,5 +47,15 @@ public class PreyState extends GhostState {
         }
         return this;
     }
+    
+    @Override
+    public GhostState convertToPrey() {
+        throw new AssertionError("A prey Ghost can't be converted to Prey again");
+    }
+    
+    @Override
+    public GhostState die() {
+        return new DeadState();
+    }
 
 }

@@ -7,7 +7,7 @@ package com.grupo2.ghostState;
 
 import com.grupo2.ghost.GhostState;
 import com.grupo2.constants.Constants;
-import com.grupo2.ghost.Ghost;
+import com.grupo2.character.IGhost;
 import com.grupo2.movementStrategies.DeadStrategy;
 
 /**
@@ -54,8 +54,18 @@ public class DeadState extends GhostState {
      * @param ghost is the ghost that is colliding with this.
      */
     @Override
-    public void beEaten(Ghost ghost) {
+    public void beEaten(IGhost ghost) {
         // Do nothing
+    }
+    
+    @Override
+    public GhostState convertToPrey() {
+        throw new AssertionError("A dead Ghost can't be converted to Prey");
+    }
+    
+    @Override
+    public GhostState die() {
+        throw new AssertionError("A dead Ghost can't die again");
     }
 
 }

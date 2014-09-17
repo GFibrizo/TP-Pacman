@@ -61,7 +61,8 @@ public class Ghost extends Character implements IGhost {
      * If the Ghost is in Dead state, it keeps in that state.
      * @param ghost is the ghost that is colliding with this.
      */
-    public void beEaten(Ghost ghost) {
+    @Override
+    public void beEaten(IGhost ghost) {
         state.beEaten(ghost);
     }
     
@@ -82,6 +83,11 @@ public class Ghost extends Character implements IGhost {
     
     @Override
     public void convertToPrey() {
-        state = new PreyState();
+        state = state.convertToPrey();
+    }
+    
+    @Override
+    public boolean isBeingEated(IGhost ghost) {
+        return this.getPosition().isCollindingWith(ghost.getPosition());
     }
 }

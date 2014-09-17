@@ -1,4 +1,5 @@
 package com.grupo2.ghost;
+import com.grupo2.character.IGhost;
 
 /**
  *
@@ -19,11 +20,18 @@ public abstract class GhostState {
      * @return True if the State of the ghost is "Dead". False otherwise.
      */
     public abstract boolean isDead();
+    
+    
+    /*****************TRANSITION OF STATES*********************/
 
     /**
      * @return the next state of the ghost.
      */
     public abstract GhostState returnNextState();
+    
+    public abstract GhostState convertToPrey();
+    
+    public abstract GhostState die();
     
     
     /**DOUBLE DISPATCH FOR GHOSTS EATEN BY OTHER CHARACTERS**/
@@ -33,7 +41,7 @@ public abstract class GhostState {
      * of the two.
      * @param ghost is the other Ghost.
      */
-    public void beEaten(Ghost ghost) {
+    public void beEaten(IGhost ghost) {
         // Do nothing
     }
     

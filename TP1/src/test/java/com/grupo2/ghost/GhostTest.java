@@ -1,6 +1,6 @@
 package com.grupo2.ghost;
 
-import com.grupo2.character.Coordinate;
+import com.grupo2.character.IGhost;
 import com.grupo2.character.Position;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -14,6 +14,8 @@ import static org.junit.Assert.*;
  * @author ivan
  */
 public class GhostTest {
+    
+    IGhost ghost ;
 
     public GhostTest() {
     }
@@ -28,24 +30,37 @@ public class GhostTest {
 
     @Before
     public void setUp() {
+        ghost = new Ghost(0,0);
     }
 
     @After
     public void tearDown() {
+        ghost = null;
     }
 
     @Test
     public void move() {
-        Ghost ghost = new Ghost(0,0);
-        ghost.move();
+
+        boolean notImplementedYet = false;
+        try {
+            ghost.move();
+        } catch (UnsupportedOperationException e) {
+            notImplementedYet = true;
+        }
         assert(ghost.getPosition().isEqualTo(new Position(0,0,0)));
     }
     
     @Test
     public void GhostCollision(){
-        Ghost ghost1 = new Ghost(0, 0);
-        Ghost ghost2 = new Ghost(0, 1);
-        assert(ghost1.getPosition().isCollindingWith(ghost2.getPosition()));
+        IGhost ghost2 = new Ghost(0, 1);
+        assert(ghost.isBeingEated(ghost2));
+    }
+    
+    @Test
+    public void GhostIsEatedByOtherGhost() {
+        IGhost ghost2 = new Ghost(0, 1);
+        ghost.beEated(ghost2);
+        assertFalse(ghost.isDead());
     }
 
 }
