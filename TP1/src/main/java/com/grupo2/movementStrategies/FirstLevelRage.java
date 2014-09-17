@@ -6,9 +6,9 @@ import com.grupo2.ghost.MovementStrategy;
  *
  * @author fibrizo
  */
-public class SecondRageMovement extends MovementStrategy {
+public class FirstLevelRage extends MovementStrategy {
 
-    public SecondRageMovement() {
+    public FirstLevelRage() {
     }
 
     @Override

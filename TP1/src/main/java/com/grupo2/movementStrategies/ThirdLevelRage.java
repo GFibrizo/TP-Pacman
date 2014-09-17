@@ -6,14 +6,14 @@ import com.grupo2.ghost.MovementStrategy;
  *
  * @author fibrizo
  */
-public class FirstRageMovement extends MovementStrategy {
+public class ThirdLevelRage extends MovementStrategy {
 
-    public FirstRageMovement() {
+    public ThirdLevelRage() {
     }
 
     @Override
     public void move() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
+ 
 }
