@@ -50,7 +50,7 @@ public class PreyState extends GhostState {
     
     @Override
     public GhostState convertToPrey() {
-        throw new AssertionError("A prey Ghost can't be converted to Prey again");
+        return this;
     }
     
     @Override
