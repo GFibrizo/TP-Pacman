@@ -17,8 +17,8 @@ public class Ghost extends Character implements IGhost {
     /**
      * Create a new instance of the class Ghost in the
      * HunterState.
-     * @param x: Position in the X axis
-     * @param y: Position in the Y axis
+     * @param x: CollidingArea in the X axis
+     * @param y: CollidingArea in the Y axis
      */
     public Ghost(float x,float y) {
         super(x,y, Constants.getGHOST_RADIUS());

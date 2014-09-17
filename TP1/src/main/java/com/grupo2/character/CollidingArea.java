@@ -4,7 +4,7 @@ package com.grupo2.character;
  *
  * @author ivan
  */
-public class Position {
+public class CollidingArea {
 
     private final Coordinate coordinates;
     private float radius;
@@ -14,7 +14,7 @@ public class Position {
      * @param y: the coordinate Y of the Position
      * @param radius: the radius of the Position.
      */
-    public Position(float x, float y, float radius) {
+    public CollidingArea(float x, float y, float radius) {
         this.coordinates = new Coordinate(x, y);
         this.radius = radius;
     }
@@ -52,11 +52,11 @@ public class Position {
     }
 
     /**
-     * @param otherPosition: argument of type Position.
-     * @return the distance between this Position and the otherPosition passed
-     * as argument.
+     * @param otherPosition: argument of type CollidingArea.
+     * @return the distance between this CollidingArea and the otherPosition passed
+ as argument.
      */
-    public boolean isCollindingWith(Position otherPosition) {
+    public boolean isCollindingWith(CollidingArea otherPosition) {
         float distance = this.coordinates.distanceTo(otherPosition.coordinates);
         float radiusSum = this.radius + otherPosition.radius;
         //If distance² is greater than the sum of the radius of each circle squared
@@ -64,7 +64,7 @@ public class Position {
         return distance * distance <= radiusSum * radiusSum;
     }
     
-    public boolean isEqualTo(Position otherPosition){
+    public boolean isEqualTo(CollidingArea otherPosition){
         return this.coordinates.EqualTo(otherPosition.coordinates);
     }
 }

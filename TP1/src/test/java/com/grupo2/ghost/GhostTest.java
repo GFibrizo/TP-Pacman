@@ -1,7 +1,7 @@
 package com.grupo2.ghost;
 
 import com.grupo2.character.IGhost;
-import com.grupo2.character.Position;
+import com.grupo2.character.CollidingArea;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -48,7 +48,7 @@ public class GhostTest {
             notImplementedYet = true;
         }
         assertTrue(notImplementedYet);
-        assert(ghost.getPosition().isEqualTo(new Position(0,0,0)));
+        assert(ghost.getPosition().isEqualTo(new CollidingArea(0,0,0)));
     }
     
     @Test
