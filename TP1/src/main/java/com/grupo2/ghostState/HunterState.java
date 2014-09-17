@@ -1,13 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.grupo2.ghostState;
 
 import com.grupo2.ghost.GhostState;
-import com.grupo2.movementStrategies.PreyMovement;
-import com.grupo2.movementStrategies.FirstRageMovement;
+import com.grupo2.ghost.MovementStrategy;
+import com.grupo2.movementStrategies.FirstLevelRage;
 
 /**
  *
@@ -16,12 +11,17 @@ import com.grupo2.movementStrategies.FirstRageMovement;
 public class HunterState extends GhostState {
 
     float time = 0;
-    //Velocity here? or in the Rage (ira) classes?
-
-    public HunterState() {
-        super(new FirstRageMovement());
+    private Rage rage;
+    
+    private HunterState(Rage rage) {
+        super(rage);
+        this.rage = rage;
     }
 
+    public HunterState() {
+        this(new FirstLevelRage());
+    }
+    
     @Override
     public void move() {
         this.time++;
@@ -36,12 +36,6 @@ public class HunterState extends GhostState {
         return false;
     }
 
-    /**
-     * ************************************************
-     */
-    /**
-     * ************************************************
-     */
     /**
      * @return the next state of the Ghost. returns this always, since
      * HunterState hasn't a next state.
