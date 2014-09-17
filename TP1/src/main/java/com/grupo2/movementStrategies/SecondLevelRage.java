@@ -1,12 +1,12 @@
 package com.grupo2.movementStrategies;
 
-import com.grupo2.ghost.MovementStrategy;
+import com.grupo2.ghostState.Rage;
 
 /**
  *
  * @author fibrizo
  */
-public class SecondLevelRage extends MovementStrategy {
+public class SecondLevelRage extends Rage {
 
     public SecondLevelRage() {
     }
