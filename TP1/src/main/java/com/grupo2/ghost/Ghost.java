@@ -42,7 +42,7 @@ public class Ghost extends Character implements IGhost {
     }
     
     /**
-     * Change the actual state of the Ghost for the 
+     * Changes the actual state of the Ghost for the 
      * state passed as argument.
      * @param aGhostState
      */
