@@ -4,7 +4,7 @@ import com.grupo2.ghostState.HunterState;
 import com.grupo2.character.Character;
 import com.grupo2.constants.Constants;
 import com.grupo2.ghostState.DeadState;
-import com.grupo2.ghostState.PreyState;
+import com.grupo2.character.ICharacter;
 
 /**
  *
@@ -43,16 +43,23 @@ public class Ghost extends Character implements IGhost {
         return state.isDead();
     }
     
-    /**
-     * Changes the actual state of the Ghost for the 
-     * state passed as argument.
-     * @param aGhostState
-     */
-    //@Override
-    //public void changeState(GhostState aGhostState) {
-    //    state = aGhostState;
-    //}
+        @Override
+    public void die() {
+        state = state.die();
+    }
     
+    @Override
+    public void convertToPrey() {
+        state = state.convertToPrey();
+    }
+    
+    @Override
+    public boolean isBeingEated(ICharacter ghost) {
+        return this.getPosition().isCollindingWith(ghost.getPosition());
+    }
+    
+    
+    /*********Double Dispatch for collisions starts here*************/
     
     /**
      * The Ghost is eaten by a Pacman, and acts according 
@@ -76,18 +83,4 @@ public class Ghost extends Character implements IGhost {
     //    state.beEaten(pacman);
     //}
     
-    @Override
-    public void die() {
-        state = new DeadState();
-    }
-    
-    @Override
-    public void convertToPrey() {
-        state = state.convertToPrey();
-    }
-    
-    @Override
-    public boolean isBeingEated(IGhost ghost) {
-        return this.getPosition().isCollindingWith(ghost.getPosition());
-    }
 }

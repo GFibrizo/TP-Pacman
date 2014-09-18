@@ -50,6 +50,17 @@ public class CollidingArea {
     public void displaceVertically(float offset) {
         this.coordinates.setY(this.coordinates.getY() + offset);
     }
+    
+    
+    public float obtainCoordinateX() {
+        return coordinates.getX();
+    }
+ 
+    public float obtainCoordinateY() {
+        return coordinates.getY();
+    }
+    
+    
 
     /**
      * @param otherPosition: argument of type CollidingArea.
