@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.grupo2.ghostState;
 
 import com.grupo2.ghost.GhostState;
@@ -16,18 +11,18 @@ import com.grupo2.movementStrategies.SearchCageStrategy;
  */
 public class DeadState extends GhostState {
 
-    float time;
-    DeadMovement movement;
+    private float time;
+    private DeadMovement movement;
 
     public DeadState() {
-        time = 0;
-        movement = new SearchCageStrategy();
+            time = 0;
+            movement = new SearchCageStrategy();
     }
 
     @Override
     public void move() {
-        time++;
-        movement.move();
+            time++;
+            movement.move();
     }
 
     /**
@@ -35,7 +30,7 @@ public class DeadState extends GhostState {
      */
     @Override
     public boolean isDead() {
-        return true;
+            return true;
     }
 
     /* @return the next state of the Ghost. returns this, except that the time
@@ -43,11 +38,12 @@ public class DeadState extends GhostState {
      */
     @Override
     public GhostState returnNextState() {
-        if (time >= Constants.getDEAD_LIMIT_TIME()) {
-            return new HunterState();
-        }
-        return this;
+            if (time >= Constants.getDeadLimitTime()) {
+                    return new HunterState();
+            }
+            return this;
     }
+
 
     /**
      * Nothing happen, the state keeps the same.

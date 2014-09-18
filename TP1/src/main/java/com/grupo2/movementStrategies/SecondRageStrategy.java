@@ -1,4 +1,5 @@
 package com.grupo2.movementStrategies;
+
 import com.grupo2.ghostState.RageMovement;
 
 /**
@@ -7,17 +8,17 @@ import com.grupo2.ghostState.RageMovement;
  */
 public class SecondRageStrategy extends HunterStrategy implements RageMovement {
 
-    public SecondRageStrategy() {
-    }
+	public SecondRageStrategy() {
+	}
 
-    @Override
-    public void move() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+	@Override
+	public void move() {
+		throw new UnsupportedOperationException("Not supported yet.");
+	}
 
-    @Override
-    public HunterStrategy incrementRage() {
-        return new ThirdRageStrategy();
-    }
+	@Override
+	public HunterStrategy incrementRage() {
+		return new ThirdRageStrategy();
+	}
 
 }
