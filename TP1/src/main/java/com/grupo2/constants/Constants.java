@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.grupo2.constants;
 
 /**
@@ -10,15 +5,21 @@ package com.grupo2.constants;
  * @author fibrizo
  */
 public final class Constants {
-    
+
     private static float PREY_LIMIT_TIME = 30;
     private static float DEAD_LIMIT_TIME = 20;
 
     private static float FIRST_RAGE_LIMIT_TIME = 5;
     private static float SECOND_RAGE_LIMIT_TIME = 10;
     private static float THIRD_RAGE_LIMIT_TIME = 15;
-    
+
     private static float GHOST_RADIUS = 2;
+
+    private Constants() {
+        //this prevents even the native class from 
+        //calling this ctor as well :
+        throw new AssertionError();
+    }
 
     public static float getPREY_LIMIT_TIME() {
         return PREY_LIMIT_TIME;
@@ -44,14 +45,6 @@ public final class Constants {
         return GHOST_RADIUS;
     }
 
-
-
-    private Constants() {
-        //this prevents even the native class from 
-        //calling this ctor as well :
-        throw new AssertionError();
-    }
-
     public static void setPREY_LIMIT_TIME(float PREY_LIMIT_TIME) {
         Constants.PREY_LIMIT_TIME = PREY_LIMIT_TIME;
     }
@@ -71,7 +64,7 @@ public final class Constants {
     public static void setTHIRD_RAGE_LIMIT_TIME(float THIRD_RAGE_LIMIT_TIME) {
         Constants.THIRD_RAGE_LIMIT_TIME = THIRD_RAGE_LIMIT_TIME;
     }
-    
+
     public static void setGHOST_RADIUS(float RADIUS) {
         Constants.GHOST_RADIUS = RADIUS;
     }
