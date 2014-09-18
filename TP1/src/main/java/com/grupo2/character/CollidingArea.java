@@ -1,12 +1,17 @@
 package com.grupo2.character;
 
 /**
- *
  * @author ivan
  */
 public class CollidingArea {
 
+    /**
+     * Coordinates of the CollidingArea.
+     */
     private final Coordinate coordinates;
+    /**
+     * Radius of the CollidingArea.
+     */
     private float radius;
 
     /**
@@ -52,19 +57,26 @@ public class CollidingArea {
     }
 
     /**
-     * @param otherPosition: argument of type CollidingArea.
-     * @return the distance between this CollidingArea and the otherPosition passed
- as argument.
+     * Determines if two collindingAreas are colliding.
+     *
+     * @param otherPosition argument of type CollidingArea.
+     * @return the distance between this CollidingArea and the otherPosition
+     * passed as argument.
      */
-    public boolean isCollindingWith(CollidingArea otherPosition) {
+    public boolean isCollindingWith(final CollidingArea otherPosition) {
         float distance = this.coordinates.distanceTo(otherPosition.coordinates);
         float radiusSum = this.radius + otherPosition.radius;
-        //If distance² is greater than the sum of the radius of each circle squared
-        //then the circles do not intersect.
+        //If distance² is greater than the sum of the radius of each circle 
+        //squared then the circles do not intersect.
         return distance * distance <= radiusSum * radiusSum;
     }
-    
-    public boolean isEqualTo(CollidingArea otherPosition){
-        return this.coordinates.EqualTo(otherPosition.coordinates);
+
+    /**
+     * Determines if two collidingAreas are equal or not.
+     * @param otherPosition is a CollidingArea
+     * @return true if are equals, false otherwise
+     */
+    public boolean isEqualTo(final CollidingArea otherPosition) {
+        return this.coordinates.isEqualTo(otherPosition.coordinates);
     }
 }
