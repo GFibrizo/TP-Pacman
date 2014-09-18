@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 
-package com.grupo2.character;
+package com.grupo2.interfaces;
+
+import com.grupo2.character.CollidingArea;
 
 /**
  *
