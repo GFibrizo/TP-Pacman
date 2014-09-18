@@ -4,22 +4,22 @@ package com.grupo2.character;
  *
  * @author fibrizo
  */
-public abstract class Character implements ICharacter{
+public abstract class Character implements ICharacter {
 
-	CollidingArea position;
+	private CollidingArea position;
 
-	protected Character(float x, float y, float radius) {
+	protected Character(final float x, final float y, final float radius) {
 		this.position = new CollidingArea(x, y, radius);
 	}
 
-    @Override
-    public abstract void move();
+	@Override
+	public abstract void move();
 
-    @Override
-    public abstract boolean isDead();
+	@Override
+	public abstract boolean isDead();
 
-    @Override
-    public CollidingArea getPosition() {
-        return position;
-    }
+	@Override
+	public CollidingArea getPosition() {
+		return position;
+	}
 }
