@@ -56,20 +56,24 @@ public class CollidingArea {
 		this.coordinates.setY(this.coordinates.getY() + offset);
 	}
 
-	/**
-	 * Determines if two collindingAreas are colliding.
-	 *
-	 * @param otherPosition argument of type CollidingArea.
-	 * @return the distance between this CollidingArea and the otherPosition
-	 * passed as argument.
-	 */
-	public boolean isCollindingWith(final CollidingArea otherPosition) {
-		float distance = this.coordinates.distanceTo(otherPosition.coordinates);
-		float radiusSum = this.radius + otherPosition.radius;
-		/*If distance² is greater than the sum of the radius of each circle
-		squared then the circles do not intersect.*/
-		return distance * distance <= radiusSum * radiusSum;
-	}
+    /**
+     * @param offset is the value in which the Y will be displaced (it can a
+     * possitive or a negative value)
+     */
+    public void displaceVertically(float offset) {
+        this.coordinates.setY(this.coordinates.getY() + offset);
+    }
+    
+    
+    public float obtainCoordinateX() {
+        return coordinates.getX();
+    }
+ 
+    public float obtainCoordinateY() {
+        return coordinates.getY();
+    }
+    
+    
 
 	/**
 	 * Determines if two collidingAreas are equal or not.

@@ -4,7 +4,7 @@ package com.grupo2.character;
  *
  * @author fibrizo
  */
-public abstract class Character {
+public abstract class Character implements ICharacter{
 
 	CollidingArea position;
 
@@ -12,11 +12,14 @@ public abstract class Character {
 		this.position = new CollidingArea(x, y, radius);
 	}
 
-	public abstract void move();
+    @Override
+    public abstract void move();
 
-	public abstract boolean isDead();
+    @Override
+    public abstract boolean isDead();
 
-	public CollidingArea getPosition() {
-		return position;
-	}
+    @Override
+    public CollidingArea getPosition() {
+        return position;
+    }
 }
