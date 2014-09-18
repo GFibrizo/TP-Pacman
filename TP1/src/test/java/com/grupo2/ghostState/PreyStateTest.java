@@ -81,7 +81,7 @@ public class PreyStateTest {
         assertFalse(state.isDead());
         state = state.returnNextState();
         assertFalse(state.isDead());
-        Constants.setPREY_LIMIT_TIME((float)0);
+        Constants.setPreyLimitTime((float)0);
         state = state.returnNextState();
         assertEquals(state.getClass(), HunterState.class);
     }

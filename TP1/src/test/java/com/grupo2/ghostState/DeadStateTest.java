@@ -81,7 +81,7 @@ public class DeadStateTest {
         state = state.returnNextState();
         assertTrue(state.isDead());
         assertTrue(state.isDead());
-        Constants.setDEAD_LIMIT_TIME((float)0);
+        Constants.setDeadLimitTime((float)0);
         state = state.returnNextState();
         assertEquals(state.getClass(), HunterState.class);
     }
