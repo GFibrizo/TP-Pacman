@@ -1,6 +1,8 @@
 package com.grupo2.constants;
 
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.IOException;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -29,7 +31,7 @@ public final class Constants {
 		throw new AssertionError();
 	}
         
-        private static void initializeConstants(String path) {
+        private static void initializeConstants(String path) throws FileNotFoundException, IOException, ParseException {
             FileReader reader = new FileReader(path);
             JSONParser jsonParser = new JSONParser();
             JSONObject jsonObject = (JSONObject) jsonParser.parse(reader);  
