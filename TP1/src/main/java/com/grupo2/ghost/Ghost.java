@@ -1,9 +1,9 @@
 package com.grupo2.ghost;
 
-import com.grupo2.character.IGhost;
+import com.grupo2.interfaces.IGhost;
 import com.grupo2.ghostState.HunterState;
 import com.grupo2.character.Character;
-import com.grupo2.character.ICharacter;
+import com.grupo2.interfaces.ICharacter;
 import com.grupo2.constants.Constants;
 import com.grupo2.ghostState.DeadState;
 

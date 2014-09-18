@@ -1,6 +1,6 @@
 package com.grupo2.ghost;
 
-import com.grupo2.character.IGhost;
+import com.grupo2.interfaces.IGhost;
 
 /**
  *

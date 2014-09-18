@@ -6,7 +6,7 @@
 
 package com.grupo2.ghostState;
 
-import com.grupo2.character.IGhost;
+import com.grupo2.interfaces.IGhost;
 import com.grupo2.constants.Constants;
 import com.grupo2.ghost.GhostState;
 import com.grupo2.ghost.Ghost;

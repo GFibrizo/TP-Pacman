@@ -1,12 +1,14 @@
 package com.grupo2.character;
 
+import com.grupo2.interfaces.ICharacter;
+
 /**
  *
  * @author fibrizo
  */
 public abstract class Character implements ICharacter {
 
-	private CollidingArea position;
+	protected CollidingArea position;
 
 	protected Character(final float x, final float y, final float radius) {
 		this.position = new CollidingArea(x, y, radius);
