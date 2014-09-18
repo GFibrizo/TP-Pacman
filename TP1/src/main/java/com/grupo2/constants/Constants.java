@@ -29,8 +29,8 @@ public final class Constants {
 		throw new AssertionError();
 	}
         
-        private static void initializeConstants() {
-            FileReader reader = new FileReader("../../../../resources/Constants.json");
+        private static void initializeConstants(String path) {
+            FileReader reader = new FileReader(path);
             JSONParser jsonParser = new JSONParser();
             JSONObject jsonObject = (JSONObject) jsonParser.parse(reader);  
             
