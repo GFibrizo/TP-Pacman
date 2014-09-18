@@ -7,7 +7,7 @@ package com.grupo2.ghostState;
 
 import com.grupo2.ghost.GhostState;
 import com.grupo2.constants.Constants;
-import com.grupo2.movementStrategies.PreyMovement;
+import com.grupo2.movementStrategies.RandomStrategy;
 
 /**
  *
@@ -16,9 +16,10 @@ import com.grupo2.movementStrategies.PreyMovement;
 public class PreyState extends GhostState {
 
     float time = 0;
+    PreyMovement movement;
 
     public PreyState() {
-        super(new PreyMovement());
+        movement = new RandomStrategy();
     }
 
     @Override
@@ -41,10 +42,20 @@ public class PreyState extends GhostState {
      */
     @Override
     public GhostState returnNextState() {
-        if (time >= Constants.PREY_LIMIT_TIME) {
+        if (time >= Constants.getPREY_LIMIT_TIME()) {
             return new HunterState();
         }
         return this;
+    }
+    
+    @Override
+    public GhostState convertToPrey() {
+        return new PreyState();
+    }
+    
+    @Override
+    public GhostState die() {
+        return new DeadState();
     }
 
 }

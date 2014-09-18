@@ -1,8 +1,7 @@
 package com.grupo2.ghostState;
-
+import com.grupo2.ghost.Ghost;
 import com.grupo2.ghost.GhostState;
-import com.grupo2.ghost.MovementStrategy;
-import com.grupo2.movementStrategies.FirstLevelRage;
+import com.grupo2.movementStrategies.FirstRageStrategy;
 
 /**
  *
@@ -10,22 +9,19 @@ import com.grupo2.movementStrategies.FirstLevelRage;
  */
 public class HunterState extends GhostState {
 
-    float time = 0;
-    private Rage rage;
+    float time;
+    private RageMovement rage;
     
-    private HunterState(Rage rage) {
-        super(rage);
-        this.rage = rage;
-    }
-
     public HunterState() {
-        this(new FirstLevelRage());
+        time = 0;
+        rage = new FirstRageStrategy();
     }
     
     @Override
     public void move() {
         this.time++;
-        this.movement.move();
+        this.rage.move();
+        
     }
 
     /**
@@ -44,4 +40,16 @@ public class HunterState extends GhostState {
     public GhostState returnNextState() {
         return this;
     }
+
+    @Override
+    public GhostState convertToPrey() {
+        return new PreyState();
+    }
+    
+    
+    @Override 
+    public GhostState die() {
+        throw new AssertionError("A hunter Ghost can't die");
+    }
+   
 }

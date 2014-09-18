@@ -1,4 +1,4 @@
-package com.grupo2.ghost;
+package com.grupo2.movementStrategies;
 
 /**
  *

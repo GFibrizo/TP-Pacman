@@ -5,14 +5,17 @@
  */
 
 package com.grupo2.character;
-import com.grupo2.ghost.GhostState;
 
 /**
  *
  * @author fibrizo
  */
 public interface IGhost {
+    public CollidingArea getPosition();
     public void move();
-    public void changeState(GhostState aGhostState);
     public boolean isDead();
+    public void die();
+    public void convertToPrey();
+    public void beEaten(IGhost ghost);
+    public boolean isBeingEated(IGhost ghost);
 }

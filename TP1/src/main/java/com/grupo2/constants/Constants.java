@@ -10,13 +10,41 @@ package com.grupo2.constants;
  * @author fibrizo
  */
 public final class Constants {
+    
+    private static float PREY_LIMIT_TIME = 30;
+    private static float DEAD_LIMIT_TIME = 20;
 
-    public static float PREY_LIMIT_TIME = 30;
-    public static float DEAD_LIMIT_TIME = 20;
+    private static float FIRST_RAGE_LIMIT_TIME = 5;
+    private static float SECOND_RAGE_LIMIT_TIME = 10;
+    private static float THIRD_RAGE_LIMIT_TIME = 15;
+    
+    private static float GHOST_RADIUS = 2;
 
-    public static float FIRST_RAGE_LIMIT_TIME = 5;
-    public static float SECOND_RAGE_LIMIT_TIME = 10;
-    public static float THIRD_RAGE_LIMIT_TIME = 15;
+    public static float getPREY_LIMIT_TIME() {
+        return PREY_LIMIT_TIME;
+    }
+
+    public static float getDEAD_LIMIT_TIME() {
+        return DEAD_LIMIT_TIME;
+    }
+
+    public static float getFIRST_RAGE_LIMIT_TIME() {
+        return FIRST_RAGE_LIMIT_TIME;
+    }
+
+    public static float getSECOND_RAGE_LIMIT_TIME() {
+        return SECOND_RAGE_LIMIT_TIME;
+    }
+
+    public static float getTHIRD_RAGE_LIMIT_TIME() {
+        return THIRD_RAGE_LIMIT_TIME;
+    }
+
+    public static float getGHOST_RADIUS() {
+        return GHOST_RADIUS;
+    }
+
+
 
     private Constants() {
         //this prevents even the native class from 
@@ -42,5 +70,9 @@ public final class Constants {
 
     public static void setTHIRD_RAGE_LIMIT_TIME(float THIRD_RAGE_LIMIT_TIME) {
         Constants.THIRD_RAGE_LIMIT_TIME = THIRD_RAGE_LIMIT_TIME;
+    }
+    
+    public static void setGHOST_RADIUS(float RADIUS) {
+        Constants.GHOST_RADIUS = RADIUS;
     }
 }

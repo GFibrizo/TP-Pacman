@@ -1,19 +1,13 @@
 package com.grupo2.movementStrategies;
-
-import com.grupo2.ghostState.Rage;
+import com.grupo2.ghostState.RageMovement;
 
 /**
  *
  * @author fibrizo
  */
-public class SecondLevelRage extends Rage {
+public class ThirdRageStrategy extends HunterStrategy implements RageMovement {
 
-    public SecondLevelRage() {
-    }
-
-    @Override
-    public Rage incrementRage() {
-        return new ThirdLevelRage();
+    public ThirdRageStrategy() {
     }
 
     @Override
@@ -21,4 +15,9 @@ public class SecondLevelRage extends Rage {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
+    public HunterStrategy incrementRage() {
+        return this;
+    }
+ 
 }
