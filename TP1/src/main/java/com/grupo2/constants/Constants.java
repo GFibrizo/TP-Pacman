@@ -1,9 +1,15 @@
 package com.grupo2.constants;
 
+import java.io.FileReader;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 /**
  *
  * @author fibrizo
  */
+
 public final class Constants {
 
 	private static long TICK_TO_MILISECS = 1000;
@@ -22,7 +28,29 @@ public final class Constants {
 		//calling this ctor as well :
 		throw new AssertionError();
 	}
-
+        
+        private static void initializeConstants() {
+            FileReader reader = new FileReader("../../../../resources/Constants.json");
+            JSONParser jsonParser = new JSONParser();
+            JSONObject jsonObject = (JSONObject) jsonParser.parse(reader);  
+            
+            long ticks = (long) jsonObject.get("TICK_TO_MILISECS");
+            float preyTime = (float) jsonObject.get("PREY_LIMIT_TIME");    
+            float deadTime = (float) jsonObject.get("DEAD_LIMIT_TIME");  
+            float firstRageTime = (float) jsonObject.get("FIRST_RAGE_LIMIT_TIME");  
+            float secondRageTime = (float) jsonObject.get("SECOND_RAGE_LIMIT_TIME");  
+            float thirdRageTime = (float) jsonObject.get("THIRD_RAGE_LIMIT_TIME");  
+            float radius = (float) jsonObject.get("GHOST_RADIUS");              
+            
+            setTickToMilisecs(ticks);
+            setPreyLimitTime(preyTime);
+            setDeadLimitTime(deadTime);
+            setFirstRageLimitTime(firstRageTime);
+            setSecondRageLimitTime(secondRageTime);
+            setThirdRageLimitTime(thirdRageTime);
+            setGhostRadius(radius);
+        }
+        
 	public static float getPreyLimitTime() {
 		return PREY_LIMIT_TIME;
 	}
