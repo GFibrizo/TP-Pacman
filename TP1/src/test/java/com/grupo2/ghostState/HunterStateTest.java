@@ -7,9 +7,8 @@
 package com.grupo2.ghostState;
 
 import com.grupo2.character.IGhost;
-import com.grupo2.constants.Constants;
-import com.grupo2.ghost.GhostState;
 import com.grupo2.ghost.Ghost;
+import com.grupo2.ghost.GhostState;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -21,11 +20,11 @@ import static org.junit.Assert.*;
  *
  * @author fibrizo
  */
-public class DeadStateTest {
+public class HunterStateTest {
     
     GhostState state;
     
-    public DeadStateTest() {
+    public HunterStateTest() {
     }
     
     @BeforeClass
@@ -38,15 +37,16 @@ public class DeadStateTest {
     
     @Before
     public void setUp() {
-        state = new DeadState();
+        state = new HunterState();
     }
     
     @After
     public void tearDown() {
+        state = null;
     }
 
     /**
-     * Test of move method, of class DeadState.
+     * Test of move method, of class HunterState.
      */
     @Test
     public void testMove() {
@@ -61,28 +61,25 @@ public class DeadStateTest {
     }
 
     /**
-     * Test of isDead method, of class DeadState.
+     * Test of isDead method, of class HunterState.
      */
     @Test
     public void testIsDead() {
         System.out.println("isDead");
-        boolean expResult = true;
+        boolean expResult = false;
         boolean result = state.isDead();
         assertEquals(expResult, result);
     }
 
     /**
-     * Test of returnNextState method, of class DeadState.
+     * Test of returnNextState method, of class HunterState.
      */
     @Test
     public void testingReturnNextState() {
         System.out.println("returnNextState");
-        assertTrue(state.isDead());
+        assertFalse(state.isDead());
         state = state.returnNextState();
-        assertTrue(state.isDead());
-        assertTrue(state.isDead());
-        Constants.setDEAD_LIMIT_TIME((float)0);
-        state = state.returnNextState();
+        assertFalse(state.isDead());
         assertEquals(state.getClass(), HunterState.class);
     }
 
@@ -99,22 +96,18 @@ public class DeadStateTest {
     }
 
     /**
-     * Test of convertToPrey method, of class DeadState.
+     * Test of convertToPrey method, of class HunterState.
      */
     @Test
     public void testConvertToPrey() {
         System.out.println("convertToPrey");
-        boolean flag = false;
-        try {
-            GhostState result = state.convertToPrey();
-        } catch (AssertionError e) {
-            flag = true;
-        }
-        assertTrue(flag);
+        GhostState result = state.convertToPrey();
+        assertEquals(result.getClass(), PreyState.class);
+        assertFalse(result.isDead());
     }
 
     /**
-     * Test of die method, of class DeadState.
+     * Test of die method, of class HunterState.
      */
     @Test
     public void testDie() {

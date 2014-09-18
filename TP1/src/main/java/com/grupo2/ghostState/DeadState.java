@@ -60,7 +60,7 @@ public class DeadState extends GhostState {
     
     @Override
     public GhostState convertToPrey() {
-        throw new AssertionError("A dead Ghost can't be converted to Prey");
+        throw new AssertionError("A dead Ghost can't be forced to convert into Prey");
     }
     
     @Override

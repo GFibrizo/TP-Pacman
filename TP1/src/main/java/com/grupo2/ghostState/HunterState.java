@@ -21,7 +21,6 @@ public class HunterState extends GhostState {
     public void move() {
         this.time++;
         this.rage.move();
-        
     }
 
     /**
