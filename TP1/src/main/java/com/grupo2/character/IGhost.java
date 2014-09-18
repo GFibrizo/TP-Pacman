@@ -6,17 +6,17 @@ package com.grupo2.character;
  */
 public interface IGhost {
 
-    public CollidingArea getPosition();
+	public CollidingArea getPosition();
 
-    public void move();
+	public void move();
 
-    public boolean isDead();
+	public boolean isDead();
 
-    public void die();
+	public void die();
 
-    public void convertToPrey();
+	public void convertToPrey();
 
-    public void beEaten(IGhost ghost);
+	public void beEaten(IGhost ghost);
 
-    public boolean isBeingEated(IGhost ghost);
+	public boolean isBeingEated(IGhost ghost);
 }

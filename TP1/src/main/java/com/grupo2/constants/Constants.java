@@ -6,66 +6,77 @@ package com.grupo2.constants;
  */
 public final class Constants {
 
-    private static float PREY_LIMIT_TIME = 30;
-    private static float DEAD_LIMIT_TIME = 20;
+	private static long TICK_TO_MILISECS = 1000;
 
-    private static float FIRST_RAGE_LIMIT_TIME = 5;
-    private static float SECOND_RAGE_LIMIT_TIME = 10;
-    private static float THIRD_RAGE_LIMIT_TIME = 15;
+	private static float PREY_LIMIT_TIME = 30;
+	private static float DEAD_LIMIT_TIME = 20;
 
-    private static float GHOST_RADIUS = 2;
+	private static float FIRST_RAGE_LIMIT_TIME = 5;
+	private static float SECOND_RAGE_LIMIT_TIME = 10;
+	private static float THIRD_RAGE_LIMIT_TIME = 15;
 
-    private Constants() {
-        //this prevents even the native class from 
-        //calling this ctor as well :
-        throw new AssertionError();
-    }
+	private static float GHOST_RADIUS = 2;
 
-    public static float getPREY_LIMIT_TIME() {
-        return PREY_LIMIT_TIME;
-    }
+	private Constants() {
+		//this prevents even the native class from
+		//calling this ctor as well :
+		throw new AssertionError();
+	}
 
-    public static float getDEAD_LIMIT_TIME() {
-        return DEAD_LIMIT_TIME;
-    }
+	public static float getPreyLimitTime() {
+		return PREY_LIMIT_TIME;
+	}
 
-    public static float getFIRST_RAGE_LIMIT_TIME() {
-        return FIRST_RAGE_LIMIT_TIME;
-    }
+	public static float getDeadLimitTime() {
+		return DEAD_LIMIT_TIME;
+	}
 
-    public static float getSECOND_RAGE_LIMIT_TIME() {
-        return SECOND_RAGE_LIMIT_TIME;
-    }
+	public static float getFirstRageLimitTime() {
+		return FIRST_RAGE_LIMIT_TIME;
+	}
 
-    public static float getTHIRD_RAGE_LIMIT_TIME() {
-        return THIRD_RAGE_LIMIT_TIME;
-    }
+	public static float getSecondRageLimitTime() {
+		return SECOND_RAGE_LIMIT_TIME;
+	}
 
-    public static float getGHOST_RADIUS() {
-        return GHOST_RADIUS;
-    }
+	public static float getThirdRageLimitTime() {
+		return THIRD_RAGE_LIMIT_TIME;
+	}
 
-    public static void setPREY_LIMIT_TIME(float PREY_LIMIT_TIME) {
-        Constants.PREY_LIMIT_TIME = PREY_LIMIT_TIME;
-    }
+	public static float getGhostRadius() {
+		return GHOST_RADIUS;
+	}
 
-    public static void setDEAD_LIMIT_TIME(float DEAD_LIMIT_TIME) {
-        Constants.DEAD_LIMIT_TIME = DEAD_LIMIT_TIME;
-    }
+	public static long getTickToMilisecs() {
+		return TICK_TO_MILISECS;
+	}
 
-    public static void setFIRST_RAGE_LIMIT_TIME(float FIRST_RAGE_LIMIT_TIME) {
-        Constants.FIRST_RAGE_LIMIT_TIME = FIRST_RAGE_LIMIT_TIME;
-    }
+	public static void setPreyLimitTime(float timeLimit) {
+		Constants.PREY_LIMIT_TIME = timeLimit;
+	}
 
-    public static void setSECOND_RAGE_LIMIT_TIME(float SECOND_RAGE_LIMIT_TIME) {
-        Constants.SECOND_RAGE_LIMIT_TIME = SECOND_RAGE_LIMIT_TIME;
-    }
+	public static void setDeadLimitTime(float timeLimit) {
+		Constants.DEAD_LIMIT_TIME = timeLimit;
+	}
 
-    public static void setTHIRD_RAGE_LIMIT_TIME(float THIRD_RAGE_LIMIT_TIME) {
-        Constants.THIRD_RAGE_LIMIT_TIME = THIRD_RAGE_LIMIT_TIME;
-    }
+	public static void setFirstRageLimitTime(float timeLimit) {
+		Constants.FIRST_RAGE_LIMIT_TIME = timeLimit;
+	}
 
-    public static void setGHOST_RADIUS(float RADIUS) {
-        Constants.GHOST_RADIUS = RADIUS;
-    }
+	public static void setSecondRageLimitTime(float timeLimit) {
+		Constants.SECOND_RAGE_LIMIT_TIME = timeLimit;
+	}
+
+	public static void setThirdRageLimitTime(float timeLimit) {
+		Constants.THIRD_RAGE_LIMIT_TIME = timeLimit;
+	}
+
+	public static void setGhostRadius(float radius) {
+		Constants.GHOST_RADIUS = radius;
+	}
+
+	public static void setTickToMilisecs(long ticks) {
+		Constants.TICK_TO_MILISECS = ticks;
+	}
+
 }

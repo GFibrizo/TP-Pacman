@@ -6,17 +6,17 @@ package com.grupo2.character;
  */
 public abstract class Character {
 
-    CollidingArea position;
+	CollidingArea position;
 
-    protected Character(float x, float y, float radius) {
-        this.position = new CollidingArea(x, y, radius);
-    }
+	protected Character(float x, float y, float radius) {
+		this.position = new CollidingArea(x, y, radius);
+	}
 
-    public abstract void move();
+	public abstract void move();
 
-    public abstract boolean isDead();
+	public abstract boolean isDead();
 
-    public CollidingArea getPosition() {
-        return position;
-    }
+	public CollidingArea getPosition() {
+		return position;
+	}
 }

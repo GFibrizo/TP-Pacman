@@ -1,4 +1,5 @@
 package com.grupo2.movementStrategies;
+
 import com.grupo2.ghostState.DeadMovement;
 
 /**
@@ -7,12 +8,12 @@ import com.grupo2.ghostState.DeadMovement;
  */
 public class SearchCageStrategy extends MovementStrategy implements DeadMovement {
 
-    public SearchCageStrategy() {
-    }
+	public SearchCageStrategy() {
+	}
 
-    @Override
-    public void move() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+	@Override
+	public void move() {
+		throw new UnsupportedOperationException("Not supported yet.");
+	}
 
 }
