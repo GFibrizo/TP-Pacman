@@ -31,7 +31,9 @@ public final class Constants {
 		throw new AssertionError();
 	}
         
-        private static void initializeConstants(String path) throws FileNotFoundException, IOException, ParseException {
+        private static void initializeConstants(String path) {
+            try {
+                
             FileReader reader = new FileReader(path);
             JSONParser jsonParser = new JSONParser();
             JSONObject jsonObject = (JSONObject) jsonParser.parse(reader);  
@@ -51,6 +53,20 @@ public final class Constants {
             setSecondRageLimitTime(secondRageTime);
             setThirdRageLimitTime(thirdRageTime);
             setGhostRadius(radius);
+            } 
+            
+            catch (FileNotFoundException ex) {
+		ex.printStackTrace();
+            } 
+            catch (IOException ex) {
+                ex.printStackTrace();
+            }
+            catch (ParseException ex) {
+		ex.printStackTrace();
+            }
+            catch (NullPointerException ex) {
+		ex.printStackTrace();
+            }
         }
         
 	public static float getPreyLimitTime() {
