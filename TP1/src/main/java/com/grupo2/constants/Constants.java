@@ -3,6 +3,8 @@ package com.grupo2.constants;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -22,7 +24,7 @@ public final class Constants {
     private static float SECOND_RAGE_LIMIT_TIME = 10;
     private static float THIRD_RAGE_LIMIT_TIME = 15;
 
-    private static float GHOST_RADIUS = 2;
+    private static float GHOST_RADIUS = 99;
 
     private Constants() {
             //this prevents even the native class from
@@ -30,7 +32,7 @@ public final class Constants {
             throw new AssertionError();
     }
 
-    private static void initializeConstants(final String path) throws IOException {
+    public static void initializeConstants(final String path) {
 
         try {
             FileReader reader = new FileReader(path);
@@ -38,12 +40,12 @@ public final class Constants {
             JSONObject jsonObject = (JSONObject) jsonParser.parse(reader);
 
             long ticks = (long) jsonObject.get("TICK_TO_MILISECS");
-            float preyTime = (float) jsonObject.get("PREY_LIMIT_TIME");
-            float deadTime = (float) jsonObject.get("DEAD_LIMIT_TIME");
-            float firstRageTime = (float) jsonObject.get("FIRST_RAGE_LIMIT_TIME");
-            float secondRageTime = (float) jsonObject.get("SECOND_RAGE_LIMIT_TIME");
-            float thirdRageTime = (float) jsonObject.get("THIRD_RAGE_LIMIT_TIME");
-            float radius = (float) jsonObject.get("GHOST_RADIUS");
+            float preyTime = ((Number)jsonObject.get("PREY_LIMIT_TIME")).floatValue();
+            float deadTime = ((Number) jsonObject.get("DEAD_LIMIT_TIME")).floatValue();
+            float firstRageTime = ((Number) jsonObject.get("FIRST_RAGE_LIMIT_TIME")).floatValue();
+            float secondRageTime = ((Number) jsonObject.get("SECOND_RAGE_LIMIT_TIME")).floatValue();
+            float thirdRageTime = ((Number) jsonObject.get("THIRD_RAGE_LIMIT_TIME")).floatValue();
+            float radius = ((Number) jsonObject.get("GHOST_RADIUS")).floatValue();
 
             setTickToMilisecs(ticks);
             setPreyLimitTime(preyTime);
@@ -52,12 +54,15 @@ public final class Constants {
             setSecondRageLimitTime(secondRageTime);
             setThirdRageLimitTime(thirdRageTime);
             setGhostRadius(radius);
+            
         } catch (ParseException e) {
-            throw new IOException("Parsing Error");
+            System.out.println("ERROR WHILE PARSING");
         } catch (FileNotFoundException e) {
-            throw new IOException("File not found");
+            System.out.println("ERROR FILE NOT FOUND");
         } catch (NullPointerException e) {
-            throw new IOException("Runtime Error");
+            System.out.println("ERROR NULL POINTER");
+        } catch (IOException ex) {
+            System.out.println("ERROR IO");
         }
     }
 
