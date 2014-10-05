@@ -1,7 +1,7 @@
 package com.grupo2.ghost;
 
 import com.grupo2.interfaces.IGhost;
-import com.grupo2.character.CollidingArea;
+import com.grupo2.character.Coordinate;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -48,15 +48,9 @@ public class GhostTest {
             notImplementedYet = true;
         }
         assertTrue(notImplementedYet);
-        assert(ghost.getPosition().isEqualTo(new CollidingArea(0,0,0)));
+        assert(ghost.getPosition().isEqualTo(new Coordinate(0,0)));
     }
-    
-    @Test
-    public void GhostCollision(){
-        IGhost ghost2 = new Ghost(0, 1);
-        assert(ghost.isBeingEated(ghost2));
-    }
-    
+        
     @Test
     public void GhostIsEatedByOtherGhost() {
         IGhost ghost2 = new Ghost(0, 1);

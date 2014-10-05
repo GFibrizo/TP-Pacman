@@ -1,6 +1,6 @@
 package com.grupo2.interfaces;
 
-import com.grupo2.character.CollidingArea;
+import com.grupo2.character.Coordinate;
 
 /**
  *
@@ -9,7 +9,7 @@ import com.grupo2.character.CollidingArea;
 public interface IGhost extends ICharacter {
 
 	@Override
-	public CollidingArea getPosition();
+	public Coordinate getPosition();
 
 	@Override
 	public void move();
@@ -23,5 +23,4 @@ public interface IGhost extends ICharacter {
 
 	public void beEaten(IGhost ghost);
 
-	public boolean isBeingEated(ICharacter someone);
 }

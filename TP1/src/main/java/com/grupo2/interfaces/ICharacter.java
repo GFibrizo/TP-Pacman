@@ -5,8 +5,7 @@
  */
 
 package com.grupo2.interfaces;
-
-import com.grupo2.character.CollidingArea;
+import com.grupo2.character.Coordinate;
 
 /**
  *
@@ -18,5 +17,5 @@ public interface ICharacter {
 
     public abstract boolean isDead();
 
-    public CollidingArea getPosition();
+    public Coordinate getPosition();
 }

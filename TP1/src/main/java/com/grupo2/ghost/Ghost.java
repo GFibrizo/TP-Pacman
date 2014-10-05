@@ -21,8 +21,8 @@ public class Ghost extends Character implements IGhost {
 	 * @param x CollidingArea in the X axis
 	 * @param y CollidingArea in the Y axis
 	 */
-	public Ghost(final float x, final float y) {
-		super(x, y, Constants.getGhostRadius());
+	public Ghost(final int x, final int y) {
+		super(x, y);
 		state = new HunterState();
 	}
 
@@ -52,11 +52,6 @@ public class Ghost extends Character implements IGhost {
 	@Override
 	public void convertToPrey() {
 		state = state.convertToPrey();
-	}
-
-	@Override
-	public boolean isBeingEated(ICharacter ghost) {
-		return this.getPosition().isCollindingWith(ghost.getPosition());
 	}
 
 	/*

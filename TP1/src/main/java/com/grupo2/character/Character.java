@@ -8,10 +8,10 @@ import com.grupo2.interfaces.ICharacter;
  */
 public abstract class Character implements ICharacter {
 
-	protected CollidingArea position;
+	protected Coordinate position;
 
-	protected Character(final float x, final float y, final float radius) {
-		this.position = new CollidingArea(x, y, radius);
+	protected Character(final int x, final int y) {
+		this.position = new Coordinate(x, y);
 	}
 
 	@Override
@@ -21,7 +21,7 @@ public abstract class Character implements ICharacter {
 	public abstract boolean isDead();
 
 	@Override
-	public CollidingArea getPosition() {
+	public Coordinate getPosition() {
 		return position;
 	}
 }

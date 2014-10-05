@@ -11,30 +11,30 @@ public class Coordinate {
 	/**
 	 * Coordinate X.
 	 */
-	private float x;
+	private int x;
 	/**
 	 * Coordinate Y.
 	 */
-	private float y;
+	private int y;
 
-	public Coordinate(float x, float y) {
+	public Coordinate(int x, int y) {
 		this.x = x;
 		this.y = y;
 	}
 
-	public float getX() {
+	public int getX() {
 		return x;
 	}
 
-	public float getY() {
+	public int getY() {
 		return y;
 	}
 
-	public void setX(float x) {
+	public void setX(int x) {
 		this.x = x;
 	}
 
-	public void setY(float y) {
+	public void setY(int y) {
 		this.y = y;
 	}
 
@@ -59,9 +59,9 @@ public class Coordinate {
 	 * @return distance
 	 */
 	public float distanceTo(Coordinate otherCoordinate) {
-		float distanceX = this.getX() - otherCoordinate.getX();
-		float distanceY = this.getY() - otherCoordinate.getY();
-		float valuedDistance = distanceX * distanceX + distanceY * distanceY;
+		int distanceX = this.getX() - otherCoordinate.getX();
+		int distanceY = this.getY() - otherCoordinate.getY();
+		int valuedDistance = distanceX * distanceX + distanceY * distanceY;
 		return (float) sqrt(valuedDistance);
 	}
 }

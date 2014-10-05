@@ -87,18 +87,6 @@ public class PreyStateTest {
     }
 
     /**
-     * Test of beEaten method, of class DeadState.
-     */
-    @Test
-    public void testBeEaten() {
-        System.out.println("beEaten");
-        IGhost ghost = new Ghost((float)1, (float)1);
-        // Here soon will be a test that really tests something
-        assertTrue(true);
-        
-    }
-
-    /**
      * Test of convertToPrey method, of class DeadState.
      */
     @Test
