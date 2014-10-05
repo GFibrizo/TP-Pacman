@@ -34,7 +34,7 @@ public class ConstantsTest {
     @Test
     public void testInitializeConstants() {
         System.out.println("initializeConstants");
-        String path = "/home/mauri/Desktop/TDD/TPS/tp/TP1/src/main/resources/Constants.json";
+        String path = "../../../../../main/resources/Constants.json";
         Constants.initializeConstants(path);
         
         // TODO: acá se deberían probar todos los datos, pero como todos hacen lo mismo, puse 2 random
