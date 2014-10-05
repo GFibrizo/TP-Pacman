@@ -3,12 +3,14 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.grupo2.character;
+package com.grupo2.character.cell;
 
 /**
  *
  * @author mauri
  */
-public interface Cell {
-    public boolean isTransitable();
+public class UnTransitableCell {
+    public boolean isTransitable() {
+        return false;
+    }
 }
