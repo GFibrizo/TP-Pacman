@@ -5,11 +5,20 @@
  */
 package com.grupo2.character.cell;
 
+import com.grupo2.character.Coordinate;
+
 /**
  *
  * @author mauri
  */
 public class UnTransitableCell {
+    
+    private Coordinate position;
+    
+    public UnTransitableCell(Coordinate position) {
+        this.position = position;
+    }
+    
     public boolean isTransitable() {
         return false;
     }
