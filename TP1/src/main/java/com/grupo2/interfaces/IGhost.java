@@ -22,5 +22,7 @@ public interface IGhost extends ICharacter {
 	public void convertToPrey();
 
 	public void beEaten(IGhost ghost);
+        
+        public void chooseDirection();
 
 }

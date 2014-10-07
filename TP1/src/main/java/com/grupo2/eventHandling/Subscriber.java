@@ -12,4 +12,6 @@ package com.grupo2.eventHandling;
  */
 public interface Subscriber {
     
+    public void getPublication();
+    
 }

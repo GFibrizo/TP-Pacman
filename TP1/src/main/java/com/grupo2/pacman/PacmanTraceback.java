@@ -4,15 +4,12 @@
  * and open the template in the editor.
  */
 
-package com.grupo2.eventHandling;
+package com.grupo2.pacman;
 
 /**
  *
  * @author fibrizo
  */
-public interface Publisher {
-    
-    public void subscribe(Subscriber subscriber);
-    public void publish();
+public class PacmanTraceback {
     
 }

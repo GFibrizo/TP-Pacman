@@ -10,9 +10,8 @@ package com.grupo2.eventHandling;
  *
  * @author fibrizo
  */
-public interface Publisher {
+public interface Command extends Subscriber {
     
-    public void subscribe(Subscriber subscriber);
-    public void publish();
+    public void execute();
     
 }

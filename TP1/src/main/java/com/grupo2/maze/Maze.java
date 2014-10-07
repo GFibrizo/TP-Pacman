@@ -8,12 +8,13 @@ package com.grupo2.maze;
 import java.util.ArrayList;
 import com.grupo2.character.Cell;
 import com.grupo2.character.Coordinate;
+import com.grupo2.eventHandling.Publisher;
 
 /**
  *
  * @author fibrizo
  */
-public class Maze {
+public class Maze implements Publisher {
     
     private ArrayList<ArrayList<Cell> > map;
     private int height;
@@ -33,9 +34,5 @@ public class Maze {
         Coordinate pos = newCell.getPosition();
         map.get(pos.getY()).set(pos.getX(), newCell);
     }
-    
-    
-    
-    
     
 }

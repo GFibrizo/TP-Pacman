@@ -81,4 +81,9 @@ public class Ghost extends Character implements IGhost {
 	//public abstract void beEaten(Pacman pacman) {
 	//    state.beEaten(pacman);
 	//}
+        
+        public void chooseDirection() {
+            state.move();
+        }
+        
 }
