@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package com.grupo2.eventHandling;
 
 /**
@@ -11,8 +5,9 @@ package com.grupo2.eventHandling;
  * @author fibrizo
  */
 public interface Publisher {
-    
-    public void subscribe(Subscriber subscriber);
-    public void publish();
-    
+
+	void subscribe(Event event, Subscriber subscriber);
+
+	void publish();
+
 }
