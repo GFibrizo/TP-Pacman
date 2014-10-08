@@ -18,4 +18,6 @@ public interface ICharacter {
     public abstract boolean isDead();
 
     public Coordinate getPosition();
+    
+   public void chooseDirection();
 }

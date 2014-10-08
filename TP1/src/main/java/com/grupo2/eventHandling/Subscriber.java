@@ -3,13 +3,15 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.grupo2.character;
+
+package com.grupo2.eventHandling;
 
 /**
  *
- * @author mauri
+ * @author fibrizo
  */
-public interface Cell {
-    public boolean isTransitable();
-    public Coordinate getPosition();
+public interface Subscriber {
+    
+    public void getPublication();
+    
 }

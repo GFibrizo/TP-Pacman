@@ -9,6 +9,7 @@ import com.grupo2.interfaces.ICharacter;
 public abstract class Character implements ICharacter {
 
 	protected Coordinate position;
+        protected Direction direction;
 
 	protected Character(final int x, final int y) {
 		this.position = new Coordinate(x, y);
