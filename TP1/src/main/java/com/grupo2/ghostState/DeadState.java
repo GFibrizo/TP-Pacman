@@ -54,6 +54,7 @@ public class DeadState extends GhostState {
 		throw new AssertionError("A dead Ghost can't die again");
 	}
         
+        @Override
         public GhostState collideWithPacman() {
             throw new AssertionError("A dead Ghost can't collide with Pacman");        
         }

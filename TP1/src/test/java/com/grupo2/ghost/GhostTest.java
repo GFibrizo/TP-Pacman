@@ -52,13 +52,6 @@ public class GhostTest {
     }
         
     @Test
-    public void GhostIsEatedByOtherGhost() {
-        IGhost ghost2 = new Ghost(0, 1);
-        ghost.beEaten(ghost2);
-        assertFalse(ghost.isDead());
-    }
-    
-    @Test
     public void TryingToKillHunterGhost() {
         try {
             ghost.die();
@@ -84,7 +77,4 @@ public class GhostTest {
             assert(true);
         }
     }
-    
-    
-
 }

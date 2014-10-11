@@ -5,10 +5,11 @@
  */
 package com.grupo2.maze;
 
-import java.util.ArrayList;
 import com.grupo2.character.Cell;
 import com.grupo2.character.Coordinate;
 import com.grupo2.eventHandling.Publisher;
+import com.grupo2.interfaces.ICharacter;
+import java.util.ArrayList;
 
 /**
  *
@@ -36,5 +37,4 @@ public class Maze {
 		Coordinate pos = newCell.getPosition();
 		map.get(pos.getY()).set(pos.getX(), newCell);
 	}
-
 }
