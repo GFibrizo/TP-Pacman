@@ -44,16 +44,6 @@ public class DeadState extends GhostState {
 		return this;
 	}
 
-	/**
-	 * Nothing happen, the state keeps the same.
-	 *
-	 * @param ghost is the ghost that is colliding with this.
-	 */
-	@Override
-	public void beEaten(IGhost ghost) {
-		// Do nothing
-	}
-
 	@Override
 	public GhostState convertToPrey() {
 		throw new AssertionError("A dead Ghost can't be forced to convert into Prey");
@@ -63,5 +53,9 @@ public class DeadState extends GhostState {
 	public GhostState die() {
 		throw new AssertionError("A dead Ghost can't die again");
 	}
+        
+        public GhostState collideWithPacman() {
+            throw new AssertionError("A dead Ghost can't collide with Pacman");        
+        }
 
 }

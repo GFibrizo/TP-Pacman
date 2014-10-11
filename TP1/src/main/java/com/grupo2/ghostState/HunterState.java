@@ -51,5 +51,12 @@ public class HunterState extends GhostState {
     public GhostState die() {
         throw new AssertionError("A hunter Ghost can't die");
     }
+    
+    @Override
+    public GhostState collideWithPacman(){        
+        // Acá hay que "matar" al pacman.
+        return this; //When a Ghost in Hunter State collides with the Pacman, nothing happens to it, so the state remains the same.
+        
+    }
 
 }

@@ -20,9 +20,8 @@ public interface IGhost extends ICharacter {
 	public void die();
 
 	public void convertToPrey();
-
-	public void beEaten(IGhost ghost);
         
         public void chooseDirection();
 
+        public void onCollisionWithPacman();
 }

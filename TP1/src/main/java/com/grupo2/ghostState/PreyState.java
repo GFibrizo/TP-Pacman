@@ -52,5 +52,10 @@ public class PreyState extends GhostState {
     public GhostState die() {
         return new DeadState();
     }
+    
+    @Override
+    public GhostState collideWithPacman(){
+        return new DeadState();
+    }
 
 }

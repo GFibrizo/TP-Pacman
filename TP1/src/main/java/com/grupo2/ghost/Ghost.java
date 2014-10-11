@@ -54,36 +54,13 @@ public class Ghost extends Character implements IGhost {
 		state = state.convertToPrey();
 	}
 
-	/*
-	 ********Double Dispatch for collisions starts here************
-	 */
-	/**
-	 * The Ghost is eaten by a Pacman, and acts according its actual
-	 * inner state:
-	 * The Ghost dies if is in Prey state, and lives if is
-	 * in HunterState
-	 * If the Ghost is in Dead state, it keeps in that state.
-	 *
-	 * @param ghost is the ghost that is colliding with this.
-	 */
-	@Override
-	public void beEaten(IGhost ghost) {
-		state.beEaten(ghost);
-	}
-
-	/**
-	 * The state turns to dead if the state is Prey, and keeps the same
-	 * if the state is Hunter
-	 * If the Ghost is in Dead state, it keeps in that state.
-	 *
-	 * @param pacman is the Pacman that is colliding with this.
-	 */
-	//public abstract void beEaten(Pacman pacman) {
-	//    state.beEaten(pacman);
-	//}
-        
+        @Override
         public void chooseDirection() {
             state.move();
+        }
+        
+        public void onCollisionWithPacman() {
+            this.state = state.collideWithPacman(); // Lo bueno de esto es que cuando muere un fantasma, en el constructor del DeadState (por ejemplo) podemos informar al juego y sumar puntos, etc.
         }
         
 }

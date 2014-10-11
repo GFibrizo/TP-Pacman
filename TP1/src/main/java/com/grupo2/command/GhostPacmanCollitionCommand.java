@@ -12,15 +12,16 @@ import com.grupo2.interfaces.IGhost;
  *
  * @author fibrizo
  */
-public class GhostCollitionCommand extends GhostCommand {
+public class GhostPacmanCollitionCommand extends GhostCommand {
     
-    public GhostCollitionCommand(IGhost ghost) {
+    public GhostPacmanCollitionCommand(IGhost ghost) {
         this.ghost = ghost;
     }
     
     @Override
     public void execute() {
-        ghost.die();
+        // Hay que chequear que efectivamente este es el "ghost" que colisionó con el pacman. (Recordar que este método se va a ejecutar en todos los ghosts/suscriptos al evento)
+        ghost.onCollisionWithPacman();
     }
 
     @Override
