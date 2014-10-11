@@ -22,8 +22,12 @@ public class Map {
         maze = new Maze( height , width );
     }
     
-    public boolean collisionBetween(ICharacter aCharacter , ICharacter anotherCharacter ) {
+    public boolean collisionBetween( ICharacter aCharacter , ICharacter anotherCharacter ) {
         return aCharacter.getPosition().isEqualTo( anotherCharacter.getPosition() );
-    }   
+    }
+    
+    public void addCharacter(ICharacter aCharacterToAdd) {
+        this.characters.add(aCharacterToAdd);
+    }
     
 }
