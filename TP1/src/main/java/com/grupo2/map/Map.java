@@ -3,6 +3,7 @@ package com.grupo2.map;
 import com.grupo2.interfaces.ICharacter;
 import com.grupo2.interfaces.IGhost;
 import com.grupo2.maze.Maze;
+import com.grupo2.maze.MazeXMLBuilder;
 import com.grupo2.pacman.Pacman;
 import java.util.ArrayList;
 
@@ -19,8 +20,12 @@ public class Map {
 
 	private Map() {
 		// maze = new Maze( height , width );
-		// this.maze = new MazeXMLBuilder...
-	}
+		MazeXMLBuilder mazeBuilder = new MazeXMLBuilder("path");
+                CharacterXMLBuilder characterBuilder = new CharacterXMLBuilder("path");              
+                this.maze = mazeBuilder.buildMaze();
+                this.ghosts = characterBuilder.getGhosts();
+                this.thePacman = characterBuilder.getPacman();        
+        }
 
 	public boolean collisionBetween(ICharacter aCharacter, ICharacter anotherCharacter) {
 		return aCharacter.getPosition().isEqualTo(anotherCharacter.getPosition());
