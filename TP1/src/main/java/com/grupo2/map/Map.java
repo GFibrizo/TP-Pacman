@@ -14,14 +14,19 @@ public class Map {
     Maze maze;
     ArrayList<IGhost> ghosts = new ArrayList<>();
     Pacman thePacman = new Pacman(0,0);
+    private static Map mapSingleton;
     
-    public Map( int height , int width ) {
+    private Map() {
        // maze = new Maze( height , width );
 		// this.maze = new MazeXMLBuilder...
     }
     
     public boolean collisionBetween( ICharacter aCharacter , ICharacter anotherCharacter ) {
         return aCharacter.getPosition().isEqualTo( anotherCharacter.getPosition() );
+    }
+    
+    public boolean collisionWithPacman( ICharacter anotherCharacter ) {
+        return thePacman.getPosition().isEqualTo( anotherCharacter.getPosition() );
     }
     
     public void addGhost(IGhost aCharacterToAdd) {
@@ -32,4 +37,10 @@ public class Map {
         return this.thePacman;
     }
     
+    public static Map getInstance() {
+        if ( mapSingleton == null ) {
+            mapSingleton = new Map();
+        }
+        return mapSingleton;
+        }    
 }

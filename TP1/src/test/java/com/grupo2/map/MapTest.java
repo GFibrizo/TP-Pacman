@@ -38,7 +38,7 @@ public class MapTest {
     public void testCollisionBetween() {
         ICharacter aCharacter = new Ghost(0,0);
         ICharacter anotherCharacter = new Ghost(0,0);
-        Map instance = new Map(5,5);
+        Map instance = Map.getInstance();
         boolean expResult = true;
         boolean result = instance.collisionBetween(aCharacter, anotherCharacter);
         assertEquals(expResult, result);

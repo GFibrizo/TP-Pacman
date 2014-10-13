@@ -33,7 +33,6 @@ public class MazePublisher implements Publisher {
 	}
 
 	private static class MazePublisherHolder {
-
-		private static final MazePublisher INSTANCE = new MazePublisher();
+            private static final MazePublisher INSTANCE = new MazePublisher();
 	}
 }

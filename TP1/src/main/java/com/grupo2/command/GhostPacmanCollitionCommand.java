@@ -6,6 +6,7 @@
 
 package com.grupo2.command;
 import com.grupo2.interfaces.IGhost;
+import com.grupo2.map.Map;
 
 
 /**
@@ -21,7 +22,9 @@ public class GhostPacmanCollitionCommand extends GhostCommand {
     @Override
     public void execute() {
         // Hay que chequear que efectivamente este es el "ghost" que colisionó con el pacman. (Recordar que este método se va a ejecutar en todos los ghosts/suscriptos al evento)
-        ghost.onCollisionWithPacman();
+        if ( Map.getInstance().collisionWithPacman( ghost ) ) {
+            ghost.onCollisionWithPacman();
+        }
     }
 
     @Override
