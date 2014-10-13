@@ -5,7 +5,7 @@
  */
 package com.grupo2.character.directions;
 import com.grupo2.character.Direction;
-import com.grupo2.character.Coordinate;
+import com.grupo2.interfaces.ICharacter;
 /**
  *
  * @author mauri
@@ -13,8 +13,7 @@ import com.grupo2.character.Coordinate;
 public class RightDirection implements Direction {
     
     @Override
-    public Coordinate stepForward(Coordinate currentPosition) {
-        currentPosition.setX(currentPosition.getX()+1);
-        return currentPosition;
+    public void stepForward(ICharacter aCharacter) {
+        aCharacter.getPosition().setX(aCharacter.getPosition().getX()+1);
     }
 }

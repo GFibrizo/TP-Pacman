@@ -6,6 +6,7 @@
 
 package com.grupo2.interfaces;
 import com.grupo2.character.Coordinate;
+import com.grupo2.character.Direction;
 
 /**
  *
@@ -19,5 +20,5 @@ public interface ICharacter {
 
     public Coordinate getPosition();
     
-   public void chooseDirection();
+    public void changeDirection(Direction theNewDirection);
 }

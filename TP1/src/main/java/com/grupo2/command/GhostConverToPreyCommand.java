@@ -13,18 +13,15 @@ import com.grupo2.map.Map;
  *
  * @author fibrizo
  */
-public class GhostPacmanCollitionCommand extends GhostCommand {
+public class GhostConverToPreyCommand extends GhostCommand {
     
-    public GhostPacmanCollitionCommand(IGhost ghost) {
+    public GhostConverToPreyCommand(IGhost ghost) {
         this.ghost = ghost;
     }
     
     @Override
     public void execute() {
-        // Hay que chequear que efectivamente este es el "ghost" que colisionó con el pacman. (Recordar que este método se va a ejecutar en todos los ghosts/suscriptos al evento)
-        if ( Map.getInstance().collisionWithPacman( ghost ) ) {
-            ghost.onCollisionWithPacman();
-        }
+            ghost.convertToPrey();
     }
 
     @Override

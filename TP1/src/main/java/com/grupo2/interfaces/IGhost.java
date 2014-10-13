@@ -1,6 +1,7 @@
 package com.grupo2.interfaces;
 
 import com.grupo2.character.Coordinate;
+import com.grupo2.character.Direction;
 
 /**
  *
@@ -21,7 +22,7 @@ public interface IGhost extends ICharacter {
 
 	public void convertToPrey();
         
-        public void chooseDirection();
+        public void changeDirection(Direction theNewDirection);
 
         public void onCollisionWithPacman();
 }

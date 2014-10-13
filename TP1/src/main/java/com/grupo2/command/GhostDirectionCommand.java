@@ -19,7 +19,7 @@ public class GhostDirectionCommand extends GhostCommand {
     
     @Override
     public void execute() {
-        ghost.chooseDirection();
+        //no sé si va este command directamente
     }
 
     @Override

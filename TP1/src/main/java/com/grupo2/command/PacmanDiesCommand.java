@@ -14,17 +14,14 @@ import com.grupo2.map.Map;
  *
  * @author fibrizo
  */
-public class PacmanDieCommand extends CharacterCommand {
-    public PacmanDieCommand(ICharacter aCharacter) {
-        this.character = aCharacter;
-    }
+public class PacmanDiesCommand {
+    public PacmanDiesCommand() {
     
-    @Override
+    }
+
     public void execute() {
-
+        //la idea de este command es que sea el callback de los que se subscriben al evento "Pacmandies" y que restartee la posicion de c/u
     }    
-
-    @Override
     public void getPublication() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }

@@ -1,13 +1,14 @@
 package com.grupo2.ghost;
 
-import com.grupo2.interfaces.IGhost;
 import com.grupo2.character.Coordinate;
+import com.grupo2.character.directions.UpDirection;
+import com.grupo2.interfaces.IGhost;
 import org.junit.After;
 import org.junit.AfterClass;
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
@@ -30,7 +31,7 @@ public class GhostTest {
 
     @Before
     public void setUp() {
-        ghost = new Ghost(0,0);
+        ghost = new Ghost( 0 , 0 , new UpDirection());
     }
 
     @After

@@ -55,8 +55,8 @@ public class Ghost extends Character implements IGhost {
 	}
 
         @Override
-        public void chooseDirection() {
-            state.move();
+        public void changeDirection(Direction theNewDirection) {
+            this.direction = theNewDirection;
         }
 
         @Override
