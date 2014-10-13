@@ -11,8 +11,9 @@ public abstract class Character implements ICharacter {
 	protected Coordinate position;
 	protected Direction direction;
 
-	protected Character(final int x, final int y) {
+	protected Character(final int x, final int y, Direction dir) {
 		this.position = new Coordinate(x, y);
+		this.direction = dir;
 	}
 
 	@Override

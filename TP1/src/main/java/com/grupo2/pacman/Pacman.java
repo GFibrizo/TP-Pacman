@@ -10,10 +10,11 @@ import com.grupo2.character.Direction;
 public class Pacman extends Character {
 
 	private Direction nextDirection;
+	private Direction direction;
 	private boolean alive;
 
-	public Pacman(int x, int y) {
-		super(x, y);
+	public Pacman(int x, int y, Direction dir) {
+		super(x, y, dir);
 		this.alive = true;
 	}
 

@@ -1,11 +1,10 @@
 package com.grupo2.ghost;
 
-import com.grupo2.interfaces.IGhost;
-import com.grupo2.ghostState.HunterState;
 import com.grupo2.character.Character;
-import com.grupo2.interfaces.ICharacter;
-import com.grupo2.constants.Constants;
+import com.grupo2.character.Direction;
 import com.grupo2.ghostState.DeadState;
+import com.grupo2.ghostState.HunterState;
+import com.grupo2.interfaces.IGhost;
 
 /**
  *
@@ -19,11 +18,12 @@ public class Ghost extends Character implements IGhost {
 	 * Create a new instance of the class Ghost in the HunterState.
 	 *
 	 * @param x CollidingArea in the X axis
-	 * @param y CollidingArea in the Y axis
+	 * @param y   CollidingArea in the Y axis
+	 * @param dir Initial Direction
 	 */
-	public Ghost(final int x, final int y) {
-		super(x, y);
-		state = new HunterState();
+	public Ghost(final int x, final int y, Direction dir) {
+		super(x, y, dir);
+		this.state = new HunterState();
 	}
 
 	/**
@@ -32,8 +32,8 @@ public class Ghost extends Character implements IGhost {
 	 */
 	@Override
 	public void move() {
-		state.move();
-		state = state.returnNextState();
+		this.state.move();
+		this.state = state.returnNextState();
 	}
 
 	/**
@@ -46,22 +46,22 @@ public class Ghost extends Character implements IGhost {
 
 	@Override
 	public void die() {
-		state = new DeadState();
+		this.state = new DeadState();
 	}
 
 	@Override
 	public void convertToPrey() {
-		state = state.convertToPrey();
+		this.state = state.convertToPrey();
 	}
 
         @Override
         public void chooseDirection() {
             state.move();
         }
-        
+
         @Override
         public void onCollisionWithPacman() {
             this.state = state.collideWithPacman(); // Lo bueno de esto es que cuando muere un fantasma, en el constructor del DeadState (por ejemplo) podemos informar al juego y sumar puntos, etc.
         }
-        
+
 }
