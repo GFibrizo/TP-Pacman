@@ -59,6 +59,7 @@ public class Ghost extends Character implements IGhost {
             state.move();
         }
         
+        @Override
         public void onCollisionWithPacman() {
             this.state = state.collideWithPacman(); // Lo bueno de esto es que cuando muere un fantasma, en el constructor del DeadState (por ejemplo) podemos informar al juego y sumar puntos, etc.
         }
