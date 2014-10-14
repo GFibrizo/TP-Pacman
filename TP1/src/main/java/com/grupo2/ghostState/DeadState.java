@@ -1,8 +1,7 @@
 package com.grupo2.ghostState;
 
-import com.grupo2.ghost.GhostState;
 import com.grupo2.constants.Constants;
-import com.grupo2.interfaces.IGhost;
+import com.grupo2.ghost.GhostState;
 import com.grupo2.movementStrategies.SearchCageStrategy;
 
 /**
@@ -53,10 +52,10 @@ public class DeadState extends GhostState {
 	public GhostState die() {
 		throw new AssertionError("A dead Ghost can't die again");
 	}
-        
-        @Override
-        public GhostState collideWithPacman() {
-            throw new AssertionError("A dead Ghost can't collide with Pacman");        
-        }
+
+	@Override
+	public GhostState collideWithPacman() {
+		return this;
+	}
 
 }
