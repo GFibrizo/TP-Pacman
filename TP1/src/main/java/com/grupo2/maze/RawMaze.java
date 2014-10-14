@@ -1,9 +1,9 @@
 package com.grupo2.maze;
 
-import java.util.ArrayList;
 import com.grupo2.character.Coordinate;
 import com.grupo2.character.cell.RawCell;
 import com.grupo2.eventHandling.Publisher;
+import java.util.ArrayList;
 
 /**
  *
@@ -18,8 +18,10 @@ public class RawMaze implements Maze {
 	private final Publisher publisher;
 	private final int height;
 	private final int width;
+	private final Coordinate initPacman;
+	private final Coordinate initGhost;
 
-	public RawMaze(final int height, final int width) {
+	public RawMaze(final int height, final int width, Coordinate initPacman, Coordinate initGhost) {
 		map = new ArrayList<>(height);
 		for (int i = 0; i < height; i++) {
 			ArrayList<RawCell> row = new ArrayList<>(width);
@@ -28,6 +30,8 @@ public class RawMaze implements Maze {
 		this.height = height;
 		this.width = width;
 		this.publisher = MazePublisher.getInstance();
+		this.initPacman = initPacman;
+		this.initGhost = initGhost;
 	}
 
 	public void addCell(final RawCell newCell) {
@@ -54,6 +58,14 @@ public class RawMaze implements Maze {
 				cell.setLowerCell(map.get(y).get(x));
 			}
 		}
+	}
+
+	public Coordinate getPacmanBegining() {
+		return this.initPacman;
+	}
+
+	public Coordinate getGhostBegining() {
+		return this.initGhost;
 	}
 
 }

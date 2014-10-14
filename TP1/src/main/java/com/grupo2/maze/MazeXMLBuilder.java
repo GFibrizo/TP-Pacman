@@ -1,11 +1,12 @@
 package com.grupo2.maze;
 
-import com.grupo2.character.cell.RawCell;
-import com.grupo2.character.cell.TransitableCell;
-import com.grupo2.character.cell.UntransitableCell;
 import com.grupo2.balls.Ball;
 import com.grupo2.balls.BigBall;
 import com.grupo2.balls.LittleBall;
+import com.grupo2.character.Coordinate;
+import com.grupo2.character.cell.RawCell;
+import com.grupo2.character.cell.TransitableCell;
+import com.grupo2.character.cell.UntransitableCell;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -31,6 +32,15 @@ public class MazeXMLBuilder implements MazeBuilder {
 		this.xmlFile = new File(path);
 	}
 
+	private Coordinate getCoords(String attribute) {
+		int half = attribute.length() / 2;
+		int x, y;
+		x = Integer.parseInt(attribute.substring(0, half));
+		y = Integer.parseInt(attribute.substring(half, 2 * half));
+
+		return new Coordinate(x, y);
+	}
+
 	@Override
 	public RawMaze buildMaze() {
 		RawMaze maze = null;
@@ -42,7 +52,9 @@ public class MazeXMLBuilder implements MazeBuilder {
 			Element root = doc.getDocumentElement();
 			int width = Integer.parseInt(root.getAttribute("ancho"));
 			int height = Integer.parseInt(root.getAttribute("alto"));
-			maze = new RawMaze(height, width);
+			Coordinate initPacman = this.getCoords(root.getAttribute("inicioPacman"));
+			Coordinate initGhosts = this.getCoords(root.getAttribute("inicioFantasmas"));
+			maze = new RawMaze(height, width, initPacman, initGhosts);
 			NodeList nList = doc.getElementsByTagName("nodo");
 			for (int i = 0; i < nList.getLength(); i++) {
 				Node nNode = nList.item(i);

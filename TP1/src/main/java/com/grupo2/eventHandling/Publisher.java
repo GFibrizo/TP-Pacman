@@ -8,6 +8,5 @@ public interface Publisher {
 
 	void subscribe(Event event, Subscriber subscriber);
 
-	void publish();
 
 }
