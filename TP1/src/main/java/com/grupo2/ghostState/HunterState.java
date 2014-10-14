@@ -9,54 +9,53 @@ import com.grupo2.movementStrategies.FirstRageStrategy;
  */
 public class HunterState extends GhostState {
 
-    private float time;
-    private RageMovement rage;
-    
-    public HunterState() {
-        time = 0;
-        rage = new FirstRageStrategy();
-    }
-    
-    @Override
-    public void move() {
-        this.time++;
-        this.rage.move();
-        //Here the rage should increase
-    }
+	private float time;
+	private RageMovement rage;
 
+	public HunterState() {
+		time = 0;
+		rage = new FirstRageStrategy();
+	}
 
-    /**
-     * @return False, because the State of the Ghost isn't "Dead".
-     */
-    @Override
-    public boolean isDead() {
-        return false;
-    }
+	@Override
+	public void move() {
+		this.time++;
+		this.rage.move();
+		//Here the rage should increase
+	}
 
-    /**
-     * @return the next state of the Ghost. returns this always, since
-     *         HunterState hasn't a next state.
-     */
-    @Override
-    public GhostState returnNextState() {
-        return this;
-    }
+	/**
+	 * @return False, because the State of the Ghost isn't "Dead".
+	 */
+	@Override
+	public boolean isDead() {
+		return false;
+	}
 
-    @Override
-    public GhostState convertToPrey() {
-        return new PreyState();
-    }
+	/**
+	 * @return the next state of the Ghost. returns this always, since HunterState hasn't a next
+	 *         state.
+	 */
+	@Override
+	public GhostState returnNextState() {
+		return this;
+	}
 
-    @Override
-    public GhostState die() {
-        throw new AssertionError("A hunter Ghost can't die");
-    }
-    
-    @Override
-    public GhostState collideWithPacman(){        
-        // Acá hay que "matar" al pacman.
-        return this; //When a Ghost in Hunter State collides with the Pacman, nothing happens to it, so the state remains the same.
-        
-    }
+	@Override
+	public GhostState convertToPrey() {
+		return new PreyState();
+	}
+
+	@Override
+	public GhostState die() {
+		throw new AssertionError("A hunter Ghost can't die");
+	}
+
+	@Override
+	public GhostState collideWithPacman() {
+		// Acá hay que "matar" al pacman.
+		return this; //When a Ghost in Hunter State collides with the Pacman, nothing happens to it, so the state remains the same.
+
+	}
 
 }
