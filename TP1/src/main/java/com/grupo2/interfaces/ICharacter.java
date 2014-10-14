@@ -21,4 +21,6 @@ public interface ICharacter {
     public Coordinate getPosition();
     
     public void changeDirection(Direction theNewDirection);
+    
+    public void die();
 }

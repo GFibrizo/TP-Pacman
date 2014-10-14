@@ -26,4 +26,7 @@ public abstract class Character implements ICharacter {
 	public Coordinate getPosition() {
 		return position;
 	}
+        
+        @Override
+        public abstract void die();
 }
