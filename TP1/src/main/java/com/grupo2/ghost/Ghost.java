@@ -17,7 +17,7 @@ public class Ghost extends Character implements IGhost {
 	/**
 	 * Create a new instance of the class Ghost in the HunterState.
 	 *
-	 * @param x CollidingArea in the X axis
+	 * @param x   CollidingArea in the X axis
 	 * @param y   CollidingArea in the Y axis
 	 * @param dir Initial Direction
 	 */
@@ -27,8 +27,8 @@ public class Ghost extends Character implements IGhost {
 	}
 
 	/**
-	 * Moves the Ghost in the direction specified and the Ghost behaves
-	 * according to its actual state.
+	 * Moves the Ghost in the direction specified and the Ghost behaves according to its actual
+	 * state.
 	 */
 	@Override
 	public void move() {
@@ -54,14 +54,14 @@ public class Ghost extends Character implements IGhost {
 		this.state = state.convertToPrey();
 	}
 
-        @Override
-        public void changeDirection(Direction theNewDirection) {
-            this.direction = theNewDirection;
-        }
+	@Override
+	public void changeDirection(Direction theNewDirection) {
+		this.direction = theNewDirection;
+	}
 
-        @Override
-        public void onCollisionWithPacman() {
-            this.state = state.collideWithPacman(); // Lo bueno de esto es que cuando muere un fantasma, en el constructor del DeadState (por ejemplo) podemos informar al juego y sumar puntos, etc.
-        }
+	@Override
+	public void onCollisionWithPacman() {
+		this.state = state.collideWithPacman(); // Lo bueno de esto es que cuando muere un fantasma, en el constructor del DeadState (por ejemplo) podemos informar al juego y sumar puntos, etc.
+	}
 
 }

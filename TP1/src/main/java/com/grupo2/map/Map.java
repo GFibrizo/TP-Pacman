@@ -21,11 +21,11 @@ public class Map {
 
 	private Map() {
 		MazeXMLBuilder mazeBuilder = new MazeXMLBuilder("path");
-                CharacterXMLBuilder characterBuilder = new CharacterXMLBuilder("path");              
-                this.maze = mazeBuilder.buildMaze();
-                this.ghosts = characterBuilder.getGhosts();
-                this.thePacman = characterBuilder.getPacman();        
-        }
+		CharacterXMLBuilder characterBuilder = new CharacterXMLBuilder("path");
+		this.maze = mazeBuilder.buildMaze();
+		this.ghosts = characterBuilder.getGhosts();
+		this.thePacman = characterBuilder.getPacman();
+	}
 
 	public boolean collisionBetween(ICharacter aCharacter, ICharacter anotherCharacter) {
 		return aCharacter.getPosition().isEqualTo(anotherCharacter.getPosition());

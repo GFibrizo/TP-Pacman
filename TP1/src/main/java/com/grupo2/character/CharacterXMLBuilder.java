@@ -28,8 +28,8 @@ public class CharacterXMLBuilder implements CharacterBuilder {
 	private Pacman pacman;
 	private final File xmlFile;
 
-	public CharacterXMLBuilder(File xmlFile) {
-		this.xmlFile = xmlFile;
+	public CharacterXMLBuilder(String path) {
+		this.xmlFile = new File(path);
 
 		try {
 			DocumentBuilder dBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();

@@ -10,17 +10,17 @@ import com.grupo2.character.Direction;
 public class Pacman extends Character {
 
 	private Direction nextDirection;
-	private Direction direction;
+	private Direction currdirection;
 	private boolean alive;
 
-	public Pacman(int x, int y, Direction dir) {
+	public Pacman(final int x, final int y, final Direction dir) {
 		super(x, y, dir);
 		this.alive = true;
 	}
 
 	@Override
 	public void move() {
-            this.direction.stepForward(this);
+		this.currdirection.stepForward(this);
 	}
 
 	@Override
@@ -29,8 +29,8 @@ public class Pacman extends Character {
 	}
 
 	@Override
-	public void changeDirection(Direction theNewDirection) {
-		this.direction = theNewDirection;
+	public void changeDirection(final Direction theNewDirection) {
+		this.currdirection = theNewDirection;
 	}
 
 }
