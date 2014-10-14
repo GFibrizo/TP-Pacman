@@ -9,9 +9,9 @@ import com.grupo2.eventHandling.Subscriber;
  * @author ivan
  */
 public class MazePublisher implements Publisher {
-	
-	
+
 	public enum MazeEvent implements Event {
+
 		PACMANCOLLIDEGHOST, GHOSTREACHEDINTERJECTION //Etc
 	}
 
@@ -33,6 +33,7 @@ public class MazePublisher implements Publisher {
 	}
 
 	private static class MazePublisherHolder {
-            private static final MazePublisher INSTANCE = new MazePublisher();
+
+		private static final MazePublisher INSTANCE = new MazePublisher();
 	}
 }
