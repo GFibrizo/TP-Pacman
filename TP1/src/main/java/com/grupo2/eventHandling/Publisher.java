@@ -1,4 +1,5 @@
 package com.grupo2.eventHandling;
+import java.util.List;
 
 /**
  *
@@ -6,7 +7,9 @@ package com.grupo2.eventHandling;
  */
 public interface Publisher {
 
-	void subscribe(Event event, Subscriber subscriber);
+    public void subscribe(Event event, Subscriber subscriber);
+    public void onEvent(Event event);
+    public void updateAll(List<Event> events);
 
 
 }
