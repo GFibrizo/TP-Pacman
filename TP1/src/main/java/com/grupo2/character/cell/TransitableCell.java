@@ -2,7 +2,7 @@ package com.grupo2.character.cell;
 
 import com.grupo2.character.Collitionable;
 import com.grupo2.character.Coordinate;
-import com.grupo2.map.Ball;
+import com.grupo2.balls.Ball;
 
 /**
  *
