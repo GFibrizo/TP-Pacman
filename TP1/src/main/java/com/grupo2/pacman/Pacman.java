@@ -20,7 +20,7 @@ public class Pacman extends Character {
 
 	@Override
 	public void move() {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+            this.direction.stepForward(this);
 	}
 
 	@Override
@@ -29,8 +29,8 @@ public class Pacman extends Character {
 	}
 
 	@Override
-	public void chooseDirection() {
-		nextDirection = direction;
+	public void changeDirection(Direction theNewDirection) {
+		this.direction = theNewDirection;
 	}
 
 }

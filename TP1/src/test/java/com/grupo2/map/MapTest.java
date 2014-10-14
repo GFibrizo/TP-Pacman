@@ -6,6 +6,7 @@
 
 package com.grupo2.map;
 
+import com.grupo2.character.directions.DownDirection;
 import com.grupo2.ghost.Ghost;
 import com.grupo2.interfaces.ICharacter;
 import com.grupo2.map.Map;
@@ -36,8 +37,8 @@ public class MapTest {
      */
     @Test
     public void testCollisionBetween() {
-        ICharacter aCharacter = new Ghost(0,0);
-        ICharacter anotherCharacter = new Ghost(0,0);
+        ICharacter aCharacter = new Ghost(0,0, new DownDirection() );
+        ICharacter anotherCharacter = new Ghost(0,0, new DownDirection() );
         Map instance = Map.getInstance();
         boolean expResult = true;
         boolean result = instance.collisionBetween(aCharacter, anotherCharacter);
