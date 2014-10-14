@@ -5,7 +5,7 @@ import com.grupo2.character.directions.UpDirection;
 import com.grupo2.interfaces.IGhost;
 import org.junit.After;
 import org.junit.AfterClass;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -15,67 +15,67 @@ import org.junit.Test;
  * @author ivan
  */
 public class GhostTest {
-    
-    IGhost ghost ;
 
-    public GhostTest() {
-    }
+	IGhost ghost;
 
-    @BeforeClass
-    public static void setUpClass() {
-    }
+	public GhostTest() {
+	}
 
-    @AfterClass
-    public static void tearDownClass() {
-    }
+	@BeforeClass
+	public static void setUpClass() {
+	}
 
-    @Before
-    public void setUp() {
-        ghost = new Ghost( 0 , 0 , new UpDirection());
-    }
+	@AfterClass
+	public static void tearDownClass() {
+	}
 
-    @After
-    public void tearDown() {
-        ghost = null;
-    }
+	@Before
+	public void setUp() {
+		ghost = new Ghost(0, 0, new UpDirection());
+	}
 
-    @Test
-    public void move() {
+	@After
+	public void tearDown() {
+		ghost = null;
+	}
 
-        boolean notImplementedYet = false;
-        try {
-            ghost.move();
-        } catch (UnsupportedOperationException e) {
-            notImplementedYet = true;
-        }
-        assertTrue(notImplementedYet);
-        assert(ghost.getPosition().isEqualTo(new Coordinate(0,0)));
-    }
-        
-    @Test
-    public void TryingToKillHunterGhost() {
-        try {
-            ghost.die();
-        } catch (AssertionError e) {
-            assert(true);
-        }
-    }
-    
-    @Test
-    public void TryingToKillPreyGhost() {
-        ghost.convertToPrey();
-        ghost.die();
-        assertTrue(ghost.isDead());
-    }
-    
-    @Test
-    public void TryingToConvertADeadToPrey() {
-        ghost.convertToPrey();
-        ghost.die();
-        try {
-            ghost.convertToPrey();
-        } catch (AssertionError e) {
-            assert(true);
-        }
-    }
+	@Test
+	public void move() {
+
+		boolean notImplementedYet = false;
+		try {
+			ghost.move();
+		} catch (UnsupportedOperationException e) {
+			notImplementedYet = true;
+		}
+		assertTrue(notImplementedYet);
+		assert (ghost.getPosition().isEqualTo(new Coordinate(0, 0)));
+	}
+
+	@Test
+	public void TryingToKillHunterGhost() {
+		try {
+			ghost.die();
+		} catch (AssertionError e) {
+			assert (true);
+		}
+	}
+
+	@Test
+	public void TryingToKillPreyGhost() {
+		ghost.convertToPrey();
+		ghost.die();
+		assertTrue(ghost.isDead());
+	}
+
+	@Test
+	public void TryingToConvertADeadToPrey() {
+		ghost.convertToPrey();
+		ghost.die();
+		try {
+			ghost.convertToPrey();
+		} catch (AssertionError e) {
+			assert (true);
+		}
+	}
 }
