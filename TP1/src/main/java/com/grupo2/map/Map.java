@@ -1,7 +1,7 @@
 package com.grupo2.map;
 
 import com.grupo2.character.CharacterXMLBuilder;
-import com.grupo2.interfaces.ICharacter;
+import com.grupo2.interfaces.IPositionable;
 import com.grupo2.interfaces.IGhost;
 import com.grupo2.maze.Maze;
 import com.grupo2.maze.MazeXMLBuilder;
@@ -27,12 +27,12 @@ public class Map {
 		this.thePacman = characterBuilder.getPacman();
 	}
 
-	public boolean collisionBetween(ICharacter aCharacter, ICharacter anotherCharacter) {
-		return aCharacter.getPosition().isEqualTo(anotherCharacter.getPosition());
+	public boolean collisionBetween(IPositionable entity, IPositionable otherEntity) {
+		return maze.areInTheSameCell(entity, otherEntity);
 	}
 
-	public boolean collisionWithPacman(ICharacter anotherCharacter) {
-		return thePacman.getPosition().isEqualTo(anotherCharacter.getPosition());
+	public boolean collisionWithPacman(IPositionable entity) {
+            return maze.areInTheSameCell(thePacman, entity);
 	}
 
 	public void addGhost(IGhost aCharacterToAdd) {

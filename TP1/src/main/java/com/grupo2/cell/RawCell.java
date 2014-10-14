@@ -1,4 +1,4 @@
-package com.grupo2.character.cell;
+package com.grupo2.cell;
 
 /**
  *

@@ -1,6 +1,7 @@
 package com.grupo2.maze;
 
 import com.grupo2.character.Coordinate;
+import com.grupo2.interfaces.IPositionable;
 
 /**
  *
@@ -8,7 +9,7 @@ import com.grupo2.character.Coordinate;
  */
 public interface Maze {
 
-	Coordinate getPacmanBegining();
-
-	Coordinate getGhostBegining();
+    public Coordinate getPacmanBegining();
+    public Coordinate getGhostBegining();
+    public boolean areInTheSameCell(IPositionable entity, IPositionable other);
 }
