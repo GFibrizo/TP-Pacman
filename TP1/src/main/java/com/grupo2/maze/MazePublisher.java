@@ -14,7 +14,7 @@ import java.util.Map;
  */
 public class MazePublisher implements Publisher {
 
-	private Map<MazeEvent, List<Subscriber>> subscribers;
+	private Map<Event, List<Subscriber>> subscribers;
 
 	public enum MazeEvent implements Event {
 
@@ -22,7 +22,7 @@ public class MazePublisher implements Publisher {
 	}
 
 	private MazePublisher() {
-		this.subscribe = new HashMap<>();
+		this.subscribers = new HashMap<>();
 	}
 
 	public static MazePublisher getInstance() {
@@ -33,7 +33,9 @@ public class MazePublisher implements Publisher {
 	public void subscribe(Event event, final Subscriber subscriber) {
 		//must check if event is a MazeEvent
 		if (!this.subscribers.containsKey(event)) {
-			this.subscribers.put(event, new LinkedList<Subscriber>().add(subscriber));
+			List<Subscriber> values = new LinkedList<>();
+			values.add(subscriber);
+			this.subscribers.put(event, values);
 		} else {
 			this.subscribers.get(event).add(subscriber);
 		}
