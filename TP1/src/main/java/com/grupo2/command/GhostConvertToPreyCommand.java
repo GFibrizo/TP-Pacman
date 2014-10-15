@@ -6,15 +6,15 @@ import com.grupo2.interfaces.IGhost;
  *
  * @author fibrizo
  */
-public class GhostConverToPreyCommand extends GhostCommand {
+public class GhostConvertToPreyCommand extends GhostCommand {
 
-	public GhostConverToPreyCommand(IGhost ghost) {
+	GhostConvertToPreyCommand(IGhost ghost) {
 		this.ghost = ghost;
 	}
 
 	@Override
 	public void execute() {
-		ghost.convertToPrey();
+		this.ghost.convertToPrey();
 	}
 
 	@Override
