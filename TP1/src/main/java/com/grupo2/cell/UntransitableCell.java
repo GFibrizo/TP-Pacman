@@ -1,49 +1,33 @@
-package com.grupo2.character.cell;
+package com.grupo2.cell;
 
-import com.grupo2.character.Collitionable;
 import com.grupo2.character.Coordinate;
-import com.grupo2.balls.Ball;
 
 /**
  *
  * @author mauri
  */
-public class TransitableCell implements RawCell {
+public class UntransitableCell implements RawCell {
 
-	private Collitionable content;
+	private final Coordinate position;
 	private Cell upperCell;
 	private Cell lowerCell;
 	private Cell leftCell;
 	private Cell rightCell;
-	private final Coordinate position;
-	private Ball ball;
 
-	public TransitableCell(int x, int y) {
+	public UntransitableCell(int x, int y) {
 		this.position = new Coordinate(x, y);
 	}
 
-	public void setBall(Ball aBall) {
-		this.ball = aBall;
-	}
-
-	public Ball getBall() {
-		return this.ball;
-	}
-
 	@Override
-	public boolean isTransitable() {
-		return true;
-	}
-
-	public Collitionable getContent() {
-		return this.content;
+	public final boolean isTransitable() {
+		return false;
 	}
 
 	@Override
 	public Coordinate getPosition() {
 		return this.position;
 	}
-
+	
 	@Override
 	public void setLeftCell(RawCell rc) {
 		this.leftCell = rc;
@@ -64,9 +48,9 @@ public class TransitableCell implements RawCell {
 		this.lowerCell = rc;
 	}
 
-	
-	public void setContent(Collitionable c) {
-		this.content = c;
-	}
-
+    @Override
+    public boolean isTheSame(Cell other) {
+        // Nothing's gonna be ever in a untransitable cell.
+        return false;
+    }
 }

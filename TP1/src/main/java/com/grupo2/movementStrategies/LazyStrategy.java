@@ -1,14 +1,14 @@
 package com.grupo2.movementStrategies;
 
-import com.grupo2.ghostState.RageMovement;
+import com.grupo2.ghostState.HunterMovement;
 
 /**
  *
  * @author fibrizo
  */
-public class SecondRageStrategy extends HunterStrategy implements RageMovement {
+public class LazyStrategy extends HunterStrategy implements HunterMovement {
 
-	public SecondRageStrategy() {
+	public LazyStrategy() {
 	}
 
 	@Override
@@ -18,7 +18,7 @@ public class SecondRageStrategy extends HunterStrategy implements RageMovement {
 
 	@Override
 	public HunterStrategy incrementRage() {
-		return new ThirdRageStrategy();
+		return new SeekerStrategy();
 	}
 
 }

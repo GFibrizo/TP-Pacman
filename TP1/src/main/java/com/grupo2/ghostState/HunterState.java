@@ -1,7 +1,7 @@
 package com.grupo2.ghostState;
 
 import com.grupo2.ghost.GhostState;
-import com.grupo2.movementStrategies.FirstRageStrategy;
+import com.grupo2.movementStrategies.DumbStrategy;
 
 /**
  *
@@ -10,11 +10,11 @@ import com.grupo2.movementStrategies.FirstRageStrategy;
 public class HunterState extends GhostState {
 
 	private float time;
-	private RageMovement rage;
+	private HunterMovement rage;
 
 	public HunterState() {
 		time = 0;
-		rage = new FirstRageStrategy();
+		rage = new DumbStrategy();
 	}
 
 	@Override

@@ -1,4 +1,4 @@
-package com.grupo2.character.cell;
+package com.grupo2.cell;
 
 import com.grupo2.character.Coordinate;
 
@@ -9,4 +9,5 @@ import com.grupo2.character.Coordinate;
 public interface Cell {
     public boolean isTransitable();
     public Coordinate getPosition();
+    public boolean isTheSame(Cell other);
 }

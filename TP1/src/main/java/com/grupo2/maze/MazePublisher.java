@@ -6,7 +6,6 @@ import com.grupo2.eventHandling.Subscriber;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 /**
  *
@@ -14,35 +13,50 @@ import java.util.Map;
  */
 public class MazePublisher implements Publisher {
 
-	private Map<Event, List<Subscriber>> subscribers;
+	private HashMap<Event, List<Subscriber>> subscribers;
 
 	public enum MazeEvent implements Event {
 
-		PACMANCOLLIDEGHOST, GHOSTREACHEDINTERJECTION //Etc
+            PACMANCOLLIDEGHOST, GHOSTREACHEDINTERJECTION //Etc
 	}
 
 	private MazePublisher() {
-		this.subscribers = new HashMap<>();
+            this.subscribers = new HashMap<>();
 	}
 
 	public static MazePublisher getInstance() {
-		return MazePublisherHolder.INSTANCE;
+            return MazePublisherHolder.INSTANCE;
 	}
 
 	@Override
 	public void subscribe(Event event, final Subscriber subscriber) {
-		//must check if event is a MazeEvent
-		if (!this.subscribers.containsKey(event)) {
-			List<Subscriber> values = new LinkedList<>();
-			values.add(subscriber);
-			this.subscribers.put(event, values);
-		} else {
-			this.subscribers.get(event).add(subscriber);
-		}
+            //must check if event is a MazeEvent
+            if (!this.subscribers.containsKey(event)) {
+                this.subscribers.put(event, new LinkedList<Subscriber>());
+            }
+            this.subscribers.get(event).add(subscriber);
 	}
 
 	private static class MazePublisherHolder {
 
-		private static final MazePublisher INSTANCE = new MazePublisher();
+            private static final MazePublisher INSTANCE = new MazePublisher();
 	}
+        
+        @Override
+        public void onEvent(Event event) {
+            
+            List<Subscriber> subs = subscribers.get(event);
+            for (Subscriber sub : subs) {
+                sub.getPublication();
+            }
+        }
+        
+        @Override
+        public void updateAll(List<Event> events) {
+            for (Event event : events) {
+                onEvent(event);
+            }
+        }
+        
+        
 }

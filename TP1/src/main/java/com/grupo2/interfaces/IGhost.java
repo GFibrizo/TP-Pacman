@@ -18,10 +18,12 @@ public interface IGhost extends ICharacter {
 	@Override
 	public boolean isDead();
 
+        @Override
 	public void die();
 
 	public void convertToPrey();
         
+        @Override
         public void changeDirection(Direction theNewDirection);
 
         public void onCollisionWithPacman();

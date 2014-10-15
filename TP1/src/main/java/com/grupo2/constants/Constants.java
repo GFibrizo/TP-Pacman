@@ -25,6 +25,7 @@ public final class Constants {
     private static float THIRD_RAGE_LIMIT_TIME = 15;
 
     private static float GHOST_RADIUS = 99;
+    private static int TRACE_DURATION = 4;
 
     private Constants() {
             //this prevents even the native class from
@@ -121,7 +122,11 @@ public final class Constants {
     public static long getTickToMilisecs() {
             return TICK_TO_MILISECS;
     }
-
+    
+    public static int getTraceDuration() {
+        return TRACE_DURATION;
+    }
+    
     public static void setPreyLimitTime(float timeLimit) {
             Constants.PREY_LIMIT_TIME = timeLimit;
     }
@@ -148,6 +153,10 @@ public final class Constants {
 
     public static void setTickToMilisecs(long ticks) {
             Constants.TICK_TO_MILISECS = ticks;
+    }
+    
+    public static void setTraceDuration(int ticks) {
+        Constants.TRACE_DURATION = ticks;
     }
 
 }

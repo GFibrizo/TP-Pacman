@@ -6,19 +6,14 @@
 
 package com.grupo2.interfaces;
 import com.grupo2.character.Coordinate;
-import com.grupo2.character.Direction;
 
 /**
  *
  * @author fibrizo
  */
-public interface ICharacter extends IPositionable {
-
-    public abstract void move();
-
-    public abstract boolean isDead();
+public interface IPositionable {
     
-    public void changeDirection(Direction theNewDirection);
-    
-    public void die();
+    public void setPosition(Coordinate pos);
+    public void setPosition(int x, int y);
+    public Coordinate getPosition();
 }
