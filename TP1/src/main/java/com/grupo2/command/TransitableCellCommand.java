@@ -6,13 +6,14 @@
 
 package com.grupo2.command;
 
-import com.grupo2.balls.Ball;
+import com.grupo2.cell.Cell;
+import com.grupo2.cell.TransitableCell;
 import com.grupo2.eventHandling.Command;
 
 /**
  *
  * @author mauri
  */
-public abstract class BallCommand implements Command {
-    protected Ball ball;
+public abstract class TransitableCellCommand implements Command {
+    TransitableCell cell;
 }
