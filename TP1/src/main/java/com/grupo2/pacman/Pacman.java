@@ -52,7 +52,7 @@ public class Pacman extends Character {
 
 	@Override
 	public boolean isDead() {
-            return alive;
+            return !alive;
 	}
 
 	@Override
