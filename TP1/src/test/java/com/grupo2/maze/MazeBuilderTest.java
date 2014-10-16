@@ -6,6 +6,7 @@
 
 package com.grupo2.maze;
 
+import com.grupo2.cell.Cell;
 import com.grupo2.character.Coordinate;
 import static org.junit.Assert.*;
 import org.junit.Before;
@@ -31,7 +32,9 @@ public class MazeBuilderTest {
      * Test of buildMaze method, of class MazeBuilder.
      */
     @Test
-    public void buildMazeInitPositions() {
+    public void buildMazeInitCharactersPositions() {
+        // El builder no está parseando la altura ni ancho del xml. Ver.
+                
         RawMaze maze = mazeBuilder.buildMaze();
         Coordinate ghostBeg = maze.getGhostBegining();
         Coordinate pacmanBeg = maze.getPacmanBegining();
@@ -42,4 +45,14 @@ public class MazeBuilderTest {
         assertTrue(ghostInitPositionOK && pacmanInitPositionOK);
     }
     
+    @Test
+    public void buildMazeTransitableCell() {
+        // El builder no está parseando la altura ni ancho del xml. Ver
+                
+        RawMaze maze = mazeBuilder.buildMaze();
+        Cell cell = maze.getCellFromCoordinates( new Coordinate(0,0) );
+
+        assertFalse( cell.isTransitable() );
+    }
+        
 }
