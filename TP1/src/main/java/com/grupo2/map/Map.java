@@ -7,6 +7,7 @@ import com.grupo2.maze.Maze;
 import com.grupo2.maze.MazeBuilder;
 import com.grupo2.pacman.Pacman;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  *
@@ -37,6 +38,25 @@ public class Map {
         this.ghosts.add(aCharacterToAdd);
     }
 
+	public Pacman getPacman() {
+		return this.thePacman;
+	}
+        
+	public static Map getInstance() {
+		if (mapSingleton == null) {
+			mapSingleton = new Map();
+		}
+		return mapSingleton;
+	}
+
+        public void pacmanEntersCell() {
+            
+            //Celda en la que está el pacman
+            TransitableCell cell = (TransitableCell) this.maze.getCellFromCoordinates( this.thePacman.getPosition() );
+            
+            cell.getBall().isEaten();
+            cell.setBall( new NullBall() );                  
+        }
     public Maze getMaze() {
         return maze;
     }

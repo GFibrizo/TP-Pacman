@@ -40,14 +40,14 @@ public class PacmanTest {
      * Test of move method, of class Pacman.
      */
     @Test
-    public void testShouldMoveLeftOneStep() {
+    public void shouldMoveLeftOneStep() {
         thePacman.move();
         int positionXResult = thePacman.getPosition().getX();
         assertEquals(4,positionXResult);
     }
 
     @Test
-    public void testShouldMoveLeftTwoSteps() {
+    public void shouldMoveLeftTwoSteps() {
         thePacman.move();
         thePacman.move();
         int positionXResult = thePacman.getPosition().getX();
@@ -58,7 +58,7 @@ public class PacmanTest {
      * Test of isDead method, of class Pacman.
      */
     @Test
-    public void testIsDead() {
+    public void isDead() {
         boolean result = thePacman.isDead();
         assertEquals(false, result);
     }
@@ -67,7 +67,7 @@ public class PacmanTest {
      * Test of changeDirection method, of class Pacman.
      */
     @Test
-    public void testChangeDirectionToUpAndStep() {
+    public void changeDirectionToUpAndStep() {
         thePacman.changeDirection(new UpDirection());
         thePacman.move();
         int positionYResult = thePacman.getPosition().getY();
@@ -75,7 +75,7 @@ public class PacmanTest {
     }
     
         @Test
-    public void testChangeDirectionAndStepTwice() {
+    public void changeDirectionAndStepTwice() {
         thePacman.changeDirection(new UpDirection());
         thePacman.move();
         thePacman.changeDirection(new LeftDirection());

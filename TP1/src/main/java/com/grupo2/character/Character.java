@@ -24,7 +24,7 @@ public abstract class Character implements ICharacter {
 
     @Override
     public Coordinate getPosition() {
-            return position;
+        return position;
     }
 
     @Override
@@ -38,5 +38,9 @@ public abstract class Character implements ICharacter {
     @Override
     public void setPosition(int x, int y) {
        position = new Coordinate(x,y);
+    }
+    
+    public Direction getDirection() {
+        return this.direction;
     }
 }
