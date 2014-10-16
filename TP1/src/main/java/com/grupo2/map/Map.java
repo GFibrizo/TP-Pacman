@@ -1,12 +1,15 @@
 package com.grupo2.map;
 
+import com.grupo2.balls.NullBall;
+import com.grupo2.cell.TransitableCell;
 import com.grupo2.character.CharacterXMLBuilder;
-import com.grupo2.interfaces.IPositionable;
 import com.grupo2.interfaces.IGhost;
-import com.grupo2.maze.Maze;
+import com.grupo2.interfaces.IPositionable;
 import com.grupo2.maze.MazeXMLBuilder;
+import com.grupo2.maze.RawMaze;
 import com.grupo2.pacman.Pacman;
 import java.util.ArrayList;
+import java.util.HashSet;
 
 /**
  *
@@ -14,7 +17,7 @@ import java.util.ArrayList;
  */
 public class Map {
 
-	private Maze maze;
+	private RawMaze maze;
 	private ArrayList<IGhost> ghosts = new ArrayList<>();
 	private Pacman thePacman;
 	private static Map mapSingleton;
@@ -42,11 +45,20 @@ public class Map {
 	public Pacman getPacman() {
 		return this.thePacman;
 	}
-
+        
 	public static Map getInstance() {
 		if (mapSingleton == null) {
 			mapSingleton = new Map();
 		}
 		return mapSingleton;
 	}
+
+        public void pacmanEntersCell() {
+            
+            //Celda en la que está el pacman
+            TransitableCell cell = (TransitableCell) this.maze.getCellFromCoordinates( this.thePacman.getPosition() );
+            
+            cell.getBall().isEaten();
+            cell.setBall( new NullBall() );                  
+        }
 }
