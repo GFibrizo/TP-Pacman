@@ -8,7 +8,7 @@ public class BigBall implements Ball {
 
     @Override
     public void isEaten() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        // INFORMAR EL EVENTO "BOLA GRANDE COMIDA" Y SETEARLE A LA CELDA NULLBALL
     }
     
 }

@@ -5,15 +5,14 @@
  */
 
 package com.grupo2.command;
+
+import com.grupo2.cell.TransitableCell;
 import com.grupo2.eventHandling.Subscriber;
-import com.grupo2.interfaces.IGhost;
 
 /**
  *
- * @author fibrizo
+ * @author mauri
  */
-public abstract class GhostCommand implements Subscriber {
-
-    protected IGhost ghost;
-
+public abstract class TransitableCellCommand implements Subscriber {
+    TransitableCell cell;
 }

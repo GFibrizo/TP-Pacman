@@ -14,7 +14,7 @@ public class LittleBall implements Ball {
 
     @Override
     public void isEaten() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //POR AHORA SETEARLE A LA CELDA EN LA QUE ESTÉ LA BOLITA, UNA NULL BALL. LUEGO TAMBIÉN SUMARÁ PUNTOS AL JUEGO.
     }
     
 }
