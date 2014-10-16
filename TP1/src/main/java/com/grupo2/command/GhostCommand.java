@@ -5,15 +5,15 @@
  */
 
 package com.grupo2.command;
-import com.grupo2.eventHandling.Command;
+import com.grupo2.eventHandling.Subscriber;
 import com.grupo2.interfaces.IGhost;
 
 /**
  *
  * @author fibrizo
  */
-public abstract class GhostCommand implements Command {
-    
+public abstract class GhostCommand implements Subscriber {
+
     protected IGhost ghost;
-    
+
 }
