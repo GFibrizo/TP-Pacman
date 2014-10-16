@@ -7,8 +7,7 @@ package com.grupo2.balls;
 public class NullBall implements Ball {
 
 	@Override
-	public void isEaten() {
-		// NO PASA NADA
+	public int isEaten() {
+            return 0;
 	}
-
 }

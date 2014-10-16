@@ -25,6 +25,8 @@ public class Map {
         this.maze = mazeBuilder.buildMaze();
         this.ghosts = characterBuilder.getGhosts();
         this.thePacman = characterBuilder.getPacman();
+        this.thePacman.setPosition(this.maze.getPacmanBegining());
+        this.ghosts.forEach((ghost) -> ghost.setPosition(this.maze.getGhostBegining()));
     }
 
     public boolean collisionBetween(IPositionable entity, IPositionable otherEntity) {
@@ -44,6 +46,7 @@ public class Map {
         //Celda en la que está el pacman
         TransitableCell cell = (TransitableCell) this.maze.getCellFromCoordinates(this.thePacman.getPosition());
 
+        cell.eatBall();
         cell.getBall().isEaten();
         cell.setBall(new NullBall());
     }
