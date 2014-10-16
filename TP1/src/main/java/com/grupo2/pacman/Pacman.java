@@ -12,7 +12,6 @@ import com.grupo2.constants.Constants;
 public class Pacman extends Character {
 
 	private Direction nextDirection;
-	//private Direction currdirection;
 	private boolean alive;
 
 	public Pacman(final int x, final int y, final Direction dir) {

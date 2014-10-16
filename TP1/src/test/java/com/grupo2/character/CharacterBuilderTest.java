@@ -29,7 +29,8 @@ public class CharacterBuilderTest {
     
     @Before
     public void setUpClass() {
-        charBuilder = new CharacterXMLBuilder("/home/mauri/Desktop/TDD/TPS/tp/TP1/src/main/resources/laberintos"); 
+            // CHANGE THE PATH TO YOURS
+        charBuilder = new CharacterXMLBuilder("/home/mauri/Desktop/TDD/TPS/tp/TP1/src/main/resources/laberintos/PersonajesSimple.xml"); 
     }
 
     /**
@@ -38,34 +39,17 @@ public class CharacterBuilderTest {
     @Test
     public void getPacmanPosition() {
         
-        System.out.println("getPacman TEST");
-        Pacman builtPacman = charBuilder.getPacman();
+       Pacman builtPacman = charBuilder.getPacman();
 
         Coordinate builtPacPosition = builtPacman.getPosition();
         Direction builtPacDirection = builtPacman.getDirection();
         
         Coordinate expectedPacPosition = new Coordinate(4,9);
-        Direction expectedPacDirection = new LeftDirection();
+        LeftDirection expectedPacDirection = new LeftDirection();
         
-        boolean samePositions = expectedPacPosition.isEqualTo(builtPacPosition);
-        boolean sameDirections = expectedPacDirection.isEqualTo(builtPacDirection);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        boolean samePositions = builtPacPosition.isEqualTo(expectedPacPosition);
+        boolean sameDirections = builtPacDirection.isEqualTo(expectedPacDirection);
+        
+        assertTrue(sameDirections && samePositions);
     }
-
-    /**
-     * Test of getGhosts method, of class CharacterBuilder.
-     */
-    @Test
-    public void testGetGhosts() {
-        System.out.println("getGhosts");
-        CharacterBuilder instance = new CharacterBuilderImpl();
-        ArrayList<IGhost> expResult = null;
-        ArrayList<IGhost> result = instance.getGhosts();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-    
 }
