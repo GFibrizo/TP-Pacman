@@ -9,4 +9,5 @@ import com.grupo2.interfaces.ICharacter;
 public interface Direction {
 
 	public abstract void stepForward(ICharacter aCharacter);
+        public abstract boolean isEqualTo(Direction aDirection);
 }

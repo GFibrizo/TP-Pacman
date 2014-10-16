@@ -40,7 +40,7 @@ public class TransitableCellTest {
      * Test of isTransitable method, of class TransitableCell.
      */
     @Test
-    public void testIsTransitable() {
+    public void isTransitable() {
 
         boolean result = transCell.isTransitable();
         assertTrue(result);
@@ -50,7 +50,7 @@ public class TransitableCellTest {
      * Test of isTheSame method, of class TransitableCell.
      */
     @Test
-    public void testIsTheSame() {
+    public void isTheSame() {
         
         boolean result = transCell.isTheSame(transCell);
         assertTrue(result);

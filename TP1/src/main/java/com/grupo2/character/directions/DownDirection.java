@@ -13,4 +13,12 @@ public class DownDirection implements Direction {
 	public void stepForward(ICharacter aCharacter) {
 		aCharacter.getPosition().setY(aCharacter.getPosition().getY() - 1);
 	}
+        
+        public boolean sameDirection(Direction anotherD) {
+            return false;
+        }
+        
+        public boolean sameDirection(LeftDirection leftD) {
+            return true;
+        }
 }
