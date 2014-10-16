@@ -25,7 +25,7 @@ public class MazeBuilderTest {
     
     @Before
     public void setUp() {
-        mazeBuilder = new MazeXMLBuilder("/home/mauri/Desktop/TDD/TPS/tp/TP1/src/main/resources/laberintos/LaberintoSimple.xml");
+        mazeBuilder = new MazeXMLBuilder("/home/ivan/Escritorio/TP-TDD/tp/TP1/src/main/resources/laberintos/LaberintoSimple.xml");
     }
     
      /**
@@ -47,8 +47,6 @@ public class MazeBuilderTest {
     
     @Test
     public void buildMazeTransitableCell() {
-        // El builder no está parseando la altura ni ancho del xml. Ver
-                
         RawMaze maze = mazeBuilder.buildMaze();
         Cell cell = maze.getCellFromCoordinates( new Coordinate(0,0) );
 

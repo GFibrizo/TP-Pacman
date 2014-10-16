@@ -2,6 +2,7 @@ package com.grupo2.maze;
 
 import com.grupo2.cell.Cell;
 import com.grupo2.cell.RawCell;
+import com.grupo2.cell.UntransitableCell;
 import com.grupo2.character.Coordinate;
 import com.grupo2.eventHandling.Publisher;
 import com.grupo2.interfaces.IPositionable;
@@ -27,6 +28,9 @@ public class RawMaze implements Maze {
         map = new ArrayList<>(height);
         for (int i = 0; i < height; i++) {
             ArrayList<RawCell> row = new ArrayList<>(width);
+            for (int j = 0; j < width; j++){
+                row.add(new UntransitableCell(i,j));
+            }
             map.add(row);
         }
         this.height = height;
@@ -49,13 +53,13 @@ public class RawMaze implements Maze {
         for (ArrayList<RawCell> row : this.map) {
             for (RawCell cell : row) {
                 Coordinate pos = cell.getPosition();
-                int x = (pos.getX() - 1) % this.width;
+                int x = (pos.getX() - 1 + this.width) % this.width;
                 int y = pos.getY();
                 cell.setLeftCell(map.get(y).get(x));
                 x = (pos.getX() + 1) % this.width;
                 cell.setRightCell(map.get(y).get(x));
                 x = pos.getX();
-                y = (pos.getY() - 1) % this.height;
+                y = (pos.getY() - 1 + this.height) % this.height;
                 cell.setUpperCell(map.get(y).get(x));
                 y = (pos.getY() + 1) % this.height;
                 cell.setLowerCell(map.get(y).get(x));
