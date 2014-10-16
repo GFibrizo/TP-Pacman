@@ -6,14 +6,13 @@
 
 package com.grupo2.command;
 
-import com.grupo2.cell.Cell;
 import com.grupo2.cell.TransitableCell;
-import com.grupo2.eventHandling.Command;
+import com.grupo2.eventHandling.Subscriber;
 
 /**
  *
  * @author mauri
  */
-public abstract class TransitableCellCommand implements Command {
+public abstract class TransitableCellCommand implements Subscriber {
     TransitableCell cell;
 }

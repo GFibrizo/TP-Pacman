@@ -17,9 +17,4 @@ public class GhostDirectionCommand extends GhostCommand {
 		//no sé si va este command directamente
 	}
 
-	@Override
-	public void getPublication() {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-	}
-
 }

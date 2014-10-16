@@ -41,22 +41,22 @@ public class MazePublisher implements Publisher {
 
             private static final MazePublisher INSTANCE = new MazePublisher();
 	}
-        
+
         @Override
         public void onEvent(Event event) {
-            
+
             List<Subscriber> subs = subscribers.get(event);
             for (Subscriber sub : subs) {
-                sub.getPublication();
+				sub.execute();
             }
         }
-        
+
         @Override
         public void updateAll(List<Event> events) {
             for (Event event : events) {
                 onEvent(event);
             }
         }
-        
-        
+
+
 }

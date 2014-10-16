@@ -17,9 +17,4 @@ public class GhostConvertToPreyCommand extends GhostCommand {
 		this.ghost.convertToPrey();
 	}
 
-	@Override
-	public void getPublication() {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-	}
-
 }
