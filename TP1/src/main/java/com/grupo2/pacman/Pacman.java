@@ -1,7 +1,10 @@
 package com.grupo2.pacman;
 
+import com.grupo2.cell.Cell;
+import com.grupo2.cell.RawCell;
 import com.grupo2.character.Character;
 import com.grupo2.character.Direction;
+import com.grupo2.character.directions.NullDirection;
 import com.grupo2.constants.Constants;
 
 /**
@@ -20,11 +23,20 @@ public class Pacman extends Character {
 
 	@Override
 	public void move() {
-		this.direction.stepForward(this);
-		this.leaveTrace();
+	
+        if ( this.nextDirection.canGoForward( (RawCell) currentCell) ) {
+            this.direction = this.nextDirection;
+            this.nextDirection = new NullDirection();
+        }
+            
+        if ( this.direction.canGoForward( (RawCell)currentCell) ) {
+            this.direction.stepForward(this); 
+        }
+
+        this.leaveTrace();
 	}
 
-	private int max(int x, int y) {
+        private int max(int x, int y) {
 		if (x > y) {
 			return x;
 		} else {

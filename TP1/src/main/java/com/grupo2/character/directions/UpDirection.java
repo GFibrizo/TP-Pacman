@@ -1,5 +1,6 @@
 package com.grupo2.character.directions;
 
+import com.grupo2.cell.RawCell;
 import com.grupo2.character.Direction;
 import com.grupo2.interfaces.ICharacter;
 
@@ -32,5 +33,10 @@ public class UpDirection implements Direction {
     @Override
     public boolean isEqualTo(DownDirection aDirection) {
         return false;
+    }
+
+    @Override
+    public boolean canGoForward(RawCell aCell) {
+        return aCell.getUpperCell().isTransitable();
     }
 }

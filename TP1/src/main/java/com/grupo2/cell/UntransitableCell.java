@@ -9,10 +9,10 @@ import com.grupo2.character.Coordinate;
 public class UntransitableCell implements RawCell {
 
 	private final Coordinate position;
-	private Cell upperCell;
-	private Cell lowerCell;
-	private Cell leftCell;
-	private Cell rightCell;
+	private RawCell upperCell;
+	private RawCell lowerCell;
+	private RawCell leftCell;
+	private RawCell rightCell;
 
 	public UntransitableCell(int x, int y) {
 		this.position = new Coordinate(x, y);
@@ -48,9 +48,29 @@ public class UntransitableCell implements RawCell {
 		this.lowerCell = rc;
 	}
 
+        @Override
+        public boolean isTheSame(Cell other) {
+            // Nothing's gonna be ever in a untransitable cell.
+            return false;
+        }
+    
     @Override
-    public boolean isTheSame(Cell other) {
-        // Nothing's gonna be ever in a untransitable cell.
-        return false;
+    public RawCell getLeftCell() {
+        return this.leftCell;
+    }
+
+    @Override
+    public RawCell getRightCell() {
+        return this.rightCell;
+    }
+
+    @Override
+    public RawCell getUpperCell() {
+        return this.upperCell;
+    }
+
+    @Override
+    public RawCell getLowerCell() {
+        return this.lowerCell;
     }
 }

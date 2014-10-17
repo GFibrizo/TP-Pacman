@@ -47,8 +47,6 @@ public class Map {
         TransitableCell cell = (TransitableCell) this.maze.getCellFromCoordinates(this.thePacman.getPosition());
 
         cell.eatBall();
-        cell.getBall().isEaten();
-        cell.setBall(new NullBall());
     }
 
     public Maze getMaze() {
