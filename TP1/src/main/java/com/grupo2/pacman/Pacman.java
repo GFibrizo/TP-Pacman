@@ -12,7 +12,8 @@ public class Pacman extends Character {
 
 	private Direction nextDirection;
 	private boolean alive;
-
+        private int score;
+        
 	public Pacman(final int x, final int y, final Direction dir) {
 		super(x, y, dir);
 		this.alive = true;
