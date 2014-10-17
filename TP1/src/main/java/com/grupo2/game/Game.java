@@ -24,17 +24,8 @@ public class Game {
         boolean ended = false;
 
         while (!ended) {
-            map.getPacman().changeDirection(controller.getPacmanNextDirection());
-            map.getPacman().move();
-            map.getGhosts().forEach((IGhost iGhost) -> {
-                iGhost.move();
-            });
-            view.persistMaze(map.getMaze());
-            view.persistPacman(map.getPacman());
-            map.getGhosts().forEach((IGhost ghost) -> {
-                view.persistGhost(ghost);
-            });
-
+            map.updateModel(controller);
+            map.updateView(view);
         }
     }
 }

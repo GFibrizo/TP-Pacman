@@ -1,13 +1,14 @@
 package com.grupo2.map;
 
-import com.grupo2.balls.NullBall;
 import com.grupo2.cell.TransitableCell;
 import com.grupo2.character.CharacterBuilder;
+import com.grupo2.controller.Controller;
 import com.grupo2.interfaces.IGhost;
 import com.grupo2.interfaces.IPositionable;
 import com.grupo2.maze.Maze;
 import com.grupo2.maze.MazeBuilder;
 import com.grupo2.pacman.Pacman;
+import com.grupo2.view.View;
 import java.util.ArrayList;
 
 /**
@@ -41,12 +42,16 @@ public class Map {
         this.ghosts.add(aCharacterToAdd);
     }
 
-    public void pacmanEntersCell() {
+    private void pacmanEntersCell() {
 
         //Celda en la que está el pacman
         TransitableCell cell = (TransitableCell) this.maze.getCellFromCoordinates(this.thePacman.getPosition());
 
+<<<<<<< HEAD
         cell.eatBall();
+=======
+        int points = cell.eatBall();
+>>>>>>> d43c4f4f93e49532e4796d0891e6fd1e9a5d629b
     }
 
     public Maze getMaze() {
@@ -67,4 +72,21 @@ public class Map {
      }
      return mapSingleton;
      }*/
+
+    public void updateModel(Controller controller) {
+        this.thePacman.changeDirection(controller.getPacmanNextDirection());
+        this.thePacman.move();
+        this.ghosts.forEach((IGhost iGhost) -> {
+                iGhost.move();
+        });
+        this.pacmanEntersCell();
+    }
+
+    public void updateView(View view) {
+        view.persistMaze(this.maze);
+        view.persistPacman(this.thePacman);
+        this.ghosts.forEach((IGhost ghost) -> {
+            view.persistGhost(ghost);
+        });
+    }
 }

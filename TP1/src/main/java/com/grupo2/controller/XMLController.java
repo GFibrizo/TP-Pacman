@@ -1,6 +1,7 @@
 package com.grupo2.controller;
 
 import com.grupo2.character.Direction;
+import com.grupo2.character.directions.RightDirection;
 import java.io.File;
 
 /**
@@ -17,7 +18,7 @@ public class XMLController implements Controller {
 
     @Override
     public Direction getPacmanNextDirection() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return new RightDirection();
     }
 
 }
