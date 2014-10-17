@@ -10,58 +10,58 @@ import com.grupo2.constants.Constants;
  */
 public class Pacman extends Character {
 
-	private Direction nextDirection;
-	private boolean alive;
-        private int score;
-        
-	public Pacman(final int x, final int y, final Direction dir) {
-		super(x, y, dir);
-		this.alive = true;
-	}
+    private Direction nextDirection;
+    private boolean alive;
+    private int score;
 
-	@Override
-	public void move() {
-		this.direction.stepForward(this);
-		this.leaveTrace();
-	}
+    public Pacman(final int x, final int y, final Direction dir) {
+        super(x, y, dir);
+        this.alive = true;
+    }
 
-	private int max(int x, int y) {
-		if (x > y) {
-			return x;
-		} else {
-			return y;
-		}
-	}
+    @Override
+    public void move() {
+        this.direction.stepForward(this);
+        this.leaveTrace();
+    }
 
-	private void leaveTrace() {
-		int traceRadius = Constants.getTraceDuration();
-		int initX = position.getX() - traceRadius;
-		int initY = position.getY() - traceRadius;
-		int endX = position.getX() + traceRadius + 1;
-		int endY = position.getY() + traceRadius + 1;
-		for (int i = initX; i < endX; i++) {
-			for (int j = initY; j < endY; j++) {
-				int traceLevelX = position.getX() - i;
-				int traceLevelY = position.getY() - j;
-				int traceLevel = max(traceLevelX, traceLevelY);
-				// ACA ASIGNAR A LAS CELDAS EL RASTRO QUE CORRESPONDE
-			}
-		}
-	}
+    private int max(int x, int y) {
+        if (x > y) {
+            return x;
+        } else {
+            return y;
+        }
+    }
 
-	@Override
-	public boolean isDead() {
-		return !alive;
-	}
+    private void leaveTrace() {
+        int traceRadius = Constants.getTraceDuration();
+        int initX = position.getX() - traceRadius;
+        int initY = position.getY() - traceRadius;
+        int endX = position.getX() + traceRadius + 1;
+        int endY = position.getY() + traceRadius + 1;
+        for (int i = initX; i < endX; i++) {
+            for (int j = initY; j < endY; j++) {
+                int traceLevelX = position.getX() - i;
+                int traceLevelY = position.getY() - j;
+                int traceLevel = max(traceLevelX, traceLevelY);
+                // ACA ASIGNAR A LAS CELDAS EL RASTRO QUE CORRESPONDE
+            }
+        }
+    }
 
-	@Override
-	public void changeDirection(final Direction theNewDirection) {
-		this.direction = theNewDirection;
-	}
+    @Override
+    public boolean isDead() {
+        return !alive;
+    }
 
-	@Override
-	public void die() {
-		alive = false;
-	}
+    @Override
+    public void changeDirection(final Direction theNewDirection) {
+        this.direction = theNewDirection;
+    }
+
+    @Override
+    public void die() {
+        alive = false;
+    }
 
 }
