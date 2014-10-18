@@ -9,7 +9,6 @@ import com.grupo2.maze.MazeXMLBuilder;
 import com.grupo2.maze.RawMaze;
 import com.grupo2.pacman.Pacman;
 import java.util.ArrayList;
-import java.util.HashSet;
 
 /**
  *
@@ -23,15 +22,15 @@ public class Map {
 	private static Map mapSingleton;
 
 	private Map() {
-		MazeXMLBuilder mazeBuilder = new MazeXMLBuilder("path");
-		CharacterXMLBuilder characterBuilder = new CharacterXMLBuilder("path");
-		this.maze = mazeBuilder.buildMaze();
-		this.ghosts = characterBuilder.getGhosts();
-		this.thePacman = characterBuilder.getPacman();
+            MazeXMLBuilder mazeBuilder = new MazeXMLBuilder("path");
+            CharacterXMLBuilder characterBuilder = new CharacterXMLBuilder("path");
+            this.maze = mazeBuilder.buildMaze();
+            this.ghosts = characterBuilder.getGhosts();
+            this.thePacman = characterBuilder.getPacman();
 	}
 
 	public boolean collisionBetween(IPositionable entity, IPositionable otherEntity) {
-		return maze.areInTheSameCell(entity, otherEntity);
+            return maze.areInTheSameCell(entity, otherEntity);
 	}
 
 	public boolean collisionWithPacman(IPositionable entity) {
@@ -39,11 +38,11 @@ public class Map {
 	}
 
 	public void addGhost(IGhost aCharacterToAdd) {
-		this.ghosts.add(aCharacterToAdd);
+            this.ghosts.add(aCharacterToAdd);
 	}
 
 	public Pacman getPacman() {
-		return this.thePacman;
+            return this.thePacman;
 	}
         
 	public static Map getInstance() {
@@ -60,5 +59,9 @@ public class Map {
             
             cell.getBall().isEaten();
             cell.setBall( new NullBall() );                  
+        }
+        
+        public void isCloseToPacman(IPositionable other) {
+            
         }
 }

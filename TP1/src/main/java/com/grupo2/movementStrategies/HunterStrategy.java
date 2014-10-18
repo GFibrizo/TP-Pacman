@@ -6,6 +6,4 @@ package com.grupo2.movementStrategies;
  */
 public abstract class HunterStrategy extends MovementStrategy {
 
-	public abstract HunterStrategy incrementRage();
-
 }

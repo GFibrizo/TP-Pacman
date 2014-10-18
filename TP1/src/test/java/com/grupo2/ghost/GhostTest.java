@@ -1,7 +1,7 @@
 package com.grupo2.ghost;
 
 import com.grupo2.character.Coordinate;
-import com.grupo2.character.directions.UpDirection;
+import com.grupo2.directions.UpDirection;
 import com.grupo2.interfaces.IGhost;
 import org.junit.After;
 import org.junit.AfterClass;

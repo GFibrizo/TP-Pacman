@@ -1,7 +1,8 @@
 package com.grupo2.ghostState;
 
 import com.grupo2.ghost.GhostState;
-import com.grupo2.movementStrategies.DumbStrategy;
+import com.grupo2.movementStrategies.MovementStrategy;
+import com.grupo2.constants.Constants;
 
 /**
  *
@@ -10,18 +11,18 @@ import com.grupo2.movementStrategies.DumbStrategy;
 public class HunterState extends GhostState {
 
 	private float time;
-	private HunterMovement rage;
+	private Personality personality;
+        private float velocity;
 
-	public HunterState() {
-		time = 0;
-		rage = new DumbStrategy();
+	public HunterState(Personality personality) {
+
+            this.personality = personality;
+            velocity = Constants.getInitialVelocity();
 	}
 
 	@Override
-	public void move() {
-		this.time++;
-		this.rage.move();
-		//Here the rage should increase
+	public void getNewDirection() {
+		return this.personality.getNewDirection();
 	}
 
 	/**
@@ -56,6 +57,10 @@ public class HunterState extends GhostState {
 		// Acá hay que "matar" al pacman.
 		return this; //When a Ghost in Hunter State collides with the Pacman, nothing happens to it, so the state remains the same.
 
+	}
+        
+	public HunterState incrementRage() {
+		return velocity;
 	}
 
 }

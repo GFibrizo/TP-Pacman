@@ -1,6 +1,7 @@
 package com.grupo2.movementStrategies;
 
 import com.grupo2.ghostState.DeadMovement;
+import com.grupo2.character.Direction;
 
 /**
  *
@@ -12,8 +13,8 @@ public class SearchCageStrategy extends MovementStrategy implements DeadMovement
 	}
 
 	@Override
-	public void move() {
-		throw new UnsupportedOperationException("Not supported yet.");
+	public Direction getNewDirection() {
+            throw new UnsupportedOperationException("Not implemented yet");
 	}
 
 }

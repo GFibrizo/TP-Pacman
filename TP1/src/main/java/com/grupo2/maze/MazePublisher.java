@@ -15,9 +15,9 @@ public class MazePublisher implements Publisher {
 
 	private HashMap<Event, List<Subscriber>> subscribers;
 
-	public enum MazeEvent implements Event {
+	public static enum MazeEvent implements Event {
 
-            PACMANCOLLIDEGHOST, GHOSTREACHEDINTERJECTION //Etc
+            PACMANCOLLIDEGHOST, GHOSTREACHEDINTERJECTION, GHOSTISCLOSETOPACMAN //Etc
 	}
 
 	private MazePublisher() {
@@ -47,7 +47,7 @@ public class MazePublisher implements Publisher {
 
             List<Subscriber> subs = subscribers.get(event);
             for (Subscriber sub : subs) {
-				sub.execute();
+		sub.execute();
             }
         }
 

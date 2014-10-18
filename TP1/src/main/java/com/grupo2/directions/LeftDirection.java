@@ -1,4 +1,4 @@
-package com.grupo2.character.directions;
+package com.grupo2.directions;
 
 import com.grupo2.character.Direction;
 import com.grupo2.interfaces.ICharacter;
@@ -7,17 +7,16 @@ import com.grupo2.interfaces.ICharacter;
  *
  * @author mauri
  */
-public class DownDirection implements Direction {
+public class LeftDirection implements Direction {
 
     @Override
     public void stepForward(ICharacter aCharacter) {
-
-        aCharacter.getPosition().setY(aCharacter.getPosition().getY() - 1);
+        aCharacter.getPosition().setX(aCharacter.getPosition().getX() - 1);
     }
 
     @Override
     public boolean isEqualTo(LeftDirection aDirection) {
-        return false;
+        return true;
     }
 
     @Override
@@ -32,7 +31,6 @@ public class DownDirection implements Direction {
 
     @Override
     public boolean isEqualTo(DownDirection aDirection) {
-        return true;
-    }
-    
+        return false;
+    }      
 }

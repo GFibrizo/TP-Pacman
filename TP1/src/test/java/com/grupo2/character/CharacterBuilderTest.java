@@ -6,7 +6,7 @@
 
 package com.grupo2.character;
 
-import com.grupo2.character.directions.LeftDirection;
+import com.grupo2.directions.LeftDirection;
 import com.grupo2.interfaces.IGhost;
 import com.grupo2.pacman.Pacman;
 import java.util.ArrayList;

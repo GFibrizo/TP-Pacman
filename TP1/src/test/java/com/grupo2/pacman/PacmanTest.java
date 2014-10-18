@@ -8,8 +8,8 @@ package com.grupo2.pacman;
 
 import com.grupo2.character.Coordinate;
 import com.grupo2.character.Direction;
-import com.grupo2.character.directions.LeftDirection;
-import com.grupo2.character.directions.UpDirection;
+import com.grupo2.directions.LeftDirection;
+import com.grupo2.directions.UpDirection;
 import org.junit.AfterClass;
 import static org.junit.Assert.*;
 import org.junit.Before;

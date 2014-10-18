@@ -16,6 +16,7 @@ import org.json.simple.parser.ParseException;
 public final class Constants {
 
     private static long TICK_TO_MILISECS = 1000;
+    private static int INITIAL_VELOCITY = 1;
 
     private static float PREY_LIMIT_TIME = 30;
     private static float DEAD_LIMIT_TIME = 20;
@@ -82,6 +83,13 @@ public final class Constants {
     public static float getDeadLimitTime() {
             return DEAD_LIMIT_TIME;
     }
+    
+     /**
+     * @return the constant INITIAL_VELOCITY
+     */
+    public static int getInitialVelocity() {
+            return INITIAL_VELOCITY;
+    }
 
     /**
      *
@@ -129,6 +137,10 @@ public final class Constants {
     
     public static void setPreyLimitTime(float timeLimit) {
             Constants.PREY_LIMIT_TIME = timeLimit;
+    }
+    
+    public static void setPreyLimitTime(int velocity) {
+            Constants.INITIAL_VELOCITY = velocity;
     }
 
     public static void setDeadLimitTime(float timeLimit) {
