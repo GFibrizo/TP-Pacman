@@ -3,6 +3,8 @@ package com.grupo2.ghostState;
 import com.grupo2.constants.Constants;
 import com.grupo2.ghost.GhostState;
 import com.grupo2.movementStrategies.SearchCageStrategy;
+import com.grupo2.movementStrategies.MovementStrategy;
+import com.grupo2.character.Direction;
 
 /**
  *
@@ -11,17 +13,17 @@ import com.grupo2.movementStrategies.SearchCageStrategy;
 public class DeadState extends GhostState {
 
 	private float time;
-	private final DeadMovement movement;
+	private final MovementStrategy movement;
 
 	public DeadState() {
-		time = 0;
-		movement = new SearchCageStrategy();
+            time = 0;
+            movement = new SearchCageStrategy();
 	}
 
 	@Override
-	public void move() {
-		time++;
-		movement.move();
+	public Direction getNewDirection(Personality personality) {
+            time++;
+            return movement.getNewDirection();
 	}
 
 	/**
@@ -29,7 +31,7 @@ public class DeadState extends GhostState {
 	 */
 	@Override
 	public boolean isDead() {
-		return true;
+            return true;
 	}
 
 	/* @return the next state of the Ghost. returns this, except that the time
@@ -37,25 +39,25 @@ public class DeadState extends GhostState {
 	 */
 	@Override
 	public GhostState returnNextState() {
-		if (time >= Constants.getDeadLimitTime()) {
-			return new HunterState();
-		}
-		return this;
+            if (time >= Constants.getDeadLimitTime()) {
+                return new HunterState();
+            }
+            return this;
 	}
 
 	@Override
 	public GhostState convertToPrey() {
-		throw new AssertionError("A dead Ghost can't be forced to convert into Prey");
+            throw new AssertionError("A dead Ghost can't be forced to convert into Prey");
 	}
 
 	@Override
 	public GhostState die() {
-		throw new AssertionError("A dead Ghost can't die again");
+            throw new AssertionError("A dead Ghost can't die again");
 	}
 
 	@Override
 	public GhostState collideWithPacman() {
-		return this;
+            return this;
 	}
 
 }

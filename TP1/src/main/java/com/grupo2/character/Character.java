@@ -13,9 +13,10 @@ public abstract class Character implements ICharacter {
     protected Direction direction;
     protected Cell currentCell;
     
-    protected Character(final int x, final int y, Direction dir) {
-            this.position = new Coordinate(x, y);
-            this.direction = dir;
+    protected Character() {
+        this.position = null;
+        this.direction = null;
+        currentCell = null;
     }
 
     @Override
@@ -44,5 +45,9 @@ public abstract class Character implements ICharacter {
     
     public Direction getDirection() {
         return this.direction;
+    }
+    
+    public void setCurrentCell(Cell cell) {
+        currentCell = cell;
     }
 }

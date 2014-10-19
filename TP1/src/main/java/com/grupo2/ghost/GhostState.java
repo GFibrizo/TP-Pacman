@@ -1,6 +1,8 @@
 package com.grupo2.ghost;
 
 import com.grupo2.interfaces.IGhost;
+import com.grupo2.ghostState.Personality;
+import com.grupo2.character.Direction;
 
 /**
  *
@@ -13,8 +15,9 @@ public abstract class GhostState {
 
 	/**
 	 * Polymorphicaly calls one of the "move" methods implemented by the derivative classes.
-	 */
-	public abstract void move();
+	 * @param personality the personality holds the logic for the movement of a hunter
+         */
+	public abstract Direction getNewDirection(Personality personality);
 
 	/**
 	 * @return True if the State of the ghost is "Dead". False otherwise.

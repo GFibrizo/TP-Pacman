@@ -1,8 +1,8 @@
 package com.grupo2.ghostState;
 
 import com.grupo2.ghost.GhostState;
-import com.grupo2.movementStrategies.MovementStrategy;
 import com.grupo2.constants.Constants;
+import com.grupo2.character.Direction;
 
 /**
  *
@@ -11,18 +11,16 @@ import com.grupo2.constants.Constants;
 public class HunterState extends GhostState {
 
 	private float time;
-	private Personality personality;
         private float velocity;
 
-	public HunterState(Personality personality) {
-
-            this.personality = personality;
+	public HunterState() {
             velocity = Constants.getInitialVelocity();
 	}
+        
 
 	@Override
-	public void getNewDirection() {
-		return this.personality.getNewDirection();
+	public Direction getNewDirection(Personality personality) {
+            return personality.getNewDirection();
 	}
 
 	/**
@@ -59,8 +57,9 @@ public class HunterState extends GhostState {
 
 	}
         
-	public HunterState incrementRage() {
-		return velocity;
+	public void incrementRage() {
+            velocity++;
 	}
+
 
 }

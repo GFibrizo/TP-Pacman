@@ -22,72 +22,102 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.
+import java.util.function.Function;
+import com.grupo2.personality.*;
+
+
+
 public class CharacterXMLBuilder implements CharacterBuilder {
 
 	private ArrayList<IGhost> ghosts;
 	private Pacman pacman;
 	private final File xmlFile;
+        
+        
+        Map<String, Function> hash = new HashMap<>();
+        
+        
+        
+        
 
-	public CharacterXMLBuilder(String path) {
-		this.xmlFile = new File(path);
+    public CharacterXMLBuilder(String path) {
+        this.xmlFile = new File(path);
+        
+        hash.put("izquierda", (p) -> {return new LeftDirection();});
+        hash.put("derecha",   (p) -> {return new RightDirection();});
+        hash.put("arriba",    (p) -> {return new UpDirection();});
+        hash.put("abajo",     (p) -> {return new DownDirection();});
+        hash.put("zonzo",     (p) -> {return new Dumb();});
+        hash.put("buscador",  (p) -> {return new Seeker();});
+        hash.put("perezoso",  (p) -> {return new Lazy();});
+        hash.put("Cazador",   (p) -> {return new HunterState();});
+        hash.put("Presa",     (p) -> {return new Prey();});
 
-		try {
-			DocumentBuilder dBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-			Document doc;
-			doc = dBuilder.parse(this.xmlFile);
-			doc.getDocumentElement().normalize();
-			Element root = doc.getDocumentElement();
-			int x = Integer.parseInt(root.getAttribute("fila"));
-			int y = Integer.parseInt(root.getAttribute("columna"));
-			String direction = root.getAttribute("sentido");
-			Direction dir;
-			dir = getDirection(direction);
-			this.pacman = new Pacman(x, y, dir);
-			NodeList nList = doc.getElementsByTagName("fantasma");
-			this.ghosts = new ArrayList<>();
-			for (int i = 0; i < nList.getLength(); i++) {
-				Node nNode = nList.item(i);
-				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-					Element eElement = (Element) nNode;
-					x = Integer.parseInt(eElement.getAttribute("fila"));
-					y = Integer.parseInt(eElement.getAttribute("columna"));
-					direction = eElement.getAttribute("sentido");
-					dir = getDirection(direction);
-					this.ghosts.add(new Ghost(x, y, dir));
-				}
-			}
-		} catch (ParserConfigurationException | SAXException | IOException ex) {
-			Logger.getLogger(MazeXMLBuilder.class.getName()).log(Level.SEVERE, null, ex);
-		}
-	}
 
-	private Direction getDirection(String direction) {
-		Direction dir;
-		switch (direction) {
-			case "izquierda":
-				dir = new LeftDirection();
-				break;
-			case "derecha":
-				dir = new RightDirection();
-				break;
-			case "abajo":
-				dir = new DownDirection();
-				break;
-			default:
-				dir = new UpDirection();
-				break;
-		}
-		return dir;
-	}
+        Direction a = (Direction) hash.get("izquierda").apply(null);
 
-	@Override
-	public Pacman getPacman() {
-		return this.pacman;
-	}
 
-	@Override
-	public ArrayList<IGhost> getGhosts() {
-		return this.ghosts;
-	}
+
+        try {
+            DocumentBuilder dBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+            Document doc;
+            doc = dBuilder.parse(this.xmlFile);
+            doc.getDocumentElement().normalize();
+            Element root = doc.getDocumentElement();
+            int x = Integer.parseInt(root.getAttribute("fila"));
+            int y = Integer.parseInt(root.getAttribute("columna"));
+            String direction = root.getAttribute("sentido");
+            Direction dir;
+            dir = getDirection(direction);
+            this.pacman = new Pacman(x, y, dir);
+            NodeList nList = doc.getElementsByTagName("fantasma");
+            this.ghosts = new ArrayList<>();
+            for (int i = 0; i < nList.getLength(); i++) {
+                Node nNode = nList.item(i);
+                if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+                    Element eElement = (Element) nNode;
+                    x = Integer.parseInt(eElement.getAttribute("fila"));
+                    y = Integer.parseInt(eElement.getAttribute("columna"));
+                    direction = eElement.getAttribute("sentido");
+                    dir = getDirection(direction);
+                    this.ghosts.add(new Ghost(x, y, dir));
+                }
+            }
+        } catch (ParserConfigurationException | SAXException | IOException ex) {
+            Logger.getLogger(MazeXMLBuilder.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    private Direction getDirection(String direction) {
+        Direction dir;
+        switch (direction) {
+            case "izquierda":
+                dir = new LeftDirection();
+                break;
+            case "derecha":
+                dir = new RightDirection();
+                break;
+            case "abajo":
+                dir = new DownDirection();
+                break;
+            default:
+                dir = new UpDirection();
+                break;
+        }
+        return dir;
+    }
+
+    @Override
+    public Pacman getPacman() {
+        return this.pacman;
+    }
+
+    @Override
+    public ArrayList<IGhost> getGhosts() {
+        return this.ghosts;
+    }
 
 }

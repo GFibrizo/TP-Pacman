@@ -48,7 +48,7 @@ public class DownDirection implements Direction {
 
     @Override
     public boolean canGoForward(Cell cell) {
-        return cell.getDownCell().isTransitable();
+        return cell.getLowerCell().isTransitable();
     }    
 
 
