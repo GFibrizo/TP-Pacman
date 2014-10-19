@@ -32,7 +32,7 @@ public abstract class Character implements ICharacter {
 
     @Override
     public abstract void die();
-        
+
     @Override
     public void setPosition(Coordinate pos) {
         position = pos;
@@ -40,9 +40,9 @@ public abstract class Character implements ICharacter {
 
     @Override
     public void setPosition(int x, int y) {
-       position = new Coordinate(x,y);
+        position = new Coordinate(x, y);
     }
-    
+
     public Direction getDirection() {
         return this.direction;
     }

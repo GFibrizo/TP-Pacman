@@ -81,12 +81,11 @@ public class Map {
      }
      return mapSingleton;
      }*/
-
     public void updateModel(Controller controller) {
         this.thePacman.changeDirection(controller.getPacmanNextDirection());
         this.thePacman.move();
         this.ghosts.forEach((IGhost iGhost) -> {
-                iGhost.move();
+            iGhost.move();
         });
         this.pacmanEntersCell();
     }

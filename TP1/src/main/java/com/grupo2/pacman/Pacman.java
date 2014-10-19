@@ -1,6 +1,5 @@
 package com.grupo2.pacman;
 
-import com.grupo2.cell.Cell;
 import com.grupo2.cell.RawCell;
 import com.grupo2.character.Character;
 import com.grupo2.character.Direction;
