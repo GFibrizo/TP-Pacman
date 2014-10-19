@@ -1,11 +1,13 @@
 package com.grupo2.time;
+import com.grupo2.eventHandling.Subscriber;
 
 /**
  *
  * @author ivan
  */
-public interface TimeoutWaiter {
+public interface TimeoutWaiter extends Subscriber {
 
-	void timeout();
+	public void timeout();
+        
 
 }

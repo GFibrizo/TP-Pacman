@@ -1,6 +1,7 @@
 package com.grupo2.movementStrategies;
 
 import com.grupo2.ghostState.HunterMovement;
+import com.grupo2.character.Direction;
 
 /**
  *
@@ -8,17 +9,12 @@ import com.grupo2.ghostState.HunterMovement;
  */
 public class SeekerStrategy extends HunterStrategy implements HunterMovement {
 
-	public SeekerStrategy() {
-	}
+    public SeekerStrategy() {
+    }
 
-	@Override
-	public void move() {
-		throw new UnsupportedOperationException("Not supported yet.");
-	}
-
-	@Override
-	public HunterStrategy incrementRage() {
-		return this;
-	}
+    @Override
+    public Direction getNewDirection() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 
 }

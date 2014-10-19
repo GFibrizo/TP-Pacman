@@ -2,7 +2,7 @@ package com.grupo2.ghostState;
 
 import com.grupo2.ghost.GhostState;
 import com.grupo2.constants.Constants;
-import com.grupo2.movementStrategies.RandomStrategy;
+import com.grupo2.movementStrategies.ScapeStrategy;
 
 /**
  *
@@ -14,7 +14,7 @@ public class PreyState extends GhostState {
     private PreyMovement movement;
 
     public PreyState() {
-        movement = new RandomStrategy();
+        movement = new ScapeStrategy();
     }
 
     @Override

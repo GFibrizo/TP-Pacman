@@ -22,6 +22,7 @@ public class Map {
     private Pacman thePacman;
     //private static Map mapSingleton = null;
 
+
     public Map(final MazeBuilder mazeBuilder, final CharacterBuilder characterBuilder) {
         this.maze = mazeBuilder.buildMaze();
         this.ghosts = characterBuilder.getGhosts();
@@ -30,23 +31,34 @@ public class Map {
         this.ghosts.forEach((ghost) -> ghost.setPosition(this.maze.getGhostBegining()));
     }
 
+
+
     public boolean collisionBetween(IPositionable entity, IPositionable otherEntity) {
         return maze.areInTheSameCell(entity, otherEntity);
     }
+
 
     public boolean collisionWithPacman(IPositionable entity) {
         return maze.areInTheSameCell(thePacman, entity);
     }
 
+
     public void addGhost(IGhost aCharacterToAdd) {
         this.ghosts.add(aCharacterToAdd);
     }
 
-    private void pacmanEntersCell() {
+
+
+    public Pacman getPacman() {
+        return this.thePacman;
+    }
+
+
+
+    public void pacmanEntersCell() {
 
         //Celda en la que está el pacman
-        TransitableCell cell = (TransitableCell) this.maze.getCellFromCoordinates(this.thePacman.getPosition());
-
+        TransitableCell cell = (TransitableCell) this.maze.getCellFromCoordinates( this.thePacman.getPosition() );
         int points = cell.eatBall();
     }
 
@@ -54,9 +66,10 @@ public class Map {
         return maze;
     }
 
-    public Pacman getPacman() {
-        return this.thePacman;
+    public void isCloseToPacman(IPositionable other) {
+
     }
+
 
     public ArrayList<IGhost> getGhosts() {
         return this.ghosts;
@@ -84,4 +97,5 @@ public class Map {
             view.persistGhost(ghost);
         });
     }
+
 }

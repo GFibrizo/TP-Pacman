@@ -1,10 +1,10 @@
 package com.grupo2.character;
 
-import com.grupo2.cell.RawCell;
-import com.grupo2.character.directions.DownDirection;
-import com.grupo2.character.directions.LeftDirection;
-import com.grupo2.character.directions.RightDirection;
-import com.grupo2.character.directions.UpDirection;
+import com.grupo2.cell.Cell;
+import com.grupo2.directions.DownDirection;
+import com.grupo2.directions.LeftDirection;
+import com.grupo2.directions.RightDirection;
+import com.grupo2.directions.UpDirection;
 import com.grupo2.interfaces.ICharacter;
 
 /**
@@ -13,15 +13,20 @@ import com.grupo2.interfaces.ICharacter;
  */
 public interface Direction {
 
-    public abstract void stepForward(ICharacter aCharacter);
+	void stepForward(ICharacter aCharacter);
 
-    public abstract boolean isEqualTo(LeftDirection aDirection);
+	boolean isEqualTo(Direction otherDir);
 
-    public abstract boolean isEqualTo(RightDirection aDirection);
+	boolean isEqualTo(LeftDirection aDirection);
 
-    public abstract boolean isEqualTo(UpDirection aDirection);
+	boolean isEqualTo(RightDirection aDirection);
 
-    public abstract boolean isEqualTo(DownDirection aDirection);
+	boolean isEqualTo(UpDirection aDirection);
 
-    public abstract boolean canGoForward(RawCell aCell);
+	boolean isEqualTo(DownDirection aDirection);
+
+	boolean canGoForward(Cell aCell);
+
+	boolean isOposedTo(Direction other);
+
 }

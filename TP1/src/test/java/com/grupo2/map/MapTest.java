@@ -1,7 +1,10 @@
 package com.grupo2.map;
 
+
+import com.grupo2.directions.DownDirection;
+
 import com.grupo2.character.CharacterXMLBuilder;
-import com.grupo2.character.directions.DownDirection;
+
 import com.grupo2.ghost.Ghost;
 import com.grupo2.interfaces.ICharacter;
 import com.grupo2.maze.MazeXMLBuilder;

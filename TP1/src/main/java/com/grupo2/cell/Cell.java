@@ -10,4 +10,8 @@ public interface Cell {
     public boolean isTransitable();
     public Coordinate getPosition();
     public boolean isTheSame(Cell other);
+    public Cell getDownCell();
+    public Cell getUpperCell();
+    public Cell getLeftCell();
+    public Cell getRightCell();
 }
