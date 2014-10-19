@@ -13,8 +13,9 @@ package com.grupo2.balls;
 public class LittleBall implements Ball {
 
     @Override
-    public void isEaten() {
+    public int isEaten() {
         //POR AHORA SETEARLE A LA CELDA EN LA QUE ESTÉ LA BOLITA, UNA NULL BALL. LUEGO TAMBIÉN SUMARÁ PUNTOS AL JUEGO.
+        return 10;
     }
     
 }

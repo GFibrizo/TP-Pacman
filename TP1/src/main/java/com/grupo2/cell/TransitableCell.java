@@ -3,6 +3,7 @@ package com.grupo2.cell;
 import com.grupo2.character.Collitionable;
 import com.grupo2.character.Coordinate;
 import com.grupo2.balls.Ball;
+import com.grupo2.balls.NullBall;
 
 /**
  *
@@ -11,10 +12,10 @@ import com.grupo2.balls.Ball;
 public class TransitableCell implements RawCell {
 
     private Collitionable content;
-    private Cell upperCell;
-    private Cell lowerCell;
-    private Cell leftCell;
-    private Cell rightCell;
+    private RawCell upperCell;
+    private RawCell lowerCell;
+    private RawCell leftCell;
+    private RawCell rightCell;
     private Coordinate position;
     private Ball ball;
 
@@ -72,6 +73,32 @@ public class TransitableCell implements RawCell {
     @Override
     public boolean isTheSame(Cell other) {
         return position == other.getPosition();
+    }
+
+    public int eatBall() {
+        int points = this.ball.isEaten();
+        this.ball = new NullBall();
+        return points;
+    }
+
+    @Override
+    public RawCell getLeftCell() {
+        return this.leftCell;
+    }
+
+    @Override
+    public RawCell getRightCell() {
+        return this.rightCell;
+    }
+
+    @Override
+    public RawCell getUpperCell() {
+        return this.upperCell;
+    }
+
+    @Override
+    public RawCell getLowerCell() {
+        return this.lowerCell;
     }
 
 }
