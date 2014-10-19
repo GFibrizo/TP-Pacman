@@ -2,6 +2,7 @@ package com.grupo2.directions;
 
 import com.grupo2.character.Direction;
 import com.grupo2.interfaces.ICharacter;
+import com.grupo2.cell.Cell;
 
 /**
  *
@@ -32,5 +33,20 @@ public class UpDirection implements Direction {
     @Override
     public boolean isEqualTo(DownDirection aDirection) {
         return false;
+    }
+    
+    @Override
+    public boolean canGoForward(Cell cell) {
+        return cell.getUpperCell().isTransitable();
+    }   
+
+    @Override
+    public boolean EqualTo(Direction other) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public boolean isOposedTo(Direction other) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
