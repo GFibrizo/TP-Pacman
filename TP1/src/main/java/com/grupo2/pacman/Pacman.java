@@ -1,6 +1,5 @@
 package com.grupo2.pacman;
 
-import com.grupo2.cell.Cell;
 import com.grupo2.cell.RawCell;
 import com.grupo2.character.Character;
 import com.grupo2.character.Direction;
@@ -22,33 +21,18 @@ public class Pacman extends Character {
         this.alive = true;
     }
 
-<<<<<<< HEAD
-	@Override
-	public void move() {
-	
-        if ( this.nextDirection.canGoForward( (RawCell) currentCell) ) {
+    @Override
+    public void move() {
+
+        if (this.nextDirection.canGoForward((RawCell) currentCell)) {
             this.direction = this.nextDirection;
             this.nextDirection = new NullDirection();
         }
-            
-        if ( this.direction.canGoForward( (RawCell)currentCell) ) {
-            this.direction.stepForward(this); 
+
+        if (this.direction.canGoForward((RawCell) currentCell)) {
+            this.direction.stepForward(this);
         }
 
-        this.leaveTrace();
-	}
-
-        private int max(int x, int y) {
-		if (x > y) {
-			return x;
-		} else {
-			return y;
-		}
-	}
-=======
-    @Override
-    public void move() {
-        this.direction.stepForward(this);
         this.leaveTrace();
     }
 
@@ -59,7 +43,6 @@ public class Pacman extends Character {
             return y;
         }
     }
->>>>>>> d43c4f4f93e49532e4796d0891e6fd1e9a5d629b
 
     private void leaveTrace() {
         int traceRadius = Constants.getTraceDuration();

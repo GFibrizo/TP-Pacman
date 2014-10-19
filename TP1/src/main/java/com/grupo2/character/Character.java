@@ -12,10 +12,10 @@ public abstract class Character implements ICharacter {
     protected Coordinate position;
     protected Direction direction;
     protected Cell currentCell;
-    
+
     protected Character(final int x, final int y, Direction dir) {
-            this.position = new Coordinate(x, y);
-            this.direction = dir;
+        this.position = new Coordinate(x, y);
+        this.direction = dir;
     }
 
     @Override
@@ -31,7 +31,7 @@ public abstract class Character implements ICharacter {
 
     @Override
     public abstract void die();
-        
+
     @Override
     public void setPosition(Coordinate pos) {
         position = pos;
@@ -39,9 +39,9 @@ public abstract class Character implements ICharacter {
 
     @Override
     public void setPosition(int x, int y) {
-       position = new Coordinate(x,y);
+        position = new Coordinate(x, y);
     }
-    
+
     public Direction getDirection() {
         return this.direction;
     }

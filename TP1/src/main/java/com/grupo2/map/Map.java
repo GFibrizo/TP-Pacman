@@ -47,11 +47,7 @@ public class Map {
         //Celda en la que está el pacman
         TransitableCell cell = (TransitableCell) this.maze.getCellFromCoordinates(this.thePacman.getPosition());
 
-<<<<<<< HEAD
-        cell.eatBall();
-=======
         int points = cell.eatBall();
->>>>>>> d43c4f4f93e49532e4796d0891e6fd1e9a5d629b
     }
 
     public Maze getMaze() {
@@ -72,12 +68,11 @@ public class Map {
      }
      return mapSingleton;
      }*/
-
     public void updateModel(Controller controller) {
         this.thePacman.changeDirection(controller.getPacmanNextDirection());
         this.thePacman.move();
         this.ghosts.forEach((IGhost iGhost) -> {
-                iGhost.move();
+            iGhost.move();
         });
         this.pacmanEntersCell();
     }
