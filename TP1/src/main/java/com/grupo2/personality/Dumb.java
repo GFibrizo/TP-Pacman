@@ -23,6 +23,7 @@ public class Dumb extends Personality {
     private MovementStrategy movement;
     
     public Dumb() {
+        // FALTA CORREGIR ESTO
         Subscriber sub = new HunterStartsChaseOfPacman(this);
         MazePublisher.getInstance().subscribe(MazePublisher.MazeEvent.GHOSTISCLOSETOPACMAN, this);
         movement = new RandomStrategy();
@@ -36,5 +37,10 @@ public class Dumb extends Personality {
     
     public void beginPacmanChase() {
         this.movement = new ChaseStrategy();
+    }
+
+    @Override
+    public void stopPacmanChase() {
+        this.movement = new RandomStrategy();
     }
 }

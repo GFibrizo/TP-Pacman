@@ -10,6 +10,6 @@ package com.grupo2.pacman;
  *
  * @author fibrizo
  */
-public class PacmanTraceback {
+public class PacmanArea {
     
 }

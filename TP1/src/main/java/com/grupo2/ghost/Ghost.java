@@ -39,6 +39,15 @@ public class Ghost extends Character implements IGhost {
             return new Ghost();
         }
         
+        public void setState(GhostState state) {
+            this.state = state;
+        }
+        
+                
+        public void setPersonality(Personality personality) {
+            this.personality = personality;
+        }
+        
 
 	/**
 	 * Moves the Ghost in the direction specified and the Ghost behaves according to its actual
@@ -68,10 +77,6 @@ public class Ghost extends Character implements IGhost {
 		this.state = state.convertToPrey();
 	}
 
-	@Override
-	public void changeDirection(Direction theNewDirection) {
-		this.direction = theNewDirection;
-	}
 
 	@Override
 	public void onCollisionWithPacman() {

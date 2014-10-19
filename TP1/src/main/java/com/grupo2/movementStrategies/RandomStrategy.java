@@ -1,19 +1,19 @@
 package com.grupo2.movementStrategies;
-
-import com.grupo2.ghostState.HunterMovement;
+import com.grupo2.character.Direction;
 
 /**
  *
  * @author fibrizo
  */
-public class RandomStrategy extends HunterStrategy implements HunterMovement {
+public class RandomStrategy extends MovementStrategy {
 
 	public RandomStrategy() {
+            super();
 	}
 
 	@Override
-	public void setDirection() {
-            
+	public Direction getNewDirection() {
+            return directions.get(randomGenerator.nextInt(4));
 	}
 
 

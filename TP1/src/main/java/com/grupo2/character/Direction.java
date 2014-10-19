@@ -13,20 +13,20 @@ import com.grupo2.interfaces.ICharacter;
  */
 public interface Direction {
 
-	void stepForward(ICharacter aCharacter);
+    void stepForward(ICharacter character);
+    
+    public boolean EqualTo(Direction other);
 
-	boolean isEqualTo(Direction otherDir);
+    boolean isEqualTo(LeftDirection other);
 
-	boolean isEqualTo(LeftDirection aDirection);
+    boolean isEqualTo(RightDirection other);
 
-	boolean isEqualTo(RightDirection aDirection);
+    boolean isEqualTo(UpDirection other);
 
-	boolean isEqualTo(UpDirection aDirection);
+    boolean isEqualTo(DownDirection other);
 
-	boolean isEqualTo(DownDirection aDirection);
+    boolean canGoForward(Cell cell);
 
-	boolean canGoForward(Cell aCell);
-
-	boolean isOposedTo(Direction other);
+    boolean isOposedTo(Direction other);
 
 }

@@ -29,6 +29,10 @@ public abstract class Character implements ICharacter {
     public Coordinate getPosition() {
         return position;
     }
+    
+    public Direction getDirection() {
+        return this.direction;
+    }
 
     @Override
     public abstract void die();
@@ -42,9 +46,10 @@ public abstract class Character implements ICharacter {
     public void setPosition(int x, int y) {
         position = new Coordinate(x, y);
     }
-
-    public Direction getDirection() {
-        return this.direction;
+    
+    @Override
+    public void setDirection(Direction dir) {
+        direction = direction;
     }
     
     public void setCurrentCell(Cell cell) {

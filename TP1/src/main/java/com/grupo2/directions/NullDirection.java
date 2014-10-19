@@ -48,11 +48,11 @@ public class NullDirection implements Direction {
 
     @Override
     public boolean EqualTo(Direction other) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return false;
     }
 
     @Override
     public boolean isOposedTo(Direction other) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        throw new AssertionError("Null direction have no oposed direction");
     }
 }

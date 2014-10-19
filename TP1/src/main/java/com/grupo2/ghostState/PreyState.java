@@ -1,7 +1,9 @@
 package com.grupo2.ghostState;
 
+import com.grupo2.character.Direction;
 import com.grupo2.ghost.GhostState;
 import com.grupo2.constants.Constants;
+import com.grupo2.movementStrategies.MovementStrategy;
 import com.grupo2.movementStrategies.ScapeStrategy;
 
 /**
@@ -11,18 +13,18 @@ import com.grupo2.movementStrategies.ScapeStrategy;
 public class PreyState extends GhostState {
 
     private float time = 0;
-    private PreyMovement movement;
+    private MovementStrategy movement;
 
     public PreyState() {
         movement = new ScapeStrategy();
     }
 
     @Override
-    public void move() {
+    public Direction getNewDirection(Personality personality) {
         time++;
-        this.movement.move();
+        return this.movement.getNewDirection();
     }
-
+ 
     /**
      * @return False, because the State of the Ghost isn't "Dead".
      */
@@ -38,7 +40,7 @@ public class PreyState extends GhostState {
     @Override
     public GhostState returnNextState() {
         if (time >= Constants.getPreyLimitTime()) {
-                return new HunterState();
+            return new HunterState();
         }
         return this;
     }

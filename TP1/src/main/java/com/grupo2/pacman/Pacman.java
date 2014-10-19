@@ -50,8 +50,8 @@ public class Pacman extends Character {
     }
 
     @Override
-    public void changeDirection(final Direction theNewDirection) {
-        this.direction = theNewDirection;
+    public void setDirection(Direction direction) {
+        this.direction = direction;
     }
 
     @Override

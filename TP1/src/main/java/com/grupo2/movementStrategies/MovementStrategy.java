@@ -12,7 +12,7 @@ import java.util.Random;
 public abstract class MovementStrategy {
     
     protected List<Direction> directions;
-    Random randomGenerator;
+    protected Random randomGenerator;
     
     protected MovementStrategy() {
         directions.add(new UpDirection());

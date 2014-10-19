@@ -10,7 +10,7 @@ public interface ICharacter extends IPositionable {
 
     public abstract void move();
     public abstract boolean isDead();
-    public void changeDirection(Direction theNewDirection);
+    public void setDirection(Direction direction);
     public void die();
     public void setCurrentCell(Cell cell);
 }

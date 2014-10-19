@@ -18,7 +18,7 @@ public class DownDirection implements Direction {
 
     @Override
     public boolean EqualTo(Direction other) {
-        return other.EqualTo(this);
+        return other.isEqualTo(this);
     }
     
     @Override
