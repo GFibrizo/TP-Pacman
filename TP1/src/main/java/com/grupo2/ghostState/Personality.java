@@ -6,6 +6,7 @@
 
 package com.grupo2.ghostState;
 import com.grupo2.character.Direction;
+import com.grupo2.movementStrategies.MovementStrategy;
 
 /**
  *
@@ -13,8 +14,15 @@ import com.grupo2.character.Direction;
  */
 public abstract class Personality {
     
+    protected int vision;
+    protected MovementStrategy movement;
+    
     public abstract Direction getNewDirection();
     public abstract void beginPacmanChase();
     public abstract void stopPacmanChase();
+    
+    public int getVision() {
+        return vision;
+    }
     
 }

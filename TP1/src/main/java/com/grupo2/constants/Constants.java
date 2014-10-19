@@ -27,6 +27,12 @@ public final class Constants {
 
     private static float GHOST_RADIUS = 99;
     private static int TRACE_DURATION = 4;
+    
+    
+    public static int VISION1 = 4;
+    public static int VISION2 = 8;
+    public static int VISION3 = 10;
+    public static int VISION4 = 12;
 
     private Constants() {
             //this prevents even the native class from
@@ -135,36 +141,37 @@ public final class Constants {
         return TRACE_DURATION;
     }
     
+
     public static void setPreyLimitTime(float timeLimit) {
-            Constants.PREY_LIMIT_TIME = timeLimit;
+        Constants.PREY_LIMIT_TIME = timeLimit;
     }
     
     public static void setPreyLimitTime(int velocity) {
-            Constants.INITIAL_VELOCITY = velocity;
+        Constants.INITIAL_VELOCITY = velocity;
     }
 
     public static void setDeadLimitTime(float timeLimit) {
-            Constants.DEAD_LIMIT_TIME = timeLimit;
+        Constants.DEAD_LIMIT_TIME = timeLimit;
     }
 
     public static void setFirstRageLimitTime(float timeLimit) {
-            Constants.FIRST_RAGE_LIMIT_TIME = timeLimit;
+        Constants.FIRST_RAGE_LIMIT_TIME = timeLimit;
     }
 
     public static void setSecondRageLimitTime(float timeLimit) {
-            Constants.SECOND_RAGE_LIMIT_TIME = timeLimit;
+        Constants.SECOND_RAGE_LIMIT_TIME = timeLimit;
     }
 
     public static void setThirdRageLimitTime(float timeLimit) {
-            Constants.THIRD_RAGE_LIMIT_TIME = timeLimit;
+        Constants.THIRD_RAGE_LIMIT_TIME = timeLimit;
     }
 
     public static void setGhostRadius(float radius) {
-            Constants.GHOST_RADIUS = radius;
+        Constants.GHOST_RADIUS = radius;
     }
 
     public static void setTickToMilisecs(long ticks) {
-            Constants.TICK_TO_MILISECS = ticks;
+        Constants.TICK_TO_MILISECS = ticks;
     }
     
     public static void setTraceDuration(int ticks) {

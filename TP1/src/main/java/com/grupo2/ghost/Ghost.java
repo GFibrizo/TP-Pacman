@@ -55,8 +55,8 @@ public class Ghost extends Character implements IGhost {
 	 */
 	@Override
 	public void move() {
-		this.state.getNewDirection(personality);
-		this.state = state.returnNextState();
+            this.state.getNewDirection(personality);
+            this.state = state.returnNextState();
 	}
 
 	/**
@@ -64,23 +64,28 @@ public class Ghost extends Character implements IGhost {
 	 */
 	@Override
 	public boolean isDead() {
-		return state.isDead();
+            return state.isDead();
 	}
 
 	@Override
 	public void die() {
-		this.state = new DeadState();
+            this.state = new DeadState();
 	}
 
 	@Override
 	public void convertToPrey() {
-		this.state = state.convertToPrey();
+            this.state = state.convertToPrey();
 	}
 
 
 	@Override
 	public void onCollisionWithPacman() {
-		this.state = state.collideWithPacman(); // Lo bueno de esto es que cuando muere un fantasma, en el constructor del DeadState (por ejemplo) podemos informar al juego y sumar puntos, etc.
+            this.state = state.collideWithPacman(); // Lo bueno de esto es que cuando muere un fantasma, en el constructor del DeadState (por ejemplo) podemos informar al juego y sumar puntos, etc.
 	}
+        
+        @Override
+        public void getVision() {
+            return this.personality.getVision();
+        }
 
 }

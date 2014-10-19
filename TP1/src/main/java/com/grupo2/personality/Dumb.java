@@ -7,12 +7,12 @@
 package com.grupo2.personality;
 import com.grupo2.maze.MazePublisher;
 import com.grupo2.eventHandling.Subscriber;
-import com.grupo2.movementStrategies.MovementStrategy;
 import com.grupo2.movementStrategies.RandomStrategy;
 import com.grupo2.movementStrategies.ChaseStrategy;
 import com.grupo2.ghostState.Personality;
 import com.grupo2.command.HunterStartsChaseOfPacman;
 import com.grupo2.character.Direction;
+import com.grupo2.constants.Constants;
 
 /**
  *
@@ -20,13 +20,14 @@ import com.grupo2.character.Direction;
  */
 public class Dumb extends Personality {
     
-    private MovementStrategy movement;
+
     
     public Dumb() {
         // FALTA CORREGIR ESTO
         Subscriber sub = new HunterStartsChaseOfPacman(this);
         MazePublisher.getInstance().subscribe(MazePublisher.MazeEvent.GHOSTISCLOSETOPACMAN, this);
         movement = new RandomStrategy();
+        vision = Constants.VISION1;
     }
     
     @Override
@@ -43,4 +44,5 @@ public class Dumb extends Personality {
     public void stopPacmanChase() {
         this.movement = new RandomStrategy();
     }
+    
 }
