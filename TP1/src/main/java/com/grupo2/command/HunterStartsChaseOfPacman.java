@@ -20,7 +20,8 @@ public class HunterStartsChaseOfPacman implements Subscriber {
         this.ghostPersonality = ghostPersonality;
     }
     
-    public void execute() {
+    public boolean execute() {
         this.ghostPersonality.beginPacmanChase();
+        return true;
     }
 }

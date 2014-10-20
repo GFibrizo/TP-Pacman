@@ -32,7 +32,6 @@ public class Pacman extends Character {
 
     @Override
     public void move() {
-
         if ( this.nextDirection.canGoForward( (RawCell) currentCell) ) {
             this.direction = this.nextDirection;
             this.nextDirection = new NullDirection();

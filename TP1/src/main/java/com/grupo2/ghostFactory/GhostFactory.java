@@ -10,6 +10,9 @@ import com.grupo2.ghost.GhostState;
 import com.grupo2.ghostState.Personality;
 import com.grupo2.character.Coordinate;
 import com.grupo2.character.Direction;
+import com.grupo2.pacman.PacmanArea;
+import com.grupo2.command.GhostIsCloseToPacmanCommand;
+import com.grupo2.eventHandling.Subscriber;
 
 /**
  *
@@ -23,6 +26,8 @@ public class GhostFactory {
         newGhost.setState(state);
         newGhost.setPosition(coord);
         newGhost.setPersonality(pers);
+        Subscriber sub = new GhostIsCloseToPacmanCommand(newGhost);
+        PacmanArea.getInstance().subscribe(PacmanArea.VisionEvent.GHOST_IS_INSIDE, sub);
         return newGhost;
     }
     

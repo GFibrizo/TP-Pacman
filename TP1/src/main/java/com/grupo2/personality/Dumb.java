@@ -20,12 +20,11 @@ import com.grupo2.constants.Constants;
  */
 public class Dumb extends Personality {
     
-
     
     public Dumb() {
         // FALTA CORREGIR ESTO
         Subscriber sub = new HunterStartsChaseOfPacman(this);
-        MazePublisher.getInstance().subscribe(MazePublisher.MazeEvent.GHOSTISCLOSETOPACMAN, this);
+        MazePublisher.getInstance().subscribe(MazePublisher.MazeEvent.GHOSTISCLOSETOPACMAN, sub);
         movement = new RandomStrategy();
         vision = Constants.VISION1;
     }
@@ -33,9 +32,9 @@ public class Dumb extends Personality {
     @Override
     public Direction getNewDirection() {
         return movement.getNewDirection();
-        
     }
     
+    @Override
     public void beginPacmanChase() {
         this.movement = new ChaseStrategy();
     }

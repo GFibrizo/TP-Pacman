@@ -13,8 +13,9 @@ public class GhostDirectionCommand extends GhostCommand {
 	}
 
 	@Override
-	public void execute() {
+	public boolean execute() {
 		//no sé si va este command directamente
+            return true;
 	}
 
 }
