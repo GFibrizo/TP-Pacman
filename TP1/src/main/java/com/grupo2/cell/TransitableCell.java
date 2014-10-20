@@ -1,9 +1,9 @@
 package com.grupo2.cell;
 
-import com.grupo2.character.Collitionable;
-import com.grupo2.character.Coordinate;
 import com.grupo2.balls.Ball;
 import com.grupo2.balls.NullBall;
+import com.grupo2.character.Collitionable;
+import com.grupo2.character.Coordinate;
 
 /**
  *
@@ -20,54 +20,53 @@ public class TransitableCell implements RawCell {
     private Ball ball;
 
     public TransitableCell(int x, int y) {
-            this.position = new Coordinate(x, y);
+        this.position = new Coordinate(x, y);
     }
 
     public void setBall(Ball aBall) {
-            this.ball = aBall;
+        this.ball = aBall;
     }
 
     public Ball getBall() {
-            return this.ball;
+        return this.ball;
     }
 
     @Override
     public boolean isTransitable() {
-            return true;
+        return true;
     }
 
     public Collitionable getContent() {
-            return this.content;
+        return this.content;
     }
 
     @Override
     public Coordinate getPosition() {
-            return this.position;
+        return this.position;
     }
 
     @Override
     public void setLeftCell(RawCell rc) {
-            this.leftCell = rc;
+        this.leftCell = rc;
     }
 
     @Override
     public void setRightCell(RawCell rc) {
-            this.rightCell = rc;
+        this.rightCell = rc;
     }
 
     @Override
     public void setUpperCell(RawCell rc) {
-            this.upperCell = rc;
+        this.upperCell = rc;
     }
 
     @Override
     public void setLowerCell(RawCell rc) {
-            this.lowerCell = rc;
+        this.lowerCell = rc;
     }
 
-
     public void setContent(Collitionable c) {
-            this.content = c;
+        this.content = c;
     }
 
     @Override
@@ -82,22 +81,22 @@ public class TransitableCell implements RawCell {
     }
 
     @Override
-    public RawCell getLeftCell() {
+    public Cell getLeftCell() {
         return this.leftCell;
     }
 
     @Override
-    public RawCell getRightCell() {
+    public Cell getRightCell() {
         return this.rightCell;
     }
 
     @Override
-    public RawCell getUpperCell() {
+    public Cell getUpperCell() {
         return this.upperCell;
     }
 
     @Override
-    public RawCell getLowerCell() {
+    public Cell getLowerCell() {
         return this.lowerCell;
     }
 

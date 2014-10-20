@@ -13,12 +13,4 @@ public interface RawCell extends Cell {
 	void setUpperCell(RawCell rc);
 
 	void setLowerCell(RawCell rc);
-        
-        RawCell getLeftCell();
-        
-        RawCell getRightCell();
-
-        RawCell getUpperCell();
-        
-        RawCell getLowerCell();        
 }
