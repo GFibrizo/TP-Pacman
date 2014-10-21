@@ -68,7 +68,7 @@ public class PacmanTest {
      */
     @Test
     public void changeDirectionToUpAndStep() {
-        thePacman.changeDirection(new UpDirection());
+        thePacman.setDirection(new UpDirection());
         thePacman.move();
         int positionYResult = thePacman.getPosition().getY();
         assertEquals(1,positionYResult);
@@ -76,9 +76,9 @@ public class PacmanTest {
     
         @Test
     public void changeDirectionAndStepTwice() {
-        thePacman.changeDirection(new UpDirection());
+        thePacman.setDirection(new UpDirection());
         thePacman.move();
-        thePacman.changeDirection(new LeftDirection());
+        thePacman.setDirection(new LeftDirection());
         thePacman.move();        
         Coordinate positionResult = thePacman.getPosition();
         boolean newPositionOK = positionResult.isEqualTo(new Coordinate(4,1));

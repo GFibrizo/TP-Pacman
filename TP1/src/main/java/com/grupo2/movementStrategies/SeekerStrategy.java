@@ -1,13 +1,12 @@
 package com.grupo2.movementStrategies;
 
-import com.grupo2.ghostState.HunterMovement;
 import com.grupo2.character.Direction;
 
 /**
  *
  * @author fibrizo
  */
-public class SeekerStrategy extends HunterStrategy implements HunterMovement {
+public class SeekerStrategy extends HunterStrategy {
 
     public SeekerStrategy() {
     }

@@ -17,6 +17,7 @@ public class TransitableCell implements RawCell {
     private RawCell leftCell;
     private RawCell rightCell;
     private Coordinate position;
+    private int amountOfWays = 0;
     private Ball ball;
 
     public TransitableCell(int x, int y) {
@@ -47,27 +48,31 @@ public class TransitableCell implements RawCell {
 
     @Override
     public void setLeftCell(RawCell rc) {
-            this.leftCell = rc;
+        this.leftCell = rc;
+        amountOfWays++;
     }
 
     @Override
     public void setRightCell(RawCell rc) {
-            this.rightCell = rc;
+        this.rightCell = rc;
+        amountOfWays++;
     }
 
     @Override
     public void setUpperCell(RawCell rc) {
-            this.upperCell = rc;
+        this.upperCell = rc;
+        amountOfWays++;
     }
 
     @Override
     public void setLowerCell(RawCell rc) {
-            this.lowerCell = rc;
+        this.lowerCell = rc;
+        amountOfWays++;
     }
 
 
     public void setContent(Collitionable c) {
-            this.content = c;
+        this.content = c;
     }
 
     @Override
@@ -100,5 +105,5 @@ public class TransitableCell implements RawCell {
     public RawCell getLowerCell() {
         return this.lowerCell;
     }
-
+    
 }

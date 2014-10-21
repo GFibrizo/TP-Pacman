@@ -15,6 +15,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import javax.xml.parsers.ParserConfigurationException;
 
 /**
  *
@@ -30,7 +31,11 @@ public class CharacterBuilderTest {
     @Before
     public void setUpClass() {
             // CHANGE THE PATH TO YOURS
-        charBuilder = new CharacterXMLBuilder("/home/mauri/Desktop/TDD/TPS/tp/TP1/src/main/resources/laberintos/PersonajesSimple.xml"); 
+        try {
+            charBuilder = new CharacterXMLBuilder("/home/fibrizo/Escritorio/TP-Pacman/tp/TP1/src/main/resources/laberintos/PersonajesSimple.xml"); 
+        } catch (Exception e) {
+            assert(false);
+        }
     }
 
     /**
@@ -39,7 +44,13 @@ public class CharacterBuilderTest {
     @Test
     public void getPacmanPosition() {
         
-       Pacman builtPacman = charBuilder.getPacman();
+        Pacman builtPacman;
+        try {
+            builtPacman = charBuilder.getPacman();
+        } catch (Exception e) {
+            assert(false);
+            return;
+        }
 
         Coordinate builtPacPosition = builtPacman.getPosition();
         Direction builtPacDirection = builtPacman.getDirection();
@@ -52,4 +63,5 @@ public class CharacterBuilderTest {
         
         assertTrue(sameDirections && samePositions);
     }
+    
 }

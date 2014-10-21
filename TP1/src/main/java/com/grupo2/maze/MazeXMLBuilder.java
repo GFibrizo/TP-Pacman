@@ -26,60 +26,61 @@ import org.xml.sax.SAXException;
  */
 public class MazeXMLBuilder implements MazeBuilder {
 
-	private final File xmlFile;
+    private final File xmlFile;
 
-	public MazeXMLBuilder(String path) {
-		this.xmlFile = new File(path);
-	}
+    public MazeXMLBuilder(String path) {
+        this.xmlFile = new File(path);
+    }
 
-	private Coordinate getCoords(String attribute) {
-		int half = attribute.length() / 2;
-		int x, y;
-		x = Integer.parseInt(attribute.substring(0, half));
-		y = Integer.parseInt(attribute.substring(half, 2 * half));
+    private Coordinate getCoords(String attribute) {
+        int half = attribute.length() / 2;
+        int x, y;
+        x = Integer.parseInt(attribute.substring(0, half));
+        y = Integer.parseInt(attribute.substring(half, 2 * half));
 
-		return new Coordinate(x, y);
-	}
+        return new Coordinate(x, y);
+    }
 
-	@Override
-	public RawMaze buildMaze() {
-		RawMaze maze = null;
-		try {
-			DocumentBuilder dBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-			Document doc;
-			doc = dBuilder.parse(this.xmlFile);
-			doc.getDocumentElement().normalize();
-			Element root = doc.getDocumentElement();
-			int width = Integer.parseInt(root.getAttribute("ancho"));
-			int height = Integer.parseInt(root.getAttribute("alto"));
-			Coordinate initPacman = this.getCoords(root.getAttribute("inicioPacman"));
-			Coordinate initGhosts = this.getCoords(root.getAttribute("inicioFantasmas"));
-			maze = new RawMaze(height, width, initPacman, initGhosts);
-			NodeList nList = doc.getElementsByTagName("nodo");
-			for (int i = 0; i < nList.getLength(); i++) {
-				Node nNode = nList.item(i);
-				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-					Element eElement = (Element) nNode;
-					int y = Integer.parseInt(eElement.getAttribute("fila"));
-					int x = Integer.parseInt(eElement.getAttribute("columna"));
-					String content = eElement.getAttribute("contenido");
-					RawCell aCell;
-					if ("".equals(content)) {
-						aCell = new UntransitableCell(x, y);
-					} else {
-						aCell = new TransitableCell(x, y);
-						Ball ball = (content.equals("bolita") ? new LittleBall() : new BigBall());
-						((TransitableCell) aCell).setBall(ball);
-					}
-					maze.addCell(aCell);
-				}
-			}
-			maze.connectCells();
+    @Override
+    public RawMaze buildMaze() {
+        RawMaze maze = null;
+        try {
+            DocumentBuilder dBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+            Document doc;
+            doc = dBuilder.parse(this.xmlFile);
+            doc.getDocumentElement().normalize();
+            Element root = doc.getDocumentElement();
+            int width = Integer.parseInt(root.getAttribute("ancho"));
+            int height = Integer.parseInt(root.getAttribute("alto"));
+            Coordinate initPacman = this.getCoords(root.getAttribute("inicioPacman"));
+            Coordinate initGhosts = this.getCoords(root.getAttribute("inicioFantasmas"));
+            maze = new RawMaze(height, width, initPacman, initGhosts);
+            NodeList nList = doc.getElementsByTagName("nodo");
+            for (int i = 0; i < nList.getLength(); i++) {
+                Node nNode = nList.item(i);
+                if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+                    Element eElement = (Element) nNode;
+                    int y = Integer.parseInt(eElement.getAttribute("fila"));
+                    int x = Integer.parseInt(eElement.getAttribute("columna"));
+                    String content = eElement.getAttribute("contenido");
+                    RawCell aCell;
+                    if ("".equals(content)) {
+                        aCell = new UntransitableCell(x, y);
+                    } else {
+                        aCell = new TransitableCell(x, y);
+                        Ball ball = (content.equals("bolita") ? new LittleBall() : new BigBall());
+                        ((TransitableCell) aCell).setBall(ball);
+                    }
+                    maze.addCell(aCell);
+                }
+            }
+            maze.connectCells();
 
-		} catch (ParserConfigurationException | SAXException | IOException ex) {
-			Logger.getLogger(MazeXMLBuilder.class.getName()).log(Level.SEVERE, null, ex);
-		}
-		return maze;
-	}
+        }
+        catch (ParserConfigurationException | SAXException | IOException ex) {
+            Logger.getLogger(MazeXMLBuilder.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return maze;
+    }
 
 }

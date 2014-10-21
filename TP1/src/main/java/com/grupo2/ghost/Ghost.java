@@ -38,6 +38,8 @@ public class Ghost extends Character implements IGhost {
     public static Ghost createEmptyGhost() {
         return new Ghost();
     }
+    
+    
 
     public void setState(GhostState state) {
         this.state = state;

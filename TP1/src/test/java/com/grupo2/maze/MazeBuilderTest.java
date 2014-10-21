@@ -25,7 +25,7 @@ public class MazeBuilderTest {
     
     @Before
     public void setUp() {
-        mazeBuilder = new MazeXMLBuilder("/home/ivan/Escritorio/TP-TDD/tp/TP1/src/main/resources/laberintos/LaberintoSimple.xml");
+        mazeBuilder = new MazeXMLBuilder("/home/fibrizo/Escritorio/TP-Pacman/tp/TP1/src/main/resources/laberintos/LaberintoSimple.xml");
     }
     
      /**

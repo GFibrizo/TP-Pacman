@@ -1,7 +1,7 @@
 package com.grupo2.controller;
 
 import com.grupo2.character.Direction;
-import com.grupo2.character.directions.RightDirection;
+import com.grupo2.directions.RightDirection;
 import java.io.File;
 
 /**

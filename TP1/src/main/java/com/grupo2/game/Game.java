@@ -8,6 +8,7 @@ import com.grupo2.map.Map;
 import com.grupo2.maze.MazeXMLBuilder;
 import com.grupo2.view.View;
 import com.grupo2.view.XMLView;
+import javax.xml.parsers.ParserConfigurationException;
 
 /**
  *
@@ -16,7 +17,7 @@ import com.grupo2.view.XMLView;
 public class Game {
 
     //TODO: Builders should depend on pgm arguments or something like that
-    public void startGame() {
+    public void startGame() throws ParserConfigurationException {
 
         Map map = new Map(new MazeXMLBuilder("path"), new CharacterXMLBuilder("otherpath"));
         Controller controller = new XMLController("cpath");

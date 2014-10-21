@@ -10,6 +10,7 @@ import com.grupo2.interfaces.IGhost;
 import com.grupo2.constants.Constants;
 import com.grupo2.ghost.GhostState;
 import com.grupo2.ghost.Ghost;
+import com.grupo2.personality.Seeker;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -53,7 +54,7 @@ public class DeadStateTest {
         System.out.println("move");
         boolean flag = false;
         try {
-            state.move();
+            state.getNewDirection(new Seeker());
         } catch (UnsupportedOperationException e) {
             flag = true;
         }

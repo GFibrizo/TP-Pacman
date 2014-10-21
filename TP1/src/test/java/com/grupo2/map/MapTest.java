@@ -35,11 +35,21 @@ public class MapTest {
      */
     @Test
     public void testCollisionBetween() {
-        ICharacter aCharacter = new Ghost(0, 0, new DownDirection());
-        ICharacter anotherCharacter = new Ghost(0, 0, new DownDirection());
-        Map map = new Map(new MazeXMLBuilder("path"), new CharacterXMLBuilder("otherpath"));
+        ICharacter character = Ghost.createEmptyGhost();
+        character.setPosition(0, 0);
+        character.setDirection(new DownDirection());
+        ICharacter other = Ghost.createEmptyGhost();
+        other.setPosition(0, 0);
+        other.setDirection(new DownDirection());
+        Map map;
+        try {
+            map = new Map(new MazeXMLBuilder("path"), new CharacterXMLBuilder("otherpath"));
+        } catch (Exception e){
+            assert(false);
+            return;
+        }
         boolean expResult = true;
-        boolean result = map.collisionBetween(aCharacter, anotherCharacter);
+        boolean result = map.collisionBetween(character, other);
         assertEquals(expResult, result);
     }
 

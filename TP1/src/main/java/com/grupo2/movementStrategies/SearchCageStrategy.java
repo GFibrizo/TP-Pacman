@@ -1,13 +1,12 @@
 package com.grupo2.movementStrategies;
 
-import com.grupo2.ghostState.DeadMovement;
 import com.grupo2.character.Direction;
 
 /**
  *
  * @author ivan
  */
-public class SearchCageStrategy extends MovementStrategy implements DeadMovement {
+public class SearchCageStrategy extends MovementStrategy {
 
 	public SearchCageStrategy() {
 	}

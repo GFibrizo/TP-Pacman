@@ -26,6 +26,7 @@ public class Map {
     public Map(final MazeBuilder mazeBuilder, final CharacterBuilder characterBuilder) {
         this.maze = mazeBuilder.buildMaze();
         this.ghosts = characterBuilder.getGhosts();
+        characterBuilder.obtainCharactersFromXML();
         this.thePacman = characterBuilder.getPacman();
         this.thePacman.setPosition(this.maze.getPacmanBegining());
         this.ghosts.forEach((ghost) -> ghost.setPosition(this.maze.getGhostBegining()));

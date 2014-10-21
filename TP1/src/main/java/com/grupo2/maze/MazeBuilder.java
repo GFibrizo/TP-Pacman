@@ -6,10 +6,10 @@ package com.grupo2.maze;
  */
 public interface MazeBuilder {
 
-	/**
-	 * Builds a Maze.
-	 *
-	 * @return the builded maze
-	 */
-	RawMaze buildMaze();
+    /**
+     * Builds a Maze.
+     *
+     * @return the builded maze
+     */
+    RawMaze buildMaze();
 }
