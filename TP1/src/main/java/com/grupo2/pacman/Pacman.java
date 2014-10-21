@@ -1,11 +1,12 @@
 package com.grupo2.pacman;
 
 import com.grupo2.cell.RawCell;
+import com.grupo2.cell.TransitableCell;
 import com.grupo2.character.Character;
-import com.grupo2.character.Direction;
-import com.grupo2.directions.NullDirection;
-import com.grupo2.constants.Constants;
 import com.grupo2.character.Coordinate;
+import com.grupo2.character.Direction;
+import com.grupo2.constants.Constants;
+import com.grupo2.directions.NullDirection;
 
 /**
  *
@@ -25,7 +26,8 @@ public class Pacman extends Character {
     public Pacman(final int x, final int y, final Direction dir) {
         this.position = new Coordinate(x, y);
         this.direction = dir;
-        currentCell = null;
+        this.nextDirection = new NullDirection();
+        this.currentCell = null;
         this.alive = true;
     }
 

@@ -49,9 +49,10 @@ public abstract class Character implements ICharacter {
     
     @Override
     public void setDirection(Direction dir) {
-        direction = direction;
+        direction = dir;
     }
     
+    @Override
     public void setCurrentCell(Cell cell) {
         currentCell = cell;
     }
