@@ -100,4 +100,24 @@ public class TransitableCell implements RawCell {
         return this.lowerCell;
     }
 
+    @Override
+    public boolean canGoUp() {
+        return upperCell.isTransitable();
+    }
+
+    @Override
+    public boolean canGoDown() {
+        return lowerCell.isTransitable();
+    }
+
+    @Override
+    public boolean canGoLeft() {
+        return leftCell.isTransitable();
+    }
+
+    @Override
+    public boolean canGoRight() {
+        return rightCell.isTransitable();
+    }
+
 }
