@@ -6,6 +6,8 @@
 
 package com.grupo2.pacman;
 
+import com.grupo2.cell.RawCell;
+import com.grupo2.cell.TransitableCell;
 import com.grupo2.character.Coordinate;
 import com.grupo2.character.Direction;
 import com.grupo2.directions.LeftDirection;
@@ -29,7 +31,13 @@ public class PacmanTest {
     
     @Before
     public void setUp() {
-        thePacman = new Pacman(5,0,new LeftDirection());
+        thePacman = new Pacman(5,1,new LeftDirection());
+        TransitableCell cell = new TransitableCell(5,1);
+        cell.setLeftCell(new TransitableCell(4,1));
+        cell.setRightCell(new TransitableCell(6,1));
+        cell.setUpperCell(new TransitableCell(5,0));
+        cell.setLowerCell(new TransitableCell(5,2));        
+        thePacman.setCurrentCell(cell);
     }
     
     @AfterClass
@@ -71,7 +79,7 @@ public class PacmanTest {
         thePacman.setDirection(new UpDirection());
         thePacman.move();
         int positionYResult = thePacman.getPosition().getY();
-        assertEquals(1,positionYResult);
+        assertEquals(0,positionYResult);
     }
     
         @Test
@@ -81,7 +89,7 @@ public class PacmanTest {
         thePacman.setDirection(new LeftDirection());
         thePacman.move();        
         Coordinate positionResult = thePacman.getPosition();
-        boolean newPositionOK = positionResult.isEqualTo(new Coordinate(4,1));
+        boolean newPositionOK = positionResult.isEqualTo(new Coordinate(4,0));
         assertTrue(newPositionOK);
     }
    

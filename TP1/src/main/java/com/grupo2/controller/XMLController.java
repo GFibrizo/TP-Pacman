@@ -10,15 +10,15 @@ import java.io.File;
  */
 public class XMLController implements Controller {
 
-    private final File xmlFile;
+	private final File xmlFile;
 
-    public XMLController(String path) {
-        this.xmlFile = new File(path);
-    }
+	public XMLController(String path) {
+		this.xmlFile = new File(path);
+	}
 
-    @Override
-    public Direction getPacmanNextDirection() {
-        return new RightDirection();
-    }
+	@Override
+	public Direction getPacmanNextDirection() {
+		return new RightDirection();
+	}
 
 }
