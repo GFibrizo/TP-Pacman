@@ -34,12 +34,12 @@ public class Pacman extends Character {
 
     @Override
     public void move() {
-        if ( this.nextDirection.canGoForward( (RawCell) currentCell) ) {
+        if ( this.nextDirection.canGoForward(currentCell) ) {
             this.direction = this.nextDirection;
             this.nextDirection = new NullDirection();
         }
 
-        if ( this.direction.canGoForward( (RawCell)currentCell) ) {
+        if ( this.direction.canGoForward(currentCell) ) {
             this.direction.stepForward(this); 
         }
     }
