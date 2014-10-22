@@ -1,8 +1,9 @@
 package com.grupo2.movementStrategies;
-import java.util.ArrayList;
+import java.util.Map;
 import java.util.List;
 import com.grupo2.character.Direction;
 import com.grupo2.directions.*;
+import com.grupo2.cell.Cell;
 import java.util.Random;
 
 /**
@@ -22,5 +23,5 @@ public abstract class MovementStrategy {
         randomGenerator = new Random();
     }
 
-    public abstract Direction getNewDirection();
+    public abstract Direction getNewDirection(Map<Direction, Cell> allowedDirections);
 }

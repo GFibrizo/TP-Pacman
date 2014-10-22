@@ -31,7 +31,7 @@ public class PacmanTest {
     
     @Before
     public void setUp() {
-        thePacman = new Pacman(5,1,new LeftDirection());
+        thePacman = Pacman.createPacman(5,1,new LeftDirection());
         TransitableCell cell = new TransitableCell(5,1);
         cell.setLeftCell(new TransitableCell(4,1));
         cell.setRightCell(new TransitableCell(6,1));

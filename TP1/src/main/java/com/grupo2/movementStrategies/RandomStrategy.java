@@ -1,5 +1,7 @@
 package com.grupo2.movementStrategies;
+import com.grupo2.cell.Cell;
 import com.grupo2.character.Direction;
+import java.util.Map;
 
 /**
  *
@@ -12,7 +14,7 @@ public class RandomStrategy extends MovementStrategy {
 	}
 
 	@Override
-	public Direction getNewDirection() {
+	public Direction getNewDirection(Map<Direction, Cell> allowedDirections) {
             return directions.get(randomGenerator.nextInt(4));
 	}
 

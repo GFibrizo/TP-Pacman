@@ -10,7 +10,8 @@ import com.grupo2.directions.UpDirection;
 import com.grupo2.ghostState.DeadState;
 import com.grupo2.ghostState.Personality;
 import com.grupo2.interfaces.IGhost;
-import java.util.ArrayList;
+import java.util.TreeMap;
+import java.util.Map;
 
 /**
  *
@@ -62,13 +63,11 @@ public class Ghost extends Character implements IGhost {
     @Override
     public void move() {
         Direction nextDirection;
-        do { 
-            nextDirection = state.getNewDirection(personality);
-        } while ((!nextDirection.canGoForward(currentCell)) ||
-            (nextDirection.isOposedTo(direction))); 
-
-        direction = nextDirection;
-        if (direction.canGoForward(currentCell) ) 
+        Map<Direction, Cell> directions = allowedDirections();
+        if (directions.size() > 1) {
+            direction = state.getNewDirection(personality, directions);
+        } 
+        if (direction.canGoForward(currentCell)) 
             direction.stepForward(this); 
         this.state = state.returnNextState();
     }
@@ -109,15 +108,14 @@ public class Ghost extends Character implements IGhost {
         personality.stopPacmanChase();
     }
 
-    @Override
-    public ArrayList<Direction> allowedDirections() {
+    private Map<Direction, Cell> allowedDirections() {
         
-        ArrayList<Direction> allowedDirections = new ArrayList();        
+        Map<Direction, Cell> allowedDirections = new TreeMap();        
         
-        if( cell.canGoUp() && !direction.isOposedTo(new UpDirection()) ) allowedDirections.add(new UpDirection());
-        if( cell.canGoDown() && !direction.isOposedTo(new DownDirection()) ) allowedDirections.add(new DownDirection());
-        if( cell.canGoLeft() && !direction.isOposedTo(new LeftDirection()) ) allowedDirections.add(new LeftDirection());
-        if( cell.canGoRight() && !direction.isOposedTo(new RightDirection()) ) allowedDirections.add(new RightDirection());        
+        if( cell.canGoUp() && !direction.isOposedTo(new UpDirection()) ) allowedDirections.put(new UpDirection(), currentCell.getUpperCell());
+        if( cell.canGoDown() && !direction.isOposedTo(new DownDirection()) ) allowedDirections.put(new DownDirection(), currentCell.getLowerCell());
+        if( cell.canGoLeft() && !direction.isOposedTo(new LeftDirection()) ) allowedDirections.put(new LeftDirection(), currentCell.getLeftCell());
+        if( cell.canGoRight() && !direction.isOposedTo(new RightDirection()) ) allowedDirections.put(new RightDirection(), currentCell.getRightCell());        
         return allowedDirections;
         
     }

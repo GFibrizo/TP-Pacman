@@ -1,6 +1,8 @@
 package com.grupo2.movementStrategies;
 
+import com.grupo2.cell.Cell;
 import com.grupo2.character.Direction;
+import java.util.Map;
 
 /**
  *
@@ -12,7 +14,7 @@ public class SearchCageStrategy extends MovementStrategy {
 	}
 
 	@Override
-	public Direction getNewDirection() {
+	public Direction getNewDirection(Map<Direction, Cell> allowedDirections) {
             throw new UnsupportedOperationException("Not implemented yet");
 	}
 

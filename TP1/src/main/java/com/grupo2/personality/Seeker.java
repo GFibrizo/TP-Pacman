@@ -8,6 +8,8 @@ package com.grupo2.personality;
 import com.grupo2.character.Direction;
 import com.grupo2.ghostState.Personality;
 import com.grupo2.constants.Constants;
+import com.grupo2.cell.Cell;
+import java.util.Map;
 
 /**
  *
@@ -20,7 +22,7 @@ public class Seeker extends Personality {
     }
 
     @Override
-    public Direction getNewDirection() {
+    public Direction getNewDirection(Map<Direction, Cell> allowedDirections) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

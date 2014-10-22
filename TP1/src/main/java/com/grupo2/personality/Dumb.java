@@ -13,6 +13,8 @@ import com.grupo2.ghostState.Personality;
 import com.grupo2.command.HunterStartsChaseOfPacman;
 import com.grupo2.character.Direction;
 import com.grupo2.constants.Constants;
+import com.grupo2.cell.Cell;
+import java.util.Map;
 
 /**
  *
@@ -30,8 +32,8 @@ public class Dumb extends Personality {
     }
     
     @Override
-    public Direction getNewDirection() {
-        return movement.getNewDirection();
+    public Direction getNewDirection(Map<Direction, Cell> allowedDirections) {
+        return movement.getNewDirection(allowedDirections);
     }
     
     @Override

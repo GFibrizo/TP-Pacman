@@ -7,6 +7,7 @@ import com.grupo2.character.Coordinate;
 import com.grupo2.character.Direction;
 import com.grupo2.constants.Constants;
 import com.grupo2.directions.NullDirection;
+import java.lang.ExceptionInInitializerError;
 
 /**
  *
@@ -14,6 +15,9 @@ import com.grupo2.directions.NullDirection;
  */
 public class Pacman extends Character {
 
+    
+    private static Pacman instance;
+    
     private Direction nextDirection;
     private boolean alive;
     private int score;
@@ -23,7 +27,17 @@ public class Pacman extends Character {
         this.alive = true;
     }*/
     
-    public Pacman(final int x, final int y, final Direction dir) {
+    public static Pacman getPacman() {
+        if (instance == null) 
+            throw new ExceptionInInitializerError();
+        return instance;
+    }
+    
+    public static Pacman createPacman(final int x, final int y, final Direction dir) {
+        return new Pacman(x, y, dir);
+    }
+    
+    private Pacman(final int x, final int y, final Direction dir) {
         this.position = new Coordinate(x, y);
         this.direction = dir;
         this.nextDirection = new NullDirection();

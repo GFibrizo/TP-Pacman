@@ -3,6 +3,8 @@ package com.grupo2.ghostState;
 import com.grupo2.ghost.GhostState;
 import com.grupo2.constants.Constants;
 import com.grupo2.character.Direction;
+import com.grupo2.cell.Cell;
+import java.util.Map;
 
 /**
  *
@@ -19,8 +21,8 @@ public class HunterState extends GhostState {
         
 
 	@Override
-	public Direction getNewDirection(Personality personality) {
-            return personality.getNewDirection();
+	public Direction getNewDirection(Personality personality, Map<Direction, Cell> allowedDirections) {
+            return personality.getNewDirection(allowedDirections);
 	}
 
 	/**

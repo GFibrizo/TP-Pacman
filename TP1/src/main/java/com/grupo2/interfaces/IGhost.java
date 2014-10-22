@@ -14,6 +14,5 @@ public interface IGhost extends ICharacter {
     public void convertToPrey();
     public void onCollisionWithPacman();
     public int getVision();
-    public ArrayList<Direction> allowedDirections();
         
 }

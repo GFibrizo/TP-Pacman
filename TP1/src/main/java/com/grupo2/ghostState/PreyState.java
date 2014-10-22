@@ -5,6 +5,8 @@ import com.grupo2.ghost.GhostState;
 import com.grupo2.constants.Constants;
 import com.grupo2.movementStrategies.MovementStrategy;
 import com.grupo2.movementStrategies.ScapeStrategy;
+import com.grupo2.cell.Cell;
+import java.util.Map;
 
 /**
  *
@@ -20,9 +22,9 @@ public class PreyState extends GhostState {
     }
 
     @Override
-    public Direction getNewDirection(Personality personality) {
+    public Direction getNewDirection(Personality personality, Map<Direction, Cell> allowedDirections) {
         time++;
-        return this.movement.getNewDirection();
+        return this.movement.getNewDirection(allowedDirections);
     }
  
     /**

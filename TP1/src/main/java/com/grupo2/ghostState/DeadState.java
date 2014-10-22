@@ -5,6 +5,8 @@ import com.grupo2.ghost.GhostState;
 import com.grupo2.movementStrategies.SearchCageStrategy;
 import com.grupo2.movementStrategies.MovementStrategy;
 import com.grupo2.character.Direction;
+import com.grupo2.cell.Cell;
+import java.util.Map;
 
 /**
  *
@@ -21,9 +23,9 @@ public class DeadState extends GhostState {
 	}
 
 	@Override
-	public Direction getNewDirection(Personality personality) {
+	public Direction getNewDirection(Personality personality, Map<Direction, Cell> allowedDirections) {
             time++;
-            return movement.getNewDirection();
+            return movement.getNewDirection(allowedDirections);
 	}
 
 	/**

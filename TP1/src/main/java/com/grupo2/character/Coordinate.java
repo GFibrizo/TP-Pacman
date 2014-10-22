@@ -58,10 +58,10 @@ public class Coordinate {
 	 * @param otherCoordinate Coordinate to compute distance.
 	 * @return distance
 	 */
-	public float distanceTo(Coordinate otherCoordinate) {
+	public int distanceTo(Coordinate otherCoordinate) {
 		int distanceX = this.getX() - otherCoordinate.getX();
 		int distanceY = this.getY() - otherCoordinate.getY();
 		int valuedDistance = distanceX * distanceX + distanceY * distanceY;
-		return (float) sqrt(valuedDistance);
+		return (int) sqrt(valuedDistance);
 	}
 }
