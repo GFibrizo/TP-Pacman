@@ -17,6 +17,13 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import com.grupo2.character.Direction;
+import com.grupo2.cell.Cell;
+import java.util.TreeMap;
+import java.util.Map;
+import com.grupo2.directions.*;
+import com.grupo2.cell.*;
+import com.grupo2.pacman.Pacman;
 
 /**
  *
@@ -52,13 +59,13 @@ public class DeadStateTest {
     @Test
     public void testMove() {
         System.out.println("move");
-        boolean flag = false;
-        try {
-            state.getNewDirection(new Seeker());
-        } catch (UnsupportedOperationException e) {
-            flag = true;
-        }
-        assertTrue(flag);
+        Map<Direction, Cell> directions = new TreeMap<>();
+        directions.put(new UpDirection(), new TransitableCell(5,5));
+        directions.put(new LeftDirection(), new TransitableCell(5,4));
+        Pacman.createPacman(5, 1, new UpDirection());
+        Direction newDirection = state.getNewDirection(new Seeker(), directions);
+ 
+        assertTrue(newDirection.isEqualTo(new LeftDirection()));
     }
 
     /**

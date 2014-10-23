@@ -75,9 +75,5 @@ public class Pacman extends Character {
         alive = false;
     }
 
-    @Override
-    public Cell getCurrentCell() {
-        return this.currentCell;
-    }
 
 }
