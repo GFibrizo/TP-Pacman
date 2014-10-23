@@ -3,12 +3,13 @@ package com.grupo2.maze;
 import com.grupo2.balls.Ball;
 import com.grupo2.balls.BigBall;
 import com.grupo2.balls.LittleBall;
-import com.grupo2.character.Coordinate;
 import com.grupo2.cell.RawCell;
 import com.grupo2.cell.TransitableCell;
 import com.grupo2.cell.UntransitableCell;
+import com.grupo2.character.Coordinate;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.parsers.DocumentBuilder;
@@ -28,8 +29,8 @@ public class MazeXMLBuilder implements MazeBuilder {
 
     private final File xmlFile;
 
-    public MazeXMLBuilder(String path) {
-        this.xmlFile = new File(path);
+    public MazeXMLBuilder(Path path) {
+        this.xmlFile = path.toFile();
     }
 
     private Coordinate getCoords(String attribute) {
@@ -40,8 +41,8 @@ public class MazeXMLBuilder implements MazeBuilder {
 
         return new Coordinate(x, y);
     }
-    
-    
+
+
     private boolean isUntransitableCell(Element eElement) {
         String[] cells = new String[] { "izquierda", "derecha", "arriba", "abajo" };
         for (String cell : cells) {
@@ -50,7 +51,7 @@ public class MazeXMLBuilder implements MazeBuilder {
         }
         return true;
     }
-    
+
 
     @Override
     public RawMaze buildMaze() {

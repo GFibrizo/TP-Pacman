@@ -1,9 +1,16 @@
 package com.grupo2.character;
 
+import com.grupo2.directions.DownDirection;
+import com.grupo2.directions.LeftDirection;
+import com.grupo2.directions.RightDirection;
+import com.grupo2.directions.UpDirection;
+import com.grupo2.ghostFactory.GhostFactory;
+import com.grupo2.interfaces.IGhost;
 import com.grupo2.maze.MazeXMLBuilder;
 import com.grupo2.pacman.Pacman;
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -13,31 +20,23 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.xml.sax.SAXException;
-
-import java.util.HashMap;
-import java.util.Map;
-import com.grupo2.interfaces.*;
-import com.grupo2.directions.*;
-import com.grupo2.ghostFactory.GhostFactory;
-//import com.sun.org.apache.xpath.internal.functions.Function;
+import org.w3c.dom.NodeList;import org.xml.sax.SAXException;
 
 
 
 public class CharacterXMLBuilder implements CharacterBuilder {
-    
-    
-    private String path;
+
+
+    private Path path;
     private DocumentBuilder dBuilder;
     private Document doc;
     //Map<String, Function> hash = new HashMap<>();
     private ArrayList<IGhost> ghosts;
     private Pacman pacman;
-        
-        
-       
-    public CharacterXMLBuilder(String path) throws ParserConfigurationException {
+
+
+
+    public CharacterXMLBuilder(Path path) throws ParserConfigurationException {
         this.path = path;
         try {
             this.dBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
@@ -56,8 +55,8 @@ public class CharacterXMLBuilder implements CharacterBuilder {
         hash.put("Cazador",   (p) -> {return new HunterState();});
         hash.put("Presa",     (p) -> {return new PreyState();});*/
     }
-    
-   
+
+
     /*private ICharacter constructCharacter(Element eElement, boolean isGhost) {
         int x = Integer.parseInt(eElement.getAttribute("fila"));
         int y = Integer.parseInt(eElement.getAttribute("columna"));
@@ -69,11 +68,11 @@ public class CharacterXMLBuilder implements CharacterBuilder {
             Coordinate coord = new Coordinate(x,y);
             Personality pers = (Personality) hash.get(eElement.getAttribute("personalidad")).apply(null);
             GhostState state = (GhostState) hash.get(eElement.getAttribute("estado")).apply(null);
-            return GhostFactory.createGhost(state, pers, coord, dir);   
+            return GhostFactory.createGhost(state, pers, coord, dir);
         }
     }*/
-    
-    
+
+
     public void obtainCharactersFromXML() {
        /* try {
             File xmlFile = new File(path);
@@ -93,12 +92,12 @@ public class CharacterXMLBuilder implements CharacterBuilder {
         } catch (SAXException | IOException ex) {
             Logger.getLogger(MazeXMLBuilder.class.getName()).log(Level.SEVERE, null, ex);
         }*/
-        
 
-        
+
+
         try {
-            System.out.print(path);
-            File xmlFile = new File(path);
+            //System.out.print(path);
+            File xmlFile = path.toFile();
             doc = dBuilder.parse(xmlFile);
             doc.getDocumentElement().normalize();
             Element root = doc.getDocumentElement();
@@ -108,7 +107,7 @@ public class CharacterXMLBuilder implements CharacterBuilder {
             Direction dir;
             dir = getDirection(direction);
             this.pacman = Pacman.createPacman(x, y, dir);
-            
+
             NodeList nList = doc.getElementsByTagName("fantasma");
             this.ghosts = new ArrayList<>();
             for (int i = 0; i < nList.getLength(); i++) {
@@ -120,7 +119,7 @@ public class CharacterXMLBuilder implements CharacterBuilder {
                     direction = eElement.getAttribute("sentido");
                     dir = getDirection(direction);
                     Coordinate coord = new Coordinate(x,y);
-                    this.ghosts.add(GhostFactory.createGhost(null, null, coord, dir)); 
+                    this.ghosts.add(GhostFactory.createGhost(null, null, coord, dir));
                     //this.ghosts.add(new Ghost(x, y, dir));
                 }
             }
@@ -129,7 +128,7 @@ public class CharacterXMLBuilder implements CharacterBuilder {
         }
     }
 
-    
+
     private Direction getDirection(String direction) {
         Direction dir;
         switch (direction) {
