@@ -15,7 +15,8 @@ public class RandomStrategy extends MovementStrategy {
 
 	@Override
 	public Direction getNewDirection(Map<Direction, Cell> allowedDirections) {
-            return directions.get(randomGenerator.nextInt(4));
+            int range = allowedDirections.size();
+            return directions.get(randomGenerator.nextInt(range));
 	}
 
 
