@@ -6,10 +6,18 @@
 
 package com.grupo2.ghostState;
 
+import com.grupo2.cell.Cell;
+import com.grupo2.cell.TransitableCell;
+import com.grupo2.character.Direction;
+import com.grupo2.directions.LeftDirection;
+import com.grupo2.directions.UpDirection;
 import com.grupo2.interfaces.IGhost;
 import com.grupo2.ghost.Ghost;
 import com.grupo2.ghost.GhostState;
+import com.grupo2.pacman.Pacman;
 import com.grupo2.personality.Seeker;
+import java.util.Map;
+import java.util.TreeMap;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -52,13 +60,13 @@ public class HunterStateTest {
     @Test
     public void testMove() {
         System.out.println("move");
-        boolean flag = false;
-        try {
-            state.getNewDirection(new Seeker());
-        } catch (UnsupportedOperationException e) {
-            flag = true;
-        }
-        assertTrue(flag);
+        Map<Direction, Cell> directions = new TreeMap<>();
+        directions.put(new UpDirection(), new TransitableCell(5,5));
+        directions.put(new LeftDirection(), new TransitableCell(5,4));
+        Pacman.createPacman(5, 1, new UpDirection());
+        Direction newDirection = state.getNewDirection(new Seeker(), directions);
+ 
+        assertTrue(newDirection.isEqualTo(new LeftDirection()));
     }
 
     /**

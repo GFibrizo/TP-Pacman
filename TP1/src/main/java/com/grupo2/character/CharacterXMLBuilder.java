@@ -21,7 +21,7 @@ import java.util.Map;
 import com.grupo2.interfaces.*;
 import com.grupo2.directions.*;
 import com.grupo2.ghostFactory.GhostFactory;
-import com.sun.org.apache.xpath.internal.functions.Function;
+//import com.sun.org.apache.xpath.internal.functions.Function;
 
 
 
@@ -31,7 +31,7 @@ public class CharacterXMLBuilder implements CharacterBuilder {
     private String path;
     private DocumentBuilder dBuilder;
     private Document doc;
-    Map<String, Function> hash = new HashMap<>();
+    //Map<String, Function> hash = new HashMap<>();
     private ArrayList<IGhost> ghosts;
     private Pacman pacman;
         

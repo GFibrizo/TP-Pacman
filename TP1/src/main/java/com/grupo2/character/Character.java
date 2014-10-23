@@ -56,4 +56,9 @@ public abstract class Character implements ICharacter {
     public void setCurrentCell(Cell cell) {
         currentCell = cell;
     }
+    
+    @Override
+    public Cell getCurrentCell() {
+        return this.currentCell;
+    }
 }
