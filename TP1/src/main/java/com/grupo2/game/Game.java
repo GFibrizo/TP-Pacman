@@ -22,8 +22,9 @@ public class Game {
     //TODO: Builders should depend on pgm arguments or something like that
     public void startGame() throws ParserConfigurationException, SAXException, IOException {
 
-        Map map = new Map(new MazeXMLBuilder("path"), new CharacterXMLBuilder("otherpath"));
-        Path path = Paths.get("..", "..", "..", "..", "resources", "pacman");
+        Map map = new Map(new MazeXMLBuilder(Paths.get("src", "main", "resources", "laberintos", "LaberintoSimple.xml")),
+                new CharacterXMLBuilder(Paths.get("src", "main", "resources", "laberintos", "PersonajesSimple.xml")));
+        Path path = Paths.get("src", "main", "resources", "pacman");
         Controller controller = new Controller(new XMLReader(path));
         View view = new XMLView("vpath");
         boolean ended = false;
