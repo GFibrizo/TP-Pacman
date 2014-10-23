@@ -71,7 +71,7 @@ public class Ghost extends Character implements IGhost {
      */
     @Override
     public void move() {
-        Direction nextDirection;
+        //Direction nextDirection;
         Map<Direction, Cell> directions = allowedDirections();
         direction = state.getNewDirection(personality, directions);
         direction.stepForward(this);        

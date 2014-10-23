@@ -33,17 +33,17 @@ public class ScenariosTest {
 
     @Before
     public void setUp() {
-        mazeBuilder = new MazeXMLBuilder("/home/fibrizo/Escritorio/TP-Pacman/tp/TP1/src/main/resources/laberintos/LaberintoSimple.xml");
+        mazeBuilder = new MazeXMLBuilder("/home/mauri/Desktop/TDD/TPS/tp/TP1/src/main/resources/laberintosprueba/Laberinto.xml");
         RawMaze maze = mazeBuilder.buildMaze();
         Ghost anOnlyRightGhost = Ghost.createOnlyRightGhost();
-        Cell initialGhostCell = maze.getCellFromCoordinates(maze.getGhostBegining());        
-        anOnlyRightGhost.setCurrentCell(initialGhostCell);
+        Cell initialGhostCell = maze.getCellFromCoordinates(new Coordinate(0,1));        
+        anOnlyRightGhost.setCurrentCell(initialGhostCell);       
     }
     
     @Test
     public void GhostShouldMoveTwelvePositions() {
         
-        for (int i = 1; i < 12; i++) {
+        for (int i = 1; i < 2; i++) {
             anOnlyRightGhost.move();
         }
         

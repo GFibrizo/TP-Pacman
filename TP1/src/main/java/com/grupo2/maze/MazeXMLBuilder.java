@@ -35,8 +35,8 @@ public class MazeXMLBuilder implements MazeBuilder {
     private Coordinate getCoords(String attribute) {
         int half = attribute.length() / 2;
         int x, y;
-        x = Integer.parseInt(attribute.substring(0, half));
-        y = Integer.parseInt(attribute.substring(half, 2 * half));
+        y = Integer.parseInt(attribute.substring(0, half));
+        x = Integer.parseInt(attribute.substring(half, 2 * half));
 
         return new Coordinate(x, y);
     }

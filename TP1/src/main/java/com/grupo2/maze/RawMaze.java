@@ -29,7 +29,7 @@ public class RawMaze implements Maze {
         for (int i = 0; i < height; i++) {
             ArrayList<RawCell> row = new ArrayList<>(width);
             for (int j = 0; j < width; j++){
-                row.add(new UntransitableCell(i,j));
+                row.add(new UntransitableCell(j,i));
             }
             map.add(row);
         }

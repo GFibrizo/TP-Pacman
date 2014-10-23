@@ -25,7 +25,7 @@ public class MazeBuilderTest {
     
     @Before
     public void setUp() {
-        mazeBuilder = new MazeXMLBuilder("/home/fibrizo/Escritorio/TP-Pacman/tp/TP1/src/main/resources/laberintos/LaberintoSimple.xml");
+        mazeBuilder = new MazeXMLBuilder("/home/mauri/Desktop/TDD/TPS/tp/TP1/src/main/resources/laberintos/LaberintoSimple.xml");
     }
     
      /**
@@ -39,18 +39,26 @@ public class MazeBuilderTest {
         Coordinate ghostBeg = maze.getGhostBegining();
         Coordinate pacmanBeg = maze.getPacmanBegining();
         
-        boolean ghostInitPositionOK = ghostBeg.isEqualTo( new Coordinate(8,9) );
-        boolean pacmanInitPositionOK = pacmanBeg.isEqualTo( new Coordinate(4,8) );
+        boolean ghostInitPositionOK = ghostBeg.isEqualTo( new Coordinate(9,8) );
+        boolean pacmanInitPositionOK = pacmanBeg.isEqualTo( new Coordinate(8,4) );
     
         assertTrue(ghostInitPositionOK && pacmanInitPositionOK);
     }
     
     @Test
-    public void buildMazeTransitableCell() {
+    public void buildMazeUnTransitableCell() {
         RawMaze maze = mazeBuilder.buildMaze();
         Cell cell = maze.getCellFromCoordinates( new Coordinate(0,0) );
 
         assertFalse( cell.isTransitable() );
     }
-        
+    
+    @Test
+    public void buildMazeTransitableCell() {
+        RawMaze maze = mazeBuilder.buildMaze();
+        Cell cell = maze.getCellFromCoordinates( new Coordinate(2,1) );
+
+        assertTrue( cell.isTransitable() );
+    }
+    
 }

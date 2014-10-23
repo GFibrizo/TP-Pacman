@@ -16,7 +16,7 @@
   <nodo id="0101" fila="01" columna="01" contiene="bolita" izquierda="0100" derecha="0102" arriba="" abajo="" />
   <nodo id="0102" fila="01" columna="02" contiene="bolita" izquierda="0101" derecha="0103" arriba="" abajo="" />
   <nodo id="0103" fila="01" columna="03" contiene="bolita" izquierda="0102" derecha="0104" arriba="" abajo="" />
-  <nodo id="0104" fila="01" columna="04" contiene="bolon" izquierda="0103" derecha="0105" arriba="" abajo="4" />
+  <nodo id="0104" fila="01" columna="04" contiene="bolon" izquierda="0103" derecha="0105" arriba="" abajo="" />
   <nodo id="0105" fila="01" columna="05" contiene="bolita" izquierda="0104" derecha="0106" arriba="" abajo="" />
   <nodo id="0106" fila="01" columna="06" contiene="bolita" izquierda="0105" derecha="0107" arriba="" abajo="" />
   <nodo id="0107" fila="01" columna="07" contiene="bolita" izquierda="0106" derecha="0108" arriba="" abajo="" />
