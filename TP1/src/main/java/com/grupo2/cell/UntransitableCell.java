@@ -93,5 +93,10 @@ public class UntransitableCell implements RawCell {
     public boolean canGoRight() {
         return rightCell.isTransitable();
     }
+    
+    @Override
+    public boolean isEmpty() {
+        return true;
+    }
 
 }

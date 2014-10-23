@@ -14,6 +14,7 @@ import com.grupo2.interfaces.IGhost;
 import com.grupo2.personality.OnlyRight;
 import java.util.Map;
 import java.util.TreeMap;
+import java.util.HashMap;
 
 /**
  *
@@ -108,7 +109,7 @@ public class Ghost extends Character implements IGhost {
 
     private Map<Direction, Cell> allowedDirections() {
         
-        Map<Direction, Cell> allowedDirections = new TreeMap();        
+        Map<Direction, Cell> allowedDirections = new HashMap();        
         if( this.getCurrentCell().canGoUp() && !direction.isOposedTo(new UpDirection()) )       allowedDirections.put(new UpDirection(), this.getCurrentCell().getUpperCell());
         if( this.getCurrentCell().canGoDown() && !direction.isOposedTo(new DownDirection()) )   allowedDirections.put(new DownDirection(), this.getCurrentCell().getLowerCell());
         if( this.getCurrentCell().canGoLeft() && !direction.isOposedTo(new LeftDirection()) )   allowedDirections.put(new LeftDirection(), this.getCurrentCell().getLeftCell());

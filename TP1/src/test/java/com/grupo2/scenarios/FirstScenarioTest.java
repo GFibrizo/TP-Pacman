@@ -23,12 +23,12 @@ import com.grupo2.directions.RightDirection;
  *
  * @author mauri
  */
-public class ScenariosTest {
+public class FirstScenarioTest {
     private Pacman thePacman;
     private MazeXMLBuilder mazeBuilder;
     private Ghost anOnlyRightGhost;
 
-    public ScenariosTest() {
+    public FirstScenarioTest() {
     }
 
     @Before
@@ -37,9 +37,8 @@ public class ScenariosTest {
         RawMaze maze = mazeBuilder.buildMaze();
         //anOnlyRightGhost = Ghost.createOnlyRightGhost();
         anOnlyRightGhost = GhostFactory.createOnlyRightGhost();
-        Cell initialGhostCell = maze.getCellFromCoordinates(new Coordinate(1,1));        
+        Cell initialGhostCell = maze.getCellFromCoordinates(new Coordinate(0,1));        
         anOnlyRightGhost.setCurrentCell(initialGhostCell);
-        thePacman = Pacman.createPacman(1, 2, new RightDirection());
 
     }
 
@@ -50,7 +49,7 @@ public class ScenariosTest {
             anOnlyRightGhost.move();
         }
 
-        Coordinate expectedPosition = new Coordinate(1,2); //DECIA (1,1) estaba MAL
+        Coordinate expectedPosition = new Coordinate(1,1); //DECIA (1,1) estaba MAL
         boolean positionOK = expectedPosition.isEqualTo(anOnlyRightGhost.getPosition());
 
         assertTrue(positionOK);
@@ -58,23 +57,5 @@ public class ScenariosTest {
     } 
     
     
-    
-    
-    @Test void PacmanEatsBallsAndRespectsPortals() {
-        
-        for (int i = 1; i < 13; i++) {
-            thePacman.move();           
-        }
-        
-        //DO CHECK FOR EATEN BALLS
-        
-        Coordinate expectedPosition = new Coordinate(1,4);
-        boolean positionOK = expectedPosition.isEqualTo(thePacman.getPosition());
-        
-        assertTrue(true);
-        
-        
-        
-    }
     
 }

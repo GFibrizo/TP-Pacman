@@ -31,7 +31,14 @@ public class Map {
         this.thePacman.setPosition(this.maze.getPacmanBegining());
         this.ghosts.forEach((ghost) -> ghost.setPosition(this.maze.getGhostBegining()));
     }
-
+    
+    
+    public Map(final MazeBuilder mazeBuilder, Pacman thePacman) {
+        this.maze = mazeBuilder.buildMaze();
+        this.thePacman = thePacman;
+        this.thePacman.setPosition(this.maze.getPacmanBegining());
+        this.ghosts.forEach((ghost) -> ghost.setPosition(this.maze.getGhostBegining()));
+    }
 
 
     public boolean collisionBetween(IPositionable entity, IPositionable otherEntity) {

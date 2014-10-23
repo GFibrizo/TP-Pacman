@@ -6,12 +6,13 @@ import com.grupo2.directions.LeftDirection;
 import com.grupo2.directions.RightDirection;
 import com.grupo2.directions.UpDirection;
 import com.grupo2.interfaces.ICharacter;
+import java.lang.Comparable;
 
 /**
  *
  * @author mauri
  */
-public interface Direction {
+public interface Direction extends Comparable {
 
     void stepForward(ICharacter character);
     

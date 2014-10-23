@@ -12,4 +12,9 @@ public class BigBall implements Ball {
         return 30;
     }
     
+    @Override
+    public boolean isEatable() {
+        return true;
+    }
+    
 }
