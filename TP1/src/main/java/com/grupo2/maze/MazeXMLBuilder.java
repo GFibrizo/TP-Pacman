@@ -40,6 +40,17 @@ public class MazeXMLBuilder implements MazeBuilder {
 
         return new Coordinate(x, y);
     }
+    
+    
+    private boolean isUntransitableCell(Element eElement) {
+        String[] cells = new String[] { "izquierda", "derecha", "arriba", "abajo" };
+        for (String cell : cells) {
+            if (!eElement.getAttribute(cell).equals(""))
+                return false;
+        }
+        return true;
+    }
+    
 
     @Override
     public RawMaze buildMaze() {
@@ -63,8 +74,9 @@ public class MazeXMLBuilder implements MazeBuilder {
                     int y = Integer.parseInt(eElement.getAttribute("fila"));
                     int x = Integer.parseInt(eElement.getAttribute("columna"));
                     String content = eElement.getAttribute("contiene");
+
                     RawCell aCell;
-                    if (content.isEmpty()) {
+                    if (this.isUntransitableCell(eElement)) {
                         aCell = new UntransitableCell(x, y);
                     } else {
                         aCell = new TransitableCell(x, y);
