@@ -40,10 +40,6 @@ public class DownDirection implements Direction {
         return true;
     }
 
-    @Override
-    public boolean isOposedTo(Direction other) {
-        return (this.EqualTo(other));
-    }
 
     @Override
     public boolean canGoForward(Cell cell) {
