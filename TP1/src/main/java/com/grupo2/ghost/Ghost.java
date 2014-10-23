@@ -120,4 +120,9 @@ public class Ghost extends Character implements IGhost {
         
     }
 
+    @Override
+    public Cell getCurrentCell() {
+        return this.currentCell;
+    }
+
 }
