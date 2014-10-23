@@ -32,12 +32,19 @@ public class PacmanTest {
     @Before
     public void setUp() {
         thePacman = Pacman.createPacman(5,1,new LeftDirection());
-        TransitableCell cell = new TransitableCell(5,1);
-        cell.setLeftCell(new TransitableCell(4,1));
-        cell.setRightCell(new TransitableCell(6,1));
-        cell.setUpperCell(new TransitableCell(5,0));
-        cell.setLowerCell(new TransitableCell(5,2));        
-        thePacman.setCurrentCell(cell);
+        TransitableCell cell51 = new TransitableCell(5,1);
+        TransitableCell cell41 = new TransitableCell(4,1);
+        TransitableCell cell50 = new TransitableCell(5,0);
+        
+        // Here we link the cells manually
+        cell50.setLeftCell(new TransitableCell(4,0));
+        cell41.setLeftCell(new TransitableCell(3,1));        
+        cell51.setLeftCell(cell41);        
+        cell51.setRightCell(new TransitableCell(6,1));
+        cell51.setUpperCell(cell50);
+        cell51.setLowerCell(new TransitableCell(5,2));        
+
+        thePacman.setCurrentCell(cell51);
     }
     
     @AfterClass
