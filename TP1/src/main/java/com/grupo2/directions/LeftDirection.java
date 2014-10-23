@@ -50,4 +50,25 @@ public class LeftDirection implements Direction {
     public boolean EqualTo(Direction other) {
         return other.isEqualTo(this);
     }
+
+    @Override
+    public boolean isOposedTo(LeftDirection other) {
+        return false;
+    }
+
+    @Override
+    public boolean isOposedTo(RightDirection other) {
+        return true;
+    }
+
+    @Override
+    public boolean isOposedTo(UpDirection other) {
+        return false;
+    }
+
+    @Override
+    public boolean isOposedTo(DownDirection other) {
+        return false;
+    }
+    
 }

@@ -50,6 +50,26 @@ public class DownDirection implements Direction {
         return cell.getLowerCell().isTransitable();
     }    
 
+    @Override
+    public boolean isOposedTo(LeftDirection other) {
+        return false;
+    }
+
+    @Override
+    public boolean isOposedTo(RightDirection other) {
+        return false;
+    }
+
+    @Override
+    public boolean isOposedTo(UpDirection other) {
+        return true;
+    }
+
+    @Override
+    public boolean isOposedTo(DownDirection other) {
+        return false;
+    }
+
 
 
     

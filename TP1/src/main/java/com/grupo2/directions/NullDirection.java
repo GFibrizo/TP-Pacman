@@ -55,4 +55,24 @@ public class NullDirection implements Direction {
     public boolean isOposedTo(Direction other) {
         throw new AssertionError("Null direction have no oposed direction");
     }
+
+    @Override
+    public boolean isOposedTo(LeftDirection other) {
+        return false;
+    }
+
+    @Override
+    public boolean isOposedTo(RightDirection other) {
+        return false;
+    }
+
+    @Override
+    public boolean isOposedTo(UpDirection other) {
+        return false;
+    }
+
+    @Override
+    public boolean isOposedTo(DownDirection other) {
+        return false;
+    }    
 }
