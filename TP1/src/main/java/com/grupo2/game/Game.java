@@ -2,13 +2,16 @@ package com.grupo2.game;
 
 import com.grupo2.character.CharacterXMLBuilder;
 import com.grupo2.controller.Controller;
-import com.grupo2.controller.XMLController;
-import com.grupo2.interfaces.IGhost;
+import com.grupo2.controller.XMLReader;
 import com.grupo2.map.Map;
 import com.grupo2.maze.MazeXMLBuilder;
 import com.grupo2.view.View;
 import com.grupo2.view.XMLView;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import javax.xml.parsers.ParserConfigurationException;
+import org.xml.sax.SAXException;
 
 /**
  *
@@ -17,10 +20,11 @@ import javax.xml.parsers.ParserConfigurationException;
 public class Game {
 
     //TODO: Builders should depend on pgm arguments or something like that
-    public void startGame() throws ParserConfigurationException {
+    public void startGame() throws ParserConfigurationException, SAXException, IOException {
 
         Map map = new Map(new MazeXMLBuilder("path"), new CharacterXMLBuilder("otherpath"));
-        Controller controller = new XMLController("cpath");
+        Path path = Paths.get("..", "..", "..", "..", "resources", "pacman");
+        Controller controller = new Controller(new XMLReader(path));
         View view = new XMLView("vpath");
         boolean ended = false;
 
