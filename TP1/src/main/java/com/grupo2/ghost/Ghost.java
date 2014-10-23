@@ -47,16 +47,7 @@ public class Ghost extends Character implements IGhost {
         return new Ghost();
     }
     
-    public static Ghost createOnlyRightGhost() {
-        Ghost aGhost = new Ghost();
-        aGhost.setState(new HunterState());
-        aGhost.setPersonality(new OnlyRight());
-        aGhost.setDirection(new RightDirection());
-        return aGhost;
-    }
     
-    
-
     public void setState(GhostState state) {
         this.state = state;
     }
@@ -118,10 +109,10 @@ public class Ghost extends Character implements IGhost {
     private Map<Direction, Cell> allowedDirections() {
         
         Map<Direction, Cell> allowedDirections = new TreeMap();        
-        if( this.getCurrentCell().canGoUp() && !direction.isOposedTo(new UpDirection()) ) allowedDirections.put(new UpDirection(), this.getCurrentCell().getUpperCell());
-        if( this.getCurrentCell().canGoDown() && !direction.isOposedTo(new DownDirection()) ) allowedDirections.put(new DownDirection(), this.getCurrentCell().getLowerCell());
-        if( this.getCurrentCell().canGoLeft() && !direction.isOposedTo(new LeftDirection()) ) allowedDirections.put(new LeftDirection(), this.getCurrentCell().getLeftCell());
-        if( this.getCurrentCell().canGoRight() && !direction.isOposedTo(new RightDirection()) ) /*/allowedDirections.put(new RightDirection(), this.getCurrentCell().getRightCell())*/;        
+        if( this.getCurrentCell().canGoUp() && !direction.isOposedTo(new UpDirection()) )       allowedDirections.put(new UpDirection(), this.getCurrentCell().getUpperCell());
+        if( this.getCurrentCell().canGoDown() && !direction.isOposedTo(new DownDirection()) )   allowedDirections.put(new DownDirection(), this.getCurrentCell().getLowerCell());
+        if( this.getCurrentCell().canGoLeft() && !direction.isOposedTo(new LeftDirection()) )   allowedDirections.put(new LeftDirection(), this.getCurrentCell().getLeftCell());
+        if( this.getCurrentCell().canGoRight() && !direction.isOposedTo(new RightDirection()) ) allowedDirections.put(new RightDirection(), this.getCurrentCell().getRightCell());        
         return allowedDirections;
         
     }
