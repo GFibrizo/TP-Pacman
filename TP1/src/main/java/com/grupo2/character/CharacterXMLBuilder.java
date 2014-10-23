@@ -18,13 +18,10 @@ import org.xml.sax.SAXException;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.function.Function;
-import com.grupo2.personality.*;
-import com.grupo2.ghostState.*;
-import com.grupo2.ghost.*;
 import com.grupo2.interfaces.*;
 import com.grupo2.directions.*;
 import com.grupo2.ghostFactory.GhostFactory;
+import com.sun.org.apache.xpath.internal.functions.Function;
 
 
 
