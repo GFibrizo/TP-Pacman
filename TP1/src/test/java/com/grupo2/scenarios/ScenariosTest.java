@@ -7,14 +7,12 @@
 package com.grupo2.scenarios;
 
 import com.grupo2.cell.Cell;
-import com.grupo2.cell.TransitableCell;
 import com.grupo2.character.Coordinate;
-import com.grupo2.directions.LeftDirection;
-import com.grupo2.directions.RightDirection;
 import com.grupo2.ghost.Ghost;
 import com.grupo2.maze.MazeXMLBuilder;
 import com.grupo2.maze.RawMaze;
 import com.grupo2.pacman.Pacman;
+import java.nio.file.Paths;
 import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,33 +25,33 @@ public class ScenariosTest {
     private Pacman thePacman;
     private MazeXMLBuilder mazeBuilder;
     private Ghost anOnlyRightGhost;
-    
+
     public ScenariosTest() {
     }
 
     @Before
     public void setUp() {
-        mazeBuilder = new MazeXMLBuilder("/home/mauri/Desktop/TDD/TPS/tp/TP1/src/main/resources/laberintosprueba/Laberinto.xml");
+        mazeBuilder = new MazeXMLBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "Laberinto.xml"));
         RawMaze maze = mazeBuilder.buildMaze();
         anOnlyRightGhost = Ghost.createOnlyRightGhost();
-        Cell initialGhostCell = maze.getCellFromCoordinates(new Coordinate(0,1));        
+        Cell initialGhostCell = maze.getCellFromCoordinates(new Coordinate(0,1));
         anOnlyRightGhost.setCurrentCell(initialGhostCell);
 
     }
-    
+
     @Test
     public void GhostShouldMoveTwelvePositions() {
 
         for (int i = 1; i < 12; i++) {
-            anOnlyRightGhost.move();           
+            anOnlyRightGhost.move();
         }
 
 
         Coordinate expectedPosition = new Coordinate(1,1);
         boolean positionOK = expectedPosition.isEqualTo(anOnlyRightGhost.getPosition());
-        
+
         assertTrue(positionOK);
-    
-    } 
-    
+
+    }
+
 }
