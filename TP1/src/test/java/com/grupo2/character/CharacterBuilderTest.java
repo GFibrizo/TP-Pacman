@@ -34,7 +34,7 @@ public class CharacterBuilderTest {
     public void setUpClass() {
             // CHANGE THE PATH TO YOURS
         try {
-            charBuilder = new CharacterXMLBuilder(Paths.get("/home/fibrizo/Escritorio/TP-Pacman/tp/TP1/src/main/resources/laberintos/PersonajesSimple.xml")); 
+            charBuilder = new CharacterXMLBuilder(Paths.get("src", "main", "resources", "laberintos", "PersonajesSimple.xml")); 
         } catch (Exception e) {
             assert(false);
         }
