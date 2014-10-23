@@ -8,6 +8,7 @@ import com.grupo2.character.CharacterXMLBuilder;
 import com.grupo2.ghost.Ghost;
 import com.grupo2.interfaces.ICharacter;
 import com.grupo2.maze.MazeXMLBuilder;
+import java.nio.file.Paths;
 import org.junit.AfterClass;
 import static org.junit.Assert.assertEquals;
 import org.junit.BeforeClass;
@@ -43,7 +44,7 @@ public class MapTest {
         other.setDirection(new DownDirection());
         Map map;
         try {
-            map = new Map(new MazeXMLBuilder("path"), new CharacterXMLBuilder("otherpath"));
+            map = new Map(new MazeXMLBuilder(Paths.get("path")), new CharacterXMLBuilder(Paths.get("otherpath")));
         } catch (Exception e){
             assert(false);
             return;

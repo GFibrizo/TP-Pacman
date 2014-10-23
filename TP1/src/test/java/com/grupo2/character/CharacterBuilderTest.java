@@ -16,6 +16,8 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import javax.xml.parsers.ParserConfigurationException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 /**
  *
@@ -32,7 +34,7 @@ public class CharacterBuilderTest {
     public void setUpClass() {
             // CHANGE THE PATH TO YOURS
         try {
-            charBuilder = new CharacterXMLBuilder("/home/fibrizo/Escritorio/TP-Pacman/tp/TP1/src/main/resources/laberintos/PersonajesSimple.xml"); 
+            charBuilder = new CharacterXMLBuilder(Paths.get("/home/fibrizo/Escritorio/TP-Pacman/tp/TP1/src/main/resources/laberintos/PersonajesSimple.xml")); 
         } catch (Exception e) {
             assert(false);
         }

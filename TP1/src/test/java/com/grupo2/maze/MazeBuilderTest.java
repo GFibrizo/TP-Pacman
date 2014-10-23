@@ -11,6 +11,8 @@ import com.grupo2.character.Coordinate;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 /**
  *
@@ -25,7 +27,7 @@ public class MazeBuilderTest {
     
     @Before
     public void setUp() {
-        mazeBuilder = new MazeXMLBuilder("/home/mauri/Desktop/TDD/TPS/tp/TP1/src/main/resources/laberintos/LaberintoSimple.xml");
+        mazeBuilder = new MazeXMLBuilder(Paths.get("/home/mauri/Desktop/TDD/TPS/tp/TP1/src/main/resources/laberintos/LaberintoSimple.xml"));
     }
     
      /**
