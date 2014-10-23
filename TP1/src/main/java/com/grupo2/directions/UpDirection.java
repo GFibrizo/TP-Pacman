@@ -12,7 +12,7 @@ public class UpDirection implements Direction {
 
     @Override
     public void stepForward(ICharacter aCharacter) {
-        aCharacter.getPosition().setY(aCharacter.getPosition().getY() - 1);
+        aCharacter.setCurrentCell(aCharacter.getCurrentCell().getUpperCell());
     }
     
     @Override

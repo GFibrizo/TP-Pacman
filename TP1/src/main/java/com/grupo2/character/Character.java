@@ -27,7 +27,7 @@ public abstract class Character implements ICharacter {
 
     @Override
     public Coordinate getPosition() {
-        return position;
+        return this.currentCell.getPosition();
     }
     
     public Direction getDirection() {

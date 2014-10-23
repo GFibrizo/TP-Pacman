@@ -1,5 +1,6 @@
 package com.grupo2.pacman;
 
+import com.grupo2.cell.Cell;
 import com.grupo2.cell.RawCell;
 import com.grupo2.cell.TransitableCell;
 import com.grupo2.character.Character;
@@ -72,6 +73,11 @@ public class Pacman extends Character {
     @Override
     public void die() {
         alive = false;
+    }
+
+    @Override
+    public Cell getCurrentCell() {
+        return this.currentCell;
     }
 
 }

@@ -13,4 +13,5 @@ public interface ICharacter extends IPositionable {
     public void setDirection(Direction direction);
     public void die();
     public void setCurrentCell(Cell cell);
+    public Cell getCurrentCell();
 }

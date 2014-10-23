@@ -12,7 +12,7 @@ public class LeftDirection implements Direction {
 
     @Override
     public void stepForward(ICharacter aCharacter) {
-        aCharacter.getPosition().setX(aCharacter.getPosition().getX() - 1);
+        aCharacter.setCurrentCell(aCharacter.getCurrentCell().getLeftCell());
     }
 
     @Override
