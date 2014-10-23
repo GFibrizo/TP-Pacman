@@ -6,7 +6,15 @@ import com.grupo2.character.Direction;
  *
  * @author ivan
  */
-public interface Controller {
+public class Controller {
 
-    Direction getPacmanNextDirection();
+    private InputReader reader;
+
+    public Controller(InputReader reader) {
+        this.reader = reader;
+    }
+
+    public Direction getPacmanNextDirection() {
+        return this.reader.getNextDirection();
+    }
 }
