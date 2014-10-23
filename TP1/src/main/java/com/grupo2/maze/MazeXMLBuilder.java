@@ -62,9 +62,9 @@ public class MazeXMLBuilder implements MazeBuilder {
                     Element eElement = (Element) nNode;
                     int y = Integer.parseInt(eElement.getAttribute("fila"));
                     int x = Integer.parseInt(eElement.getAttribute("columna"));
-                    String content = eElement.getAttribute("contenido");
+                    String content = eElement.getAttribute("contiene");
                     RawCell aCell;
-                    if ("".equals(content)) {
+                    if (content.isEmpty()) {
                         aCell = new UntransitableCell(x, y);
                     } else {
                         aCell = new TransitableCell(x, y);
