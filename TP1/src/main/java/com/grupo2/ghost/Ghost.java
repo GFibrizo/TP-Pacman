@@ -8,10 +8,12 @@ import com.grupo2.directions.LeftDirection;
 import com.grupo2.directions.RightDirection;
 import com.grupo2.directions.UpDirection;
 import com.grupo2.ghostState.DeadState;
+import com.grupo2.ghostState.HunterState;
 import com.grupo2.ghostState.Personality;
 import com.grupo2.interfaces.IGhost;
-import java.util.TreeMap;
+import com.grupo2.personality.OnlyRight;
 import java.util.Map;
+import java.util.TreeMap;
 
 /**
  *
@@ -45,6 +47,13 @@ public class Ghost extends Character implements IGhost {
         return new Ghost();
     }
     
+    public static Ghost createOnlyRightGhost() {
+        Ghost aGhost = new Ghost();
+        aGhost.setState(new HunterState());
+        aGhost.setPersonality(new OnlyRight());
+        return aGhost;
+    }
+    
     
 
     public void setState(GhostState state) {
@@ -64,11 +73,8 @@ public class Ghost extends Character implements IGhost {
     public void move() {
         Direction nextDirection;
         Map<Direction, Cell> directions = allowedDirections();
-        if (directions.size() > 1) {
-            direction = state.getNewDirection(personality, directions);
-        } 
-        if (direction.canGoForward(currentCell)) 
-            direction.stepForward(this); 
+        direction = state.getNewDirection(personality, directions);
+        direction.stepForward(this);        
         this.state = state.returnNextState();
     }
 

@@ -6,16 +6,13 @@
 
 package com.grupo2.pacman;
 
-import com.grupo2.cell.RawCell;
 import com.grupo2.cell.TransitableCell;
 import com.grupo2.character.Coordinate;
-import com.grupo2.character.Direction;
 import com.grupo2.directions.LeftDirection;
 import com.grupo2.directions.UpDirection;
 import org.junit.AfterClass;
 import static org.junit.Assert.*;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**
