@@ -44,9 +44,24 @@ public class UpDirection implements Direction {
     public boolean EqualTo(Direction other) {
         return other.isEqualTo(this);
     }
+    
+    @Override
+    public boolean isOposedTo(LeftDirection other) {
+        return false;
+    }
 
     @Override
-    public boolean isOposedTo(Direction other) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean isOposedTo(RightDirection other) {
+        return false;
     }
+
+    @Override
+    public boolean isOposedTo(UpDirection other) {
+        return false;
+    }
+
+    @Override
+    public boolean isOposedTo(DownDirection other) {
+        return true;
+    }      
 }

@@ -57,7 +57,6 @@ public class MazeBuilderTest {
     public void buildMazeTransitableCell() {
         RawMaze maze = mazeBuilder.buildMaze();
         Cell cell = maze.getCellFromCoordinates( new Coordinate(2,1) );
-
         assertTrue( cell.isTransitable() );
     }
     

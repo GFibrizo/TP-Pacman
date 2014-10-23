@@ -51,6 +51,7 @@ public class Ghost extends Character implements IGhost {
         Ghost aGhost = new Ghost();
         aGhost.setState(new HunterState());
         aGhost.setPersonality(new OnlyRight());
+        aGhost.setDirection(new RightDirection());
         return aGhost;
     }
     
@@ -117,11 +118,10 @@ public class Ghost extends Character implements IGhost {
     private Map<Direction, Cell> allowedDirections() {
         
         Map<Direction, Cell> allowedDirections = new TreeMap();        
-        
-        if( cell.canGoUp() && !direction.isOposedTo(new UpDirection()) ) allowedDirections.put(new UpDirection(), currentCell.getUpperCell());
-        if( cell.canGoDown() && !direction.isOposedTo(new DownDirection()) ) allowedDirections.put(new DownDirection(), currentCell.getLowerCell());
-        if( cell.canGoLeft() && !direction.isOposedTo(new LeftDirection()) ) allowedDirections.put(new LeftDirection(), currentCell.getLeftCell());
-        if( cell.canGoRight() && !direction.isOposedTo(new RightDirection()) ) allowedDirections.put(new RightDirection(), currentCell.getRightCell());        
+        if( this.getCurrentCell().canGoUp() && !direction.isOposedTo(new UpDirection()) ) allowedDirections.put(new UpDirection(), this.getCurrentCell().getUpperCell());
+        if( this.getCurrentCell().canGoDown() && !direction.isOposedTo(new DownDirection()) ) allowedDirections.put(new DownDirection(), this.getCurrentCell().getLowerCell());
+        if( this.getCurrentCell().canGoLeft() && !direction.isOposedTo(new LeftDirection()) ) allowedDirections.put(new LeftDirection(), this.getCurrentCell().getLeftCell());
+        if( this.getCurrentCell().canGoRight() && !direction.isOposedTo(new RightDirection()) ) /*/allowedDirections.put(new RightDirection(), this.getCurrentCell().getRightCell())*/;        
         return allowedDirections;
         
     }
