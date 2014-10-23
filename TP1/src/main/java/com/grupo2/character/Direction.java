@@ -24,9 +24,15 @@ public interface Direction {
     boolean isEqualTo(UpDirection other);
 
     boolean isEqualTo(DownDirection other);
+    
+    boolean  isOposedTo(LeftDirection other);
+
+    boolean  isOposedTo(RightDirection other);
+
+    boolean  isOposedTo(UpDirection other);
+
+    boolean  isOposedTo(DownDirection other);    
 
     boolean canGoForward(Cell cell);
-
-    boolean isOposedTo(Direction other);
 
 }
