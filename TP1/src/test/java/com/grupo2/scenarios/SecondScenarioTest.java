@@ -27,9 +27,9 @@ import com.grupo2.controller.*;
  */
 public class SecondScenarioTest {
     
-    Pacman thePacman;
-    Maze maze;
-    Map map;
+    private Pacman thePacman;
+    private Maze maze;
+    private Map map;
     
     public SecondScenarioTest() {
     }
@@ -44,7 +44,7 @@ public class SecondScenarioTest {
     
     @Before
     public void setUp() {
-        MazeXMLBuilder mazeBuilder = new MazeXMLBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "Laberinto.xml"));
+        MazeXMLBuilder mazeBuilder = new MazeXMLBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "Laberinto.xml"));        
         thePacman = Pacman.createPacman(1, 2, new RightDirection());
         map = new Map(mazeBuilder, thePacman);
     }
@@ -75,9 +75,7 @@ public class SecondScenarioTest {
         Coordinate expectedPosition = new Coordinate(1,4);
         boolean positionOK = expectedPosition.isEqualTo(thePacman.getPosition());
 
-        assertTrue(positionOK);
+        assertTrue(positionOK && ballsEaten == 10);
          
     }
-    // @Test
-    // public void hello() {}
 }
