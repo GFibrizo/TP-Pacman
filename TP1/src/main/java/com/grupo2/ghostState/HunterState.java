@@ -1,9 +1,9 @@
 package com.grupo2.ghostState;
 
-import com.grupo2.ghost.GhostState;
-import com.grupo2.constants.Constants;
-import com.grupo2.character.Direction;
 import com.grupo2.cell.Cell;
+import com.grupo2.character.Direction;
+import com.grupo2.constants.Constants;
+import com.grupo2.ghost.GhostState;
 import java.util.Map;
 
 /**
@@ -13,16 +13,15 @@ import java.util.Map;
 public class HunterState extends GhostState {
 
 	private float time;
-        private float velocity;
+	private float velocity;
 
 	public HunterState() {
-            velocity = Constants.getInitialVelocity();
+		velocity = Constants.getInitialVelocity();
 	}
-        
 
 	@Override
 	public Direction getNewDirection(Personality personality, Map<Direction, Cell> allowedDirections) {
-            return personality.getNewDirection(allowedDirections);
+		return personality.getNewDirection(allowedDirections);
 	}
 
 	/**
@@ -58,10 +57,9 @@ public class HunterState extends GhostState {
 		return this; //When a Ghost in Hunter State collides with the Pacman, nothing happens to it, so the state remains the same.
 
 	}
-        
-	public void incrementRage() {
-            velocity++;
-	}
 
+	public void incrementRage() {
+		velocity++;
+	}
 
 }
