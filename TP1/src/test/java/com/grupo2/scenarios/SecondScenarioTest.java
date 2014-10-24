@@ -28,9 +28,9 @@ import com.grupo2.map.Map;
  */
 public class SecondScenarioTest {
     
-    Pacman thePacman;
-    Maze maze;
-    Map map;
+    private Pacman thePacman;
+    private Maze maze;
+    private Map map;
     
     public SecondScenarioTest() {
     }
@@ -46,10 +46,13 @@ public class SecondScenarioTest {
     @Before
     public void setUp() {
         MazeXMLBuilder mazeBuilder = new MazeXMLBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "Laberinto.xml"));
+        
         thePacman = Pacman.createPacman(1, 2, new RightDirection());
-        Cell initialPacmanCell = maze.getCellFromCoordinates(new Coordinate(1,1));
-        thePacman.setCurrentCell(initialPacmanCell);
-        map = new Map(mazeBuilder, thePacman);
+        map = new Map(mazeBuilder, thePacman);        
+        Cell initialPacmanCell = map.getMaze().getCellFromCoordinates(new Coordinate(2,1));       
+        map.getPacman().setCurrentCell(initialPacmanCell);
+        
+
     }
     
     @After
@@ -57,22 +60,24 @@ public class SecondScenarioTest {
     }
 
     @Test 
-    void PacmanEatsBallsAndRespectsPortals() {
+    public void PacmanEatsBallsAndRespectsPortals() {
 
         for (int i = 1; i < 13; i++) {
-            thePacman.move();           
+            map.pacmanEntersCell();
+            map.getPacman().move();
+        }
+        
+        int ballsEaten = 0;
+        
+        for (int i = 0; i < 10; i++) {
+            if (map.getMaze().getCellFromCoordinates(new Coordinate(i,1)).isEmpty()) ballsEaten++;
         }
 
-        for (int i = 1; i < 12; i++) {
-            maze.getCellFromCoordinates(new Coordinate(1,i)).isEmpty();
-        //DO CHECK FOR EATEN BALLS
-        }
-        
-        
-        Coordinate expectedPosition = new Coordinate(1,4);
+        System.out.println(ballsEaten);
+        Coordinate expectedPosition = new Coordinate(4,1);
         boolean positionOK = expectedPosition.isEqualTo(thePacman.getPosition());
 
-        assertTrue(true);
+        assertTrue(positionOK && ballsEaten == 10);
          
     }
     // @Test
