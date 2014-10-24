@@ -1,54 +1,48 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package com.grupo2.ghostState;
 
-import com.grupo2.interfaces.IGhost;
+import com.grupo2.cell.Cell;
+import com.grupo2.cell.TransitableCell;
+import com.grupo2.character.Direction;
 import com.grupo2.constants.Constants;
+import com.grupo2.directions.LeftDirection;
+import com.grupo2.directions.UpDirection;
 import com.grupo2.ghost.GhostState;
-import com.grupo2.ghost.Ghost;
+import com.grupo2.pacman.Pacman;
 import com.grupo2.personality.Seeker;
+import java.util.Map;
+import java.util.TreeMap;
 import org.junit.After;
 import org.junit.AfterClass;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
-import com.grupo2.character.Direction;
-import com.grupo2.cell.Cell;
-import java.util.TreeMap;
-import java.util.Map;
-import com.grupo2.directions.*;
-import com.grupo2.cell.*;
-import com.grupo2.pacman.Pacman;
 
 /**
  *
  * @author fibrizo
  */
 public class DeadStateTest {
-    
+
     GhostState state;
-    
+
     public DeadStateTest() {
     }
-    
+
     @BeforeClass
     public static void setUpClass() {
     }
-    
+
     @AfterClass
     public static void tearDownClass() {
     }
-    
+
     @Before
     public void setUp() {
         state = new DeadState();
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -60,11 +54,11 @@ public class DeadStateTest {
     public void testMove() {
         System.out.println("move");
         Map<Direction, Cell> directions = new TreeMap<>();
-        directions.put(new UpDirection(), new TransitableCell(5,5));
-        directions.put(new LeftDirection(), new TransitableCell(5,4));
-        Pacman.createPacman(5, 1, new UpDirection());
+		directions.put(new UpDirection(), new TransitableCell(5, 4));
+		directions.put(new LeftDirection(), new TransitableCell(4, 5));
+		Pacman.createPacman(5, 5, new UpDirection(), new TransitableCell(5, 5));
         Direction newDirection = state.getNewDirection(new Seeker(), directions);
- 
+
         assertTrue(newDirection.isEqualTo(new LeftDirection()));
     }
 
@@ -124,5 +118,5 @@ public class DeadStateTest {
         assertTrue(flag);
 
     }
-    
+
 }

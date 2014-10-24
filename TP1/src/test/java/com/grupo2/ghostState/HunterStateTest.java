@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package com.grupo2.ghostState;
 
 import com.grupo2.cell.Cell;
@@ -59,10 +53,10 @@ public class HunterStateTest {
      */
     @Test
     public void testMove() {
-        Map<Direction, Cell> directions = new TreeMap<>();
-        directions.put(new UpDirection(), new TransitableCell(5,5));
-        directions.put(new LeftDirection(), new TransitableCell(5,4));
-        Pacman.createPacman(5, 1, new UpDirection());
+		Map<Direction, Cell> directions = new TreeMap<>();
+		directions.put(new UpDirection(), new TransitableCell(5, 4));
+		directions.put(new LeftDirection(), new TransitableCell(4, 5));
+		Pacman.createPacman(5, 5, new UpDirection(), new TransitableCell(5, 5));
         Direction newDirection = state.getNewDirection(new Seeker(), directions);
 
         assertTrue(newDirection.isEqualTo(new LeftDirection()));

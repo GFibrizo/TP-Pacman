@@ -106,7 +106,7 @@ public class CharacterXMLBuilder implements CharacterBuilder {
             String direction = root.getAttribute("sentido");
             Direction dir;
             dir = getDirection(direction);
-            this.pacman = Pacman.createPacman(x, y, dir);
+			this.pacman = Pacman.createPacman(x, y, dir, null);
 
             NodeList nList = doc.getElementsByTagName("fantasma");
             this.ghosts = new ArrayList<>();

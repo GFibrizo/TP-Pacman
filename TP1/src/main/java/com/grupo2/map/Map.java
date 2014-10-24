@@ -1,9 +1,7 @@
 package com.grupo2.map;
 
-import com.grupo2.cell.Cell;
 import com.grupo2.cell.TransitableCell;
 import com.grupo2.character.CharacterBuilder;
-import com.grupo2.character.Coordinate;
 import com.grupo2.controller.Controller;
 import com.grupo2.interfaces.IGhost;
 import com.grupo2.interfaces.IPositionable;
@@ -29,9 +27,11 @@ public class Map {
 		characterBuilder.obtainCharactersFromXML();
 		this.thePacman = characterBuilder.getPacman();
 		this.thePacman.setPosition(this.maze.getPacmanBegining());
+		this.thePacman.setCurrentCell(this.maze.getCellFromCoordinates(this.thePacman.getPosition()));
 		this.ghosts.forEach((ghost) -> ghost.setPosition(this.maze.getGhostBegining()));
 	}
 
+	//Este constructor no sirve cuando el Character builder lea las personalidades
 	public Map(final MazeBuilder mazeBuilder, Pacman thePacman) {
 		this.maze = mazeBuilder.buildMaze();
 		this.thePacman = thePacman;
