@@ -60,11 +60,13 @@ public class SecondScenarioTest {
         for (int i = 1; i < 13; i++) {
             map.updateModel(controller);
         }
+        
+        int ballsEaten = 0;
 
         Cell cell = map.getMaze().getCellFromCoordinates(new Coordinate(1,0));
         for (int i = 0; i < 12; i++) {
-            if (!cell.isEmpty()) {
-                assert(false);
+            if (cell.isEmpty()) {
+                ballsEaten++;
                 return;
             }
             cell = cell.getRightCell();
@@ -75,7 +77,7 @@ public class SecondScenarioTest {
         Coordinate expectedPosition = new Coordinate(1,4);
         boolean positionOK = expectedPosition.isEqualTo(thePacman.getPosition());
 
-        assertTrue(positionOK && ballsEaten == 10);
+        assertTrue(positionOK && ballsEaten == 11);
          
     }
 }
