@@ -45,8 +45,7 @@ public class SecondScenarioTest {
     
     @Before
     public void setUp() {
-        MazeXMLBuilder mazeBuilder = new MazeXMLBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "Laberinto.xml"));
-        
+        MazeXMLBuilder mazeBuilder = new MazeXMLBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "Laberinto.xml"));        
         thePacman = Pacman.createPacman(1, 2, new RightDirection());
         map = new Map(mazeBuilder, thePacman);        
         Cell initialPacmanCell = map.getMaze().getCellFromCoordinates(new Coordinate(2,1));       
@@ -80,6 +79,4 @@ public class SecondScenarioTest {
         assertTrue(positionOK && ballsEaten == 10);
          
     }
-    // @Test
-    // public void hello() {}
 }
