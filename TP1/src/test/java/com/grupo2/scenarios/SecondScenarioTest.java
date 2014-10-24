@@ -57,7 +57,6 @@ public class SecondScenarioTest {
     public void PacmanEatsBallsAndRespectsPortals() {
 
         Controller controller = new Controller(new MockReader());
-        
         for (int i = 1; i < 13; i++) {
             map.updateModel(controller);
         }
