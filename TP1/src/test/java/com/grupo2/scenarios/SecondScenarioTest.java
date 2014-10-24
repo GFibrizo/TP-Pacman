@@ -62,11 +62,13 @@ public class SecondScenarioTest {
             map.updateModel(controller);
         }
 
-        for (int i = 1; i < 12; i++) {
-            if (!map.getMaze().getCellFromCoordinates(new Coordinate(1,i)).isEmpty()) {
+        Cell cell = map.getMaze().getCellFromCoordinates(new Coordinate(1,0));
+        for (int i = 0; i < 12; i++) {
+            if (!cell.isEmpty()) {
                 assert(false);
                 return;
             }
+            cell = cell.getRightCell();
         }
         assert(true);
         
