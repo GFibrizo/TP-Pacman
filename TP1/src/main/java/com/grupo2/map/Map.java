@@ -1,7 +1,9 @@
 package com.grupo2.map;
 
+import com.grupo2.cell.Cell;
 import com.grupo2.cell.TransitableCell;
 import com.grupo2.character.CharacterBuilder;
+import com.grupo2.character.Coordinate;
 import com.grupo2.controller.Controller;
 import com.grupo2.interfaces.IGhost;
 import com.grupo2.interfaces.IPositionable;
@@ -29,6 +31,8 @@ public class Map {
         characterBuilder.obtainCharactersFromXML();
         this.thePacman = characterBuilder.getPacman();
         this.thePacman.setPosition(this.maze.getPacmanBegining());
+        Cell initialPacmanCell = maze.getCellFromCoordinates(this.maze.getPacmanBegining());
+        this.thePacman.setCurrentCell(initialPacmanCell);
         this.ghosts.forEach((ghost) -> ghost.setPosition(this.maze.getGhostBegining()));
     }
     
@@ -37,6 +41,8 @@ public class Map {
         this.maze = mazeBuilder.buildMaze();
         this.thePacman = thePacman;
         this.thePacman.setPosition(this.maze.getPacmanBegining());
+        Cell initialPacmanCell = maze.getCellFromCoordinates(this.maze.getPacmanBegining());
+        this.thePacman.setCurrentCell(initialPacmanCell);
         this.ghosts.forEach((ghost) -> ghost.setPosition(this.maze.getGhostBegining()));
     }
 

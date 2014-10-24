@@ -8,9 +8,7 @@ package com.grupo2.scenarios;
 import com.grupo2.cell.Cell;
 import com.grupo2.character.Coordinate;
 import com.grupo2.directions.RightDirection;
-import com.grupo2.ghostFactory.GhostFactory;
 import com.grupo2.maze.MazeXMLBuilder;
-import com.grupo2.maze.RawMaze;
 import com.grupo2.pacman.Pacman;
 import java.nio.file.Paths;
 import org.junit.After;
@@ -21,6 +19,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import com.grupo2.maze.Maze;
 import com.grupo2.map.Map;
+import com.grupo2.controller.*;
 
 /**
  *
@@ -47,8 +46,6 @@ public class SecondScenarioTest {
     public void setUp() {
         MazeXMLBuilder mazeBuilder = new MazeXMLBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "Laberinto.xml"));
         thePacman = Pacman.createPacman(1, 2, new RightDirection());
-        Cell initialPacmanCell = maze.getCellFromCoordinates(new Coordinate(1,1));
-        thePacman.setCurrentCell(initialPacmanCell);
         map = new Map(mazeBuilder, thePacman);
     }
     
@@ -57,22 +54,27 @@ public class SecondScenarioTest {
     }
 
     @Test 
-    void PacmanEatsBallsAndRespectsPortals() {
+    public void PacmanEatsBallsAndRespectsPortals() {
 
+        Controller controller = new Controller(new MockReader());
+        
         for (int i = 1; i < 13; i++) {
-            thePacman.move();           
+            map.updateModel(controller);
         }
 
         for (int i = 1; i < 12; i++) {
-            maze.getCellFromCoordinates(new Coordinate(1,i)).isEmpty();
-        //DO CHECK FOR EATEN BALLS
+            if (!map.getMaze().getCellFromCoordinates(new Coordinate(1,i)).isEmpty()) {
+                assert(false);
+                return;
+            }
         }
+        assert(true);
         
         
         Coordinate expectedPosition = new Coordinate(1,4);
         boolean positionOK = expectedPosition.isEqualTo(thePacman.getPosition());
 
-        assertTrue(true);
+        assertTrue(positionOK);
          
     }
     // @Test
