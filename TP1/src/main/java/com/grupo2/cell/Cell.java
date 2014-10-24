@@ -29,4 +29,6 @@ public interface Cell {
     public boolean canGoLeft();
     
     public boolean canGoRight();
+    
+    public boolean isEmpty();
 }

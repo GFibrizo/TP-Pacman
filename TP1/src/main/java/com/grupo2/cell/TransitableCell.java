@@ -22,6 +22,8 @@ public class TransitableCell implements RawCell {
 
     public TransitableCell(int x, int y) {
         this.position = new Coordinate(x, y);
+        this.content = null;
+        this.ball = null;
     }
 
     public void setBall(Ball aBall) {
@@ -123,6 +125,11 @@ public class TransitableCell implements RawCell {
     @Override
     public boolean canGoRight() {
         return rightCell.isTransitable();
+    }
+    
+    @Override
+    public boolean isEmpty() {
+        return (!ball.isEatable());
     }
 
 }

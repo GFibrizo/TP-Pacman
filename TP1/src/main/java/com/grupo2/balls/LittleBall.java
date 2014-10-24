@@ -18,4 +18,9 @@ public class LittleBall implements Ball {
         return 10;
     }
     
+        @Override
+    public boolean isEatable() {
+        return true;
+    }
+    
 }

@@ -22,8 +22,7 @@ public class CharacterBuilderTest {
     public void setUpClass() {
         try {
             charBuilder = new CharacterXMLBuilder(Paths.get("src", "main", "resources", "laberintos", "PersonajesSimple.xml"));
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             assert (false);
         }
     }
@@ -37,8 +36,7 @@ public class CharacterBuilderTest {
         Pacman builtPacman;
         try {
             builtPacman = charBuilder.getPacman();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             assert (false);
             return;
         }

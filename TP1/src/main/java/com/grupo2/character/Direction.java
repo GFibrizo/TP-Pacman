@@ -14,8 +14,8 @@ import com.grupo2.interfaces.ICharacter;
 public interface Direction {
 
     void stepForward(ICharacter character);
-    
-    public boolean EqualTo(Direction other);
+
+    boolean EqualTo(Direction other);
 
     boolean isEqualTo(LeftDirection other);
 
@@ -24,14 +24,14 @@ public interface Direction {
     boolean isEqualTo(UpDirection other);
 
     boolean isEqualTo(DownDirection other);
-    
+
     boolean  isOposedTo(LeftDirection other);
 
     boolean  isOposedTo(RightDirection other);
 
     boolean  isOposedTo(UpDirection other);
 
-    boolean  isOposedTo(DownDirection other);    
+    boolean  isOposedTo(DownDirection other);
 
     boolean canGoForward(Cell cell);
 

@@ -6,4 +6,5 @@ package com.grupo2.balls;
  */
 public interface Ball {
     public int isEaten();
+    public boolean isEatable();
 }

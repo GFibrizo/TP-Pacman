@@ -16,25 +16,28 @@ import java.nio.file.Paths;
 import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
+import com.grupo2.ghostFactory.GhostFactory;
+import com.grupo2.directions.RightDirection;
 
 /**
  *
  * @author mauri
  */
-public class ScenariosTest {
+public class FirstScenarioTest {
     private Pacman thePacman;
     private MazeXMLBuilder mazeBuilder;
     private Ghost anOnlyRightGhost;
 
-    public ScenariosTest() {
+    public FirstScenarioTest() {
     }
 
     @Before
     public void setUp() {
         mazeBuilder = new MazeXMLBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "Laberinto.xml"));
         RawMaze maze = mazeBuilder.buildMaze();
-        anOnlyRightGhost = Ghost.createOnlyRightGhost();
-        Cell initialGhostCell = maze.getCellFromCoordinates(new Coordinate(0,1));
+        //anOnlyRightGhost = Ghost.createOnlyRightGhost();
+        anOnlyRightGhost = GhostFactory.createOnlyRightGhost();
+        Cell initialGhostCell = maze.getCellFromCoordinates(new Coordinate(0,1));        
         anOnlyRightGhost.setCurrentCell(initialGhostCell);
 
     }
@@ -46,12 +49,13 @@ public class ScenariosTest {
             anOnlyRightGhost.move();
         }
 
-
-        Coordinate expectedPosition = new Coordinate(1,1);
+        Coordinate expectedPosition = new Coordinate(1,1); //DECIA (1,1) estaba MAL
         boolean positionOK = expectedPosition.isEqualTo(anOnlyRightGhost.getPosition());
 
         assertTrue(positionOK);
-
-    }
-
+    
+    } 
+    
+    
+    
 }
