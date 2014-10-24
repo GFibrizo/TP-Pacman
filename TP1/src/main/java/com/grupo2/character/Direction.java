@@ -6,17 +6,16 @@ import com.grupo2.directions.LeftDirection;
 import com.grupo2.directions.RightDirection;
 import com.grupo2.directions.UpDirection;
 import com.grupo2.interfaces.ICharacter;
-import java.lang.Comparable;
 
 /**
  *
  * @author mauri
  */
-public interface Direction extends Comparable {
+public interface Direction {
 
     void stepForward(ICharacter character);
-    
-    public boolean EqualTo(Direction other);
+
+    boolean EqualTo(Direction other);
 
     boolean isEqualTo(LeftDirection other);
 
@@ -25,14 +24,14 @@ public interface Direction extends Comparable {
     boolean isEqualTo(UpDirection other);
 
     boolean isEqualTo(DownDirection other);
-    
+
     boolean  isOposedTo(LeftDirection other);
 
     boolean  isOposedTo(RightDirection other);
 
     boolean  isOposedTo(UpDirection other);
 
-    boolean  isOposedTo(DownDirection other);    
+    boolean  isOposedTo(DownDirection other);
 
     boolean canGoForward(Cell cell);
 
