@@ -1,7 +1,9 @@
 package com.grupo2.map;
 
+import com.grupo2.cell.Cell;
 import com.grupo2.cell.TransitableCell;
 import com.grupo2.character.CharacterBuilder;
+import com.grupo2.character.Coordinate;
 import com.grupo2.controller.Controller;
 import com.grupo2.interfaces.IGhost;
 import com.grupo2.interfaces.IPositionable;

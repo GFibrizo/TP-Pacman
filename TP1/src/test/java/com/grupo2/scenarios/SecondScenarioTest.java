@@ -8,9 +8,7 @@ package com.grupo2.scenarios;
 import com.grupo2.cell.Cell;
 import com.grupo2.character.Coordinate;
 import com.grupo2.directions.RightDirection;
-import com.grupo2.ghostFactory.GhostFactory;
 import com.grupo2.maze.MazeXMLBuilder;
-import com.grupo2.maze.RawMaze;
 import com.grupo2.pacman.Pacman;
 import java.nio.file.Paths;
 import org.junit.After;
@@ -21,6 +19,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import com.grupo2.maze.Maze;
 import com.grupo2.map.Map;
+import com.grupo2.controller.*;
 
 /**
  *
@@ -47,11 +46,7 @@ public class SecondScenarioTest {
     public void setUp() {
         MazeXMLBuilder mazeBuilder = new MazeXMLBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "Laberinto.xml"));        
         thePacman = Pacman.createPacman(1, 2, new RightDirection());
-        map = new Map(mazeBuilder, thePacman);        
-        Cell initialPacmanCell = map.getMaze().getCellFromCoordinates(new Coordinate(2,1));       
-        map.getPacman().setCurrentCell(initialPacmanCell);
-        
-
+        map = new Map(mazeBuilder, thePacman);
     }
     
     @After
@@ -61,22 +56,28 @@ public class SecondScenarioTest {
     @Test 
     public void PacmanEatsBallsAndRespectsPortals() {
 
+        Controller controller = new Controller(new MockReader());
         for (int i = 1; i < 13; i++) {
-            map.pacmanEntersCell();
-            map.getPacman().move();
+            map.updateModel(controller);
         }
         
         int ballsEaten = 0;
-        
-        for (int i = 0; i < 10; i++) {
-            if (map.getMaze().getCellFromCoordinates(new Coordinate(i,1)).isEmpty()) ballsEaten++;
-        }
 
-        System.out.println(ballsEaten);
-        Coordinate expectedPosition = new Coordinate(4,1);
+        Cell cell = map.getMaze().getCellFromCoordinates(new Coordinate(1,0));
+        for (int i = 0; i < 12; i++) {
+            if (cell.isEmpty()) {
+                ballsEaten++;
+                return;
+            }
+            cell = cell.getRightCell();
+        }
+        assert(true);
+        
+        
+        Coordinate expectedPosition = new Coordinate(1,4);
         boolean positionOK = expectedPosition.isEqualTo(thePacman.getPosition());
 
-        assertTrue(positionOK && ballsEaten == 10);
+        assertTrue(positionOK && ballsEaten == 11);
          
     }
 }
