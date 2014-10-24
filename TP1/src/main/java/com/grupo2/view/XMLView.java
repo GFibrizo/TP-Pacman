@@ -18,17 +18,17 @@ public class XMLView implements View {
     }
 
     @Override
-    public void persistPacman(Pacman pacman) {
+	public void showPacman(Pacman pacman) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void persistGhost(IGhost ghost) {
+	public void showGhost(IGhost ghost) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
-    public void persistMaze(Maze maze) {
+	public void showMaze(Maze maze) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

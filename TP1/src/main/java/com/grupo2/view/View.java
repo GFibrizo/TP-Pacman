@@ -10,9 +10,9 @@ import com.grupo2.pacman.Pacman;
  */
 public interface View {
 
-    void persistMaze(Maze maze);
+    void showMaze(Maze maze);
 
-    void persistPacman(Pacman pacman);
+    void showPacman(Pacman pacman);
 
-    void persistGhost(IGhost ghost);
+    void showGhost(IGhost ghost);
 }
