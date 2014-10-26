@@ -1,10 +1,10 @@
 package com.grupo2.constants;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.nio.file.Path;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -27,8 +27,8 @@ public final class Constants {
 
     private static float GHOST_RADIUS = 99;
     private static int TRACE_DURATION = 4;
-    
-    
+
+
     public static int VISION1 = 4;
     public static int VISION2 = 8;
     public static int VISION3 = 10;
@@ -40,10 +40,11 @@ public final class Constants {
             throw new AssertionError();
     }
 
-    public static void initializeConstants(final String path) {
+	public static void initializeConstants(final Path path) {
 
         try {
-            FileReader reader = new FileReader(path);
+			File file = path.toFile();
+			FileReader reader = new FileReader(file);
             JSONParser jsonParser = new JSONParser();
             JSONObject jsonObject = (JSONObject) jsonParser.parse(reader);
 
@@ -62,7 +63,7 @@ public final class Constants {
             setSecondRageLimitTime(secondRageTime);
             setThirdRageLimitTime(thirdRageTime);
             setGhostRadius(radius);
-            
+
         } catch (ParseException e) {
             System.out.println("ERROR WHILE PARSING");
         } catch (FileNotFoundException e) {
@@ -89,7 +90,7 @@ public final class Constants {
     public static float getDeadLimitTime() {
             return DEAD_LIMIT_TIME;
     }
-    
+
      /**
      * @return the constant INITIAL_VELOCITY
      */
@@ -136,16 +137,16 @@ public final class Constants {
     public static long getTickToMilisecs() {
             return TICK_TO_MILISECS;
     }
-    
+
     public static int getTraceDuration() {
         return TRACE_DURATION;
     }
-    
+
 
     public static void setPreyLimitTime(float timeLimit) {
         Constants.PREY_LIMIT_TIME = timeLimit;
     }
-    
+
     public static void setPreyLimitTime(int velocity) {
         Constants.INITIAL_VELOCITY = velocity;
     }
@@ -173,7 +174,7 @@ public final class Constants {
     public static void setTickToMilisecs(long ticks) {
         Constants.TICK_TO_MILISECS = ticks;
     }
-    
+
     public static void setTraceDuration(int ticks) {
         Constants.TRACE_DURATION = ticks;
     }
