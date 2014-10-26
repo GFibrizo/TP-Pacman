@@ -6,6 +6,7 @@ import com.grupo2.cell.UntransitableCell;
 import com.grupo2.character.Coordinate;
 import com.grupo2.eventHandling.Publisher;
 import com.grupo2.interfaces.IPositionable;
+import com.grupo2.view.DrawableNode;
 import java.util.ArrayList;
 
 /**
@@ -91,5 +92,35 @@ public class RawMaze implements Maze {
         Cell otherCell = getCellFromCoordinates(otherPos);
         return entityCell.isTheSame(otherCell);
     }
+
+	@Override
+	public int getWidth() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
+
+	@Override
+	public int getHeight() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
+
+	@Override
+	public int getNodeWidth() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
+
+	@Override
+	public int getNodeHeight() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
+
+	@Override
+	public Coordinate getGhostsBegining() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
+
+	@Override
+	public ArrayList<DrawableNode> getNodes() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
 
 }

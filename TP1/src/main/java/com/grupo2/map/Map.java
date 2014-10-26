@@ -3,6 +3,7 @@ package com.grupo2.map;
 import com.grupo2.cell.TransitableCell;
 import com.grupo2.character.CharacterBuilder;
 import com.grupo2.controller.Controller;
+import com.grupo2.ghost.Ghost;
 import com.grupo2.interfaces.IGhost;
 import com.grupo2.interfaces.IPositionable;
 import com.grupo2.maze.Maze;
@@ -47,7 +48,7 @@ public class Map {
 		return maze.areInTheSameCell(thePacman, entity);
 	}
 
-	public void addGhost(IGhost aCharacterToAdd) {
+	public void addGhost(Ghost aCharacterToAdd) {
 		this.ghosts.add(aCharacterToAdd);
 	}
 
@@ -77,17 +78,17 @@ public class Map {
 	public void updateModel(Controller controller) {
 		this.thePacman.setDirection(controller.getPacmanNextDirection());
 		this.thePacman.move();
-		this.ghosts.forEach((IGhost iGhost) -> {
-			iGhost.move();
+		this.ghosts.forEach((IGhost ghost) -> {
+			ghost.move();
 		});
 		this.pacmanEntersCell();
 	}
 
 	public void updateView(View view) {
-		view.showMaze(this.maze);
-		view.showPacman(this.thePacman);
+		view.reloadMaze(this.maze);
+		view.reloadPacman(this.thePacman);
 		this.ghosts.forEach((IGhost ghost) -> {
-			view.showGhost(ghost);
+			view.reloadGhost(ghost);
 		});
 	}
 

@@ -1,6 +1,6 @@
 package com.grupo2.command;
 
-import com.grupo2.interfaces.IGhost;
+import com.grupo2.ghost.Ghost;
 
 /**
  *
@@ -8,7 +8,7 @@ import com.grupo2.interfaces.IGhost;
  */
 public class GhostConvertToPreyCommand extends GhostCommand {
 
-	GhostConvertToPreyCommand(IGhost ghost) {
+	GhostConvertToPreyCommand(Ghost ghost) {
             this.ghost = ghost;
 	}
 

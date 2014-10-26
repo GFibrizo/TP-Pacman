@@ -5,12 +5,13 @@ import com.grupo2.character.Character;
 import com.grupo2.character.Coordinate;
 import com.grupo2.character.Direction;
 import com.grupo2.directions.NullDirection;
+import com.grupo2.view.DrawablePacman;
 
 /**
  *
  * @author fibrizo
  */
-public class Pacman extends Character {
+public class Pacman extends Character implements DrawablePacman {
 
 
     private static Pacman instance;
@@ -75,5 +76,14 @@ public class Pacman extends Character {
         this.alive = false;
     }
 
+	@Override
+	public int getScore() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
+
+	@Override
+	public boolean hasLives() {
+		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+	}
 
 }

@@ -1,18 +1,17 @@
 package com.grupo2.interfaces;
 
-import com.grupo2.character.Direction;
-import java.util.ArrayList;
-
-
+import com.grupo2.view.DrawableGhost;
 
 /**
  *
  * @author fibrizo
  */
-public interface IGhost extends ICharacter {
+public interface IGhost extends ICharacter, DrawableGhost {
 
-    public void convertToPrey();
-    public void onCollisionWithPacman();
-    public int getVision();
-        
+	public void convertToPrey();
+
+	public void onCollisionWithPacman();
+
+	public int getVision();
+
 }

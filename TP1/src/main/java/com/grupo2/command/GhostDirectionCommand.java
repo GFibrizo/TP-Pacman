@@ -1,6 +1,6 @@
 package com.grupo2.command;
 
-import com.grupo2.interfaces.IGhost;
+import com.grupo2.ghost.Ghost;
 
 /**
  *
@@ -8,14 +8,14 @@ import com.grupo2.interfaces.IGhost;
  */
 public class GhostDirectionCommand extends GhostCommand {
 
-	GhostDirectionCommand(IGhost ghost) {
+	GhostDirectionCommand(Ghost ghost) {
 		this.ghost = ghost;
 	}
 
 	@Override
 	public boolean execute() {
 		//no sé si va este command directamente
-            return true;
+		return true;
 	}
 
 }
