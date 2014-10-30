@@ -19,7 +19,7 @@ public class DownDirection implements Direction {
     public boolean EqualTo(Direction other) {
         return other.isEqualTo(this);
     }
-    
+
     @Override
     public boolean isEqualTo(LeftDirection other) {
         return false;
@@ -44,7 +44,7 @@ public class DownDirection implements Direction {
     @Override
     public boolean canGoForward(Cell cell) {
         return cell.getLowerCell().isTransitable();
-    }    
+    }
 
     @Override
     public boolean isOposedTo(LeftDirection other) {
@@ -66,7 +66,9 @@ public class DownDirection implements Direction {
         return false;
     }
 
+	@Override
+	public String toString() {
+		return "abajo";
+	}
 
-
-    
 }

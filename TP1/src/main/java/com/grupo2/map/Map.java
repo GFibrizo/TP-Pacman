@@ -85,11 +85,7 @@ public class Map {
 	}
 
 	public void updateView(View view) {
-		view.reloadMaze(this.maze);
-		view.reloadPacman(this.thePacman);
-		this.ghosts.forEach((IGhost ghost) -> {
-			view.reloadGhost(ghost);
-		});
+		view.show();
 	}
 
 }

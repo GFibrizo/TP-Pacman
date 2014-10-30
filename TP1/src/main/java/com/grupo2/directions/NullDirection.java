@@ -15,11 +15,11 @@ import com.grupo2.interfaces.ICharacter;
  * @author mauri
  */
 public class NullDirection implements Direction {
-    
+
     @Override
     public boolean canGoForward(Cell cell) {
         return false;
-    }    
+    }
 
     @Override
     public void stepForward(ICharacter aCharacter) {
@@ -69,5 +69,10 @@ public class NullDirection implements Direction {
     @Override
     public boolean isOposedTo(DownDirection other) {
         return false;
-    }    
+	}
+
+	@Override
+	public String toString() {
+		return "";
+	}
 }

@@ -33,12 +33,12 @@ public class LeftDirection implements Direction {
     @Override
     public boolean isEqualTo(DownDirection aDirection) {
         return false;
-    }      
-    
+    }
+
     @Override
     public boolean canGoForward(Cell cell) {
         return cell.getLeftCell().isTransitable();
-    }   
+    }
 
     @Override
     public boolean EqualTo(Direction other) {
@@ -64,5 +64,10 @@ public class LeftDirection implements Direction {
     public boolean isOposedTo(DownDirection other) {
         return false;
     }
-    
+
+	@Override
+	public String toString() {
+		return "izquierda";
+	}
+
 }
