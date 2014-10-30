@@ -11,13 +11,13 @@ import com.grupo2.ghostState.Personality;
  */
 public interface DrawableGhost {
 
-	int getNumber();
+    int getNumber();
 
-	Coordinate getPosition();
+    Coordinate getPosition();
 
-	Direction getDirection();
+    Direction getDirection();
 
-	GhostState getState();
+    GhostState getState();
 
-	Personality getPersonality();
+    Personality getPersonality();
 }

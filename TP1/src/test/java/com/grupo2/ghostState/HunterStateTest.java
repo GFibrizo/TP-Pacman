@@ -53,10 +53,10 @@ public class HunterStateTest {
      */
     @Test
     public void testMove() {
-		Map<Direction, Cell> directions = new TreeMap<>();
-		directions.put(new UpDirection(), new TransitableCell(5, 4));
-		directions.put(new LeftDirection(), new TransitableCell(4, 5));
-		Pacman.createPacman(5, 5, new UpDirection(), new TransitableCell(5, 5));
+        Map<Direction, Cell> directions = new TreeMap<>();
+        directions.put(new UpDirection(), new TransitableCell(5, 4));
+        directions.put(new LeftDirection(), new TransitableCell(4, 5));
+        Pacman.createPacman(5, 5, new UpDirection(), new TransitableCell(5, 5));
         Direction newDirection = state.getNewDirection(new Seeker(), directions);
 
         assertTrue(newDirection.isEqualTo(new LeftDirection()));
@@ -88,8 +88,8 @@ public class HunterStateTest {
      */
     @Test
     public void testConvertToPrey() {
-		GhostState result = state.convertToPrey();
-		System.out.println(result.getClass());
+        GhostState result = state.convertToPrey();
+        System.out.println(result.getClass());
         assertEquals(result.getClass(), PreyState.class);
     }
 

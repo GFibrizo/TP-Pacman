@@ -1,4 +1,5 @@
 package com.grupo2.personality;
+
 import com.grupo2.cell.Cell;
 import com.grupo2.character.Direction;
 import com.grupo2.command.HunterStartsChaseOfPacman;
@@ -15,7 +16,6 @@ import java.util.Map;
  * @author fibrizo
  */
 public class Dumb extends Personality {
-
 
     public Dumb() {
         // FALTA CORREGIR ESTO

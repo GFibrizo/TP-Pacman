@@ -43,8 +43,7 @@ public class MapTest {
         try {
             map = new Map(new MazeXMLBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "Laberinto.xml")),
                     new CharacterXMLBuilder(Paths.get("src", "main", "resources", "laberintos", "PersonajesSimple.xml")));
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             assert (false);
             return;
         }

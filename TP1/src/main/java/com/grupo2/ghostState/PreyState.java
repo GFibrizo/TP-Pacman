@@ -37,7 +37,7 @@ public class PreyState extends GhostState {
 
     /**
      * @return the next state of the Ghost. returns this, except that the time
-     *         has passed. In that case returns an instance of HunterState.
+     * has passed. In that case returns an instance of HunterState.
      */
     @Override
     public GhostState returnNextState() {
@@ -58,7 +58,7 @@ public class PreyState extends GhostState {
     }
 
     @Override
-    public GhostState collideWithPacman(){
+    public GhostState collideWithPacman() {
         return new DeadState();
     }
 

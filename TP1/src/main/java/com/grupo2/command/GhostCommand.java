@@ -9,6 +9,6 @@ import com.grupo2.ghost.Ghost;
  */
 public abstract class GhostCommand implements Subscriber {
 
-	protected Ghost ghost;
+    protected Ghost ghost;
 
 }

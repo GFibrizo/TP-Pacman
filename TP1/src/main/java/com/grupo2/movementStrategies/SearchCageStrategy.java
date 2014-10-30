@@ -10,12 +10,12 @@ import java.util.Map;
  */
 public class SearchCageStrategy extends MovementStrategy {
 
-	public SearchCageStrategy() {
-	}
+    public SearchCageStrategy() {
+    }
 
-	@Override
-	public Direction getNewDirection(Map<Direction, Cell> allowedDirections) {
-            throw new UnsupportedOperationException("Not implemented yet");
-	}
+    @Override
+    public Direction getNewDirection(Map<Direction, Cell> allowedDirections) {
+        throw new UnsupportedOperationException("Not implemented yet");
+    }
 
 }

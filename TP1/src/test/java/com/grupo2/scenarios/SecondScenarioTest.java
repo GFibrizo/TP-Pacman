@@ -24,56 +24,56 @@ import org.junit.Test;
  */
 public class SecondScenarioTest {
 
-	private Pacman thePacman;
-	private Maze maze;
-	private Map map;
+    private Pacman thePacman;
+    private Maze maze;
+    private Map map;
 
-	public SecondScenarioTest() {
-	}
+    public SecondScenarioTest() {
+    }
 
-	@BeforeClass
-	public static void setUpClass() {
-	}
+    @BeforeClass
+    public static void setUpClass() {
+    }
 
-	@AfterClass
-	public static void tearDownClass() {
-	}
+    @AfterClass
+    public static void tearDownClass() {
+    }
 
-	@Before
-	public void setUp() throws ParserConfigurationException {
-		MazeXMLBuilder mazeBuilder = new MazeXMLBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "Laberinto.xml"));
-		//thePacman = Pacman.createPacman(1, 2, new RightDirection(), m);
-		map = new Map(mazeBuilder, new CharacterXMLBuilder(Paths.get("src", "main", "resources", "laberintos", "PersonajesSimple.xml")));
-	}
+    @Before
+    public void setUp() throws ParserConfigurationException {
+        MazeXMLBuilder mazeBuilder = new MazeXMLBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "Laberinto.xml"));
+        //thePacman = Pacman.createPacman(1, 2, new RightDirection(), m);
+        map = new Map(mazeBuilder, new CharacterXMLBuilder(Paths.get("src", "main", "resources", "laberintos", "PersonajesSimple.xml")));
+    }
 
-	@After
-	public void tearDown() {
-	}
+    @After
+    public void tearDown() {
+    }
 
-	@Test
-	public void PacmanEatsBallsAndRespectsPortals() {
+    @Test
+    public void PacmanEatsBallsAndRespectsPortals() {
 
-		Controller controller = new Controller(() -> new RightDirection());
-		for (int i = 1; i < 13; i++) {
-			map.updateModel(controller);
-		}
+        Controller controller = new Controller(() -> new RightDirection());
+        for (int i = 1; i < 13; i++) {
+            map.updateModel(controller);
+        }
 
-		int ballsEaten = 0;
+        int ballsEaten = 0;
 
-		Cell cell = map.getMaze().getCellFromCoordinates(new Coordinate(1, 0));
-		for (int i = 0; i < 12; i++) {
-			if (cell.isEmpty()) {
-				ballsEaten++;
-				return;
-			}
-			cell = cell.getRightCell();
-		}
-		assert (true);
+        Cell cell = map.getMaze().getCellFromCoordinates(new Coordinate(1, 0));
+        for (int i = 0; i < 12; i++) {
+            if (cell.isEmpty()) {
+                ballsEaten++;
+                return;
+            }
+            cell = cell.getRightCell();
+        }
+        assert (true);
 
-		Coordinate expectedPosition = new Coordinate(1, 4);
-		boolean positionOK = expectedPosition.isEqualTo(thePacman.getPosition());
+        Coordinate expectedPosition = new Coordinate(1, 4);
+        boolean positionOK = expectedPosition.isEqualTo(thePacman.getPosition());
 
-		assertTrue(positionOK && ballsEaten == 11);
+        assertTrue(positionOK && ballsEaten == 11);
 
-	}
+    }
 }

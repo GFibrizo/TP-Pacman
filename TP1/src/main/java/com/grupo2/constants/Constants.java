@@ -28,28 +28,27 @@ public final class Constants {
     private static float GHOST_RADIUS = 99;
     private static int TRACE_DURATION = 4;
 
-
     public static int VISION1 = 4;
     public static int VISION2 = 8;
     public static int VISION3 = 10;
     public static int VISION4 = 12;
 
     private Constants() {
-            //this prevents even the native class from
-            //calling this ctor as well :
-            throw new AssertionError();
+        //this prevents even the native class from
+        //calling this ctor as well :
+        throw new AssertionError();
     }
 
-	public static void initializeConstants(final Path path) {
+    public static void initializeConstants(final Path path) {
 
         try {
-			File file = path.toFile();
-			FileReader reader = new FileReader(file);
+            File file = path.toFile();
+            FileReader reader = new FileReader(file);
             JSONParser jsonParser = new JSONParser();
             JSONObject jsonObject = (JSONObject) jsonParser.parse(reader);
 
             long ticks = (long) jsonObject.get("TICK_TO_MILISECS");
-            float preyTime = ((Number)jsonObject.get("PREY_LIMIT_TIME")).floatValue();
+            float preyTime = ((Number) jsonObject.get("PREY_LIMIT_TIME")).floatValue();
             float deadTime = ((Number) jsonObject.get("DEAD_LIMIT_TIME")).floatValue();
             float firstRageTime = ((Number) jsonObject.get("FIRST_RAGE_LIMIT_TIME")).floatValue();
             float secondRageTime = ((Number) jsonObject.get("SECOND_RAGE_LIMIT_TIME")).floatValue();
@@ -80,7 +79,7 @@ public final class Constants {
      * @return the constant PREY_LIMIT_TIME
      */
     public static float getPreyLimitTime() {
-            return PREY_LIMIT_TIME;
+        return PREY_LIMIT_TIME;
     }
 
     /**
@@ -88,14 +87,14 @@ public final class Constants {
      * @return the constant DEAD_LIMIT_TIME
      */
     public static float getDeadLimitTime() {
-            return DEAD_LIMIT_TIME;
+        return DEAD_LIMIT_TIME;
     }
 
-     /**
+    /**
      * @return the constant INITIAL_VELOCITY
      */
     public static int getInitialVelocity() {
-            return INITIAL_VELOCITY;
+        return INITIAL_VELOCITY;
     }
 
     /**
@@ -103,7 +102,7 @@ public final class Constants {
      * @return the constant FIRST_RAGE_LIMIT_TIME
      */
     public static float getFirstRageLimitTime() {
-            return FIRST_RAGE_LIMIT_TIME;
+        return FIRST_RAGE_LIMIT_TIME;
     }
 
     /**
@@ -111,7 +110,7 @@ public final class Constants {
      * @return the constant SECOND_RAGE_LIMIT_TIME
      */
     public static float getSecondRageLimitTime() {
-            return SECOND_RAGE_LIMIT_TIME;
+        return SECOND_RAGE_LIMIT_TIME;
     }
 
     /**
@@ -119,7 +118,7 @@ public final class Constants {
      * @return the constant THIRD_RAGE_LIMIT_TIME
      */
     public static float getThirdRageLimitTime() {
-            return THIRD_RAGE_LIMIT_TIME;
+        return THIRD_RAGE_LIMIT_TIME;
     }
 
     /**
@@ -127,7 +126,7 @@ public final class Constants {
      * @return the constant GHOST_RADIUS
      */
     public static float getGhostRadius() {
-            return GHOST_RADIUS;
+        return GHOST_RADIUS;
     }
 
     /**
@@ -135,13 +134,12 @@ public final class Constants {
      * @return the constant TICK_TO_MILISECS
      */
     public static long getTickToMilisecs() {
-            return TICK_TO_MILISECS;
+        return TICK_TO_MILISECS;
     }
 
     public static int getTraceDuration() {
         return TRACE_DURATION;
     }
-
 
     public static void setPreyLimitTime(float timeLimit) {
         Constants.PREY_LIMIT_TIME = timeLimit;

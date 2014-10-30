@@ -11,8 +11,8 @@ import java.util.Map;
  */
 public abstract class GhostState {
 
-	public GhostState() {
-	}
+    public GhostState() {
+    }
 
 	/**
 	 * Polymorphicaly calls one of the "move" methods implemented by the derivative classes.
@@ -23,20 +23,20 @@ public abstract class GhostState {
 	 */
 	public abstract Direction getNewDirection(Personality personality, Map<Direction, Cell> allowedDirections);
 
-	/**
-	 * @return True if the State of the ghost is "Dead". False otherwise.
-	 */
-	public abstract boolean isDead();
+    /**
+     * @return True if the State of the ghost is "Dead". False otherwise.
+     */
+    public abstract boolean isDead();
 
-	/**
-	 * ***************TRANSITION OF STATES********************
-	 */
-	/**
-	 * @return the next state of the ghost.
-	 */
-	public abstract GhostState returnNextState();
+    /**
+     * ***************TRANSITION OF STATES********************
+     */
+    /**
+     * @return the next state of the ghost.
+     */
+    public abstract GhostState returnNextState();
 
-	public abstract GhostState convertToPrey();
+    public abstract GhostState convertToPrey();
 
 	public abstract GhostState die();
 

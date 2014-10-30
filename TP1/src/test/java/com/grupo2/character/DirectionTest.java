@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.grupo2.character;
 
 import com.grupo2.directions.DownDirection;
@@ -21,17 +20,17 @@ import org.junit.Test;
  * @author mauri
  */
 public class DirectionTest {
-    
+
     private LeftDirection aLeftDirection;
     private DownDirection aDownDirection;
-    
+
     public DirectionTest() {
     }
-    
+
     @Before
     public void setUp() {
         aLeftDirection = new LeftDirection();
-        aDownDirection = new DownDirection();        
+        aDownDirection = new DownDirection();
     }
 
     /**
@@ -49,6 +48,6 @@ public class DirectionTest {
 
         boolean sameDirection = aLeftDirection.isEqualTo(aDownDirection);
         assertFalse(sameDirection);
-    }    
-   
+    }
+
 }

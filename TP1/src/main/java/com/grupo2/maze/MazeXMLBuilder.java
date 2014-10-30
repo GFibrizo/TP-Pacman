@@ -42,9 +42,8 @@ public class MazeXMLBuilder implements MazeBuilder {
         return new Coordinate(x, y);
     }
 
-
     private boolean isUntransitableCell(Element eElement) {
-        String[] cells = new String[] { "izquierda", "derecha", "arriba", "abajo" };
+        String[] cells = new String[]{"izquierda", "derecha", "arriba", "abajo"};
         for (String cell : cells) {
 			if (!eElement.getAttribute(cell).isEmpty()) {
 				return false;
@@ -52,7 +51,6 @@ public class MazeXMLBuilder implements MazeBuilder {
         }
         return true;
     }
-
 
     @Override
     public RawMaze buildMaze() {
@@ -92,8 +90,7 @@ public class MazeXMLBuilder implements MazeBuilder {
             }
             maze.connectCells();
 
-        }
-        catch (ParserConfigurationException | SAXException | IOException ex) {
+        } catch (ParserConfigurationException | SAXException | IOException ex) {
             Logger.getLogger(MazeXMLBuilder.class.getName()).log(Level.SEVERE, null, ex);
         }
         return maze;

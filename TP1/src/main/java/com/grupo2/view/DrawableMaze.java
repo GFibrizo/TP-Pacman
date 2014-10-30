@@ -9,17 +9,17 @@ import java.util.ArrayList;
  */
 public interface DrawableMaze {
 
-	int getWidth();
+    int getWidth();
 
-	int getHeight();
+    int getHeight();
 
-	int getNodeWidth();
+    int getNodeWidth();
 
-	int getNodeHeight();
+    int getNodeHeight();
 
-	Coordinate getPacmanBegining();
+    Coordinate getPacmanBegining();
 
-	Coordinate getGhostsBegining();
+    Coordinate getGhostsBegining();
 
-	ArrayList<DrawableNode> getNodes();
+    ArrayList<DrawableNode> getNodes();
 }

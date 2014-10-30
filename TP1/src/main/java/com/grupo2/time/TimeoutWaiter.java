@@ -1,4 +1,5 @@
 package com.grupo2.time;
+
 import com.grupo2.eventHandling.Subscriber;
 
 /**
@@ -7,7 +8,6 @@ import com.grupo2.eventHandling.Subscriber;
  */
 public interface TimeoutWaiter extends Subscriber {
 
-	public void timeout();
-        
+    public void timeout();
 
 }

@@ -1,37 +1,37 @@
 <laberinto ancho="10" alto="3" nodoAncho="45" nodoAlto="45" inicioPacman="0200" inicioFantasmas="0100">
 
-  <nodo id="0000" fila="00" columna="00" contiene="" izquierda="" derecha="" arriba="" abajo="" />
-  <nodo id="0001" fila="00" columna="01" contiene="" izquierda="" derecha="" arriba="" abajo="" />
-  <nodo id="0002" fila="00" columna="02" contiene="" izquierda="" derecha="" arriba="" abajo="" />
-  <nodo id="0003" fila="00" columna="03" contiene="" izquierda="" derecha="" arriba="" abajo="" />
-  <nodo id="0004" fila="00" columna="04" contiene="" izquierda="" derecha="" arriba="" abajo="" />
-  <nodo id="0005" fila="00" columna="05" contiene="" izquierda="" derecha="" arriba="" abajo="" />
-  <nodo id="0006" fila="00" columna="06" contiene="" izquierda="" derecha="" arriba="" abajo="" />
-  <nodo id="0007" fila="00" columna="07" contiene="" izquierda="" derecha="" arriba="" abajo="" />
-  <nodo id="0008" fila="00" columna="08" contiene="" izquierda="" derecha="" arriba="" abajo="" />
-  <nodo id="0009" fila="00" columna="09" contiene="" izquierda="" derecha="" arriba="" abajo="" />
+    <nodo id="0000" fila="00" columna="00" contiene="" izquierda="" derecha="" arriba="" abajo="" />
+    <nodo id="0001" fila="00" columna="01" contiene="" izquierda="" derecha="" arriba="" abajo="" />
+    <nodo id="0002" fila="00" columna="02" contiene="" izquierda="" derecha="" arriba="" abajo="" />
+    <nodo id="0003" fila="00" columna="03" contiene="" izquierda="" derecha="" arriba="" abajo="" />
+    <nodo id="0004" fila="00" columna="04" contiene="" izquierda="" derecha="" arriba="" abajo="" />
+    <nodo id="0005" fila="00" columna="05" contiene="" izquierda="" derecha="" arriba="" abajo="" />
+    <nodo id="0006" fila="00" columna="06" contiene="" izquierda="" derecha="" arriba="" abajo="" />
+    <nodo id="0007" fila="00" columna="07" contiene="" izquierda="" derecha="" arriba="" abajo="" />
+    <nodo id="0008" fila="00" columna="08" contiene="" izquierda="" derecha="" arriba="" abajo="" />
+    <nodo id="0009" fila="00" columna="09" contiene="" izquierda="" derecha="" arriba="" abajo="" />
 
-  <nodo id="0100" fila="01" columna="00" contiene="" izquierda="0109" derecha="0101" arriba="" abajo="" />
-  <nodo id="0101" fila="01" columna="01" contiene="" izquierda="0100" derecha="0102" arriba="" abajo="" />
-  <nodo id="0102" fila="01" columna="02" contiene="" izquierda="0101" derecha="0103" arriba="" abajo="" />
-  <nodo id="0103" fila="01" columna="03" contiene="" izquierda="0102" derecha="0104" arriba="" abajo="" />
-  <nodo id="0104" fila="01" columna="04" contiene="" izquierda="0103" derecha="0105" arriba="" abajo="" />
-  <nodo id="0105" fila="01" columna="05" contiene="" izquierda="0104" derecha="0106" arriba="" abajo="" />
-  <nodo id="0106" fila="01" columna="06" contiene="" izquierda="0105" derecha="0107" arriba="" abajo="" />
-  <nodo id="0107" fila="01" columna="07" contiene="" izquierda="0106" derecha="0108" arriba="" abajo="" />
-  <nodo id="0108" fila="01" columna="08" contiene="" izquierda="0107" derecha="0109" arriba="" abajo="" />
-  <nodo id="0109" fila="01" columna="09" contiene="" izquierda="0108" derecha="0100" arriba="" abajo="" />
+    <nodo id="0100" fila="01" columna="00" contiene="" izquierda="0109" derecha="0101" arriba="" abajo="" />
+    <nodo id="0101" fila="01" columna="01" contiene="" izquierda="0100" derecha="0102" arriba="" abajo="" />
+    <nodo id="0102" fila="01" columna="02" contiene="" izquierda="0101" derecha="0103" arriba="" abajo="" />
+    <nodo id="0103" fila="01" columna="03" contiene="" izquierda="0102" derecha="0104" arriba="" abajo="" />
+    <nodo id="0104" fila="01" columna="04" contiene="" izquierda="0103" derecha="0105" arriba="" abajo="" />
+    <nodo id="0105" fila="01" columna="05" contiene="" izquierda="0104" derecha="0106" arriba="" abajo="" />
+    <nodo id="0106" fila="01" columna="06" contiene="" izquierda="0105" derecha="0107" arriba="" abajo="" />
+    <nodo id="0107" fila="01" columna="07" contiene="" izquierda="0106" derecha="0108" arriba="" abajo="" />
+    <nodo id="0108" fila="01" columna="08" contiene="" izquierda="0107" derecha="0109" arriba="" abajo="" />
+    <nodo id="0109" fila="01" columna="09" contiene="" izquierda="0108" derecha="0100" arriba="" abajo="" />
 
-  <nodo id="0200" fila="02" columna="00" contiene="" izquierda="" derecha="" arriba="" abajo="" />
-  <nodo id="0201" fila="02" columna="01" contiene="" izquierda="" derecha="" arriba="" abajo="" />
-  <nodo id="0202" fila="02" columna="02" contiene="" izquierda="" derecha="" arriba="" abajo="" />
-  <nodo id="0203" fila="02" columna="03" contiene="" izquierda="" derecha="" arriba="" abajo="" />
-  <nodo id="0204" fila="02" columna="04" contiene="" izquierda="" derecha="" arriba="" abajo="" />
-  <nodo id="0205" fila="02" columna="05" contiene="" izquierda="" derecha="" arriba="" abajo="" />
-  <nodo id="0206" fila="02" columna="06" contiene="" izquierda="" derecha="" arriba="" abajo="" />
-  <nodo id="0207" fila="02" columna="07" contiene="" izquierda="" derecha="" arriba="" abajo="" />
-  <nodo id="0208" fila="02" columna="08" contiene="" izquierda="" derecha="" arriba="" abajo="" />
-  <nodo id="0209" fila="02" columna="09" contiene="" izquierda="" derecha="" arriba="" abajo="" />
+    <nodo id="0200" fila="02" columna="00" contiene="" izquierda="" derecha="" arriba="" abajo="" />
+    <nodo id="0201" fila="02" columna="01" contiene="" izquierda="" derecha="" arriba="" abajo="" />
+    <nodo id="0202" fila="02" columna="02" contiene="" izquierda="" derecha="" arriba="" abajo="" />
+    <nodo id="0203" fila="02" columna="03" contiene="" izquierda="" derecha="" arriba="" abajo="" />
+    <nodo id="0204" fila="02" columna="04" contiene="" izquierda="" derecha="" arriba="" abajo="" />
+    <nodo id="0205" fila="02" columna="05" contiene="" izquierda="" derecha="" arriba="" abajo="" />
+    <nodo id="0206" fila="02" columna="06" contiene="" izquierda="" derecha="" arriba="" abajo="" />
+    <nodo id="0207" fila="02" columna="07" contiene="" izquierda="" derecha="" arriba="" abajo="" />
+    <nodo id="0208" fila="02" columna="08" contiene="" izquierda="" derecha="" arriba="" abajo="" />
+    <nodo id="0209" fila="02" columna="09" contiene="" izquierda="" derecha="" arriba="" abajo="" />
 
 
 </laberinto>

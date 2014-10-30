@@ -9,11 +9,11 @@ import com.grupo2.character.Direction;
  */
 public interface DrawablePacman {
 
-	Coordinate getPosition();
+    Coordinate getPosition();
 
-	Direction getDirection();
+    Direction getDirection();
 
-	int getScore();
+    int getScore();
 
-	boolean hasLives();
+    boolean hasLives();
 }

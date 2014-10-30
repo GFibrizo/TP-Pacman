@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.grupo2.pacman;
 
 import com.grupo2.cell.TransitableCell;
@@ -29,17 +28,17 @@ public class PacmanTest {
 
     @Before
     public void setUp() {
-		TransitableCell cell51 = new TransitableCell(5, 1);
-        TransitableCell cell41 = new TransitableCell(4,1);
-        TransitableCell cell50 = new TransitableCell(5,0);
-		thePacman = Pacman.createPacman(5, 1, new LeftDirection(), cell51);
+        TransitableCell cell51 = new TransitableCell(5, 1);
+        TransitableCell cell41 = new TransitableCell(4, 1);
+        TransitableCell cell50 = new TransitableCell(5, 0);
+        thePacman = Pacman.createPacman(5, 1, new LeftDirection(), cell51);
         // Here we link the cells manually
-        cell50.setLeftCell(new TransitableCell(4,0));
-        cell41.setLeftCell(new TransitableCell(3,1));
+        cell50.setLeftCell(new TransitableCell(4, 0));
+        cell41.setLeftCell(new TransitableCell(3, 1));
         cell51.setLeftCell(cell41);
-        cell51.setRightCell(new TransitableCell(6,1));
+        cell51.setRightCell(new TransitableCell(6, 1));
         cell51.setUpperCell(cell50);
-        cell51.setLowerCell(new TransitableCell(5,2));
+        cell51.setLowerCell(new TransitableCell(5, 2));
 
         thePacman.setCurrentCell(cell51);
     }
@@ -55,7 +54,7 @@ public class PacmanTest {
     public void shouldMoveLeftOneStep() {
         thePacman.move();
         int positionXResult = thePacman.getPosition().getX();
-        assertEquals(4,positionXResult);
+        assertEquals(4, positionXResult);
     }
 
     @Test
@@ -63,7 +62,7 @@ public class PacmanTest {
         thePacman.move();
         thePacman.move();
         int positionXResult = thePacman.getPosition().getX();
-        assertEquals(3,positionXResult);
+        assertEquals(3, positionXResult);
     }
 
     /**
@@ -83,17 +82,17 @@ public class PacmanTest {
         thePacman.setDirection(new UpDirection());
         thePacman.move();
         int positionYResult = thePacman.getPosition().getY();
-        assertEquals(0,positionYResult);
+        assertEquals(0, positionYResult);
     }
 
-        @Test
+    @Test
     public void changeDirectionAndStepTwice() {
         thePacman.setDirection(new UpDirection());
         thePacman.move();
         thePacman.setDirection(new LeftDirection());
         thePacman.move();
         Coordinate positionResult = thePacman.getPosition();
-        boolean newPositionOK = positionResult.isEqualTo(new Coordinate(4,0));
+        boolean newPositionOK = positionResult.isEqualTo(new Coordinate(4, 0));
         assertTrue(newPositionOK);
     }
 

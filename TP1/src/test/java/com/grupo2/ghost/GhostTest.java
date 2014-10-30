@@ -15,68 +15,68 @@ import org.junit.Test;
  */
 public class GhostTest {
 
-	Ghost ghost;
+    Ghost ghost;
 
-	public GhostTest() {
-	}
+    public GhostTest() {
+    }
 
-	@BeforeClass
-	public static void setUpClass() {
-	}
+    @BeforeClass
+    public static void setUpClass() {
+    }
 
-	@AfterClass
-	public static void tearDownClass() {
-	}
+    @AfterClass
+    public static void tearDownClass() {
+    }
 
-	@Before
-	public void setUp() {
-            ghost = Ghost.createEmptyGhost();
-            ghost.setPosition(0, 0);
-            ghost.setDirection(new UpDirection());
-	}
+    @Before
+    public void setUp() {
+        ghost = Ghost.createEmptyGhost();
+        ghost.setPosition(0, 0);
+        ghost.setDirection(new UpDirection());
+    }
 
-	@After
-	public void tearDown() {
-            ghost = null;
-	}
+    @After
+    public void tearDown() {
+        ghost = null;
+    }
 
-	@Test
-	public void move() {
+    @Test
+    public void move() {
 
-            boolean notImplementedYet = false;
-            try {
-                    ghost.move();
-            } catch (UnsupportedOperationException e) {
-                    notImplementedYet = true;
-            }
-            assertTrue(notImplementedYet);
-            assert (ghost.getPosition().isEqualTo(new Coordinate(0, 0)));
-	}
+        boolean notImplementedYet = false;
+        try {
+            ghost.move();
+        } catch (UnsupportedOperationException e) {
+            notImplementedYet = true;
+        }
+        assertTrue(notImplementedYet);
+        assert (ghost.getPosition().isEqualTo(new Coordinate(0, 0)));
+    }
 
-	@Test
-	public void TryingToKillHunterGhost() {
-            try {
-                    ghost.die();
-            } catch (AssertionError e) {
-                    assert (true);
-            }
-	}
-
-	@Test
-	public void TryingToKillPreyGhost() {
-            ghost.convertToPrey();
+    @Test
+    public void TryingToKillHunterGhost() {
+        try {
             ghost.die();
-            assertTrue(ghost.isDead());
-	}
+        } catch (AssertionError e) {
+            assert (true);
+        }
+    }
 
-	@Test
-	public void TryingToConvertADeadToPrey() {
+    @Test
+    public void TryingToKillPreyGhost() {
+        ghost.convertToPrey();
+        ghost.die();
+        assertTrue(ghost.isDead());
+    }
+
+    @Test
+    public void TryingToConvertADeadToPrey() {
+        ghost.convertToPrey();
+        ghost.die();
+        try {
             ghost.convertToPrey();
-            ghost.die();
-            try {
-                    ghost.convertToPrey();
-            } catch (AssertionError e) {
-                    assert (true);
-            }
-	}
+        } catch (AssertionError e) {
+            assert (true);
+        }
+    }
 }

@@ -9,15 +9,15 @@ import com.grupo2.cell.TransitableCell;
  */
 public class TransitableCellEntersCharacterCommand extends TransitableCellCommand {
 
-	public TransitableCellEntersCharacterCommand(TransitableCell aCell) {
-		this.cell = aCell;
-	}
+    public TransitableCellEntersCharacterCommand(TransitableCell aCell) {
+        this.cell = aCell;
+    }
 
-	@Override
-	public boolean execute() {
-            this.cell.getBall().isEaten();
-            this.cell.setBall(new NullBall());
-            return true;
-        }
+    @Override
+    public boolean execute() {
+        this.cell.getBall().isEaten();
+        this.cell.setBall(new NullBall());
+        return true;
+    }
 
 }

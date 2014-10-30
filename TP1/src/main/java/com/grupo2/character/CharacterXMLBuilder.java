@@ -25,128 +25,130 @@ import org.xml.sax.SAXException;
 
 public class CharacterXMLBuilder implements CharacterBuilder {
 
-	private Path path;
-	private DocumentBuilder dBuilder;
-	private Document doc;
-	//Map<String, Function> hash = new HashMap<>();
-	private ArrayList<IGhost> ghosts;
-	private Pacman pacman;
+    private Path path;
+    private DocumentBuilder dBuilder;
+    private Document doc;
+    //Map<String, Function> hash = new HashMap<>();
+    private ArrayList<IGhost> ghosts;
+    private Pacman pacman;
 
-	public CharacterXMLBuilder(Path path) throws ParserConfigurationException {
-		this.path = path;
-		try {
-			this.dBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-		} catch (ParserConfigurationException ex) {
-			Logger.getLogger(MazeXMLBuilder.class.getName()).log(Level.SEVERE, null, ex);
-			throw new ParserConfigurationException();
-		}
-		/*
-		 hash.put("izquierda", (p) -> {return new LeftDirection();});
-		 hash.put("derecha",   (p) -> {return new RightDirection();});
-		 hash.put("arriba",    (p) -> {return new UpDirection();});
-		 hash.put("abajo",     (p) -> {return new DownDirection();});
-		 hash.put("zonzo",     (p) -> {return new Dumb();});
-		 hash.put("buscador",  (p) -> {return new Seeker();});
-		 hash.put("perezoso",  (p) -> {return new Lazy();});
-		 hash.put("Cazador",   (p) -> {return new HunterState();});
-		 hash.put("Presa",     (p) -> {return new PreyState();});*/
-	}
+    public CharacterXMLBuilder(Path path) throws ParserConfigurationException {
+        this.path = path;
+        try {
+            this.dBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+        } catch (ParserConfigurationException ex) {
+            Logger.getLogger(MazeXMLBuilder.class.getName()).log(Level.SEVERE, null, ex);
+            throw new ParserConfigurationException();
+        }
+        /*
+         hash.put("izquierda", (p) -> {return new LeftDirection();});
+         hash.put("derecha",   (p) -> {return new RightDirection();});
+         hash.put("arriba",    (p) -> {return new UpDirection();});
+         hash.put("abajo",     (p) -> {return new DownDirection();});
+         hash.put("zonzo",     (p) -> {return new Dumb();});
+         hash.put("buscador",  (p) -> {return new Seeker();});
+         hash.put("perezoso",  (p) -> {return new Lazy();});
+         hash.put("Cazador",   (p) -> {return new HunterState();});
+         hash.put("Presa",     (p) -> {return new PreyState();});*/
+    }
 
 
-	/*private ICharacter constructCharacter(Element eElement, boolean isGhost) {
-	 int x = Integer.parseInt(eElement.getAttribute("fila"));
-	 int y = Integer.parseInt(eElement.getAttribute("columna"));
-	 Direction dir = (Direction) hash.get(eElement.getAttribute("sentido")).apply(null);
+    /*private ICharacter constructCharacter(Element eElement, boolean isGhost) {
+     int x = Integer.parseInt(eElement.getAttribute("fila"));
+     int y = Integer.parseInt(eElement.getAttribute("columna"));
+     Direction dir = (Direction) hash.get(eElement.getAttribute("sentido")).apply(null);
 
-	 if (!isGhost) {
-	 return new Pacman(x, y, dir);
-	 } else {
-	 Coordinate coord = new Coordinate(x,y);
-	 Personality pers = (Personality) hash.get(eElement.getAttribute("personalidad")).apply(null);
-	 GhostState state = (GhostState) hash.get(eElement.getAttribute("estado")).apply(null);
-	 return GhostFactory.createGhost(state, pers, coord, dir);
-	 }
-	 }*/
-	public void obtainCharactersFromXML() {
-		/* try {
-		 File xmlFile = new File(path);
-		 doc = dBuilder.parse(xmlFile);
-		 doc.getDocumentElement().normalize();
-		 Element root = doc.getDocumentElement();
-		 this.pacman = (Pacman) constructCharacter(root, false);
-		 NodeList nList = doc.getElementsByTagName("fantasma");
-		 this.ghosts = new ArrayList<>();
-		 for (int i = 0; i < nList.getLength(); i++) {
-		 Node nNode = nList.item(i);
-		 if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-		 Element eElement = (Element) nNode;
-		 this.ghosts.add((Ghost) constructCharacter(eElement, false));
-		 }
-		 }
-		 } catch (SAXException | IOException ex) {
-		 Logger.getLogger(MazeXMLBuilder.class.getName()).log(Level.SEVERE, null, ex);
-		 }*/
+     if (!isGhost) {
+     return new Pacman(x, y, dir);
+     } else {
+     Coordinate coord = new Coordinate(x,y);
+     Personality pers = (Personality) hash.get(eElement.getAttribute("personalidad")).apply(null);
+     GhostState state = (GhostState) hash.get(eElement.getAttribute("estado")).apply(null);
+     return GhostFactory.createGhost(state, pers, coord, dir);
+     }
+     }*/
+    
+    @Override
+    public void obtainCharactersFromXML() {
+        /* try {
+         File xmlFile = new File(path);
+         doc = dBuilder.parse(xmlFile);
+         doc.getDocumentElement().normalize();
+         Element root = doc.getDocumentElement();
+         this.pacman = (Pacman) constructCharacter(root, false);
+         NodeList nList = doc.getElementsByTagName("fantasma");
+         this.ghosts = new ArrayList<>();
+         for (int i = 0; i < nList.getLength(); i++) {
+         Node nNode = nList.item(i);
+         if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+         Element eElement = (Element) nNode;
+         this.ghosts.add((Ghost) constructCharacter(eElement, false));
+         }
+         }
+         } catch (SAXException | IOException ex) {
+         Logger.getLogger(MazeXMLBuilder.class.getName()).log(Level.SEVERE, null, ex);
+         }*/
 
-		try {
-			//System.out.print(path);
-			File xmlFile = path.toFile();
-			doc = dBuilder.parse(xmlFile);
-			doc.getDocumentElement().normalize();
-			Element root = doc.getDocumentElement();
-			int x = Integer.parseInt(root.getAttribute("fila"));
-			int y = Integer.parseInt(root.getAttribute("columna"));
-			String direction = root.getAttribute("sentido");
-			Direction dir;
-			dir = getDirection(direction);
-			this.pacman = Pacman.createPacman(x, y, dir, null);
+        try {
+            //System.out.print(path);
+            File xmlFile = path.toFile();
+            doc = dBuilder.parse(xmlFile);
+            doc.getDocumentElement().normalize();
+            Element root = doc.getDocumentElement();
+            int x = Integer.parseInt(root.getAttribute("fila"));
+            int y = Integer.parseInt(root.getAttribute("columna"));
+            String direction = root.getAttribute("sentido");
+            Direction dir;
+            dir = getDirection(direction);
+            this.pacman = Pacman.createPacman(x, y, dir, null);
 
-			NodeList nList = doc.getElementsByTagName("fantasma");
-			this.ghosts = new ArrayList<>();
-			for (int i = 0; i < nList.getLength(); i++) {
-				Node nNode = nList.item(i);
-				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-					Element eElement = (Element) nNode;
-					x = Integer.parseInt(eElement.getAttribute("fila"));
-					y = Integer.parseInt(eElement.getAttribute("columna"));
-					direction = eElement.getAttribute("sentido");
-					dir = getDirection(direction);
-					Coordinate coord = new Coordinate(x, y);
-					this.ghosts.add(GhostFactory.createGhost(null, null, coord, dir));
-					//this.ghosts.add(new Ghost(x, y, dir));
-				}
-			}
-		} catch (SAXException | IOException ex) {
-			Logger.getLogger(MazeXMLBuilder.class.getName()).log(Level.SEVERE, null, ex);
-		}
-	}
+            NodeList nList = doc.getElementsByTagName("fantasma");
+            this.ghosts = new ArrayList<>();
+            for (int i = 0; i < nList.getLength(); i++) {
+                Node nNode = nList.item(i);
+                if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+                    Element eElement = (Element) nNode;
+                    x = Integer.parseInt(eElement.getAttribute("fila"));
+                    y = Integer.parseInt(eElement.getAttribute("columna"));
+                    direction = eElement.getAttribute("sentido");
+                    dir = getDirection(direction);
+                    Coordinate coord = new Coordinate(x, y);
+                    this.ghosts.add(GhostFactory.createGhost(null, null, coord, dir));
+                    //this.ghosts.add(new Ghost(x, y, dir));
+                }
+            }
+        } catch (SAXException | IOException ex) {
+            Logger.getLogger(MazeXMLBuilder.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
-	private Direction getDirection(String direction) {
-		Direction dir;
-		switch (direction) {
-			case "izquierda":
-				dir = new LeftDirection();
-				break;
-			case "derecha":
-				dir = new RightDirection();
-				break;
-			case "abajo":
-				dir = new DownDirection();
-				break;
-			default:
-				dir = new UpDirection();
-				break;
-		}
-		return dir;
-	}
+    private Direction getDirection(String direction) {
+        Direction dir;
+        switch (direction) {
+            case "izquierda":
+                dir = new LeftDirection();
+                break;
+            case "derecha":
+                dir = new RightDirection();
+                break;
+            case "abajo":
+                dir = new DownDirection();
+                break;
+            default:
+                dir = new UpDirection();
+                break;
+        }
+        return dir;
+    }
 
-	@Override
-	public Pacman getPacman() {
-		return this.pacman;
-	}
+    @Override
+    public Pacman getPacman() {
+        return this.pacman;
+    }
 
-	@Override
-	public ArrayList<IGhost> getGhosts() {
-		return this.ghosts;
-	}
+    @Override
+    public ArrayList<IGhost> getGhosts() {
+        return this.ghosts;
+    }
 
 }

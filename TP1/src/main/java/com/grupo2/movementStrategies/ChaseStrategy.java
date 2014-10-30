@@ -15,14 +15,13 @@ public class ChaseStrategy extends HunterStrategy {
 
     public ChaseStrategy() {
     }
-    
 
     @Override
     public Direction getNewDirection(Map<Direction, Cell> allowedDirections) {
         Coordinate pacmanPosition = Pacman.getPacman().getPosition();
         int minDistance = 0;
         Direction chosenDir = new NullDirection();
-        
+
         for (Map.Entry<Direction, Cell> entry : allowedDirections.entrySet()) {
             int distance = pacmanPosition.distanceTo(entry.getValue().getPosition());
             if (distance < minDistance) {

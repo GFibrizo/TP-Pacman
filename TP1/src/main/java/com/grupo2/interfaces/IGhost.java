@@ -8,10 +8,10 @@ import com.grupo2.view.DrawableGhost;
  */
 public interface IGhost extends ICharacter, DrawableGhost {
 
-	public void convertToPrey();
+    public void convertToPrey();
 
-	public void onCollisionWithPacman();
+    public void onCollisionWithPacman();
 
-	public int getVision();
+    public int getVision();
 
 }
