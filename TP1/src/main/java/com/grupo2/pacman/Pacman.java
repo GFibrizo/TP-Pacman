@@ -59,8 +59,10 @@ public class Pacman extends Character implements DrawablePacman {
         return !this.alive;
     }
 
+    @Override
     public void setCurrentCell(Cell currCell) {
         this.currentCell = currCell;
+        this.position = this.currentCell.getPosition();
     }
 
     @Override

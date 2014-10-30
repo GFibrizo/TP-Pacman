@@ -96,7 +96,7 @@ public class UntransitableCell implements RawCell {
 
     @Override
     public boolean isEmpty() {
-        return true;
+        throw new UnsupportedOperationException("An Untransitable cell is neither empty or full");
     }
 
 }
