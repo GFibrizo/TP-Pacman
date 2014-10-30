@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.grupo2.directions;
 
 import com.grupo2.cell.Cell;
@@ -15,11 +14,11 @@ import com.grupo2.interfaces.ICharacter;
  * @author mauri
  */
 public class NullDirection implements Direction {
-    
+
     @Override
     public boolean canGoForward(Cell cell) {
         return false;
-    }    
+    }
 
     @Override
     public void stepForward(ICharacter aCharacter) {
@@ -69,5 +68,5 @@ public class NullDirection implements Direction {
     @Override
     public boolean isOposedTo(DownDirection other) {
         return false;
-    }    
+    }
 }

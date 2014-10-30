@@ -126,7 +126,7 @@ public class TransitableCell implements RawCell {
     public boolean canGoRight() {
         return rightCell.isTransitable();
     }
-    
+
     @Override
     public boolean isEmpty() {
         return (!ball.isEatable());

@@ -6,9 +6,9 @@ package com.grupo2.view;
  */
 public interface View {
 
-	void reloadMaze(DrawableMaze maze);
+    void reloadMaze(DrawableMaze maze);
 
-	void reloadPacman(DrawablePacman pacman);
+    void reloadPacman(DrawablePacman pacman);
 
-	void reloadGhost(DrawableGhost ghost);
+    void reloadGhost(DrawableGhost ghost);
 }

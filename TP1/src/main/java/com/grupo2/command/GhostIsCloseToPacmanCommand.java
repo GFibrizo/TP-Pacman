@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package com.grupo2.command;
+
 import com.grupo2.ghost.Ghost;
 import com.grupo2.eventHandling.Subscriber;
 import com.grupo2.pacman.PacmanArea;
@@ -13,9 +14,9 @@ import com.grupo2.pacman.PacmanArea;
  * @author fibrizo
  */
 public class GhostIsCloseToPacmanCommand implements Subscriber {
-    
+
     private Ghost ghost;
-    
+
     public GhostIsCloseToPacmanCommand(Ghost ghost) {
         this.ghost = ghost;
     }

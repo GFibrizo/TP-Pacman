@@ -6,11 +6,11 @@ package com.grupo2.cell;
  */
 public interface RawCell extends Cell {
 
-	void setLeftCell(RawCell rc);
+    void setLeftCell(RawCell rc);
 
-	void setRightCell(RawCell rc);
+    void setRightCell(RawCell rc);
 
-	void setUpperCell(RawCell rc);
+    void setUpperCell(RawCell rc);
 
-	void setLowerCell(RawCell rc);
+    void setLowerCell(RawCell rc);
 }

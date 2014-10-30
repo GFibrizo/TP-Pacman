@@ -10,7 +10,7 @@ public class NullBall implements Ball {
     public int isEaten() {
         return 0;
     }
-        
+
     @Override
     public boolean isEatable() {
         return false;

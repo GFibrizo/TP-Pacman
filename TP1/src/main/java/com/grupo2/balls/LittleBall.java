@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.grupo2.balls;
 
 /**
@@ -17,10 +16,10 @@ public class LittleBall implements Ball {
         //POR AHORA SETEARLE A LA CELDA EN LA QUE ESTÉ LA BOLITA, UNA NULL BALL. LUEGO TAMBIÉN SUMARÁ PUNTOS AL JUEGO.
         return 10;
     }
-    
-        @Override
+
+    @Override
     public boolean isEatable() {
         return true;
     }
-    
+
 }

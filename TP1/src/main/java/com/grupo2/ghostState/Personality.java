@@ -1,4 +1,5 @@
 package com.grupo2.ghostState;
+
 import com.grupo2.cell.Cell;
 import com.grupo2.character.Direction;
 import com.grupo2.movementStrategies.MovementStrategy;
@@ -14,7 +15,9 @@ public abstract class Personality {
     protected MovementStrategy movement;
 
     public abstract Direction getNewDirection(Map<Direction, Cell> allowedDirections);
+
     public abstract void beginPacmanChase();
+
     public abstract void stopPacmanChase();
 
     public int getVision() {

@@ -1,4 +1,5 @@
 package com.grupo2.movementStrategies;
+
 import java.util.Map;
 import java.util.List;
 import com.grupo2.character.Direction;
@@ -11,10 +12,10 @@ import java.util.Random;
  * @author ivan
  */
 public abstract class MovementStrategy {
-    
+
     protected List<Direction> directions;
     protected Random randomGenerator;
-    
+
     protected MovementStrategy() {
         directions.add(new UpDirection());
         directions.add(new DownDirection());

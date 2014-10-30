@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.grupo2.scenarios;
 
 import com.grupo2.cell.Cell;
@@ -24,6 +23,7 @@ import com.grupo2.directions.RightDirection;
  * @author mauri
  */
 public class FirstScenarioTest {
+
     private Pacman thePacman;
     private MazeXMLBuilder mazeBuilder;
     private Ghost anOnlyRightGhost;
@@ -37,7 +37,7 @@ public class FirstScenarioTest {
         RawMaze maze = mazeBuilder.buildMaze();
         //anOnlyRightGhost = Ghost.createOnlyRightGhost();
         anOnlyRightGhost = GhostFactory.createOnlyRightGhost();
-        Cell initialGhostCell = maze.getCellFromCoordinates(new Coordinate(0,1));        
+        Cell initialGhostCell = maze.getCellFromCoordinates(new Coordinate(0, 1));
         anOnlyRightGhost.setCurrentCell(initialGhostCell);
 
     }
@@ -49,13 +49,11 @@ public class FirstScenarioTest {
             anOnlyRightGhost.move();
         }
 
-        Coordinate expectedPosition = new Coordinate(1,1); //DECIA (1,1) estaba MAL
+        Coordinate expectedPosition = new Coordinate(1, 1); //DECIA (1,1) estaba MAL
         boolean positionOK = expectedPosition.isEqualTo(anOnlyRightGhost.getPosition());
 
         assertTrue(positionOK);
-    
-    } 
-    
-    
-    
+
+    }
+
 }

@@ -13,7 +13,6 @@ import com.grupo2.view.DrawablePacman;
  */
 public class Pacman extends Character implements DrawablePacman {
 
-
     private static Pacman instance;
 
     private Direction nextDirection;
@@ -21,50 +20,48 @@ public class Pacman extends Character implements DrawablePacman {
     private int score;
 
     /*public Pacman(final int x, final int y, final Direction dir) {
-        super(x, y, dir);
-        this.alive = true;
-    }*/
-
+     super(x, y, dir);
+     this.alive = true;
+     }*/
     public static Pacman getPacman() {
-        if (instance == null)
+        if (instance == null) {
             throw new ExceptionInInitializerError();
+        }
         return instance;
     }
 
-	public static Pacman createPacman(final int x, final int y, final Direction dir, Cell begCell) {
-		return new Pacman(x, y, dir, begCell);
+    public static Pacman createPacman(final int x, final int y, final Direction dir, Cell begCell) {
+        return new Pacman(x, y, dir, begCell);
     }
 
-	private Pacman(final int x, final int y, final Direction dir, Cell currCell) {
+    private Pacman(final int x, final int y, final Direction dir, Cell currCell) {
         this.position = new Coordinate(x, y);
         this.direction = dir;
         this.nextDirection = new NullDirection();
-		this.currentCell = currCell;
+        this.currentCell = currCell;
         this.alive = true;
     }
 
-
     @Override
     public void move() {
-		if (this.nextDirection.canGoForward(this.currentCell)) {
+        if (this.nextDirection.canGoForward(this.currentCell)) {
             this.direction = this.nextDirection;
             this.nextDirection = new NullDirection();
         }
 
-		if (this.direction.canGoForward(this.currentCell)) {
+        if (this.direction.canGoForward(this.currentCell)) {
             this.direction.stepForward(this);
         }
     }
-
 
     @Override
     public boolean isDead() {
         return !this.alive;
     }
 
-	public void setCurrentCell(Cell currCell) {
-		this.currentCell = currCell;
-	}
+    public void setCurrentCell(Cell currCell) {
+        this.currentCell = currCell;
+    }
 
     @Override
     public void setDirection(Direction direction) {
@@ -76,14 +73,14 @@ public class Pacman extends Character implements DrawablePacman {
         this.alive = false;
     }
 
-	@Override
-	public int getScore() {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-	}
+    @Override
+    public int getScore() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
-	@Override
-	public boolean hasLives() {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-	}
+    @Override
+    public boolean hasLives() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 
 }

@@ -26,7 +26,7 @@ public class PreyState extends GhostState {
         time++;
         return this.movement.getNewDirection(allowedDirections);
     }
- 
+
     /**
      * @return False, because the State of the Ghost isn't "Dead".
      */
@@ -37,7 +37,7 @@ public class PreyState extends GhostState {
 
     /**
      * @return the next state of the Ghost. returns this, except that the time
-     *         has passed. In that case returns an instance of HunterState.
+     * has passed. In that case returns an instance of HunterState.
      */
     @Override
     public GhostState returnNextState() {
@@ -56,9 +56,9 @@ public class PreyState extends GhostState {
     public GhostState die() {
         return new DeadState();
     }
-    
+
     @Override
-    public GhostState collideWithPacman(){
+    public GhostState collideWithPacman() {
         return new DeadState();
     }
 

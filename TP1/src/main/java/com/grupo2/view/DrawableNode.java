@@ -8,20 +8,20 @@ import com.grupo2.character.Coordinate;
  */
 public interface DrawableNode {
 
-	Coordinate getCoords();
+    Coordinate getCoords();
 
-	boolean isEmpty();
+    boolean isEmpty();
 
-	boolean hasLittleBall();
+    boolean hasLittleBall();
 
-	boolean hasBigBall();
+    boolean hasBigBall();
 
-	boolean isRightTransitable();
+    boolean isRightTransitable();
 
-	boolean isLeftTransitable();
+    boolean isLeftTransitable();
 
-	boolean isUpTransitable();
+    boolean isUpTransitable();
 
-	boolean isDownTransitable();
+    boolean isDownTransitable();
 
 }

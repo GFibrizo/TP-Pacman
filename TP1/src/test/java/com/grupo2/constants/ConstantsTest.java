@@ -28,7 +28,7 @@ public class ConstantsTest {
      */
     @Test
     public void testInitializeConstants() {
-		Constants.initializeConstants(Paths.get("src", "main", "resources", "Constants.json"));
+        Constants.initializeConstants(Paths.get("src", "main", "resources", "Constants.json"));
 
         // TODO: acá se deberían probar todos los datos, pero como todos hacen lo mismo, puse 2 random
         double deadTimeResult = Constants.getDeadLimitTime();

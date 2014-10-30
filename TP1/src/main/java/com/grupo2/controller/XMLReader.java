@@ -62,8 +62,7 @@ public class XMLReader implements InputReader {
             this.tickNumber++;
             this.initializeDoc();
 
-        }
-        catch (SAXException | IOException | ParserConfigurationException ex) {
+        } catch (SAXException | IOException | ParserConfigurationException ex) {
             Logger.getLogger(XMLReader.class.getName()).log(Level.SEVERE, null, ex);
         }
         return dirRes;

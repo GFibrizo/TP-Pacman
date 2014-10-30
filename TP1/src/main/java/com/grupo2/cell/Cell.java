@@ -23,12 +23,12 @@ public interface Cell {
     public Cell getRightCell();
 
     public boolean canGoUp();
-    
+
     public boolean canGoDown();
-    
+
     public boolean canGoLeft();
-    
+
     public boolean canGoRight();
-    
+
     public boolean isEmpty();
 }

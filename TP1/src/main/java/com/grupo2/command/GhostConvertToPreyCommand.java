@@ -8,14 +8,14 @@ import com.grupo2.ghost.Ghost;
  */
 public class GhostConvertToPreyCommand extends GhostCommand {
 
-	GhostConvertToPreyCommand(Ghost ghost) {
-            this.ghost = ghost;
-	}
+    GhostConvertToPreyCommand(Ghost ghost) {
+        this.ghost = ghost;
+    }
 
-	@Override
-	public boolean execute() {
-            this.ghost.convertToPrey();
-            return true;
-	}
+    @Override
+    public boolean execute() {
+        this.ghost.convertToPrey();
+        return true;
+    }
 
 }

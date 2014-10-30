@@ -14,7 +14,7 @@ public class RightDirection implements Direction {
     public void stepForward(ICharacter aCharacter) {
         aCharacter.setCurrentCell(aCharacter.getCurrentCell().getRightCell());
     }
-    
+
     @Override
     public boolean isEqualTo(LeftDirection other) {
         return false;
@@ -34,17 +34,17 @@ public class RightDirection implements Direction {
     public boolean isEqualTo(DownDirection other) {
         return false;
     }
-    
+
     @Override
     public boolean canGoForward(Cell cell) {
         return cell.getRightCell().isTransitable();
-    }   
+    }
 
     @Override
     public boolean EqualTo(Direction other) {
         return other.isEqualTo(this);
     }
-    
+
     @Override
     public boolean isOposedTo(LeftDirection other) {
         return true;
@@ -63,5 +63,5 @@ public class RightDirection implements Direction {
     @Override
     public boolean isOposedTo(DownDirection other) {
         return false;
-    }    
+    }
 }

@@ -12,7 +12,7 @@ public abstract class Character implements ICharacter {
     protected Coordinate position;
     protected Direction direction;
     protected Cell currentCell;
-    
+
     protected Character() {
         this.position = null;
         this.direction = null;
@@ -29,7 +29,7 @@ public abstract class Character implements ICharacter {
     public Coordinate getPosition() {
         return this.currentCell.getPosition();
     }
-    
+
     public Direction getDirection() {
         return this.direction;
     }
@@ -46,17 +46,17 @@ public abstract class Character implements ICharacter {
     public void setPosition(int x, int y) {
         position = new Coordinate(x, y);
     }
-    
+
     @Override
     public void setDirection(Direction dir) {
         direction = dir;
     }
-    
+
     @Override
     public void setCurrentCell(Cell cell) {
         currentCell = cell;
     }
-    
+
     @Override
     public Cell getCurrentCell() {
         return this.currentCell;

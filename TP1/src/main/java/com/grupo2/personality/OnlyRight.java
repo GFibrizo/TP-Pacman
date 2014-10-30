@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.grupo2.personality;
 
 import com.grupo2.cell.Cell;
@@ -16,7 +15,7 @@ import java.util.Map;
  *
  * @author mauri
  */
-public class OnlyRight extends Personality {    
+public class OnlyRight extends Personality {
 
     @Override
     public Direction getNewDirection(Map<Direction, Cell> allowedDirections) {
@@ -31,5 +30,5 @@ public class OnlyRight extends Personality {
     @Override
     public void stopPacmanChase() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }    
+    }
 }

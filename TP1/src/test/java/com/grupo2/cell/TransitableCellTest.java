@@ -11,39 +11,39 @@ import org.junit.Test;
  */
 public class TransitableCellTest {
 
-	TransitableCell transCell;
+    TransitableCell transCell;
 
-	public TransitableCellTest() {
-	}
+    public TransitableCellTest() {
+    }
 
-	@BeforeClass
-	public static void setUp() {
+    @BeforeClass
+    public static void setUp() {
 
-		TransitableCell transCell = new TransitableCell(2, 2);
-	}
+        TransitableCell transCell = new TransitableCell(2, 2);
+    }
 
-	@AfterClass
-	public static void tearDownClass() {
-	}
+    @AfterClass
+    public static void tearDownClass() {
+    }
 
-	/**
-	 * Test of isTransitable method, of class TransitableCell.
-	 */
-	@Test
-	public void isTransitable() {
+    /**
+     * Test of isTransitable method, of class TransitableCell.
+     */
+    @Test
+    public void isTransitable() {
 
-		boolean result = transCell.isTransitable();
-		assertTrue(result);
-	}
+        boolean result = transCell.isTransitable();
+        assertTrue(result);
+    }
 
-	/**
-	 * Test of isTheSame method, of class TransitableCell.
-	 */
-	@Test
-	public void isTheSame() {
+    /**
+     * Test of isTheSame method, of class TransitableCell.
+     */
+    @Test
+    public void isTheSame() {
 
-		boolean result = transCell.isTheSame(transCell);
-		assertTrue(result);
-	}
+        boolean result = transCell.isTheSame(transCell);
+        assertTrue(result);
+    }
 
 }
