@@ -68,5 +68,10 @@ public class NullDirection implements Direction {
     @Override
     public boolean isOposedTo(DownDirection other) {
         return false;
-    }
+	}
+
+	@Override
+	public String toString() {
+		return "";
+	}
 }

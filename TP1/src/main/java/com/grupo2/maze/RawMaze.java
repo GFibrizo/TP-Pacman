@@ -24,6 +24,8 @@ public class RawMaze implements Maze {
     private int width;
     private Coordinate initPacman;
     private Coordinate initGhost;
+	private int nodeWidth;
+	private int nodeHeight;
 
     public RawMaze(final int height, final int width, Coordinate initPacman, Coordinate initGhost) {
         map = new ArrayList<>(height);
@@ -76,7 +78,15 @@ public class RawMaze implements Maze {
     @Override
     public Coordinate getGhostBegining() {
         return this.initGhost;
-    }
+	}
+
+	public void setNodeWidth(int nodeWidth) {
+		this.nodeWidth = nodeWidth;
+	}
+
+	public void setNodeHeight(int nodeHeight) {
+		this.nodeHeight = nodeHeight;
+	}
 
     @Override
     public Cell getCellFromCoordinates(Coordinate coord) {
@@ -93,34 +103,39 @@ public class RawMaze implements Maze {
         return entityCell.isTheSame(otherCell);
     }
 
-    @Override
-    public int getWidth() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+	@Override
+	public int getWidth() {
+		return this.width;
+	}
 
-    @Override
-    public int getHeight() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+	@Override
+	public int getHeight() {
+		return this.height;
+	}
 
-    @Override
-    public int getNodeWidth() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+	@Override
+	public int getNodeWidth() {
+		return this.nodeWidth;
+	}
 
-    @Override
-    public int getNodeHeight() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+	@Override
+	public int getNodeHeight() {
+		return this.nodeHeight;
+	}
 
-    @Override
-    public Coordinate getGhostsBegining() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+	@Override
+	public Coordinate getGhostsBegining() {
+		return this.initGhost;
+	}
 
-    @Override
-    public ArrayList<DrawableNode> getNodes() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
+	@Override
+	public ArrayList<DrawableNode> getNodes() {
+		ArrayList<DrawableNode> dNodes = new ArrayList<>();
+		for (ArrayList<RawCell> row : this.map) {
+			for (RawCell cell : row) {
+				dNodes.add(cell);
+			}
+		}
+		return dNodes;
+	}
 }

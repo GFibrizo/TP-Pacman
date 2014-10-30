@@ -88,12 +88,8 @@ public class Map {
         this.pacmanEntersCell();
     }
 
-    public void updateView(View view) {
-        view.reloadMaze(this.maze);
-        view.reloadPacman(this.thePacman);
-        this.ghosts.forEach((IGhost ghost) -> {
-            view.reloadGhost(ghost);
-        });
-    }
+	public void updateView(View view) {
+		view.show();
+	}
 
 }

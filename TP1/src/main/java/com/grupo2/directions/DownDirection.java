@@ -65,4 +65,9 @@ public class DownDirection implements Direction {
         return false;
     }
 
+	@Override
+	public String toString() {
+		return "abajo";
+	}
+
 }

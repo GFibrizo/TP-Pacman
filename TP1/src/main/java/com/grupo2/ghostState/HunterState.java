@@ -62,4 +62,8 @@ public class HunterState extends GhostState {
         velocity++;
     }
 
+	@Override
+	public String toString() {
+		return "cazador";
+	}
 }

@@ -33,6 +33,6 @@ public interface Direction {
 
     boolean isOposedTo(DownDirection other);
 
-    boolean canGoForward(Cell cell);
+	boolean canGoForward(Cell cell);
 
 }

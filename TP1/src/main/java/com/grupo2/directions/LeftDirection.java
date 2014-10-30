@@ -65,4 +65,9 @@ public class LeftDirection implements Direction {
         return false;
     }
 
+	@Override
+	public String toString() {
+		return "izquierda";
+	}
+
 }

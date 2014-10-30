@@ -9,7 +9,7 @@ import com.grupo2.character.Coordinate;
  *
  * @author mauri
  */
-public class TransitableCell implements RawCell {
+public class TransitableCell extends RawCell {
 
     private Collitionable content;
     private RawCell upperCell;
@@ -131,5 +131,40 @@ public class TransitableCell implements RawCell {
     public boolean isEmpty() {
         return (!ball.isEatable());
     }
+
+	@Override
+	public Coordinate getCoords() {
+		return this.position;
+	}
+
+	@Override
+	public boolean hasLittleBall() {
+		return "bolita".equals(String.valueOf(this.ball));
+	}
+
+	@Override
+	public boolean hasBigBall() {
+		return "bolon".equals(String.valueOf(this.ball));
+	}
+
+	@Override
+	public boolean isRightTransitable() {
+		return this.canGoRight();
+	}
+
+	@Override
+	public boolean isLeftTransitable() {
+		return this.canGoLeft();
+	}
+
+	@Override
+	public boolean isUpTransitable() {
+		return this.canGoUp();
+	}
+
+	@Override
+	public boolean isDownTransitable() {
+		return this.canGoDown();
+	}
 
 }

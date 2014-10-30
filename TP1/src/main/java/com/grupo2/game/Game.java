@@ -3,6 +3,7 @@ package com.grupo2.game;
 import com.grupo2.character.CharacterXMLBuilder;
 import com.grupo2.controller.Controller;
 import com.grupo2.controller.XMLReader;
+import com.grupo2.interfaces.IGhost;
 import com.grupo2.map.Map;
 import com.grupo2.maze.MazeXMLBuilder;
 import com.grupo2.view.View;
@@ -26,7 +27,12 @@ public class Game {
                 new CharacterXMLBuilder(Paths.get("src", "main", "resources", "laberintos", "PersonajesSimple.xml")));
         Path path = Paths.get("src", "main", "resources", "pacman");
         Controller controller = new Controller(new XMLReader(path));
-        View view = new XMLView("vpath");
+		View view = new XMLView(Paths.get("src", "main", "resources", "estados"));
+		view.setMaze(map.getMaze());
+		view.setPacman(map.getPacman());
+		map.getGhosts().forEach((IGhost ghost) -> {
+			view.addGhost(ghost);
+		});
         boolean ended = false;
 
         while (!ended) {

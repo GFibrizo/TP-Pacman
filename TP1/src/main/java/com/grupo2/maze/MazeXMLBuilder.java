@@ -45,9 +45,9 @@ public class MazeXMLBuilder implements MazeBuilder {
     private boolean isUntransitableCell(Element eElement) {
         String[] cells = new String[]{"izquierda", "derecha", "arriba", "abajo"};
         for (String cell : cells) {
-            if (!eElement.getAttribute(cell).equals("")) {
-                return false;
-            }
+			if (!eElement.getAttribute(cell).isEmpty()) {
+				return false;
+			}
         }
         return true;
     }
@@ -65,8 +65,10 @@ public class MazeXMLBuilder implements MazeBuilder {
             int height = Integer.parseInt(root.getAttribute("alto"));
             Coordinate initPacman = this.getCoords(root.getAttribute("inicioPacman"));
             Coordinate initGhosts = this.getCoords(root.getAttribute("inicioFantasmas"));
-            maze = new RawMaze(height, width, initPacman, initGhosts);
-            NodeList nList = doc.getElementsByTagName("nodo");
+			maze = new RawMaze(height, width, initPacman, initGhosts);
+			maze.setNodeWidth(Integer.parseInt(root.getAttribute("nodoAncho")));
+			maze.setNodeHeight(Integer.parseInt(root.getAttribute("nodoAlto")));
+			NodeList nList = doc.getElementsByTagName("nodo");
             for (int i = 0; i < nList.getLength(); i++) {
                 Node nNode = nList.item(i);
                 if (nNode.getNodeType() == Node.ELEMENT_NODE) {

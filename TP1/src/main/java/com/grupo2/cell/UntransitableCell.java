@@ -6,7 +6,7 @@ import com.grupo2.character.Coordinate;
  *
  * @author mauri
  */
-public class UntransitableCell implements RawCell {
+public class UntransitableCell extends RawCell {
 
     private final Coordinate position;
     private RawCell upperCell;
@@ -96,7 +96,42 @@ public class UntransitableCell implements RawCell {
 
     @Override
     public boolean isEmpty() {
-        throw new UnsupportedOperationException("An Untransitable cell is neither empty or full");
-    }
+        return true;
+	}
+
+	@Override
+	public Coordinate getCoords() {
+		return this.position;
+	}
+
+	@Override
+	public boolean hasLittleBall() {
+		return false;
+	}
+
+	@Override
+	public boolean hasBigBall() {
+		return false;
+	}
+
+	@Override
+	public boolean isRightTransitable() {
+		return this.canGoRight();
+	}
+
+	@Override
+	public boolean isLeftTransitable() {
+		return this.canGoLeft();
+	}
+
+	@Override
+	public boolean isUpTransitable() {
+		return this.canGoUp();
+	}
+
+	@Override
+	public boolean isDownTransitable() {
+		return this.canGoDown();
+	}
 
 }

@@ -10,6 +10,7 @@ import com.grupo2.directions.UpDirection;
 import com.grupo2.ghostState.DeadState;
 import com.grupo2.ghostState.Personality;
 import com.grupo2.interfaces.IGhost;
+import com.grupo2.view.DrawableGhost;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,7 +18,7 @@ import java.util.Map;
  *
  * @author ivan
  */
-public class Ghost extends Character implements IGhost {
+public class Ghost extends Character implements IGhost, DrawableGhost {
 
     private static int counter = 1;
     private GhostState state;
@@ -124,19 +125,19 @@ public class Ghost extends Character implements IGhost {
 
     }
 
-    @Override
-    public int getNumber() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+	@Override
+	public int getNumber() {
+		return this.id;
+	}
 
-    @Override
-    public GhostState getState() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+	@Override
+	public GhostState getState() {
+		return this.state;
+	}
 
-    @Override
-    public Personality getPersonality() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+	@Override
+	public Personality getPersonality() {
+		return this.personality;
+	}
 
 }
