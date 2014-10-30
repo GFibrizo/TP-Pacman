@@ -16,7 +16,7 @@ import java.util.Map;
  *
  * @author mauri
  */
-public class OnlyRight extends Personality {    
+public class OnlyRight extends Personality {
 
     @Override
     public Direction getNewDirection(Map<Direction, Cell> allowedDirections) {
@@ -31,5 +31,11 @@ public class OnlyRight extends Personality {
     @Override
     public void stopPacmanChase() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }    
+    }
+
+	@Override
+	public String toString() {
+		return "derechador";
+	}
+
 }

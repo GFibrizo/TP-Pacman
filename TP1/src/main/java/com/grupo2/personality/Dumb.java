@@ -40,4 +40,9 @@ public class Dumb extends Personality {
         this.movement = new RandomStrategy();
     }
 
+	@Override
+	public String toString() {
+		return "zonzo";
+	}
+
 }

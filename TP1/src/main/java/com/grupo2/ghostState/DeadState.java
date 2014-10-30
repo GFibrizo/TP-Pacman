@@ -1,11 +1,11 @@
 package com.grupo2.ghostState;
 
+import com.grupo2.cell.Cell;
+import com.grupo2.character.Direction;
 import com.grupo2.constants.Constants;
 import com.grupo2.ghost.GhostState;
-import com.grupo2.movementStrategies.SearchCageStrategy;
 import com.grupo2.movementStrategies.MovementStrategy;
-import com.grupo2.character.Direction;
-import com.grupo2.cell.Cell;
+import com.grupo2.movementStrategies.SearchCageStrategy;
 import java.util.Map;
 
 /**
@@ -62,4 +62,8 @@ public class DeadState extends GhostState {
             return this;
 	}
 
+	@Override
+	public String toString() {
+		return "muerto";
+	}
 }

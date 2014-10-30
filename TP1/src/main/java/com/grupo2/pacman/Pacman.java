@@ -78,12 +78,12 @@ public class Pacman extends Character implements DrawablePacman {
 
 	@Override
 	public int getScore() {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+		return this.score;
 	}
 
 	@Override
 	public boolean hasLives() {
-		throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+		return !this.isDead();
 	}
 
 }
