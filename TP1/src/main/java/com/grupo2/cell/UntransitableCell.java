@@ -96,42 +96,42 @@ public class UntransitableCell extends RawCell {
 
     @Override
     public boolean isEmpty() {
-        return true;
-	}
+        throw new UnsupportedOperationException("An Untransitable cell is neither empty or full");
+    }
 
-	@Override
-	public Coordinate getCoords() {
-		return this.position;
-	}
+    @Override
+    public Coordinate getCoords() {
+        return this.position;
+    }
 
-	@Override
-	public boolean hasLittleBall() {
-		return false;
-	}
+    @Override
+    public boolean hasLittleBall() {
+        return false;
+    }
 
-	@Override
-	public boolean hasBigBall() {
-		return false;
-	}
+    @Override
+    public boolean hasBigBall() {
+        return false;
+    }
 
-	@Override
-	public boolean isRightTransitable() {
-		return this.canGoRight();
-	}
+    @Override
+    public boolean isRightTransitable() {
+        return this.canGoRight();
+    }
 
-	@Override
-	public boolean isLeftTransitable() {
-		return this.canGoLeft();
-	}
+    @Override
+    public boolean isLeftTransitable() {
+        return this.canGoLeft();
+    }
 
-	@Override
-	public boolean isUpTransitable() {
-		return this.canGoUp();
-	}
+    @Override
+    public boolean isUpTransitable() {
+        return this.canGoUp();
+    }
 
-	@Override
-	public boolean isDownTransitable() {
-		return this.canGoDown();
-	}
+    @Override
+    public boolean isDownTransitable() {
+        return this.canGoDown();
+    }
 
 }

@@ -68,7 +68,7 @@ public class SecondScenarioTest {
         
         int ballsEaten = 0;
 
-        Cell cell = map.getMaze().getCellFromCoordinates(new Coordinate(0,1));
+        Cell cell = map.getMaze().getCellFromCoordinates(new Coordinate(1,1));
         for (int i = 0; i < 12; i++) {
             if (!cell.isEmpty()) {
                 assert(false);
