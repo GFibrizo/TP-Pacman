@@ -48,10 +48,9 @@ public class SecondScenarioTest {
     @Before
     public void setUp() throws ParserConfigurationException {
         MazeXMLBuilder mazeBuilder = new MazeXMLBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "Laberinto.xml"));        
-        //thePacman = Pacman.createPacman(1, 2, new RightDirection(), null);
         CharacterBuilder charBuilder = new CharacterXMLBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "PersonajePacmanSolo.xml"));
         map = new Map(mazeBuilder, charBuilder);
-        //map = new Map(mazeBuilder, thePacman);
+        thePacman = map.getPacman();
     }
     
     @After
@@ -68,21 +67,15 @@ public class SecondScenarioTest {
         
         int ballsEaten = 0;
 
-        Cell cell = map.getMaze().getCellFromCoordinates(new Coordinate(1,1));
-        for (int i = 0; i < 12; i++) {
-            if (!cell.isEmpty()) {
-                assert(false);
-                return;
-            }
-            ballsEaten++;
-            cell = cell.getRightCell();
+        for (int i = 0; i < 10; i++) {
+            if (map.getMaze().getCellFromCoordinates(new Coordinate(i,1)).isEmpty()) ballsEaten++;
         }
         
-        
-        Coordinate expectedPosition = new Coordinate(1,4);
+        System.out.println(ballsEaten);
+        Coordinate expectedPosition = new Coordinate(4,1);
         boolean positionOK = expectedPosition.isEqualTo(thePacman.getPosition());
 
-        assertTrue(positionOK && ballsEaten == 11);
+        assertTrue(positionOK && ballsEaten == 10);
          
     }
 }
