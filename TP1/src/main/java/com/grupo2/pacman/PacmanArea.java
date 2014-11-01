@@ -68,7 +68,7 @@ public class PacmanArea implements Publisher {
     }
 
     @Override
-    public void onEvent(Event event) {
+    public void update(Event event) {
         List<Subscriber> subs = subscribers.get(event);
         for (Subscriber sub : subs) {
             if (sub.execute()) {
@@ -80,7 +80,7 @@ public class PacmanArea implements Publisher {
     @Override
     public void updateAll(List<Event> events) {
         for (Event event : events) {
-            onEvent(event);
+            update(event);
         }
     }
 

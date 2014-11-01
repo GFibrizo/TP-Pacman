@@ -12,11 +12,13 @@ public abstract class Character implements ICharacter {
     protected Coordinate position;
     protected Direction direction;
     protected Cell currentCell;
+    protected float velocity;
 
     protected Character() {
         this.position = null;
         this.direction = null;
-        currentCell = null;
+        this.currentCell = null; 
+        this.velocity =  (float)1.0;
     }
 
     @Override

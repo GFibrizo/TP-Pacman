@@ -10,7 +10,7 @@ public interface Publisher {
 
     public void subscribe(Event event, Subscriber subscriber);
 
-    public void onEvent(Event event);
+    public void update(Event event);
 
     public void updateAll(List<Event> events);
 

@@ -1,18 +1,18 @@
 package com.grupo2.ghost;
 
+import com.grupo2.board.Board;
 import com.grupo2.cell.Cell;
 import com.grupo2.character.Character;
 import com.grupo2.character.Direction;
-import com.grupo2.directions.DownDirection;
-import com.grupo2.directions.LeftDirection;
-import com.grupo2.directions.RightDirection;
-import com.grupo2.directions.UpDirection;
+import com.grupo2.directions.*;
 import com.grupo2.ghostState.DeadState;
 import com.grupo2.ghostState.Personality;
 import com.grupo2.interfaces.IGhost;
 import com.grupo2.view.DrawableGhost;
 import java.util.HashMap;
 import java.util.Map;
+import com.grupo2.command.GhostCollidesCommand;
+import com.grupo2.constants.Constants;
 
 /**
  *
@@ -40,6 +40,7 @@ public class Ghost extends Character implements IGhost, DrawableGhost {
      }*/
     private Ghost() {
         super();
+        this.velocity = Constants.getInitialVelocity();
         this.id = Ghost.counter;
         Ghost.counter++;
         state = null;

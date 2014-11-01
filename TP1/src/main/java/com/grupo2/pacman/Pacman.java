@@ -6,6 +6,9 @@ import com.grupo2.character.Coordinate;
 import com.grupo2.character.Direction;
 import com.grupo2.directions.NullDirection;
 import com.grupo2.view.DrawablePacman;
+import com.grupo2.constants.Constants;
+import com.grupo2.command.PacmanDiesCommand;
+import com.grupo2.board.Board;
 
 /**
  *
@@ -14,7 +17,7 @@ import com.grupo2.view.DrawablePacman;
 public class Pacman extends Character implements DrawablePacman {
 
     private static Pacman instance;
-
+    private float finishedMovement;
     private Direction nextDirection;
     private boolean alive;
     private int score;
@@ -40,6 +43,8 @@ public class Pacman extends Character implements DrawablePacman {
         this.nextDirection = new NullDirection();
         this.currentCell = currCell;
         this.alive = true;
+        this.velocity = Constants.getInitialVelocity() * 2;
+        this.finishedMovement = 0;
     }
 
     @Override
@@ -48,9 +53,14 @@ public class Pacman extends Character implements DrawablePacman {
             this.direction = this.nextDirection;
             this.nextDirection = new NullDirection();
         }
-
+        
+        finishedMovement += velocity;
+        
         if (this.direction.canGoForward(this.currentCell)) {
-            this.direction.stepForward(this);
+            if (finishedMovement >= 1) {
+                this.direction.stepForward(this);
+                finishedMovement -= 1;
+            }
         }
     }
 
@@ -75,14 +85,14 @@ public class Pacman extends Character implements DrawablePacman {
         this.alive = false;
     }
 
-	@Override
-	public int getScore() {
-		return this.score;
-	}
+    @Override
+    public int getScore() {
+        return this.score;
+    }
 
-	@Override
-	public boolean hasLives() {
-		return !this.isDead();
-	}
+    @Override
+    public boolean hasLives() {
+        return !this.isDead();
+    }
 
 }

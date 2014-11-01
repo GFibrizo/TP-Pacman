@@ -16,7 +16,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 import com.grupo2.ghostFactory.GhostFactory;
-import com.grupo2.directions.RightDirection;
+import com.grupo2.constants.Constants;
 
 /**
  *
@@ -33,13 +33,13 @@ public class FirstScenarioTest {
 
     @Before
     public void setUp() {
+        Constants.setInitialVelocity(1);
         mazeBuilder = new MazeXMLBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "Laberinto.xml"));
         RawMaze maze = mazeBuilder.buildMaze();
         //anOnlyRightGhost = Ghost.createOnlyRightGhost();
         anOnlyRightGhost = GhostFactory.createOnlyRightGhost();
         Cell initialGhostCell = maze.getCellFromCoordinates(new Coordinate(0, 1));
         anOnlyRightGhost.setCurrentCell(initialGhostCell);
-
     }
 
     @Test
@@ -51,7 +51,8 @@ public class FirstScenarioTest {
 
         Coordinate expectedPosition = new Coordinate(1, 1); //DECIA (1,1) estaba MAL
         boolean positionOK = expectedPosition.isEqualTo(anOnlyRightGhost.getPosition());
-
+        System.out.print(anOnlyRightGhost.getPosition().getX());
+        System.out.print(anOnlyRightGhost.getPosition().getY());
         assertTrue(positionOK);
 
     }

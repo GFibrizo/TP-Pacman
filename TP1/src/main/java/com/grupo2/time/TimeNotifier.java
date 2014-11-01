@@ -37,7 +37,7 @@ public class TimeNotifier implements Publisher {
     }
 
     @Override
-    public void onEvent(Event event) {
+    public void update(Event event) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

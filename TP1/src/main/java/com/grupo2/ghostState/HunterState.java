@@ -5,6 +5,7 @@ import com.grupo2.character.Direction;
 import com.grupo2.constants.Constants;
 import com.grupo2.ghost.GhostState;
 import java.util.Map;
+import com.grupo2.directions.NullDirection;
 
 /**
  *
@@ -14,14 +15,23 @@ public class HunterState extends GhostState {
 
     private float time;
     private float velocity;
+    private float finishedMovement;
 
     public HunterState() {
         velocity = Constants.getInitialVelocity();
+        finishedMovement = 0;
     }
 
     @Override
     public Direction getNewDirection(Personality personality, Map<Direction, Cell> allowedDirections) {
-        return personality.getNewDirection(allowedDirections);
+        finishedMovement += velocity;
+        if (finishedMovement >= 1) {
+            finishedMovement -= 1;
+            return personality.getNewDirection(allowedDirections);
+        } else {
+            return new NullDirection();
+        }
+            
     }
 
     /**
@@ -48,7 +58,7 @@ public class HunterState extends GhostState {
 
     @Override
     public GhostState die() {
-        throw new AssertionError("A hunter Ghost can't die");
+        throw new UnsupportedOperationException("A hunter Ghost can't die");
     }
 
     @Override
@@ -59,11 +69,11 @@ public class HunterState extends GhostState {
     }
 
     public void incrementRage() {
-        velocity++;
+        velocity += Constants.RAGE_BONUS;
     }
 
 	@Override
 	public String toString() {
-		return "cazador";
+            return "cazador";
 	}
 }
