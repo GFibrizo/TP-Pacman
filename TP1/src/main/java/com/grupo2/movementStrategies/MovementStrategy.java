@@ -2,6 +2,7 @@ package com.grupo2.movementStrategies;
 
 import java.util.Map;
 import java.util.List;
+import java.util.ArrayList;
 import com.grupo2.character.Direction;
 import com.grupo2.directions.*;
 import com.grupo2.cell.Cell;
@@ -17,6 +18,7 @@ public abstract class MovementStrategy {
     protected Random randomGenerator;
 
     protected MovementStrategy() {
+        directions = new ArrayList<>();
         directions.add(new UpDirection());
         directions.add(new DownDirection());
         directions.add(new LeftDirection());

@@ -16,8 +16,10 @@ import com.grupo2.maze.MazePublisher;
 import java.util.List;
 import com.grupo2.character.Character;
 import com.grupo2.command.GhostCollidesCommand;
+import com.grupo2.command.GhostIsCloseToPacmanCommand;
 import com.grupo2.command.PacmanDiesCommand;
 import com.grupo2.eventHandling.*;
+import com.grupo2.pacman.PacmanArea;
 import java.util.HashMap;
 import java.util.LinkedList;
 
@@ -44,35 +46,50 @@ public class Board implements Publisher {
     }
     
     public static Board createBoard(MazeBuilder mazeBuilder, CharacterBuilder characterBuilder) {
-        if (instance == null) return new Board(mazeBuilder, characterBuilder);
-        else return instance;
+        if (instance == null)
+            instance = new Board(mazeBuilder, characterBuilder);
+        return instance;
     }
     
     public static Board createBoard(MazeBuilder mazeBuilder, Pacman thePacman) {
-        if (instance == null) return new Board(mazeBuilder, thePacman);
-        else return instance;
+        if (instance == null) 
+            instance = new Board(mazeBuilder, thePacman);
+        return instance;
+    }
+    
+    private void setCellForGhosts() {
+        for (Ghost ghost : ghosts) {
+            Cell initialGhostCell = maze.getCellFromCoordinates(ghost.getPosition());
+            ghost.setCurrentCell(initialGhostCell);
+        }
     }
     
 
     public Board(final MazeBuilder mazeBuilder, final CharacterBuilder characterBuilder) {
         this.maze = mazeBuilder.buildMaze();
+        this.subscribers = new HashMap<>();
         characterBuilder.obtainCharactersFromXML();
         this.ghosts = characterBuilder.getGhosts();
         this.thePacman = characterBuilder.getPacman();
         this.thePacman.setPosition(this.maze.getPacmanBegining());
         Cell initialPacmanCell = maze.getCellFromCoordinates(this.maze.getPacmanBegining());
         this.thePacman.setCurrentCell(initialPacmanCell);
-        this.ghosts.forEach((ghost) -> ghost.setPosition(this.maze.getGhostBegining()));
+        setCellForGhosts(); 
+        //this.ghosts.forEach((ghost) -> ghost.setPosition(this.maze.getGhostBegining()));
+        PacmanArea.CenterAreaOnPacman(thePacman);
     }
 
     //Este constructor no sirve cuando el Character builder lea las personalidades
     public Board(final MazeBuilder mazeBuilder, Pacman thePacman) {
         this.maze = mazeBuilder.buildMaze();
+        this.subscribers = new HashMap<>();
         this.thePacman = thePacman;
         this.thePacman.setPosition(this.maze.getPacmanBegining());
         Cell initialPacmanCell = maze.getCellFromCoordinates(this.maze.getPacmanBegining());
         this.thePacman.setCurrentCell(initialPacmanCell);
-        this.ghosts.forEach((ghost) -> ghost.setPosition(this.maze.getGhostBegining()));
+        setCellForGhosts();
+        //this.ghosts.forEach((ghost) -> ghost.setPosition(this.maze.getGhostBegining()));
+        PacmanArea.CenterAreaOnPacman(thePacman);
     }
     
     
@@ -80,6 +97,8 @@ public class Board implements Publisher {
         this.subscribe(GameEvent.PACMANCOLLIDEGHOST, new PacmanDiesCommand(thePacman));
         for (Ghost ghost : ghosts) {
             this.subscribe(GameEvent.PACMANCOLLIDEGHOST, new GhostCollidesCommand(ghost));
+            Subscriber sub = new GhostIsCloseToPacmanCommand(ghost);
+            PacmanArea.getInstance().subscribe(PacmanArea.VisionEvent.GHOST_IS_INSIDE, sub);
         }
     }
     
@@ -134,10 +153,12 @@ public class Board implements Publisher {
     public void updateModel(Controller controller) {
         this.thePacman.setDirection(controller.getPacmanNextDirection());
         this.thePacman.move();
-        this.ghosts.forEach((IGhost ghost) -> {
+        this.ghosts.forEach((Ghost ghost) -> {
             ghost.move();
         });
-        //update(GameEvent.PACMANCOLLIDEGHOST);
+        PacmanArea.CenterAreaOnPacman(thePacman);
+        
+        update(GameEvent.PACMANCOLLIDEGHOST);
         this.pacmanEntersCell();
     }
 

@@ -36,6 +36,7 @@ public class PacmanArea implements Publisher {
         xCenter = pacman.getPosition().getX();
         yCenter = pacman.getPosition().getY();
     }
+    
 
     public static PacmanArea getInstance() {
         return instance;
@@ -58,6 +59,8 @@ public class PacmanArea implements Publisher {
         }
         return false;
     }
+    
+    
 
     @Override
     public void subscribe(Event event, Subscriber subscriber) {

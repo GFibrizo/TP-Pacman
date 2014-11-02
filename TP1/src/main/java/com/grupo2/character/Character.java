@@ -29,7 +29,8 @@ public abstract class Character implements ICharacter {
 
     @Override
     public Coordinate getPosition() {
-        return this.currentCell.getPosition();
+        if(currentCell != null) return this.currentCell.getPosition();
+        return position;
     }
 
     public Direction getDirection() {

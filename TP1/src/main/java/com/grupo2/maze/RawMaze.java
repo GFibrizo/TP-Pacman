@@ -24,8 +24,8 @@ public class RawMaze implements Maze {
     private int width;
     private Coordinate initPacman;
     private Coordinate initGhost;
-	private int nodeWidth;
-	private int nodeHeight;
+    private int nodeWidth;
+    private int nodeHeight;
 
     public RawMaze(final int height, final int width, Coordinate initPacman, Coordinate initGhost) {
         map = new ArrayList<>(height);
@@ -68,6 +68,7 @@ public class RawMaze implements Maze {
                 cell.setLowerCell(map.get(y).get(x));
             }
         }
+        
     }
 
     @Override
@@ -78,15 +79,15 @@ public class RawMaze implements Maze {
     @Override
     public Coordinate getGhostBegining() {
         return this.initGhost;
-	}
+    }
 
-	public void setNodeWidth(int nodeWidth) {
-		this.nodeWidth = nodeWidth;
-	}
+    public void setNodeWidth(int nodeWidth) {
+        this.nodeWidth = nodeWidth;
+    }
 
-	public void setNodeHeight(int nodeHeight) {
-		this.nodeHeight = nodeHeight;
-	}
+    public void setNodeHeight(int nodeHeight) {
+        this.nodeHeight = nodeHeight;
+    }
 
     @Override
     public Cell getCellFromCoordinates(Coordinate coord) {
@@ -96,46 +97,48 @@ public class RawMaze implements Maze {
 
     @Override
     public boolean areInTheSameCell(IPositionable entity, IPositionable other) {
-        Coordinate entityPos = entity.getPosition();
-        Coordinate otherPos = other.getPosition();
-        Cell entityCell = getCellFromCoordinates(entityPos);
-        Cell otherCell = getCellFromCoordinates(otherPos);
+        //Coordinate entityPos = entity.getPosition();
+        //Coordinate otherPos = other.getPosition();
+        //Cell entityCell = getCellFromCoordinates(entityPos);
+        //Cell otherCell = getCellFromCoordinates(otherPos);
+        Cell entityCell = entity.getCurrentCell();
+        Cell otherCell = other.getCurrentCell();
         return entityCell.isTheSame(otherCell);
     }
 
-	@Override
-	public int getWidth() {
-		return this.width;
-	}
+    @Override
+    public int getWidth() {
+        return this.width;
+    }
 
-	@Override
-	public int getHeight() {
-		return this.height;
-	}
+    @Override
+    public int getHeight() {
+        return this.height;
+    }
 
-	@Override
-	public int getNodeWidth() {
-		return this.nodeWidth;
-	}
+    @Override
+    public int getNodeWidth() {
+        return this.nodeWidth;
+    }
 
-	@Override
-	public int getNodeHeight() {
-		return this.nodeHeight;
-	}
+    @Override
+    public int getNodeHeight() {
+        return this.nodeHeight;
+    }
 
-	@Override
-	public Coordinate getGhostsBegining() {
-		return this.initGhost;
-	}
+    @Override
+    public Coordinate getGhostsBegining() {
+        return this.initGhost;
+    }
 
-	@Override
-	public ArrayList<DrawableNode> getNodes() {
-		ArrayList<DrawableNode> dNodes = new ArrayList<>();
-		for (ArrayList<RawCell> row : this.map) {
-			for (RawCell cell : row) {
-				dNodes.add(cell);
-			}
-		}
-		return dNodes;
-	}
+    @Override
+    public ArrayList<DrawableNode> getNodes() {
+        ArrayList<DrawableNode> dNodes = new ArrayList<>();
+        for (ArrayList<RawCell> row : this.map) {
+            for (RawCell cell : row) {
+                dNodes.add(cell);
+            }
+        }
+        return dNodes;
+    }
 }

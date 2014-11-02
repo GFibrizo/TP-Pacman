@@ -23,7 +23,7 @@ public class Ghost extends Character implements IGhost, DrawableGhost {
     private static int counter = 1;
     private GhostState state;
     private Personality personality;
-    private Cell cell;
+    //private Cell cell;
     private final int id;
 
     /**

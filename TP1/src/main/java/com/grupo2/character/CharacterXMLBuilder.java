@@ -21,6 +21,7 @@ import org.xml.sax.SAXException;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.function.Function;
+       
 import com.grupo2.personality.*;
 import com.grupo2.directions.*;
 import com.grupo2.ghostState.*;
@@ -33,7 +34,7 @@ public class CharacterXMLBuilder implements CharacterBuilder {
     private Path path;
     private DocumentBuilder dBuilder;
     private Document doc;
-    Map<String, Function> hash = new HashMap<>();
+    Map<String, Function> hash;
     private ArrayList<Ghost> ghosts;
     private Pacman pacman;
 
@@ -45,7 +46,7 @@ public class CharacterXMLBuilder implements CharacterBuilder {
             Logger.getLogger(MazeXMLBuilder.class.getName()).log(Level.SEVERE, null, ex);
             throw new ParserConfigurationException();
         }
-        
+        hash = new HashMap<>();
         hash.put("izquierda", (p) -> {return new LeftDirection();});
         hash.put("derecha",   (p) -> {return new RightDirection();});
         hash.put("arriba",    (p) -> {return new UpDirection();});
@@ -53,19 +54,20 @@ public class CharacterXMLBuilder implements CharacterBuilder {
         hash.put("zonzo",     (p) -> {return new Dumb();});
         hash.put("buscador",  (p) -> {return new Seeker();});
         hash.put("perezoso",  (p) -> {return new Lazy();});
-        hash.put("Cazador",   (p) -> {return new HunterState();});
+        hash.put("cazador",   (p) -> {return new HunterState();});
         hash.put("Presa",     (p) -> {return new PreyState();});
     }
 
 
     private Character constructCharacter(Element eElement, boolean isGhost) {
-        int x = Integer.parseInt(eElement.getAttribute("fila"));
-        int y = Integer.parseInt(eElement.getAttribute("columna"));
+        int y = Integer.parseInt(eElement.getAttribute("fila"));
+        int x = Integer.parseInt(eElement.getAttribute("columna"));
         Direction dir = (Direction) hash.get(eElement.getAttribute("sentido")).apply(null);
 
         if (!isGhost) return Pacman.createPacman(x, y, dir, null);
 
         Coordinate coord = new Coordinate(x,y);
+        System.out.print(hash.get(eElement.getAttribute("personalidad")).apply(null).getClass().toString());
         Personality pers = (Personality) hash.get(eElement.getAttribute("personalidad")).apply(null);
         GhostState state = (GhostState) hash.get(eElement.getAttribute("estado")).apply(null);
         return GhostFactory.createGhost(state, pers, coord, dir);
@@ -85,7 +87,7 @@ public class CharacterXMLBuilder implements CharacterBuilder {
                 Node nNode = nList.item(i);
                 if (nNode.getNodeType() == Node.ELEMENT_NODE) {
                     Element eElement = (Element) nNode;
-                    this.ghosts.add((Ghost) constructCharacter(eElement, false));
+                    this.ghosts.add((Ghost) constructCharacter(eElement, true));
                 }
             }
          } catch (SAXException | IOException ex) {
