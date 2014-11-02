@@ -1,13 +1,13 @@
 package com.grupo2.character;
 
 import com.grupo2.cell.Cell;
-import com.grupo2.interfaces.ICharacter;
+import com.grupo2.interfaces.IPositionable;
 
 /**
  *
  * @author fibrizo
  */
-public abstract class Character implements ICharacter {
+public abstract class Character implements IPositionable {
 
     protected Coordinate position;
     protected Direction direction;
@@ -17,15 +17,13 @@ public abstract class Character implements ICharacter {
     protected Character() {
         this.position = null;
         this.direction = null;
-        this.currentCell = null; 
-        this.velocity =  (float)1.0;
+        this.currentCell = null;
+		this.velocity = (float) 1.0;
     }
 
-    @Override
     public abstract void move();
 
-    @Override
-    public abstract boolean isDead();
+	public abstract boolean isDead();
 
     @Override
     public Coordinate getPosition() {
@@ -37,7 +35,6 @@ public abstract class Character implements ICharacter {
         return this.direction;
     }
 
-    @Override
     public abstract void die();
 
     @Override
@@ -50,12 +47,10 @@ public abstract class Character implements ICharacter {
         position = new Coordinate(x, y);
     }
 
-    @Override
-    public void setDirection(Direction dir) {
+	public void setDirection(Direction dir) {
         direction = dir;
     }
 
-    @Override
     public void setCurrentCell(Cell cell) {
         currentCell = cell;
     }

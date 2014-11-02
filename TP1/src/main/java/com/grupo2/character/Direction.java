@@ -5,7 +5,6 @@ import com.grupo2.directions.DownDirection;
 import com.grupo2.directions.LeftDirection;
 import com.grupo2.directions.RightDirection;
 import com.grupo2.directions.UpDirection;
-import com.grupo2.interfaces.ICharacter;
 
 /**
  *
@@ -13,7 +12,7 @@ import com.grupo2.interfaces.ICharacter;
  */
 public interface Direction {
 
-    void stepForward(ICharacter character);
+    Cell stepForward(Cell cell);
 
     boolean EqualTo(Direction other);
 

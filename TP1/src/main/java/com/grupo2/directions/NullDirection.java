@@ -1,13 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.grupo2.directions;
 
 import com.grupo2.cell.Cell;
 import com.grupo2.character.Direction;
-import com.grupo2.interfaces.ICharacter;
 
 /**
  *
@@ -21,8 +15,8 @@ public class NullDirection implements Direction {
     }
 
     @Override
-    public void stepForward(ICharacter aCharacter) {
-        //Do nothing
+	public Cell stepForward(Cell cell) {
+		return cell;
     }
 
     @Override

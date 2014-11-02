@@ -1,12 +1,27 @@
 package com.grupo2.character;
 
+import com.grupo2.directions.DownDirection;
+import com.grupo2.directions.LeftDirection;
+import com.grupo2.directions.RightDirection;
+import com.grupo2.directions.UpDirection;
+import com.grupo2.ghost.Ghost;
+import com.grupo2.ghost.GhostState;
 import com.grupo2.ghostFactory.GhostFactory;
-import com.grupo2.interfaces.IGhost;
+import com.grupo2.ghostState.HunterState;
+import com.grupo2.ghostState.Personality;
+import com.grupo2.ghostState.PreyState;
 import com.grupo2.maze.MazeXMLBuilder;
+import com.grupo2.pacman.Pacman;
+import com.grupo2.personality.Dumb;
+import com.grupo2.personality.Lazy;
+import com.grupo2.personality.Seeker;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Function;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.parsers.DocumentBuilder;
@@ -17,16 +32,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-
-import java.util.Map;
-import java.util.HashMap;
-import java.util.function.Function;
-       
-import com.grupo2.personality.*;
-import com.grupo2.directions.*;
-import com.grupo2.ghostState.*;
-import com.grupo2.pacman.Pacman;
-import com.grupo2.ghost.*;
 
 
 public class CharacterXMLBuilder implements CharacterBuilder {
@@ -55,7 +60,10 @@ public class CharacterXMLBuilder implements CharacterBuilder {
         hash.put("buscador",  (p) -> {return new Seeker();});
         hash.put("perezoso",  (p) -> {return new Lazy();});
         hash.put("cazador",   (p) -> {return new HunterState();});
-        hash.put("Presa",     (p) -> {return new PreyState();});
+		hash.put("presa", (p) -> {
+			return new PreyState();
+		});
+		this.obtainCharactersFromXML();
     }
 
 
@@ -64,17 +72,18 @@ public class CharacterXMLBuilder implements CharacterBuilder {
         int x = Integer.parseInt(eElement.getAttribute("columna"));
         Direction dir = (Direction) hash.get(eElement.getAttribute("sentido")).apply(null);
 
-        if (!isGhost) return Pacman.createPacman(x, y, dir, null);
+		if (!isGhost) {
+			return Pacman.createPacman(x, y, dir, null);
+		}
 
         Coordinate coord = new Coordinate(x,y);
-        System.out.print(hash.get(eElement.getAttribute("personalidad")).apply(null).getClass().toString());
+		//System.out.print(hash.get(eElement.getAttribute("personalidad")).apply(null).getClass().toString());
         Personality pers = (Personality) hash.get(eElement.getAttribute("personalidad")).apply(null);
         GhostState state = (GhostState) hash.get(eElement.getAttribute("estado")).apply(null);
         return GhostFactory.createGhost(state, pers, coord, dir);
      }
-    
-    @Override
-    public void obtainCharactersFromXML() {
+
+	private void obtainCharactersFromXML() {
         try {
             File xmlFile = path.toFile();
             doc = dBuilder.parse(xmlFile);
@@ -89,10 +98,10 @@ public class CharacterXMLBuilder implements CharacterBuilder {
                     Element eElement = (Element) nNode;
                     this.ghosts.add((Ghost) constructCharacter(eElement, true));
                 }
-            }
-         } catch (SAXException | IOException ex) {
+			}
+        } catch (SAXException | IOException ex) {
              Logger.getLogger(MazeXMLBuilder.class.getName()).log(Level.SEVERE, null, ex);
-         }
+        }
 
         /*try {
             //System.out.print(path);

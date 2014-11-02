@@ -6,7 +6,7 @@ import com.grupo2.view.DrawableGhost;
  *
  * @author fibrizo
  */
-public interface IGhost extends ICharacter, DrawableGhost {
+public interface IGhost extends DrawableGhost {
 
     public void convertToPrey();
 

@@ -78,7 +78,7 @@ public class TransitableCell extends RawCell {
 
     @Override
     public boolean isTheSame(Cell other) {
-        return position == other.getPosition();
+		return position.isEqualTo(other.getPosition());
     }
 
     public int eatBall() {
