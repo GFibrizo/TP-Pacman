@@ -9,13 +9,13 @@ import com.grupo2.interfaces.IPositionable;
  */
 public abstract class Character implements IPositionable {
 
-    protected Coordinate position;
+    //protected Coordinate position;
     protected Direction direction;
     protected Cell currentCell;
     protected float velocity;
 
     protected Character() {
-        this.position = null;
+        //this.position = null;
         this.direction = null;
         this.currentCell = null;
         this.velocity = (float) 1.0;
@@ -27,10 +27,7 @@ public abstract class Character implements IPositionable {
 
     @Override
     public Coordinate getPosition() {
-        if (currentCell != null) {
-            return this.currentCell.getPosition();
-        }
-        return position;
+        return this.currentCell.getPosition();   
     }
 
     public Direction getDirection() {
@@ -38,16 +35,6 @@ public abstract class Character implements IPositionable {
     }
 
     public abstract void die();
-
-    @Override
-    public void setPosition(Coordinate pos) {
-        position = pos;
-    }
-
-    @Override
-    public void setPosition(int x, int y) {
-        position = new Coordinate(x, y);
-    }
 
     public void setDirection(Direction dir) {
         direction = dir;

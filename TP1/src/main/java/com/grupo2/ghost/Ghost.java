@@ -2,6 +2,7 @@ package com.grupo2.ghost;
 
 import com.grupo2.cell.Cell;
 import com.grupo2.character.Character;
+import com.grupo2.character.Coordinate;
 import com.grupo2.character.Direction;
 import com.grupo2.constants.Constants;
 import com.grupo2.directions.*;
@@ -20,7 +21,7 @@ public class Ghost extends Character implements IGhost {
     private static int counter = 1;
     private GhostState state;
     private Personality personality;
-    //private Cell cell;
+    private Coordinate position;
     private final int id;
     private Direction previousDirection;
 
@@ -142,6 +143,14 @@ public class Ghost extends Character implements IGhost {
     @Override
     public Personality getPersonality() {
         return this.personality;
+    }
+
+    public void setInitialPosition(Coordinate coord) {
+        this.position = coord;    
+    }
+    
+    public Coordinate getInitialPosition() {
+        return this.position;
     }
 
 }

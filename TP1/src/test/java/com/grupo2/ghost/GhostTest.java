@@ -31,14 +31,13 @@ public class GhostTest {
 
     @Before
     public void setUp() {
-        ghost = GhostFactory.createOnlyRightGhost();
-        ghost.setPosition(0, 0);
-        TransitableCell currCell = new TransitableCell(0, 0);
-        currCell.setLeftCell(new UntransitableCell(3, 0));
-        currCell.setLowerCell(new UntransitableCell(0, 1));
-        currCell.setUpperCell(new UntransitableCell(0, 3));
-        currCell.setRightCell(new TransitableCell(1, 0));
-        ghost.setCurrentCell(currCell);
+		ghost = GhostFactory.createOnlyRightGhost();
+		TransitableCell currCell = new TransitableCell(0, 0);
+		currCell.setLeftCell(new UntransitableCell(3, 0));
+		currCell.setLowerCell(new UntransitableCell(0, 1));
+		currCell.setUpperCell(new UntransitableCell(0, 3));
+		currCell.setRightCell(new TransitableCell(1, 0));
+		ghost.setCurrentCell(currCell);
     }
 
     @Test
