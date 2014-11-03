@@ -22,8 +22,8 @@ public class LittleBall implements Ball {
         return true;
     }
 
-	@Override
-	public String toString() {
-		return "bolita";
-	}
+    @Override
+    public String toString() {
+        return "bolita";
+    }
 }

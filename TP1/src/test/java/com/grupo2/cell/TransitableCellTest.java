@@ -10,7 +10,7 @@ import org.junit.Test;
  */
 public class TransitableCellTest {
 
-	private TransitableCell transCell;
+    private TransitableCell transCell;
 
     public TransitableCellTest() {
     }

@@ -10,8 +10,8 @@ import com.grupo2.character.Direction;
 public class DownDirection implements Direction {
 
     @Override
-	public Cell stepForward(Cell cell) {
-		return cell.getLowerCell();
+    public Cell stepForward(Cell cell) {
+        return cell.getLowerCell();
     }
 
     @Override
@@ -40,6 +40,11 @@ public class DownDirection implements Direction {
     }
 
     @Override
+    public boolean isEqualTo(NullDirection other) {
+        return false;
+    }
+
+    @Override
     public boolean canGoForward(Cell cell) {
         return cell.getLowerCell().isTransitable();
     }
@@ -64,9 +69,9 @@ public class DownDirection implements Direction {
         return false;
     }
 
-	@Override
-	public String toString() {
-		return "abajo";
-	}
+    @Override
+    public String toString() {
+        return "abajo";
+    }
 
 }

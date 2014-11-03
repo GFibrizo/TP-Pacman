@@ -15,11 +15,11 @@ public class BigBall implements Ball {
     @Override
     public boolean isEatable() {
         return true;
-	}
+    }
 
-	@Override
-	public String toString() {
-		return "bolon";
-	}
+    @Override
+    public String toString() {
+        return "bolon";
+    }
 
 }

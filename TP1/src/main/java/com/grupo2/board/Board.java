@@ -34,7 +34,6 @@ public class Board implements Publisher {
     private HashMap<Event, List<Subscriber>> subscribers;
     private static Board instance;
 
-
     public static Board getInstance() {
         return instance;
     }
@@ -45,16 +44,16 @@ public class Board implements Publisher {
     }
 
     public static Board createBoard(MazeBuilder mazeBuilder, CharacterBuilder characterBuilder) {
-		if (instance == null) {
-			instance = new Board(mazeBuilder, characterBuilder);
-		}
+        if (instance == null) {
+            instance = new Board(mazeBuilder, characterBuilder);
+        }
         return instance;
     }
 
     public static Board createBoard(MazeBuilder mazeBuilder, Pacman thePacman) {
-		if (instance == null) {
-			instance = new Board(mazeBuilder, thePacman);
-		}
+        if (instance == null) {
+            instance = new Board(mazeBuilder, thePacman);
+        }
         return instance;
     }
 
@@ -64,7 +63,6 @@ public class Board implements Publisher {
             ghost.setCurrentCell(initialGhostCell);
         }
     }
-
 
     public Board(final MazeBuilder mazeBuilder, final CharacterBuilder characterBuilder) {
         this.maze = mazeBuilder.buildMaze();
@@ -92,7 +90,6 @@ public class Board implements Publisher {
         PacmanArea.CenterAreaOnPacman(thePacman);
     }
 
-
     public void subscribeSubscribers() {
         this.subscribe(GameEvent.PACMANCOLLIDEGHOST, new PacmanDiesCommand(thePacman));
         for (Ghost ghost : ghosts) {
@@ -101,9 +98,6 @@ public class Board implements Publisher {
             PacmanArea.getInstance().subscribe(PacmanArea.VisionEvent.GHOST_IS_INSIDE, sub);
         }
     }
-
-
-
 
     public boolean collisionBetween(IPositionable entity, IPositionable otherEntity) {
         return maze.areInTheSameCell(entity, otherEntity);
@@ -139,7 +133,6 @@ public class Board implements Publisher {
         return this.ghosts;
     }
 
-
     private void resolveColitions() {
         for (Ghost ghost : ghosts) {
             if (this.collisionWithPacman(ghost)) {
@@ -151,19 +144,18 @@ public class Board implements Publisher {
 
     public void updateModel(Controller controller) {
         this.thePacman.setDirection(controller.getPacmanNextDirection());
-		this.thePacman.move();
-		PacmanArea.CenterAreaOnPacman(thePacman);
-
-		update(GameEvent.PACMANCOLLIDEGHOST);
-		this.pacmanEntersCell();
-
-		this.ghosts.forEach((Ghost ghost) -> {
-            ghost.move();
-        });
-        PacmanArea.CenterAreaOnPacman(thePacman);
-        resolveColitions();
-        //update(GameEvent.PACMANCOLLIDEGHOST);
+        this.thePacman.move();
         this.pacmanEntersCell();
+        PacmanArea.CenterAreaOnPacman(thePacman);
+        PacmanArea.getInstance().update(PacmanArea.VisionEvent.GHOST_IS_INSIDE);
+        //update(GameEvent.PACMANCOLLIDEGHOST);
+        /*this.ghosts.forEach((Ghost ghost) -> {
+         ghost.move();
+         });*/
+        for (Ghost ghost : ghosts) {
+            ghost.move();
+        }
+        resolveColitions();
     }
 
     public void updateView(View view) {
@@ -182,14 +174,14 @@ public class Board implements Publisher {
     @Override
     public void update(Event event) {
         List<Subscriber> subs = subscribers.get(event);
-		subs.forEach(Subscriber::execute);
+        subs.forEach(Subscriber::execute);
     }
 
     @Override
     public void updateAll(List<Event> events) {
-		events.forEach((Event event) -> {
-			this.update(event);
-		});
+        events.forEach((Event event) -> {
+            this.update(event);
+        });
     }
 
 }

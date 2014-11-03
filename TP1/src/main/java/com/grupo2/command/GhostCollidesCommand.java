@@ -15,16 +15,18 @@ import com.grupo2.pacman.Pacman;
  * @author fibrizo
  */
 public class GhostCollidesCommand implements Subscriber {
+
     Ghost ghost;
-    
+
     public GhostCollidesCommand(Ghost ghost) {
         this.ghost = ghost;
     }
 
     @Override
     public boolean execute() {
-        if (Board.getInstance().collisionWithPacman(ghost))
+        if (Board.getInstance().collisionWithPacman(ghost)) {
             ghost.onCollisionWithPacman();
+        }
         return true;
     }
 }

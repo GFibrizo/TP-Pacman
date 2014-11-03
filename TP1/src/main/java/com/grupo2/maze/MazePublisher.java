@@ -49,8 +49,6 @@ public class MazePublisher implements Publisher {
             sub.execute();
         }
     }
-    
-    
 
     @Override
     public void updateAll(List<Event> events) {

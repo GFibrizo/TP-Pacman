@@ -62,8 +62,8 @@ public class DeadState extends GhostState {
         return this;
     }
 
-	@Override
-	public String toString() {
-		return "muerto";
-	}
+    @Override
+    public String toString() {
+        return "muerto";
+    }
 }

@@ -59,21 +59,20 @@ public class MazeBuilderTest {
         Cell cell = maze.getCellFromCoordinates(new Coordinate(2, 1));
         assertTrue(cell.isTransitable());
     }
-    
+
     @Test
     public void buildMazeAndTravelIt() {
         RawMaze maze = mazeBuilder.buildMaze();
         Cell cell = maze.getCellFromCoordinates(new Coordinate(10, 1));
         int i = 0;
-        while ((!cell.getPosition().isEqualTo(new Coordinate(0,1))) && (i < 11) ) {
+        while ((!cell.getPosition().isEqualTo(new Coordinate(0, 1))) && (i < 11)) {
             cell = cell.getLeftCell();
             System.out.print(i);
             i++;
-            
-        }
-        
-        assertTrue(cell.getPosition().isEqualTo(new Coordinate(0,1)));
-    }
 
+        }
+
+        assertTrue(cell.getPosition().isEqualTo(new Coordinate(0, 1)));
+    }
 
 }

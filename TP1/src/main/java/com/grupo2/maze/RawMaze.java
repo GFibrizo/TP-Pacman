@@ -68,7 +68,7 @@ public class RawMaze implements Maze {
                 cell.setLowerCell(map.get(y).get(x));
             }
         }
-        
+
     }
 
     @Override

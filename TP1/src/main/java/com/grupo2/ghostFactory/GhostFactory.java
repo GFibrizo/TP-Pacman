@@ -19,7 +19,7 @@ import com.grupo2.personality.OnlyRight;
 public class GhostFactory {
 
     public static Ghost createGhost(GhostState state, Personality pers,
-                                            Coordinate coord, Direction dir) {
+            Coordinate coord, Direction dir) {
         Ghost newGhost = Ghost.createEmptyGhost();
         newGhost.setState(state);
         newGhost.setPosition(coord);

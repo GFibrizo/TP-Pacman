@@ -52,7 +52,7 @@ public class DeadStateTest {
      */
     @Test
     public void testMove() {
-		Map<Direction, Cell> directions = new HashMap<>();
+        Map<Direction, Cell> directions = new HashMap<>();
         directions.put(new UpDirection(), new TransitableCell(5, 4));
         directions.put(new LeftDirection(), new TransitableCell(4, 5));
         Pacman.createPacman(5, 5, new UpDirection(), new TransitableCell(5, 5));

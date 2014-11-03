@@ -41,14 +41,13 @@ public class PreyStateTest {
         state = new PreyState();
     }
 
-
     /**
      * Test of move method, of class PreyState.
      */
     @Test
     public void testMove() {
-		Map<Direction, Cell> directions = new HashMap<>();
-		directions.put(new LeftDirection(), new UntransitableCell(0, 0));
+        Map<Direction, Cell> directions = new HashMap<>();
+        directions.put(new LeftDirection(), new UntransitableCell(0, 0));
         Direction newDirection = state.getNewDirection(new Seeker(), directions);
 
         assertTrue(newDirection.isEqualTo(new LeftDirection()));

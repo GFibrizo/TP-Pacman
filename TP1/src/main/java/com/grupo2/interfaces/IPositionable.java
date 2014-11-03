@@ -14,6 +14,6 @@ public interface IPositionable {
     public void setPosition(int x, int y);
 
     public Coordinate getPosition();
-    
+
     public Cell getCurrentCell();
 }

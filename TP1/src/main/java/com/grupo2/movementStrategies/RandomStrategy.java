@@ -17,13 +17,11 @@ public class RandomStrategy extends MovementStrategy {
 
     @Override
     public Direction getNewDirection(Map<Direction, Cell> allowedDirections) {
-		int range = allowedDirections.size();
-		if (range > 0) {
-			Direction[] dirs = new Direction[range];
-			allowedDirections.keySet().toArray(dirs);
-			return dirs[randomGenerator.nextInt(range)];
-		}
-		return new NullDirection();
+        int range = allowedDirections.size();
+        if (range > 0) {
+            return directions.get(randomGenerator.nextInt(range));
+        }
+        return new NullDirection();
     }
 
 }

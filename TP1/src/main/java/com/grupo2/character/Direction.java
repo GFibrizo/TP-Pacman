@@ -1,10 +1,7 @@
 package com.grupo2.character;
 
 import com.grupo2.cell.Cell;
-import com.grupo2.directions.DownDirection;
-import com.grupo2.directions.LeftDirection;
-import com.grupo2.directions.RightDirection;
-import com.grupo2.directions.UpDirection;
+import com.grupo2.directions.*;
 
 /**
  *
@@ -24,6 +21,8 @@ public interface Direction {
 
     boolean isEqualTo(DownDirection other);
 
+    boolean isEqualTo(NullDirection other);
+
     boolean isOposedTo(LeftDirection other);
 
     boolean isOposedTo(RightDirection other);
@@ -32,6 +31,6 @@ public interface Direction {
 
     boolean isOposedTo(DownDirection other);
 
-	boolean canGoForward(Cell cell);
+    boolean canGoForward(Cell cell);
 
 }

@@ -45,9 +45,9 @@ public class MazeXMLBuilder implements MazeBuilder {
     private boolean isUntransitableCell(Element eElement) {
         String[] cells = new String[]{"izquierda", "derecha", "arriba", "abajo"};
         for (String cell : cells) {
-			if (!eElement.getAttribute(cell).isEmpty()) {
-				return false;
-			}
+            if (!eElement.getAttribute(cell).isEmpty()) {
+                return false;
+            }
         }
         return true;
     }

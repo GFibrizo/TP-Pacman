@@ -31,20 +31,20 @@ public class GhostTest {
 
     @Before
     public void setUp() {
-		ghost = GhostFactory.createOnlyRightGhost();
+        ghost = GhostFactory.createOnlyRightGhost();
         ghost.setPosition(0, 0);
-		TransitableCell currCell = new TransitableCell(0, 0);
-		currCell.setLeftCell(new UntransitableCell(3, 0));
-		currCell.setLowerCell(new UntransitableCell(0, 1));
-		currCell.setUpperCell(new UntransitableCell(0, 3));
-		currCell.setRightCell(new TransitableCell(1, 0));
-		ghost.setCurrentCell(currCell);
+        TransitableCell currCell = new TransitableCell(0, 0);
+        currCell.setLeftCell(new UntransitableCell(3, 0));
+        currCell.setLowerCell(new UntransitableCell(0, 1));
+        currCell.setUpperCell(new UntransitableCell(0, 3));
+        currCell.setRightCell(new TransitableCell(1, 0));
+        ghost.setCurrentCell(currCell);
     }
 
     @Test
     public void move() {
         ghost.move();
-		assertTrue(ghost.getPosition().isEqualTo(new Coordinate(1, 0)));
+        assertTrue(ghost.getPosition().isEqualTo(new Coordinate(1, 0)));
     }
 
     @Test

@@ -8,7 +8,6 @@ import com.grupo2.constants.Constants;
 import com.grupo2.directions.NullDirection;
 import com.grupo2.view.DrawablePacman;
 
-
 /**
  *
  * @author fibrizo
@@ -33,7 +32,8 @@ public class Pacman extends Character implements DrawablePacman {
     }
 
     public static Pacman createPacman(final int x, final int y, final Direction dir, Cell begCell) {
-        return new Pacman(x, y, dir, begCell);
+        instance = new Pacman(x, y, dir, begCell);
+        return instance;
     }
 
     private Pacman(final int x, final int y, final Direction dir, Cell currCell) {
@@ -57,7 +57,7 @@ public class Pacman extends Character implements DrawablePacman {
 
         if (this.direction.canGoForward(this.currentCell)) {
             if (finishedMovement >= 1) {
-				this.currentCell = this.direction.stepForward(this.currentCell);
+                this.currentCell = this.direction.stepForward(this.currentCell);
                 finishedMovement -= 1;
             }
         }

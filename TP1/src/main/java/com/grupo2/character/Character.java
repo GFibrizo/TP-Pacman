@@ -18,16 +18,18 @@ public abstract class Character implements IPositionable {
         this.position = null;
         this.direction = null;
         this.currentCell = null;
-		this.velocity = (float) 1.0;
+        this.velocity = (float) 1.0;
     }
 
     public abstract void move();
 
-	public abstract boolean isDead();
+    public abstract boolean isDead();
 
     @Override
     public Coordinate getPosition() {
-        if(currentCell != null) return this.currentCell.getPosition();
+        if (currentCell != null) {
+            return this.currentCell.getPosition();
+        }
         return position;
     }
 
@@ -47,7 +49,7 @@ public abstract class Character implements IPositionable {
         position = new Coordinate(x, y);
     }
 
-	public void setDirection(Direction dir) {
+    public void setDirection(Direction dir) {
         direction = dir;
     }
 

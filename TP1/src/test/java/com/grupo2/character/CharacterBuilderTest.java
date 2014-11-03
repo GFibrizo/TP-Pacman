@@ -44,7 +44,7 @@ public class CharacterBuilderTest {
         Coordinate builtPacPosition = builtPacman.getPosition();
         Direction builtPacDirection = builtPacman.getDirection();
 
-		Coordinate expectedPacPosition = new Coordinate(9, 4);
+        Coordinate expectedPacPosition = new Coordinate(9, 4);
         LeftDirection expectedPacDirection = new LeftDirection();
 
         boolean samePositions = builtPacPosition.isEqualTo(expectedPacPosition);

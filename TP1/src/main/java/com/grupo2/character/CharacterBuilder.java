@@ -10,7 +10,7 @@ import java.util.ArrayList;
  */
 public interface CharacterBuilder {
 
-	public Pacman getPacman();
+    public Pacman getPacman();
 
     public ArrayList<Ghost> getGhosts();
 }

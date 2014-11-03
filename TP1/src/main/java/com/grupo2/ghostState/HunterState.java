@@ -31,7 +31,7 @@ public class HunterState extends GhostState {
         } else {
             return new NullDirection();
         }
-            
+
     }
 
     /**
@@ -72,8 +72,8 @@ public class HunterState extends GhostState {
         velocity += Constants.RAGE_BONUS;
     }
 
-	@Override
-	public String toString() {
-            return "cazador";
-	}
+    @Override
+    public String toString() {
+        return "cazador";
+    }
 }

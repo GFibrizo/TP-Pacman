@@ -27,12 +27,12 @@ public class Game {
                 new CharacterXMLBuilder(Paths.get("src", "main", "resources", "laberintos", "PersonajesSimple.xml")));
         Path path = Paths.get("src", "main", "resources", "pacman");
         Controller controller = new Controller(new XMLReader(path));
-		View view = new XMLView(Paths.get("src", "main", "resources", "estados"));
-		view.setMaze(map.getMaze());
-		view.setPacman(map.getPacman());
-		map.getGhosts().forEach((IGhost ghost) -> {
-			view.addGhost(ghost);
-		});
+        View view = new XMLView(Paths.get("src", "main", "resources", "estados"));
+        view.setMaze(map.getMaze());
+        view.setPacman(map.getPacman());
+        map.getGhosts().forEach((IGhost ghost) -> {
+            view.addGhost(ghost);
+        });
         boolean ended = false;
 
         while (!ended) {

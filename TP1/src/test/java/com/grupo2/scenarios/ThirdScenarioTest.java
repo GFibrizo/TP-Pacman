@@ -45,6 +45,7 @@ public class ThirdScenarioTest {
     @Before
     public void setUp() throws ParserConfigurationException {
         Constants.VISION1 = 12;
+        Constants.setInitialVelocity((float) 0.5);
         MazeXMLBuilder mazeBuilder = new MazeXMLBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "LaberintoVacio.xml"));
         CharacterBuilder charBuilder = new CharacterXMLBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "PersonajesPacmanYHunter.xml"));
         map = Board.createBoard(mazeBuilder, charBuilder);
@@ -61,26 +62,29 @@ public class ThirdScenarioTest {
     @Test
     public void PacmanMeetsHunterGhost() throws UnsupportedOperationException {
 
-        Controller controller = new Controller(new MockReader());
+        Controller controller = new Controller(() -> new RightDirection());
         int i = 0, j = 0;
         while (!thePacman.isDead()) {
             map.updateModel(controller);
-            System.out.print("\n");
-            System.out.print(theGhost.getPosition().getX());
-            System.out.print(theGhost.getPosition().getY());
-            System.out.print("\n");
-            if (!thePacman.getPosition().isEqualTo(new Coordinate(i+1, 1))) break;
-            if (!theGhost.getPosition().isEqualTo(new Coordinate(10-j, 1))) break;
-            System.out.print(thePacman.isDead());
             i++;
-            if (i % 2 == 1) j++;
+            if (i % 2 == 0) {
+                j++;
+            }
+            if (!thePacman.getPosition().isEqualTo(new Coordinate(i, 1))) {
+                System.out.print("Sale por el primero");
+                break;
+            }
+            if (!theGhost.getPosition().isEqualTo(new Coordinate(10 - j, 1))) {
+                System.out.print("Sale por el segundo");
+                break;
+            }
         }
-        
-        boolean OK = thePacman.getPosition().isEqualTo(new Coordinate(7,1)) && (thePacman.isDead());
-        System.out.print(thePacman.getPosition().getX());
-        System.out.print(thePacman.getPosition().getY());
+
+        boolean OK = thePacman.getPosition().isEqualTo(new Coordinate(7, 1)) && (thePacman.isDead());
+        System.out.print(theGhost.getPosition().getX());
+        System.out.print(theGhost.getPosition().getY());
         //System.out.print();
         assertTrue(OK);
-         
+
     }
 }

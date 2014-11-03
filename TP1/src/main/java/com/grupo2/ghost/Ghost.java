@@ -4,10 +4,7 @@ import com.grupo2.cell.Cell;
 import com.grupo2.character.Character;
 import com.grupo2.character.Direction;
 import com.grupo2.constants.Constants;
-import com.grupo2.directions.DownDirection;
-import com.grupo2.directions.LeftDirection;
-import com.grupo2.directions.RightDirection;
-import com.grupo2.directions.UpDirection;
+import com.grupo2.directions.*;
 import com.grupo2.ghostState.DeadState;
 import com.grupo2.ghostState.Personality;
 import com.grupo2.interfaces.IGhost;
@@ -18,13 +15,14 @@ import java.util.Map;
  *
  * @author ivan
  */
-public class Ghost extends Character implements IGhost{
+public class Ghost extends Character implements IGhost {
 
     private static int counter = 1;
     private GhostState state;
     private Personality personality;
     //private Cell cell;
     private final int id;
+    private Direction previousDirection;
 
     /**
      * Create a new instance of the class Ghost in the HunterState.
@@ -41,9 +39,10 @@ public class Ghost extends Character implements IGhost{
     private Ghost() {
         super();
         this.velocity = Constants.getInitialVelocity();
+        this.previousDirection = new NullDirection();
         this.id = Ghost.counter;
         Ghost.counter++;
-		this.state = null;
+        this.state = null;
     }
 
     public static Ghost createEmptyGhost() {
@@ -65,10 +64,13 @@ public class Ghost extends Character implements IGhost{
     @Override
     public void move() {
         //Direction nextDirection;
+        if (!direction.isEqualTo(new NullDirection())) {
+            previousDirection = direction;
+        }
         Map<Direction, Cell> directions = this.allowedDirections();
         direction = state.getNewDirection(personality, directions);
-		this.currentCell = direction.stepForward(this.currentCell);
-		this.position = this.currentCell.getPosition();
+        this.currentCell = direction.stepForward(this.currentCell);
+        this.position = this.currentCell.getPosition();
         this.state = state.returnNextState();
     }
 
@@ -111,35 +113,35 @@ public class Ghost extends Character implements IGhost{
     private Map<Direction, Cell> allowedDirections() {
 
         Map<Direction, Cell> allowedDirections = new HashMap();
-        if (this.getCurrentCell().canGoUp() && !direction.isOposedTo(new UpDirection())) {
+        if (this.getCurrentCell().canGoUp() && !previousDirection.isOposedTo(new UpDirection())) {
             allowedDirections.put(new UpDirection(), this.getCurrentCell().getUpperCell());
         }
-        if (this.getCurrentCell().canGoDown() && !direction.isOposedTo(new DownDirection())) {
+        if (this.getCurrentCell().canGoDown() && !previousDirection.isOposedTo(new DownDirection())) {
             allowedDirections.put(new DownDirection(), this.getCurrentCell().getLowerCell());
         }
-        if (this.getCurrentCell().canGoLeft() && !direction.isOposedTo(new LeftDirection())) {
+        if (this.getCurrentCell().canGoLeft() && !previousDirection.isOposedTo(new LeftDirection())) {
             allowedDirections.put(new LeftDirection(), this.getCurrentCell().getLeftCell());
         }
-        if (this.getCurrentCell().canGoRight() && !direction.isOposedTo(new RightDirection())) {
+        if (this.getCurrentCell().canGoRight() && !previousDirection.isOposedTo(new RightDirection())) {
             allowedDirections.put(new RightDirection(), this.getCurrentCell().getRightCell());
         }
         return allowedDirections;
 
     }
 
-	@Override
-	public int getNumber() {
-		return this.id;
-	}
+    @Override
+    public int getNumber() {
+        return this.id;
+    }
 
-	@Override
-	public GhostState getState() {
-		return this.state;
-	}
+    @Override
+    public GhostState getState() {
+        return this.state;
+    }
 
-	@Override
-	public Personality getPersonality() {
-		return this.personality;
-	}
+    @Override
+    public Personality getPersonality() {
+        return this.personality;
+    }
 
 }

@@ -15,8 +15,8 @@ public class NullDirection implements Direction {
     }
 
     @Override
-	public Cell stepForward(Cell cell) {
-		return cell;
+    public Cell stepForward(Cell cell) {
+        return cell;
     }
 
     @Override
@@ -45,23 +45,28 @@ public class NullDirection implements Direction {
     }
 
     @Override
+    public boolean isEqualTo(NullDirection other) {
+        return true;
+    }
+
+    @Override
     public boolean isOposedTo(LeftDirection other) {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isOposedTo(RightDirection other) {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isOposedTo(UpDirection other) {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isOposedTo(DownDirection other) {
-        return false;
+        return true;
     }
 
     @Override

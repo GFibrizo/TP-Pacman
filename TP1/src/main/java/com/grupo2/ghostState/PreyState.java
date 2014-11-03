@@ -62,9 +62,9 @@ public class PreyState extends GhostState {
         return new DeadState();
     }
 
-	@Override
-	public String toString() {
-		return "presa";
-	}
+    @Override
+    public String toString() {
+        return "presa";
+    }
 
 }
