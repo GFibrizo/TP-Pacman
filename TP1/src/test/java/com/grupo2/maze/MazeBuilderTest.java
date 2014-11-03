@@ -9,6 +9,8 @@ import org.junit.Before;
 import org.junit.Test;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import com.grupo2.directions.LeftDirection;
+import com.grupo2.character.Direction;
 
 /**
  *
@@ -57,5 +59,21 @@ public class MazeBuilderTest {
         Cell cell = maze.getCellFromCoordinates(new Coordinate(2, 1));
         assertTrue(cell.isTransitable());
     }
+    
+    @Test
+    public void buildMazeAndTravelIt() {
+        RawMaze maze = mazeBuilder.buildMaze();
+        Cell cell = maze.getCellFromCoordinates(new Coordinate(10, 1));
+        int i = 0;
+        while ((!cell.getPosition().isEqualTo(new Coordinate(0,1))) && (i < 11) ) {
+            cell = cell.getLeftCell();
+            System.out.print(i);
+            i++;
+            
+        }
+        
+        assertTrue(cell.getPosition().isEqualTo(new Coordinate(0,1)));
+    }
+
 
 }

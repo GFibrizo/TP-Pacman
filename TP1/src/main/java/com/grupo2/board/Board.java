@@ -157,8 +157,8 @@ public class Board implements Publisher {
             ghost.move();
         });
         PacmanArea.CenterAreaOnPacman(thePacman);
-        
-        update(GameEvent.PACMANCOLLIDEGHOST);
+        resolveColitions();
+        //update(GameEvent.PACMANCOLLIDEGHOST);
         this.pacmanEntersCell();
     }
 

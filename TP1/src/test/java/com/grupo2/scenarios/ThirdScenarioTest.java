@@ -68,12 +68,24 @@ public class ThirdScenarioTest {
     public void PacmanMeetsHunterGhost() throws UnsupportedOperationException {
 
         Controller controller = new Controller(new MockReader());
-        for (int i = 0; i < 8; i++) {
+        int i = 0, j = 0;
+        while (!thePacman.isDead()) {
             map.updateModel(controller);
+            System.out.print("\n");
+            System.out.print(theGhost.getPosition().getX());
+            System.out.print(theGhost.getPosition().getY());
+            System.out.print("\n");
+            if (!thePacman.getPosition().isEqualTo(new Coordinate(i+1, 1))) break;
+            if (!theGhost.getPosition().isEqualTo(new Coordinate(10-j, 1))) break;
+            System.out.print(thePacman.isDead());
+            i++;
+            if (i % 2 == 1) j++;
         }
         
         boolean OK = thePacman.getPosition().isEqualTo(new Coordinate(7,1)) && (thePacman.isDead());
-
+        System.out.print(thePacman.getPosition().getX());
+        System.out.print(thePacman.getPosition().getY());
+        //System.out.print();
         assertTrue(OK);
          
     }
