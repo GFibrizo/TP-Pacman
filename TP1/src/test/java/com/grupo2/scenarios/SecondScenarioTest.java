@@ -61,21 +61,23 @@ public class SecondScenarioTest {
     public void PacmanEatsBallsAndRespectsPortals() throws UnsupportedOperationException {
 
 		Controller controller = new Controller(() -> new RightDirection());
-        for (int i = 1; i < 13; i++) {
+		for (int i = 0; i < 13; i++) {
             map.updateModel(controller);
         }
 
         int ballsEaten = 0;
 
         for (int i = 0; i < 11; i++) {
-            if (map.getMaze().getCellFromCoordinates(new Coordinate(i,1)).isEmpty()) ballsEaten++;
+			if (map.getMaze().getCellFromCoordinates(new Coordinate(i, 1)).isEmpty()) {
+				ballsEaten++;
+			}
         }
 
 
         Coordinate expectedPosition = new Coordinate(4,1);
         boolean positionOK = expectedPosition.isEqualTo(thePacman.getPosition());
 
-        assertTrue(positionOK && ballsEaten == 10);
+		assertTrue(positionOK && ballsEaten == 11);
 
     }
 }
