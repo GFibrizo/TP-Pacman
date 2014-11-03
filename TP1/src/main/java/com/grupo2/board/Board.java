@@ -60,7 +60,7 @@ public class Board implements Publisher {
 
     private void setCellForGhosts() {
         for (Ghost ghost : ghosts) {
-            Cell initialGhostCell = maze.getCellFromCoordinates(ghost.getPosition());
+            Cell initialGhostCell = maze.getCellFromCoordinates(ghost.getInitialPosition());
             ghost.setCurrentCell(initialGhostCell);
         }
     }
@@ -71,7 +71,6 @@ public class Board implements Publisher {
         this.subscribers = new HashMap<>();
         this.ghosts = characterBuilder.getGhosts();
         this.thePacman = characterBuilder.getPacman();
-        this.thePacman.setPosition(this.maze.getPacmanBegining());
         Cell initialPacmanCell = maze.getCellFromCoordinates(this.maze.getPacmanBegining());
         this.thePacman.setCurrentCell(initialPacmanCell);
         setCellForGhosts();
@@ -84,7 +83,6 @@ public class Board implements Publisher {
         this.maze = mazeBuilder.buildMaze();
         this.subscribers = new HashMap<>();
         this.thePacman = thePacman;
-        this.thePacman.setPosition(this.maze.getPacmanBegining());
         Cell initialPacmanCell = maze.getCellFromCoordinates(this.maze.getPacmanBegining());
         this.thePacman.setCurrentCell(initialPacmanCell);
         setCellForGhosts();

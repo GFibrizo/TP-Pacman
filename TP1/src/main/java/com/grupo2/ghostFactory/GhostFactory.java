@@ -22,9 +22,9 @@ public class GhostFactory {
                                             Coordinate coord, Direction dir) {
         Ghost newGhost = Ghost.createEmptyGhost();
         newGhost.setState(state);
-        newGhost.setPosition(coord);
         newGhost.setPersonality(pers);
         newGhost.setDirection(dir);
+        newGhost.setInitialPosition(coord);
         return newGhost;
     }
 

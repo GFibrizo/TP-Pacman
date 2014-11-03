@@ -2,6 +2,7 @@ package com.grupo2.ghost;
 
 import com.grupo2.cell.Cell;
 import com.grupo2.character.Character;
+import com.grupo2.character.Coordinate;
 import com.grupo2.character.Direction;
 import com.grupo2.constants.Constants;
 import com.grupo2.directions.DownDirection;
@@ -23,7 +24,7 @@ public class Ghost extends Character implements IGhost{
     private static int counter = 1;
     private GhostState state;
     private Personality personality;
-    //private Cell cell;
+    private Coordinate position;
     private final int id;
 
     /**
@@ -68,7 +69,6 @@ public class Ghost extends Character implements IGhost{
         Map<Direction, Cell> directions = this.allowedDirections();
         direction = state.getNewDirection(personality, directions);
 		this.currentCell = direction.stepForward(this.currentCell);
-		this.position = this.currentCell.getPosition();
         this.state = state.returnNextState();
     }
 
@@ -141,5 +141,13 @@ public class Ghost extends Character implements IGhost{
 	public Personality getPersonality() {
 		return this.personality;
 	}
+
+    public void setInitialPosition(Coordinate coord) {
+        this.position = coord;    
+    }
+    
+    public Coordinate getInitialPosition() {
+        return this.position;
+    }
 
 }

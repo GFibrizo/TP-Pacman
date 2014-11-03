@@ -32,7 +32,6 @@ public class GhostTest {
     @Before
     public void setUp() {
 		ghost = GhostFactory.createOnlyRightGhost();
-        ghost.setPosition(0, 0);
 		TransitableCell currCell = new TransitableCell(0, 0);
 		currCell.setLeftCell(new UntransitableCell(3, 0));
 		currCell.setLowerCell(new UntransitableCell(0, 1));

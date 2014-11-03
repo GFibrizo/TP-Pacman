@@ -2,7 +2,6 @@ package com.grupo2.pacman;
 
 import com.grupo2.cell.Cell;
 import com.grupo2.character.Character;
-import com.grupo2.character.Coordinate;
 import com.grupo2.character.Direction;
 import com.grupo2.constants.Constants;
 import com.grupo2.directions.NullDirection;
@@ -37,7 +36,6 @@ public class Pacman extends Character implements DrawablePacman {
     }
 
     private Pacman(final int x, final int y, final Direction dir, Cell currCell) {
-        this.position = new Coordinate(x, y);
         this.direction = dir;
         this.nextDirection = new NullDirection();
         this.currentCell = currCell;
@@ -71,7 +69,6 @@ public class Pacman extends Character implements DrawablePacman {
     @Override
     public void setCurrentCell(Cell currCell) {
         this.currentCell = currCell;
-        this.position = this.currentCell.getPosition();
     }
 
     @Override

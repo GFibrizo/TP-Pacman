@@ -37,19 +37,14 @@ public class BoardTest {
      */
     @Test
 	public void testCollisionBetween() throws ParserConfigurationException {
-        Character character = Ghost.createEmptyGhost();
-		character.setPosition(0, 0);
+                Character character = Ghost.createEmptyGhost();
 		character.setCurrentCell(new TransitableCell(0, 0));
 		character.setDirection(new RightDirection());
-        Character other = Ghost.createEmptyGhost();
-		other.setPosition(0, 0);
+                Character other = Ghost.createEmptyGhost();
 		other.setCurrentCell(new TransitableCell(0, 0));
 		other.setDirection(new LeftDirection());
 		Board map;
-
-		map = new Board(new MazeXMLBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "Laberinto.xml")),
-				new CharacterXMLBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "PersonajesPacmanYHunter.xml")));
-
+		map = new Board(new MazeXMLBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "Laberinto.xml")), new CharacterXMLBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "PersonajesPacmanYHunter.xml")));
 		boolean result = map.collisionBetween(character, other);
 
 		assertTrue(result);
