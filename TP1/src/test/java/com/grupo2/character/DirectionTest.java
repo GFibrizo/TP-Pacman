@@ -7,12 +7,9 @@ package com.grupo2.character;
 
 import com.grupo2.directions.DownDirection;
 import com.grupo2.directions.LeftDirection;
-import com.grupo2.directions.RightDirection;
-import com.grupo2.interfaces.ICharacter;
-import org.junit.AfterClass;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 /**

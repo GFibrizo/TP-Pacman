@@ -2,7 +2,6 @@ package com.grupo2.directions;
 
 import com.grupo2.cell.Cell;
 import com.grupo2.character.Direction;
-import com.grupo2.interfaces.ICharacter;
 
 /**
  *
@@ -11,8 +10,8 @@ import com.grupo2.interfaces.ICharacter;
 public class DownDirection implements Direction {
 
     @Override
-    public void stepForward(ICharacter aCharacter) {
-        aCharacter.setCurrentCell(aCharacter.getCurrentCell().getLowerCell());
+	public Cell stepForward(Cell cell) {
+		return cell.getLowerCell();
     }
 
     @Override

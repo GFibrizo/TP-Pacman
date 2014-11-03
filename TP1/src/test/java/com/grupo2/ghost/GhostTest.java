@@ -1,8 +1,9 @@
 package com.grupo2.ghost;
 
+import com.grupo2.cell.TransitableCell;
+import com.grupo2.cell.UntransitableCell;
 import com.grupo2.character.Coordinate;
-import com.grupo2.directions.UpDirection;
-import org.junit.After;
+import com.grupo2.ghostFactory.GhostFactory;
 import org.junit.AfterClass;
 import static org.junit.Assert.assertTrue;
 import org.junit.Before;
@@ -30,27 +31,20 @@ public class GhostTest {
 
     @Before
     public void setUp() {
-        ghost = Ghost.createEmptyGhost();
+		ghost = GhostFactory.createOnlyRightGhost();
         ghost.setPosition(0, 0);
-        ghost.setDirection(new UpDirection());
-    }
-
-    @After
-    public void tearDown() {
-        ghost = null;
+		TransitableCell currCell = new TransitableCell(0, 0);
+		currCell.setLeftCell(new UntransitableCell(3, 0));
+		currCell.setLowerCell(new UntransitableCell(0, 1));
+		currCell.setUpperCell(new UntransitableCell(0, 3));
+		currCell.setRightCell(new TransitableCell(1, 0));
+		ghost.setCurrentCell(currCell);
     }
 
     @Test
     public void move() {
-
-        boolean notImplementedYet = false;
-        try {
-            ghost.move();
-        } catch (UnsupportedOperationException e) {
-            notImplementedYet = true;
-        }
-        assertTrue(notImplementedYet);
-        assert (ghost.getPosition().isEqualTo(new Coordinate(0, 0)));
+        ghost.move();
+		assertTrue(ghost.getPosition().isEqualTo(new Coordinate(1, 0)));
     }
 
     @Test

@@ -19,7 +19,7 @@ public class CharacterBuilderTest {
     }
 
     @Before
-    public void setUpClass() {
+    public void setUp() {
         try {
             charBuilder = new CharacterXMLBuilder(Paths.get("src", "main", "resources", "laberintos", "PersonajesSimple.xml"));
         } catch (Exception e) {
@@ -44,7 +44,7 @@ public class CharacterBuilderTest {
         Coordinate builtPacPosition = builtPacman.getPosition();
         Direction builtPacDirection = builtPacman.getDirection();
 
-        Coordinate expectedPacPosition = new Coordinate(4, 9);
+		Coordinate expectedPacPosition = new Coordinate(9, 4);
         LeftDirection expectedPacDirection = new LeftDirection();
 
         boolean samePositions = builtPacPosition.isEqualTo(expectedPacPosition);

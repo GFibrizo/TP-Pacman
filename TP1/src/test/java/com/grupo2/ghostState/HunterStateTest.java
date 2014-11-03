@@ -8,8 +8,8 @@ import com.grupo2.directions.UpDirection;
 import com.grupo2.ghost.GhostState;
 import com.grupo2.pacman.Pacman;
 import com.grupo2.personality.Seeker;
+import java.util.HashMap;
 import java.util.Map;
-import java.util.TreeMap;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.assertEquals;
@@ -53,7 +53,7 @@ public class HunterStateTest {
      */
     @Test
     public void testMove() {
-        Map<Direction, Cell> directions = new TreeMap<>();
+		Map<Direction, Cell> directions = new HashMap<>();
         directions.put(new UpDirection(), new TransitableCell(5, 4));
         directions.put(new LeftDirection(), new TransitableCell(4, 5));
         Pacman.createPacman(5, 5, new UpDirection(), new TransitableCell(5, 5));
@@ -101,7 +101,7 @@ public class HunterStateTest {
         boolean flag = false;
         try {
             GhostState result = state.die();
-        } catch (AssertionError e) {
+		} catch (Exception e) {
             flag = true;
         }
         assertTrue(flag);

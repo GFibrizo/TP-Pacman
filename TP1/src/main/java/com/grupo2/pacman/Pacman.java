@@ -4,11 +4,10 @@ import com.grupo2.cell.Cell;
 import com.grupo2.character.Character;
 import com.grupo2.character.Coordinate;
 import com.grupo2.character.Direction;
+import com.grupo2.constants.Constants;
 import com.grupo2.directions.NullDirection;
 import com.grupo2.view.DrawablePacman;
-import com.grupo2.constants.Constants;
-import com.grupo2.command.PacmanDiesCommand;
-import com.grupo2.board.Board;
+
 
 /**
  *
@@ -53,12 +52,12 @@ public class Pacman extends Character implements DrawablePacman {
             this.direction = this.nextDirection;
             this.nextDirection = new NullDirection();
         }
-        
+
         finishedMovement += velocity;
-        
+
         if (this.direction.canGoForward(this.currentCell)) {
             if (finishedMovement >= 1) {
-                this.direction.stepForward(this);
+				this.currentCell = this.direction.stepForward(this.currentCell);
                 finishedMovement -= 1;
             }
         }

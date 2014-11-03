@@ -1,8 +1,7 @@
 package com.grupo2.cell;
 
-import org.junit.AfterClass;
 import static org.junit.Assert.assertTrue;
-import org.junit.BeforeClass;
+import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -11,19 +10,14 @@ import org.junit.Test;
  */
 public class TransitableCellTest {
 
-    TransitableCell transCell;
+	private TransitableCell transCell;
 
     public TransitableCellTest() {
     }
 
-    @BeforeClass
-    public static void setUp() {
-
-        TransitableCell transCell = new TransitableCell(2, 2);
-    }
-
-    @AfterClass
-    public static void tearDownClass() {
+    @Before
+    public void setUp() {
+        transCell = new TransitableCell(2, 2);
     }
 
     /**

@@ -1,14 +1,14 @@
 package com.grupo2.ghostState;
 
 import com.grupo2.cell.Cell;
+import com.grupo2.cell.UntransitableCell;
 import com.grupo2.character.Direction;
 import com.grupo2.constants.Constants;
 import com.grupo2.directions.LeftDirection;
 import com.grupo2.ghost.GhostState;
 import com.grupo2.personality.Seeker;
+import java.util.HashMap;
 import java.util.Map;
-import java.util.TreeMap;
-import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -41,18 +41,14 @@ public class PreyStateTest {
         state = new PreyState();
     }
 
-    @After
-    public void tearDown() {
-        state = null;
-    }
 
     /**
      * Test of move method, of class PreyState.
      */
     @Test
     public void testMove() {
-        System.out.println("move");
-        Map<Direction, Cell> directions = new TreeMap<>();
+		Map<Direction, Cell> directions = new HashMap<>();
+		directions.put(new LeftDirection(), new UntransitableCell(0, 0));
         Direction newDirection = state.getNewDirection(new Seeker(), directions);
 
         assertTrue(newDirection.isEqualTo(new LeftDirection()));
@@ -63,7 +59,6 @@ public class PreyStateTest {
      */
     @Test
     public void testIsDead() {
-        System.out.println("isDead");
         boolean expResult = false;
         boolean result = state.isDead();
         assertEquals(expResult, result);
@@ -74,7 +69,6 @@ public class PreyStateTest {
      */
     @Test
     public void testingReturnNextState() {
-        System.out.println("returnNextState");
         assertFalse(state.isDead());
         state = state.returnNextState();
         assertFalse(state.isDead());
@@ -88,7 +82,6 @@ public class PreyStateTest {
      */
     @Test
     public void testConvertToPrey() {
-        System.out.println("convertToPrey");
         assertFalse(state.isDead());
         assertTrue(state.convertToPrey().getClass() == PreyState.class);
     }
@@ -98,7 +91,6 @@ public class PreyStateTest {
      */
     @Test
     public void testDie() {
-        System.out.println("die");
         assertFalse(state.isDead());
         state = state.die();
         assertTrue(state.isDead());
