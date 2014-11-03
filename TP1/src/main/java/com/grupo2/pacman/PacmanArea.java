@@ -70,6 +70,7 @@ public class PacmanArea implements Publisher {
     @Override
     public void update(Event event) {
         List<Subscriber> subs = subscribers.get(event);
+        if (subscribers.isEmpty()) return;
         for (Subscriber sub : subs) {
             /*if (sub.execute()) {
              subs.remove(sub);
