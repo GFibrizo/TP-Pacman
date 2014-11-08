@@ -2,6 +2,7 @@ package com.grupo2.character;
 
 import com.grupo2.directions.LeftDirection;
 import com.grupo2.pacman.Pacman;
+import com.grupo2.cell.Cell;
 import java.nio.file.Paths;
 import static org.junit.Assert.assertTrue;
 import org.junit.Before;
@@ -36,6 +37,7 @@ public class CharacterBuilderTest {
         Pacman builtPacman;
         try {
             builtPacman = charBuilder.getPacman();
+            builtPacman.setCurrentCell(new Cell(9, 4, true));
         } catch (Exception e) {
             assert (false);
             return;

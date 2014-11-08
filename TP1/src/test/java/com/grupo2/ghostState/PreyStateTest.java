@@ -1,12 +1,12 @@
 package com.grupo2.ghostState;
 
 import com.grupo2.cell.Cell;
-import com.grupo2.cell.UntransitableCell;
 import com.grupo2.character.Direction;
 import com.grupo2.constants.Constants;
 import com.grupo2.directions.LeftDirection;
 import com.grupo2.ghost.GhostState;
 import com.grupo2.personality.Seeker;
+import com.grupo2.pacman.Pacman;
 import java.util.HashMap;
 import java.util.Map;
 import org.junit.AfterClass;
@@ -38,7 +38,9 @@ public class PreyStateTest {
 
     @Before
     public void setUp() {
+        Constants.setInitialVelocity((float)1.0);
         state = new PreyState();
+        Pacman pacman = Pacman.createPacman(0, 0, new LeftDirection(), new Cell(0, 0, true));
     }
 
     /**
@@ -47,7 +49,7 @@ public class PreyStateTest {
     @Test
     public void testMove() {
         Map<Direction, Cell> directions = new HashMap<>();
-        directions.put(new LeftDirection(), new UntransitableCell(0, 0));
+        directions.put(new LeftDirection(), new Cell(0, 0, false));
         Direction newDirection = state.getNewDirection(new Seeker(), directions);
 
         assertTrue(newDirection.isEqualTo(new LeftDirection()));

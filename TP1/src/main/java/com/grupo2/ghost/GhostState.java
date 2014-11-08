@@ -10,6 +10,10 @@ import java.util.Map;
  * @author fibrizo
  */
 public abstract class GhostState {
+    
+    protected float time;
+    protected float velocity;
+    protected float finishedMovement;
 
     public GhostState() {
     }
@@ -46,4 +50,17 @@ public abstract class GhostState {
 
     public abstract GhostState collideWithPacman();
 
+    public abstract boolean testIfAbleToChase();
+
+    public abstract boolean testIfAbleToStopChase();
+    
+    public boolean canMove() {
+        finishedMovement += velocity;
+        if (finishedMovement >= 1) {
+            finishedMovement -= 1;
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

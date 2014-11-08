@@ -19,7 +19,9 @@ public class RandomStrategy extends MovementStrategy {
     public Direction getNewDirection(Map<Direction, Cell> allowedDirections) {
         int range = allowedDirections.size();
         if (range > 0) {
-            return directions.get(randomGenerator.nextInt(range));
+            int index = randomGenerator.nextInt(range);
+            Direction newDir = (Direction)((allowedDirections.keySet().toArray())[index]);
+            return newDir;
         }
         return new NullDirection();
     }

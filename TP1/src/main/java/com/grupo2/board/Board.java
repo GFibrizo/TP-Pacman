@@ -1,11 +1,8 @@
 package com.grupo2.board;
 
 import com.grupo2.cell.Cell;
-import com.grupo2.cell.TransitableCell;
 import com.grupo2.character.CharacterBuilder;
-import com.grupo2.command.GhostCollidesCommand;
-import com.grupo2.command.GhostIsCloseToPacmanCommand;
-import com.grupo2.command.PacmanDiesCommand;
+import com.grupo2.command.*;
 import com.grupo2.controller.Controller;
 import com.grupo2.eventHandling.Event;
 import com.grupo2.eventHandling.Publisher;
@@ -19,19 +16,16 @@ import com.grupo2.pacman.PacmanArea;
 import com.grupo2.view.View;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
 
 /**
  *
  * @author mauri
  */
-public class Board implements Publisher {
+public class Board extends Publisher {
 
     private Maze maze;
     private ArrayList<Ghost> ghosts = new ArrayList<>();
     private Pacman thePacman;
-    private HashMap<Event, List<Subscriber>> subscribers;
     private static Board instance;
 
     public static Board getInstance() {
@@ -40,7 +34,7 @@ public class Board implements Publisher {
 
     public static enum GameEvent implements Event {
 
-        PACMANCOLLIDEGHOST, GHOSTREACHEDINTERJECTION, GHOSTISCLOSETOPACMAN //Etc
+        PACMANCOLLIDEGHOST, GHOSTREACHEDINTERJECTION, GHOSTISCLOSETOPACMAN, PACMANEATSBALL //Etc
     }
 
     public static Board createBoard(MazeBuilder mazeBuilder, CharacterBuilder characterBuilder) {
@@ -92,6 +86,8 @@ public class Board implements Publisher {
         this.subscribe(GameEvent.PACMANCOLLIDEGHOST, new PacmanDiesCommand(thePacman));
         for (Ghost ghost : ghosts) {
             this.subscribe(GameEvent.PACMANCOLLIDEGHOST, new GhostCollidesCommand(ghost));
+            this.subscribe(GameEvent.PACMANEATSBALL, new GhostConvertToPreyCommand(ghost));
+
             Subscriber sub = new GhostIsCloseToPacmanCommand(ghost);
             PacmanArea.getInstance().subscribe(PacmanArea.VisionEvent.GHOST_IS_INSIDE, sub);
         }
@@ -115,8 +111,10 @@ public class Board implements Publisher {
 
     public void pacmanEntersCell() {
         //Celda en la que está el pacman
-        TransitableCell cell = (TransitableCell) this.maze.getCellFromCoordinates(this.thePacman.getPosition());
-        int points = cell.eatBall();
+        // MALISIMO
+        //TransitableCell cell = (TransitableCell) this.maze.getCellFromCoordinates(this.thePacman.getPosition());
+        Cell cell = thePacman.getCurrentCell();
+        int points = cell.eatBall();   
     }
 
     public Maze getMaze() {
@@ -139,6 +137,7 @@ public class Board implements Publisher {
             }
         }
     }
+    
 
     public void updateModel(Controller controller) {
         this.thePacman.setDirection(controller.getPacmanNextDirection());
@@ -150,6 +149,7 @@ public class Board implements Publisher {
         /*this.ghosts.forEach((Ghost ghost) -> {
          ghost.move();
          });*/
+
         for (Ghost ghost : ghosts) {
             ghost.move();
         }
@@ -158,28 +158,6 @@ public class Board implements Publisher {
 
     public void updateView(View view) {
         view.show();
-    }
-
-    @Override
-    public void subscribe(Event event, final Subscriber subscriber) {
-        //must check if event is a MazeEvent
-        if (!this.subscribers.containsKey(event)) {
-            this.subscribers.put(event, new LinkedList<>());
-        }
-        this.subscribers.get(event).add(subscriber);
-    }
-
-    @Override
-    public void update(Event event) {
-        List<Subscriber> subs = subscribers.get(event);
-        subs.forEach(Subscriber::execute);
-    }
-
-    @Override
-    public void updateAll(List<Event> events) {
-        events.forEach((Event event) -> {
-            this.update(event);
-        });
     }
 
 }

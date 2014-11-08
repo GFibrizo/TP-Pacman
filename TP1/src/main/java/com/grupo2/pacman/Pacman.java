@@ -25,7 +25,7 @@ public class Pacman extends Character implements DrawablePacman {
      }*/
     public static Pacman getPacman() {
         if (instance == null) {
-            throw new ExceptionInInitializerError();
+            throw new ExceptionInInitializerError("The pacman was not created");
         }
         return instance;
     }
@@ -40,8 +40,9 @@ public class Pacman extends Character implements DrawablePacman {
         this.nextDirection = new NullDirection();
         this.currentCell = currCell;
         this.alive = true;
-        this.velocity = Constants.getInitialVelocity() * 2;
+        this.velocity = Constants.getInitialVelocity()*2;
         this.finishedMovement = 0;
+        this.score = 0;
     }
 
     @Override
@@ -89,6 +90,10 @@ public class Pacman extends Character implements DrawablePacman {
     @Override
     public boolean hasLives() {
         return !this.isDead();
+    }
+    
+    public void eatBall() {
+        this.getCurrentCell();
     }
 
 }

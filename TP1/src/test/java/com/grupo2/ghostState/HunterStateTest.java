@@ -1,13 +1,13 @@
 package com.grupo2.ghostState;
 
 import com.grupo2.cell.Cell;
-import com.grupo2.cell.TransitableCell;
 import com.grupo2.character.Direction;
+import com.grupo2.constants.Constants;
 import com.grupo2.directions.LeftDirection;
 import com.grupo2.directions.UpDirection;
 import com.grupo2.ghost.GhostState;
 import com.grupo2.pacman.Pacman;
-import com.grupo2.personality.Seeker;
+import com.grupo2.personality.Dumb;
 import java.util.HashMap;
 import java.util.Map;
 import org.junit.After;
@@ -40,6 +40,7 @@ public class HunterStateTest {
 
     @Before
     public void setUp() {
+        Constants.setInitialVelocity((float)1.0);
         state = new HunterState();
     }
 
@@ -54,10 +55,10 @@ public class HunterStateTest {
     @Test
     public void testMove() {
         Map<Direction, Cell> directions = new HashMap<>();
-        directions.put(new UpDirection(), new TransitableCell(5, 4));
-        directions.put(new LeftDirection(), new TransitableCell(4, 5));
-        Pacman.createPacman(5, 5, new UpDirection(), new TransitableCell(5, 5));
-        Direction newDirection = state.getNewDirection(new Seeker(), directions);
+        //directions.put(new UpDirection(), new Cell(5, 4, true));
+        directions.put(new LeftDirection(), new Cell(4, 5, true));
+        Pacman.createPacman(5, 5, new UpDirection(), new Cell(5, 5, true));
+        Direction newDirection = state.getNewDirection(new Dumb(), directions);
 
         assertTrue(newDirection.isEqualTo(new LeftDirection()));
     }

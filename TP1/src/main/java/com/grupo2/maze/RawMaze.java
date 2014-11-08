@@ -1,8 +1,6 @@
 package com.grupo2.maze;
 
 import com.grupo2.cell.Cell;
-import com.grupo2.cell.RawCell;
-import com.grupo2.cell.UntransitableCell;
 import com.grupo2.character.Coordinate;
 import com.grupo2.eventHandling.Publisher;
 import com.grupo2.interfaces.IPositionable;
@@ -18,7 +16,7 @@ public class RawMaze implements Maze {
     /**
      * Matrix containing Cells.
      */
-    private ArrayList<ArrayList<RawCell>> map;
+    private ArrayList<ArrayList<Cell>> map;
     private Publisher publisher;
     private int height;
     private int width;
@@ -30,9 +28,9 @@ public class RawMaze implements Maze {
     public RawMaze(final int height, final int width, Coordinate initPacman, Coordinate initGhost) {
         map = new ArrayList<>(height);
         for (int i = 0; i < height; i++) {
-            ArrayList<RawCell> row = new ArrayList<>(width);
+            ArrayList<Cell> row = new ArrayList<>(width);
             for (int j = 0; j < width; j++) {
-                row.add(new UntransitableCell(j, i));
+                row.add(new Cell(j, i, false));
             }
             map.add(row);
         }
@@ -43,7 +41,7 @@ public class RawMaze implements Maze {
         this.initGhost = initGhost;
     }
 
-    public void addCell(final RawCell newCell) {
+    public void addCell(final Cell newCell) {
         Coordinate pos = newCell.getPosition();
         map.get(pos.getY()).set(pos.getX(), newCell);
     }
@@ -53,8 +51,8 @@ public class RawMaze implements Maze {
      * initialized is not needed.
      */
     void connectCells() {
-        for (ArrayList<RawCell> row : this.map) {
-            for (RawCell cell : row) {
+        for (ArrayList<Cell> row : this.map) {
+            for (Cell cell : row) {
                 Coordinate pos = cell.getPosition();
                 int x = (pos.getX() - 1 + this.width) % this.width;
                 int y = pos.getY();
@@ -134,8 +132,8 @@ public class RawMaze implements Maze {
     @Override
     public ArrayList<DrawableNode> getNodes() {
         ArrayList<DrawableNode> dNodes = new ArrayList<>();
-        for (ArrayList<RawCell> row : this.map) {
-            for (RawCell cell : row) {
+        for (ArrayList<Cell> row : this.map) {
+            for (Cell cell : row) {
                 dNodes.add(cell);
             }
         }

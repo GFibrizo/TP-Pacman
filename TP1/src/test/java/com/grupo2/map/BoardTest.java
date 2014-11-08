@@ -1,7 +1,7 @@
 package com.grupo2.map;
 
+import com.grupo2.cell.Cell;
 import com.grupo2.board.Board;
-import com.grupo2.cell.TransitableCell;
 import com.grupo2.character.Character;
 import com.grupo2.character.CharacterXMLBuilder;
 import com.grupo2.directions.LeftDirection;
@@ -37,15 +37,15 @@ public class BoardTest {
      */
     @Test
 	public void testCollisionBetween() throws ParserConfigurationException {
-                Character character = Ghost.createEmptyGhost();
-		character.setCurrentCell(new TransitableCell(0, 0));
-		character.setDirection(new RightDirection());
-                Character other = Ghost.createEmptyGhost();
-		other.setCurrentCell(new TransitableCell(0, 0));
-		other.setDirection(new LeftDirection());
-		Board map;
-		map = new Board(new MazeXMLBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "Laberinto.xml")), new CharacterXMLBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "PersonajesPacmanYHunter.xml")));
-		boolean result = map.collisionBetween(character, other);
+        Character character = Ghost.createEmptyGhost();
+        character.setCurrentCell(new Cell(0, 0, true));
+        character.setDirection(new RightDirection());
+        Character other = Ghost.createEmptyGhost();
+        other.setCurrentCell(new Cell(0, 0, true));
+        other.setDirection(new LeftDirection());
+        Board map;
+        map = new Board(new MazeXMLBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "Laberinto.xml")), new CharacterXMLBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "PersonajesPacmanYHunter.xml")));
+        boolean result = map.collisionBetween(character, other);
 
         assertTrue(result);
     }

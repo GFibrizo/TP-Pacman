@@ -1,15 +1,13 @@
 package com.grupo2.time;
 
-import com.grupo2.eventHandling.Event;
+
 import com.grupo2.eventHandling.Publisher;
-import com.grupo2.eventHandling.Subscriber;
-import java.util.List;
 
 /**
  *
  * @author ivan
  */
-public class TimeNotifier implements Publisher {
+public class TimeNotifier extends Publisher {
 
     private long ticksSoFar;
 
@@ -29,21 +27,6 @@ public class TimeNotifier implements Publisher {
     public void addTick() {
         this.ticksSoFar++;
         //For each observer check if tick = tick expected then call timeout
-    }
-
-    @Override
-    public void subscribe(Event event, Subscriber subscriber) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void update(Event event) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void updateAll(List<Event> events) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

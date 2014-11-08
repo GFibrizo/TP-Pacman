@@ -5,7 +5,7 @@
  */
 package com.grupo2.pacman;
 
-import com.grupo2.cell.TransitableCell;
+import com.grupo2.cell.Cell;
 import com.grupo2.character.Coordinate;
 import com.grupo2.directions.LeftDirection;
 import com.grupo2.directions.UpDirection;
@@ -28,17 +28,17 @@ public class PacmanTest {
 
     @Before
     public void setUp() {
-        TransitableCell cell51 = new TransitableCell(5, 1);
-        TransitableCell cell41 = new TransitableCell(4, 1);
-        TransitableCell cell50 = new TransitableCell(5, 0);
+        Cell cell51 = new Cell(5, 1, true);
+        Cell cell41 = new Cell(4, 1, true);
+        Cell cell50 = new Cell(5, 0, true);
         thePacman = Pacman.createPacman(5, 1, new LeftDirection(), cell51);
         // Here we link the cells manually
-        cell50.setLeftCell(new TransitableCell(4, 0));
-        cell41.setLeftCell(new TransitableCell(3, 1));
+        cell50.setLeftCell(new Cell(4, 0, true));
+        cell41.setLeftCell(new Cell(3, 1, true));
         cell51.setLeftCell(cell41);
-        cell51.setRightCell(new TransitableCell(6, 1));
+        cell51.setRightCell(new Cell(6, 1, true));
         cell51.setUpperCell(cell50);
-        cell51.setLowerCell(new TransitableCell(5, 2));
+        cell51.setLowerCell(new Cell(5, 2, true));
 
         thePacman.setCurrentCell(cell51);
     }

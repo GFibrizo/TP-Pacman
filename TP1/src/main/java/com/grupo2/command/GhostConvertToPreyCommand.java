@@ -8,7 +8,7 @@ import com.grupo2.ghost.Ghost;
  */
 public class GhostConvertToPreyCommand extends GhostCommand {
 
-    GhostConvertToPreyCommand(Ghost ghost) {
+    public GhostConvertToPreyCommand(Ghost ghost) {
         this.ghost = ghost;
     }
 

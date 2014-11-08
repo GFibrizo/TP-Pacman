@@ -67,4 +67,14 @@ public class PreyState extends GhostState {
         return "presa";
     }
 
+    @Override
+    public boolean testIfAbleToChase() {
+        return false;
+    }
+    
+    @Override
+    public boolean testIfAbleToStopChase() {
+        return false;
+    }
+    
 }

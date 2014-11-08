@@ -45,7 +45,7 @@ public class ThirdScenarioTest {
     @Before
     public void setUp() throws ParserConfigurationException {
         Constants.VISION1 = 12;
-        Constants.setInitialVelocity((float) 0.5);
+        //Constants.setInitialVelocity((float) 0.5);
         MazeXMLBuilder mazeBuilder = new MazeXMLBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "LaberintoVacio.xml"));
         CharacterBuilder charBuilder = new CharacterXMLBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "PersonajesPacmanYHunter.xml"));
         map = Board.createBoard(mazeBuilder, charBuilder);

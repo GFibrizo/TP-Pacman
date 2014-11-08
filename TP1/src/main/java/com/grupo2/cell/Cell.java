@@ -1,34 +1,169 @@
 package com.grupo2.cell;
 
+import com.grupo2.balls.Ball;
+import com.grupo2.balls.NullBall;
+import com.grupo2.character.Collitionable;
 import com.grupo2.character.Coordinate;
+import com.grupo2.view.DrawableNode;
 
 /**
  *
  * @author mauri
  */
-public interface Cell {
+public class Cell implements DrawableNode {
+    
+    private Collitionable content;
+    private Cell upperCell;
+    private Cell lowerCell;
+    private Cell leftCell;
+    private Cell rightCell;
+    private Coordinate position;
+    private int amountOfWays = 0;
+    private Ball ball;
+    private boolean isTransitable;
 
-    public boolean isTransitable();
+    public Cell(int x, int y, boolean isTransitable) {
+        this.position = new Coordinate(x, y);
+        this.content = null;
+        this.ball = null;
+        this.isTransitable = isTransitable;
+        this.leftCell = null;
+        this.lowerCell = null;
+        this.rightCell = null;
+        this.upperCell = null;
+    }
 
-    public Coordinate getPosition();
+    public void setBall(Ball aBall) {
+        if (this.isTransitable)
+            this.ball = aBall;
+        else
+            throw new UnsupportedOperationException();
+    }
 
-    public boolean isTheSame(Cell other);
+    public Ball getBall() {
+        if (this.isTransitable)
+            return this.ball;
+        else
+            throw new UnsupportedOperationException();
+    }
 
-    public Cell getLowerCell();
+    public boolean isTransitable() {
+        return isTransitable;
+    }
 
-    public Cell getUpperCell();
+    public Collitionable getContent() {
+        if (this.isTransitable)
+            return this.content;
+        else
+            throw new UnsupportedOperationException();
+    }
 
-    public Cell getLeftCell();
+    public Coordinate getPosition() {
+        return this.position;
+    }
 
-    public Cell getRightCell();
+    public void setLeftCell(Cell cell) {
+        this.leftCell = cell;
+        amountOfWays++;
+    }
 
-    public boolean canGoUp();
+    public void setRightCell(Cell cell) {
+        this.rightCell = cell;
+        amountOfWays++;
+    }
 
-    public boolean canGoDown();
+    public void setUpperCell(Cell cell) {
+        this.upperCell = cell;
+        amountOfWays++;
+    }
 
-    public boolean canGoLeft();
+    public void setLowerCell(Cell cell) {
+        this.lowerCell = cell;
+        amountOfWays++;
+    }
 
-    public boolean canGoRight();
+    public void setContent(Collitionable newContent) {
+        this.content = newContent;
+    }
 
-    public boolean isEmpty();
+    public boolean isTheSame(Cell other) {
+        return position.isEqualTo(other.getPosition());
+    }
+
+    public int eatBall() {
+        if (!this.isTransitable)
+            throw new UnsupportedOperationException();
+        int points = this.ball.isEaten();
+        this.ball = new NullBall();
+        return points;
+    }
+
+    public Cell getLeftCell() {
+        return this.leftCell;
+    }
+
+    public Cell getRightCell() {
+        return this.rightCell;
+    }
+
+    public Cell getUpperCell() {
+        return this.upperCell;
+    }
+
+    public Cell getLowerCell() {
+        return this.lowerCell;
+    }
+
+    public boolean canGoUp() {
+        return upperCell.isTransitable();
+    }
+
+    public boolean canGoDown() {
+        return lowerCell.isTransitable();
+    }
+
+    public boolean canGoLeft() {
+        return leftCell.isTransitable();
+    }
+
+    public boolean canGoRight() {
+        return rightCell.isTransitable();
+    }
+
+    public boolean isEmpty() {
+        if (!isTransitable)
+            throw new UnsupportedOperationException();
+        return (!ball.isEatable());
+    }
+
+    public Coordinate getCoords() {
+        return this.position;
+    }
+
+    public boolean hasLittleBall() {
+        // PEDORRISIMO
+        return "bolita".equals(String.valueOf(this.ball));
+    }
+
+    public boolean hasBigBall() {
+        // PEDORRISIMO
+        return "bolon".equals(String.valueOf(this.ball));
+    }
+
+    public boolean isRightTransitable() {
+        return this.canGoRight();
+    }
+
+    public boolean isLeftTransitable() {
+        return this.canGoLeft();
+    }
+
+    public boolean isUpTransitable() {
+        return this.canGoUp();
+    }
+
+    public boolean isDownTransitable() {
+        return this.canGoDown();
+    }
+
 }

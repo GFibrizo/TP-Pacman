@@ -3,10 +3,8 @@ package com.grupo2.maze;
 import com.grupo2.balls.Ball;
 import com.grupo2.balls.BigBall;
 import com.grupo2.balls.LittleBall;
-import com.grupo2.cell.RawCell;
-import com.grupo2.cell.TransitableCell;
-import com.grupo2.cell.UntransitableCell;
 import com.grupo2.character.Coordinate;
+import com.grupo2.cell.Cell;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
@@ -77,13 +75,13 @@ public class MazeXMLBuilder implements MazeBuilder {
                     int x = Integer.parseInt(eElement.getAttribute("columna"));
                     String content = eElement.getAttribute("contiene");
 
-                    RawCell aCell;
+                    Cell aCell;
                     if (this.isUntransitableCell(eElement)) {
-                        aCell = new UntransitableCell(x, y);
+                        aCell = new Cell(x, y, false);
                     } else {
-                        aCell = new TransitableCell(x, y);
+                        aCell = new Cell(x, y, true);
                         Ball ball = (content.equals("bolita") ? new LittleBall() : new BigBall());
-                        ((TransitableCell) aCell).setBall(ball);
+                        aCell.setBall(ball);
                     }
                     maze.addCell(aCell);
                 }

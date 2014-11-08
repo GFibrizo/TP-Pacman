@@ -51,33 +51,15 @@ public class CharacterXMLBuilder implements CharacterBuilder {
             throw new ParserConfigurationException();
         }
         hash = new HashMap<>();
-        hash.put("izquierda", (p) -> {
-            return new LeftDirection();
-        });
-        hash.put("derecha", (p) -> {
-            return new RightDirection();
-        });
-        hash.put("arriba", (p) -> {
-            return new UpDirection();
-        });
-        hash.put("abajo", (p) -> {
-            return new DownDirection();
-        });
-        hash.put("zonzo", (p) -> {
-            return new Dumb();
-        });
-        hash.put("buscador", (p) -> {
-            return new Seeker();
-        });
-        hash.put("perezoso", (p) -> {
-            return new Lazy();
-        });
-        hash.put("cazador", (p) -> {
-            return new HunterState();
-        });
-        hash.put("presa", (p) -> {
-            return new PreyState();
-        });
+        hash.put("izquierda",   (p) -> {return new LeftDirection();});
+        hash.put("derecha",     (p) -> {return new RightDirection();});
+        hash.put("arriba",      (p) -> {return new UpDirection();});
+        hash.put("abajo",       (p) -> {return new DownDirection();});
+        hash.put("zonzo",       (p) -> {return new Dumb();});
+        hash.put("buscador",    (p) -> {return new Seeker();});
+        hash.put("perezoso",    (p) -> {return new Lazy();});
+        hash.put("cazador",     (p) -> {return new HunterState();});
+        hash.put("presa",       (p) -> {return new PreyState();});
         this.obtainCharactersFromXML();
     }
 
