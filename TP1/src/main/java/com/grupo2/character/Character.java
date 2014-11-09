@@ -1,7 +1,14 @@
 package com.grupo2.character;
 
 import com.grupo2.cell.Cell;
+import com.grupo2.directions.DownDirection;
+import com.grupo2.directions.LeftDirection;
+import com.grupo2.directions.NullDirection;
+import com.grupo2.directions.RightDirection;
+import com.grupo2.directions.UpDirection;
 import com.grupo2.interfaces.IPositionable;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -13,12 +20,13 @@ public abstract class Character implements IPositionable {
     protected Direction direction;
     protected Cell currentCell;
     protected float velocity;
-
+    protected Direction previousDirection;
     protected Character() {
         //this.position = null;
         this.direction = null;
         this.currentCell = null;
         this.velocity = (float) 1.0;
+        this.previousDirection = new NullDirection();        
     }
 
     public abstract void move();
@@ -47,5 +55,23 @@ public abstract class Character implements IPositionable {
     @Override
     public Cell getCurrentCell() {
         return this.currentCell;
+    }
+    
+    protected Map<Direction, Cell> allowedDirections() {
+
+        Map<Direction, Cell> allowedDirections = new HashMap();
+        if (this.getCurrentCell().canGoUp() && !previousDirection.isOposedTo(new UpDirection())) {
+            allowedDirections.put(new UpDirection(), this.getCurrentCell().getUpperCell());
+        }
+        if (this.getCurrentCell().canGoDown() && !previousDirection.isOposedTo(new DownDirection())) {
+            allowedDirections.put(new DownDirection(), this.getCurrentCell().getLowerCell());
+        }
+        if (this.getCurrentCell().canGoLeft() && !previousDirection.isOposedTo(new LeftDirection())) {
+            allowedDirections.put(new LeftDirection(), this.getCurrentCell().getLeftCell());
+        }
+        if (this.getCurrentCell().canGoRight() && !previousDirection.isOposedTo(new RightDirection())) {
+            allowedDirections.put(new RightDirection(), this.getCurrentCell().getRightCell());
+        }
+        return allowedDirections;
     }
 }
