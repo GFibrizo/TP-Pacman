@@ -6,13 +6,11 @@
 
 package com.grupo2.fruit;
 
-import com.grupo2.board.Board;
 import com.grupo2.cell.Cell;
 import com.grupo2.character.Character;
 import com.grupo2.character.Coordinate;
 import com.grupo2.directions.NullDirection;
 import com.grupo2.maze.Maze;
-import com.grupo2.maze.RawMaze;
 import com.grupo2.movementStrategies.RandomStrategy;
 import java.util.Random;
 /**
@@ -28,6 +26,9 @@ public abstract class Fruit extends Character {
         this.currentCell = initialCell(maze);
         this.direction = this.randomStrategy.getNewDirection(allowedDirections());
     }
+    
+    public Fruit() {
+    }    
     
     private Cell initialCell(Maze maze) {
         int height = maze.getHeight();
@@ -58,7 +59,7 @@ public abstract class Fruit extends Character {
         
     }
     
-    public void eat() {
-        //SUMAR PUNTAJE Y MORIR
-    }
+    public abstract void eat(); 
+
+    public abstract boolean isActive();
 }

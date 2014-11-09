@@ -12,10 +12,9 @@ import com.grupo2.maze.Maze;
  *
  * @author mauri
  */
-public class Cherry extends Fruit {
+public class NullFruit extends Fruit {
 
-    public Cherry(Maze maze) {
-        super(maze);
+    public NullFruit() {
     }
     
     @Override
@@ -31,12 +30,12 @@ public class Cherry extends Fruit {
 
     @Override
     public void eat() {
-        // Add points and dissapear
+        // Nothins happens
     }
 
     @Override
     public boolean isActive() {
-        return true;
+        return false;
     }
     
     

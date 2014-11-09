@@ -10,6 +10,7 @@ import com.grupo2.eventHandling.Publisher;
 import com.grupo2.eventHandling.Subscriber;
 import com.grupo2.fruit.Cherry;
 import com.grupo2.fruit.Fruit;
+import com.grupo2.fruit.NullFruit;
 import com.grupo2.ghost.Ghost;
 import com.grupo2.interfaces.IPositionable;
 import com.grupo2.maze.Maze;
@@ -71,7 +72,7 @@ public class Board extends Publisher {
         Cell initialPacmanCell = maze.getCellFromCoordinates(this.maze.getPacmanBegining());
         this.thePacman.setCurrentCell(initialPacmanCell);
         setCellForGhosts();
-        this.theFruit = new Cherry(this.maze);
+        this.theFruit = new NullFruit();
         this.fruitTimer = 0;
         //this.ghosts.forEach((ghost) -> ghost.setPosition(this.maze.getGhostBegining()));
         PacmanArea.CenterAreaOnPacman(thePacman);
@@ -138,7 +139,10 @@ public class Board extends Publisher {
     }
 
     private void resolveColitions() {
-        if (this.collisionWithPacman(theFruit)) this.update(GameEvent.PACMANEATSFRUIT); 
+        if (this.theFruit.isActive() && this.collisionWithPacman(theFruit)) { 
+            this.update(GameEvent.PACMANEATSFRUIT);
+            this.theFruit = new NullFruit();
+        } 
         for (Ghost ghost : ghosts) {
             if (this.collisionWithPacman(ghost)) {
                 this.update(GameEvent.PACMANCOLLIDEGHOST);
