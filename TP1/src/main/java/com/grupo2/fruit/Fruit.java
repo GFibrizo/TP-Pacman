@@ -10,6 +10,8 @@ import com.grupo2.board.Board;
 import com.grupo2.cell.Cell;
 import com.grupo2.character.Character;
 import com.grupo2.character.Coordinate;
+import com.grupo2.directions.NullDirection;
+import com.grupo2.movementStrategies.RandomStrategy;
 import java.util.Random;
 /**
  *
@@ -17,6 +19,8 @@ import java.util.Random;
  */
 public abstract class Fruit extends Character {
     private float score;
+    private RandomStrategy randomStrategy = new RandomStrategy();
+            
     public Fruit() {
         super();
         this.currentCell = initialCell();
@@ -39,5 +43,12 @@ public abstract class Fruit extends Character {
         }
         
         return aCell;
+    }
+    
+    @Override
+    public void move() {
+        if (!direction.isEqualTo(new NullDirection())) previousDirection = direction;
+        this.direction = this.randomStrategy.getNewDirection(this.allowedDirections());
+        this.currentCell = this.direction.stepForward(this.currentCell);
     }
 }
