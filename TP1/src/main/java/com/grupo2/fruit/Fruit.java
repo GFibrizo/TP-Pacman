@@ -11,6 +11,7 @@ import com.grupo2.cell.Cell;
 import com.grupo2.character.Character;
 import com.grupo2.character.Coordinate;
 import com.grupo2.directions.NullDirection;
+import com.grupo2.maze.Maze;
 import com.grupo2.maze.RawMaze;
 import com.grupo2.movementStrategies.RandomStrategy;
 import java.util.Random;
@@ -22,13 +23,13 @@ public abstract class Fruit extends Character {
     private float score;
     private RandomStrategy randomStrategy = new RandomStrategy();
             
-    public Fruit(RawMaze maze) {
+    public Fruit(Maze maze) {
         super();
         this.currentCell = initialCell(maze);
         this.direction = this.randomStrategy.getNewDirection(allowedDirections());
     }
     
-    private Cell initialCell(RawMaze maze) {
+    private Cell initialCell(Maze maze) {
         int height = maze.getHeight();
         int width = maze.getWidth();        
         Random random = new Random();
@@ -55,5 +56,9 @@ public abstract class Fruit extends Character {
         this.direction = this.randomStrategy.getNewDirection(allowedDirections());
         this.currentCell = this.direction.stepForward(this.currentCell);
         
+    }
+    
+    public void eat() {
+        //SUMAR PUNTAJE
     }
 }

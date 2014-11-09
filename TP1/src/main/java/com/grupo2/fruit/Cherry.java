@@ -6,6 +6,7 @@
 
 package com.grupo2.fruit;
 
+import com.grupo2.maze.Maze;
 import com.grupo2.maze.RawMaze;
 
 /**
@@ -14,7 +15,7 @@ import com.grupo2.maze.RawMaze;
  */
 public class Cherry extends Fruit {
 
-    public Cherry(RawMaze maze) {
+    public Cherry(Maze maze) {
         super(maze);
     }
     
