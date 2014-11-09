@@ -11,6 +11,7 @@ import com.grupo2.cell.Cell;
 import com.grupo2.character.Character;
 import com.grupo2.character.Coordinate;
 import com.grupo2.directions.NullDirection;
+import com.grupo2.maze.RawMaze;
 import com.grupo2.movementStrategies.RandomStrategy;
 import java.util.Random;
 /**
@@ -21,14 +22,15 @@ public abstract class Fruit extends Character {
     private float score;
     private RandomStrategy randomStrategy = new RandomStrategy();
             
-    public Fruit() {
+    public Fruit(RawMaze maze) {
         super();
-        this.currentCell = initialCell();
+        this.currentCell = initialCell(maze);
+        this.direction = this.randomStrategy.getNewDirection(allowedDirections());
     }
     
-    private Cell initialCell() {
-        int height = Board.getInstance().getMaze().getHeight();
-        int width = Board.getInstance().getMaze().getWidth();        
+    private Cell initialCell(RawMaze maze) {
+        int height = maze.getHeight();
+        int width = maze.getWidth();        
         Random random = new Random();
         boolean isTransitable = false;
         Cell aCell = null;
@@ -38,7 +40,7 @@ public abstract class Fruit extends Character {
             x = random.nextInt(width-1);
             y = random.nextInt(height-1);
             Coordinate coordinate = new Coordinate(x,y);
-            aCell = Board.getInstance().getMaze().getCellFromCoordinates(coordinate);
+            aCell = maze.getCellFromCoordinates(coordinate);
             isTransitable = aCell.isTransitable();
         }
         
@@ -47,8 +49,11 @@ public abstract class Fruit extends Character {
     
     @Override
     public void move() {
-        if (!direction.isEqualTo(new NullDirection())) previousDirection = direction;
-        this.direction = this.randomStrategy.getNewDirection(this.allowedDirections());
+        if (!direction.isEqualTo(new NullDirection())) {
+            previousDirection = direction;
+        }        
+        this.direction = this.randomStrategy.getNewDirection(allowedDirections());
         this.currentCell = this.direction.stepForward(this.currentCell);
+        
     }
 }

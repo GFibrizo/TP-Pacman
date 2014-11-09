@@ -6,25 +6,27 @@
 
 package com.grupo2.fruit;
 
+import com.grupo2.maze.RawMaze;
+
 /**
  *
  * @author mauri
  */
 public class Cherry extends Fruit {
 
-    @Override
-    public void move() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public Cherry(RawMaze maze) {
+        super(maze);
     }
-
+    
     @Override
     public boolean isDead() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+       //To do
+        return true;
     }
 
     @Override
     public void die() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //To do
     }
     
 }
