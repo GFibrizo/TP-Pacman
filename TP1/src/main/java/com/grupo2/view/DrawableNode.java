@@ -24,4 +24,6 @@ public interface DrawableNode {
 
     boolean isDownTransitable();
 
+	public boolean isTransitable();
+
 }

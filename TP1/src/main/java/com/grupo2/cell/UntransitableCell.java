@@ -6,7 +6,7 @@ import com.grupo2.character.Coordinate;
  *
  * @author mauri
  */
-public class UntransitableCell extends RawCell {
+public class UntransitableCell implements RawCell {
 
     private final Coordinate position;
     private RawCell upperCell;

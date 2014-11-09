@@ -29,7 +29,7 @@ public class XMLReader implements InputReader {
     private int tickNumber;
 
     private void initializeDoc() throws SAXException, IOException, ParserConfigurationException {
-        String filePath = "pacmanTick" + this.tickNumber;
+		String filePath = "pacmanTick" + this.tickNumber + ".xml";
         File xmlFile = this.dir.resolve(filePath).toFile();
         DocumentBuilder dBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
         this.doc = dBuilder.parse(xmlFile);
@@ -51,11 +51,14 @@ public class XMLReader implements InputReader {
             String direccion = node.getAttribute("direccion");
             switch (direccion) {
                 case "arriba":
-                    dirRes = new UpDirection();
+					dirRes = new UpDirection();
+					break;
                 case "abajo":
-                    dirRes = new DownDirection();
+					dirRes = new DownDirection();
+					break;
                 case "izquierda":
-                    dirRes = new LeftDirection();
+					dirRes = new LeftDirection();
+					break;
                 default:
                     dirRes = new RightDirection();
             }

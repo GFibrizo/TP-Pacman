@@ -9,7 +9,7 @@ import com.grupo2.character.Coordinate;
  *
  * @author mauri
  */
-public class TransitableCell extends RawCell {
+public class TransitableCell implements RawCell {
 
     private Collitionable content;
     private RawCell upperCell;
