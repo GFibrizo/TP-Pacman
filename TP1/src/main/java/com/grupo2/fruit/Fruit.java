@@ -20,7 +20,7 @@ import java.util.Random;
  * @author mauri
  */
 public abstract class Fruit extends Character {
-    private float score;
+
     private RandomStrategy randomStrategy = new RandomStrategy();
             
     public Fruit(Maze maze) {
@@ -59,6 +59,6 @@ public abstract class Fruit extends Character {
     }
     
     public void eat() {
-        //SUMAR PUNTAJE
+        //SUMAR PUNTAJE Y MORIR
     }
 }

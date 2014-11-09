@@ -3,6 +3,7 @@ package com.grupo2.board;
 import com.grupo2.cell.Cell;
 import com.grupo2.character.CharacterBuilder;
 import com.grupo2.command.*;
+import com.grupo2.constants.Constants;
 import com.grupo2.controller.Controller;
 import com.grupo2.eventHandling.Event;
 import com.grupo2.eventHandling.Publisher;
@@ -30,6 +31,7 @@ public class Board extends Publisher {
     private Pacman thePacman;
     private Fruit theFruit;
     private static Board instance;
+    private long fruitTimer;
 
     public static Board getInstance() {
         return instance;
@@ -70,6 +72,7 @@ public class Board extends Publisher {
         this.thePacman.setCurrentCell(initialPacmanCell);
         setCellForGhosts();
         this.theFruit = new Cherry(this.maze);
+        this.fruitTimer = 0;
         //this.ghosts.forEach((ghost) -> ghost.setPosition(this.maze.getGhostBegining()));
         PacmanArea.CenterAreaOnPacman(thePacman);
     }
@@ -148,6 +151,7 @@ public class Board extends Publisher {
     public void updateModel(Controller controller) {
         this.thePacman.setDirection(controller.getPacmanNextDirection());
         this.thePacman.move();
+        this.createFruit();
         this.pacmanEntersCell();
         PacmanArea.CenterAreaOnPacman(thePacman);
         PacmanArea.getInstance().update(PacmanArea.VisionEvent.GHOST_IS_INSIDE);
@@ -165,5 +169,15 @@ public class Board extends Publisher {
     public void updateView(View view) {
         view.show();
     }
+
+    private void createFruit() {
+       if ( this.fruitTimer == Constants.FRUITSPAWNTICKS ) {
+           this.theFruit = new Cherry(this.maze);
+           this.fruitTimer = 0;
+       } 
+       else {
+           this.fruitTimer++;
+       }
+    }    
 
 }
