@@ -22,6 +22,8 @@ public class FruitTest {
     
     @BeforeClass
     public static void setUpClass() {
+        Fruit aCherry = new Cherry();
+        
     }
     
     @AfterClass
