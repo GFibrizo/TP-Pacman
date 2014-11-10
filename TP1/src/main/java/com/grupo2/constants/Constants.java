@@ -33,6 +33,8 @@ public final class Constants {
     public static int VISION3 = 10;
     public static int VISION4 = 12;
     public static float RAGE_BONUS = (float) 0.25;
+    
+    public static long FRUITSPAWNTICKS = 500;
 
     private Constants() {
         //this prevents even the native class from
