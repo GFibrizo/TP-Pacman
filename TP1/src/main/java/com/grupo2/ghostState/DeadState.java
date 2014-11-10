@@ -66,4 +66,14 @@ public class DeadState extends GhostState {
     public String toString() {
         return "muerto";
     }
+    
+    @Override
+    public boolean testIfAbleToChase() {
+        return false;
+    }
+    
+    @Override
+    public boolean testIfAbleToStopChase() {
+        return false;
+    }
 }

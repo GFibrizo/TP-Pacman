@@ -69,6 +69,7 @@ public class Ghost extends Character implements IGhost {
             previousDirection = direction;
         }
         Map<Direction, Cell> directions = this.allowedDirections();
+        if (!state.canMove()) return;
         direction = state.getNewDirection(personality, directions);
         this.currentCell = direction.stepForward(this.currentCell);
         this.position = this.currentCell.getPosition();
@@ -104,11 +105,13 @@ public class Ghost extends Character implements IGhost {
     }
 
     public void beginPacmanChase() {
-        personality.beginPacmanChase();
+        if (state.testIfAbleToChase())
+            personality.beginPacmanChase();
     }
 
     public void stopPacmanChase() {
-        personality.stopPacmanChase();
+        if (state.testIfAbleToStopChase())
+            personality.stopPacmanChase();
     }
 
     private Map<Direction, Cell> allowedDirections() {

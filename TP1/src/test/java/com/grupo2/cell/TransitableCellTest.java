@@ -10,14 +10,14 @@ import org.junit.Test;
  */
 public class TransitableCellTest {
 
-    private TransitableCell transCell;
+    private Cell transCell;
 
     public TransitableCellTest() {
     }
 
     @Before
     public void setUp() {
-        transCell = new TransitableCell(2, 2);
+        transCell = new Cell(2, 2, true);
     }
 
     /**

@@ -1,7 +1,6 @@
 package com.grupo2.ghost;
 
-import com.grupo2.cell.TransitableCell;
-import com.grupo2.cell.UntransitableCell;
+import com.grupo2.cell.Cell;
 import com.grupo2.character.Coordinate;
 import com.grupo2.ghostFactory.GhostFactory;
 import org.junit.AfterClass;
@@ -9,6 +8,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import com.grupo2.constants.Constants;
 
 /**
  *
@@ -31,13 +31,14 @@ public class GhostTest {
 
     @Before
     public void setUp() {
-		ghost = GhostFactory.createOnlyRightGhost();
-		TransitableCell currCell = new TransitableCell(0, 0);
-		currCell.setLeftCell(new UntransitableCell(3, 0));
-		currCell.setLowerCell(new UntransitableCell(0, 1));
-		currCell.setUpperCell(new UntransitableCell(0, 3));
-		currCell.setRightCell(new TransitableCell(1, 0));
-		ghost.setCurrentCell(currCell);
+        Constants.setInitialVelocity((float)1.0);
+        ghost = GhostFactory.createOnlyRightGhost();
+        Cell currCell = new Cell(0, 0, true);
+        currCell.setLeftCell(new Cell(3, 0, false));
+        currCell.setLowerCell(new Cell(0, 1, false));
+        currCell.setUpperCell(new Cell(0, 3, false));
+        currCell.setRightCell(new Cell(1, 0, true));
+        ghost.setCurrentCell(currCell);
     }
 
     @Test

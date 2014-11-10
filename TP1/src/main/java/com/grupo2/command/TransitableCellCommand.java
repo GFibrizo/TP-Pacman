@@ -4,8 +4,7 @@
  * and open the template in the editor.
  */
 package com.grupo2.command;
-
-import com.grupo2.cell.TransitableCell;
+import com.grupo2.cell.Cell;
 import com.grupo2.eventHandling.Subscriber;
 
 /**
@@ -14,5 +13,5 @@ import com.grupo2.eventHandling.Subscriber;
  */
 public abstract class TransitableCellCommand implements Subscriber {
 
-    TransitableCell cell;
+    Cell cell;
 }

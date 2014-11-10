@@ -13,25 +13,15 @@ import com.grupo2.directions.NullDirection;
  */
 public class HunterState extends GhostState {
 
-    private float time;
-    private float velocity;
-    private float finishedMovement;
 
     public HunterState() {
         velocity = Constants.getInitialVelocity();
         finishedMovement = 0;
     }
-
+    
     @Override
     public Direction getNewDirection(Personality personality, Map<Direction, Cell> allowedDirections) {
-        finishedMovement += velocity;
-        if (finishedMovement >= 1) {
-            finishedMovement -= 1;
-            return personality.getNewDirection(allowedDirections);
-        } else {
-            return new NullDirection();
-        }
-
+        return personality.getNewDirection(allowedDirections);
     }
 
     /**
@@ -75,5 +65,15 @@ public class HunterState extends GhostState {
     @Override
     public String toString() {
         return "cazador";
+    }
+    
+    @Override
+    public boolean testIfAbleToChase() {
+        return true;
+    }
+    
+    @Override
+    public boolean testIfAbleToStopChase() {
+        return true;
     }
 }
