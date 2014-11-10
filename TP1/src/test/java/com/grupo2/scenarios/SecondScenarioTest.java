@@ -48,7 +48,7 @@ public class SecondScenarioTest {
     public void setUp() throws ParserConfigurationException {
         MazeXMLBuilder mazeBuilder = new MazeXMLBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "Laberinto.xml"));
         CharacterBuilder charBuilder = new CharacterXMLBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "PersonajePacmanSolo.xml"));
-        map = new Board(mazeBuilder, charBuilder);
+        map = Board.createBoard(mazeBuilder, charBuilder);
         map.subscribeSubscribers();
         thePacman = map.getPacman();
     }

@@ -23,7 +23,7 @@ public abstract class Publisher {
 
     public void update(Event event) {
         List<Subscriber> subs = subscribers.get(event);
-        if (subscribers.isEmpty()) return;
+        if ((subs == null) || (subs.isEmpty())) return;
         subs.forEach(Subscriber::execute);
     }
 

@@ -1,8 +1,5 @@
 package com.grupo2.maze;
 
-import com.grupo2.balls.Ball;
-import com.grupo2.balls.BigBall;
-import com.grupo2.balls.LittleBall;
 import com.grupo2.character.Coordinate;
 import com.grupo2.cell.Cell;
 import java.io.File;
@@ -18,6 +15,10 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.function.Function;
+import com.grupo2.balls.*;
 
 /**
  *
@@ -26,9 +27,14 @@ import org.xml.sax.SAXException;
 public class MazeXMLBuilder implements MazeBuilder {
 
     private final File xmlFile;
+    Map<String, Function> hash;
 
     public MazeXMLBuilder(Path path) {
         this.xmlFile = path.toFile();
+        hash = new HashMap<>();
+        hash.put("bolita",  (p) -> {return new LittleBall();});
+        hash.put("bolon",   (p) -> {return new BigBall();});
+        hash.put("",        (p) -> {return new NullBall();});
     }
 
     private Coordinate getCoords(String attribute) {
@@ -80,7 +86,7 @@ public class MazeXMLBuilder implements MazeBuilder {
                         aCell = new Cell(x, y, false);
                     } else {
                         aCell = new Cell(x, y, true);
-                        Ball ball = (content.equals("bolita") ? new LittleBall() : new BigBall());
+                        Ball ball = (Ball) hash.get(content).apply(null);
                         aCell.setBall(ball);
                     }
                     maze.addCell(aCell);

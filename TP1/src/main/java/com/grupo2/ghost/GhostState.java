@@ -30,7 +30,7 @@ public abstract class GhostState {
      * the personality
      */
     public abstract Direction getNewDirection(Personality personality, Map<Direction, Cell> allowedDirections);
-
+    
     /**
      * @return True if the State of the ghost is "Dead". False otherwise.
      */

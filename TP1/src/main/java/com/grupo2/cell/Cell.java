@@ -25,7 +25,7 @@ public class Cell implements DrawableNode {
     public Cell(int x, int y, boolean isTransitable) {
         this.position = new Coordinate(x, y);
         this.content = null;
-        this.ball = null;
+        this.ball = new NullBall();
         this.isTransitable = isTransitable;
         this.leftCell = null;
         this.lowerCell = null;
