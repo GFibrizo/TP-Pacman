@@ -11,159 +11,165 @@ import com.grupo2.view.DrawableNode;
  * @author mauri
  */
 public class Cell implements DrawableNode {
-    
-    private Collitionable content;
-    private Cell upperCell;
-    private Cell lowerCell;
-    private Cell leftCell;
-    private Cell rightCell;
-    private Coordinate position;
-    private int amountOfWays = 0;
-    private Ball ball;
-    private boolean isTransitable;
 
-    public Cell(int x, int y, boolean isTransitable) {
-        this.position = new Coordinate(x, y);
-        this.content = null;
-        this.ball = null;
-        this.isTransitable = isTransitable;
-        this.leftCell = null;
-        this.lowerCell = null;
-        this.rightCell = null;
-        this.upperCell = null;
-    }
+	private Collitionable content;
+	private Cell upperCell;
+	private Cell lowerCell;
+	private Cell leftCell;
+	private Cell rightCell;
+	private Coordinate position;
+	private int amountOfWays = 0;
+	private Ball ball;
+	private boolean isTransitable;
 
-    public void setBall(Ball aBall) {
-        if (this.isTransitable)
-            this.ball = aBall;
-        else
-            throw new UnsupportedOperationException();
-    }
+	public Cell(int x, int y, boolean isTransitable) {
+		this.position = new Coordinate(x, y);
+		this.content = null;
+		this.ball = null;
+		this.isTransitable = isTransitable;
+		this.leftCell = null;
+		this.lowerCell = null;
+		this.rightCell = null;
+		this.upperCell = null;
+	}
 
-    public Ball getBall() {
-        if (this.isTransitable)
-            return this.ball;
-        else
-            throw new UnsupportedOperationException();
-    }
+	public void setBall(Ball aBall) {
+		if (this.isTransitable) {
+			this.ball = aBall;
+		} else {
+			throw new UnsupportedOperationException();
+		}
+	}
 
-    public boolean isTransitable() {
-        return isTransitable;
-    }
+	public Ball getBall() {
+		if (this.isTransitable) {
+			return this.ball;
+		} else {
+			throw new UnsupportedOperationException();
+		}
+	}
 
-    public Collitionable getContent() {
-        if (this.isTransitable)
-            return this.content;
-        else
-            throw new UnsupportedOperationException();
-    }
+	@Override
+	public boolean isTransitable() {
+		return isTransitable;
+	}
 
-    public Coordinate getPosition() {
-        return this.position;
-    }
+	public Collitionable getContent() {
+		if (this.isTransitable) {
+			return this.content;
+		} else {
+			throw new UnsupportedOperationException();
+		}
+	}
 
-    public void setLeftCell(Cell cell) {
-        this.leftCell = cell;
-        amountOfWays++;
-    }
+	public Coordinate getPosition() {
+		return this.position;
+	}
 
-    public void setRightCell(Cell cell) {
-        this.rightCell = cell;
-        amountOfWays++;
-    }
+	public void setLeftCell(Cell cell) {
+		this.leftCell = cell;
+		this.amountOfWays++;
+	}
 
-    public void setUpperCell(Cell cell) {
-        this.upperCell = cell;
-        amountOfWays++;
-    }
+	public void setRightCell(Cell cell) {
+		this.rightCell = cell;
+		this.amountOfWays++;
+	}
 
-    public void setLowerCell(Cell cell) {
-        this.lowerCell = cell;
-        amountOfWays++;
-    }
+	public void setUpperCell(Cell cell) {
+		this.upperCell = cell;
+		this.amountOfWays++;
+	}
 
-    public void setContent(Collitionable newContent) {
-        this.content = newContent;
-    }
+	public void setLowerCell(Cell cell) {
+		this.lowerCell = cell;
+		this.amountOfWays++;
+	}
 
-    public boolean isTheSame(Cell other) {
-        return position.isEqualTo(other.getPosition());
-    }
+	public void setContent(Collitionable newContent) {
+		this.content = newContent;
+	}
 
-    public int eatBall() {
-        if (!this.isTransitable)
-            throw new UnsupportedOperationException();
-        int points = this.ball.isEaten();
-        this.ball = new NullBall();
-        return points;
-    }
+	public boolean isTheSame(Cell other) {
+		return position.isEqualTo(other.getPosition());
+	}
 
-    public Cell getLeftCell() {
-        return this.leftCell;
-    }
+	public int eatBall() {
+		if (!this.isTransitable) {
+			throw new UnsupportedOperationException();
+		}
+		int points = this.ball.isEaten();
+		this.ball = new NullBall();
+		return points;
+	}
 
-    public Cell getRightCell() {
-        return this.rightCell;
-    }
+	public Cell getLeftCell() {
+		return this.leftCell;
+	}
 
-    public Cell getUpperCell() {
-        return this.upperCell;
-    }
+	public Cell getRightCell() {
+		return this.rightCell;
+	}
 
-    public Cell getLowerCell() {
-        return this.lowerCell;
-    }
+	public Cell getUpperCell() {
+		return this.upperCell;
+	}
 
-    public boolean canGoUp() {
-        return upperCell.isTransitable();
-    }
+	public Cell getLowerCell() {
+		return this.lowerCell;
+	}
 
-    public boolean canGoDown() {
-        return lowerCell.isTransitable();
-    }
+	public boolean canGoUp() {
+		return upperCell.isTransitable();
+	}
 
-    public boolean canGoLeft() {
-        return leftCell.isTransitable();
-    }
+	public boolean canGoDown() {
+		return lowerCell.isTransitable();
+	}
 
-    public boolean canGoRight() {
-        return rightCell.isTransitable();
-    }
+	public boolean canGoLeft() {
+		return leftCell.isTransitable();
+	}
 
-    public boolean isEmpty() {
-        if (!isTransitable)
-            throw new UnsupportedOperationException();
-        return (!ball.isEatable());
-    }
+	public boolean canGoRight() {
+		return rightCell.isTransitable();
+	}
 
-    public Coordinate getCoords() {
-        return this.position;
-    }
+	public boolean isEmpty() {
+		if (!isTransitable) {
+			throw new UnsupportedOperationException();
+		}
+		return (!ball.isEatable());
+	}
 
-    public boolean hasLittleBall() {
-        // PEDORRISIMO
-        return "bolita".equals(String.valueOf(this.ball));
-    }
+	public Coordinate getCoords() {
+		return this.position;
+	}
 
-    public boolean hasBigBall() {
-        // PEDORRISIMO
-        return "bolon".equals(String.valueOf(this.ball));
-    }
+	public boolean hasLittleBall() {
+		// PEDORRISIMO
+		return "bolita".equals(String.valueOf(this.ball));
+	}
 
-    public boolean isRightTransitable() {
-        return this.canGoRight();
-    }
+	public boolean hasBigBall() {
+		// PEDORRISIMO
+		return "bolon".equals(String.valueOf(this.ball));
+	}
 
-    public boolean isLeftTransitable() {
-        return this.canGoLeft();
-    }
+	public boolean isRightTransitable() {
+		return this.canGoRight();
+	}
 
-    public boolean isUpTransitable() {
-        return this.canGoUp();
-    }
+	public boolean isLeftTransitable() {
+		return this.canGoLeft();
+	}
 
-    public boolean isDownTransitable() {
-        return this.canGoDown();
-    }
+	public boolean isUpTransitable() {
+		return this.canGoUp();
+	}
+
+	public boolean isDownTransitable() {
+		return this.canGoDown();
+	}
 
 }

@@ -26,21 +26,26 @@ public class Game {
 		this.view = view;
 	}
 
-    //TODO: Builders should depend on pgm arguments or something like that
-    public void startGame() {
+	//TODO: Builders should depend on pgm arguments or something like that
+	public void startGame() {
 
 		Board map = new Board(this.mazeBuilder, this.charactBuilder);
 		Controller controller = new Controller(this.reader);
 		this.view.setMaze(map.getMaze());
 		this.view.setPacman(map.getPacman());
-        map.getGhosts().forEach((IGhost ghost) -> {
+		map.getGhosts().forEach((IGhost ghost) -> {
 			this.view.addGhost(ghost);
-        });
-        boolean ended = false;
+		});
+		boolean ended = false;
 
-        while (!ended) {
-            map.updateModel(controller);
+		while (!ended) {
+			map.updateModel(controller);
 			map.updateView(this.view);
-        }
-    }
+			try {
+				Thread.sleep(3000);
+			} catch (InterruptedException ex) {
+				ex.printStackTrace();
+			}
+		}
+	}
 }

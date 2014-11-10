@@ -20,12 +20,11 @@ public class Background extends JPanel {
 		this.bImage = boardBackground.getImage();
 		int w = this.bImage.getWidth(this);
 		int h = this.bImage.getHeight(this);
-		this.setPreferredSize(new Dimension(10, 10));
+		this.setPreferredSize(new Dimension(800, 600));
 	}
-
 
 	@Override
 	public void paintComponent(Graphics g) {
-		g.drawImage(this.bImage, 0, 0, 100, 100, null);
+		g.drawImage(this.bImage, 0, 0, 800, 600, null);
 	}
 }

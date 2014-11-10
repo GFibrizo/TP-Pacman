@@ -12,6 +12,10 @@ public abstract class View {
 	protected DrawablePacman pacman;
 	protected ArrayList<DrawableGhost> ghosts;
 
+	public View() {
+		this.ghosts = new ArrayList<>();
+	}
+
 	public void setPacman(DrawablePacman pacman) {
 		this.pacman = pacman;
 	}

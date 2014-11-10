@@ -5,13 +5,13 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.nio.file.Paths;
 import javax.swing.ImageIcon;
-import javax.swing.JPanel;
+import javax.swing.JLabel;
 
 /**
  *
  * @author ivan
  */
-public class GraphicNode extends JPanel {
+public class GraphicNode extends JLabel {
 
 	private Image image;
 	private int width;
