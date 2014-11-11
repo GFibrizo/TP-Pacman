@@ -1,7 +1,6 @@
 package com.grupo2.view;
 
 import java.nio.file.Path;
-import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.parsers.DocumentBuilder;
@@ -20,11 +19,8 @@ import org.w3c.dom.Element;
  *
  * @author ivan
  */
-public class XMLView implements View {
+public class XMLView extends View {
 
-    private DrawableMaze maze;
-    private DrawablePacman pacman;
-    private ArrayList<DrawableGhost> ghosts;
     private final Path directory;
     private int mazeTick;
     private int charTick;
@@ -32,21 +28,6 @@ public class XMLView implements View {
     public XMLView(Path path) throws ParserConfigurationException {
         this.directory = path;
 
-    }
-
-    @Override
-    public void setPacman(DrawablePacman pacman) {
-        this.pacman = pacman;
-    }
-
-    @Override
-    public void addGhost(DrawableGhost ghost) {
-        this.ghosts.add(ghost);
-    }
-
-    @Override
-    public void setMaze(DrawableMaze maze) {
-        this.maze = maze;
     }
 
     private void persistMaze() throws ParserConfigurationException, TransformerConfigurationException, TransformerException {
@@ -127,7 +108,7 @@ public class XMLView implements View {
         this.charTick++;
     }
 
-    @Override
+	@Override
     public void show() {
         try {
             this.persistMaze();

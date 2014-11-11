@@ -51,26 +51,26 @@ public class NullDirection implements Direction {
 
     @Override
     public boolean isOposedTo(LeftDirection other) {
-        return true;
+        return false;
     }
 
     @Override
     public boolean isOposedTo(RightDirection other) {
-        return true;
+        return false;
     }
 
     @Override
     public boolean isOposedTo(UpDirection other) {
-        return true;
+        return false;
     }
 
     @Override
     public boolean isOposedTo(DownDirection other) {
-        return true;
+        return false;
     }
 
     @Override
     public String toString() {
-        return "ninguna";
+        return "Ninguna";
     }
 }

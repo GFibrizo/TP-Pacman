@@ -16,6 +16,7 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 import org.xml.sax.SAXException;
 
 /**
@@ -24,47 +25,51 @@ import org.xml.sax.SAXException;
  */
 public class XMLReader implements InputReader {
 
-    private Path dir;
-    private Document doc;
-    private int tickNumber;
+	private Path dir;
+	private Document doc;
+	private int tickNumber;
 
-    private void initializeDoc() throws SAXException, IOException, ParserConfigurationException {
-        String filePath = "pacmanTick" + this.tickNumber;
-        File xmlFile = this.dir.resolve(filePath).toFile();
-        DocumentBuilder dBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-        this.doc = dBuilder.parse(xmlFile);
-        doc.getDocumentElement().normalize();
-    }
+	private void initializeDoc() throws SAXException, IOException, ParserConfigurationException {
+		String filePath = "pacmanTick" + this.tickNumber + ".xml";
+		File xmlFile = this.dir.resolve(filePath).toFile();
+		DocumentBuilder dBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+		this.doc = dBuilder.parse(xmlFile);
+		doc.getDocumentElement().normalize();
+	}
 
-    public XMLReader(Path dir) throws SAXException, IOException, ParserConfigurationException {
-        this.tickNumber = 1;
-        this.dir = dir;
-        this.initializeDoc();
-    }
+	public XMLReader(Path dir) throws SAXException, IOException, ParserConfigurationException {
+		this.tickNumber = 1;
+		this.dir = dir;
+		this.initializeDoc();
+	}
 
-    @Override
-    public Direction getNextDirection() {
-        Direction dirRes = new NullDirection();
-        try {
-            Element root = doc.getDocumentElement();
-            Element node = (Element) root.getFirstChild();
-            String direccion = node.getAttribute("direccion");
-            switch (direccion) {
-                case "arriba":
-                    dirRes = new UpDirection();
-                case "abajo":
-                    dirRes = new DownDirection();
-                case "izquierda":
-                    dirRes = new LeftDirection();
-                default:
-                    dirRes = new RightDirection();
-            }
-            this.tickNumber++;
-            this.initializeDoc();
-
-        } catch (SAXException | IOException | ParserConfigurationException ex) {
-            Logger.getLogger(XMLReader.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return dirRes;
-    }
+	@Override
+	public Direction getNextDirection() {
+		Direction dirRes = new NullDirection();
+		try {
+			Element root = doc.getDocumentElement();
+			if (root.getFirstChild().getNodeType() == Node.ELEMENT_NODE) {
+				Element node = (Element) root.getFirstChild();
+				String direccion = node.getAttribute("direccion");
+				switch (direccion) {
+					case "arriba":
+						dirRes = new UpDirection();
+						break;
+					case "abajo":
+						dirRes = new DownDirection();
+						break;
+					case "izquierda":
+						dirRes = new LeftDirection();
+						break;
+					default:
+						dirRes = new RightDirection();
+				}
+				this.tickNumber++;
+				this.initializeDoc();
+			}
+		} catch (SAXException | IOException | ParserConfigurationException ex) {
+			Logger.getLogger(XMLReader.class.getName()).log(Level.SEVERE, null, ex);
+		}
+		return dirRes;
+	}
 }

@@ -1,16 +1,32 @@
 package com.grupo2.view;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author ivan
  */
-public interface View {
+public abstract class View {
 
-    void setMaze(DrawableMaze maze);
+	protected DrawableMaze maze;
+	protected DrawablePacman pacman;
+	protected ArrayList<DrawableGhost> ghosts;
 
-    void setPacman(DrawablePacman pacman);
+	public View() {
+		this.ghosts = new ArrayList<>();
+	}
 
-    void addGhost(DrawableGhost ghost);
+	public void setPacman(DrawablePacman pacman) {
+		this.pacman = pacman;
+	}
 
-    void show();
+	public void addGhost(DrawableGhost ghost) {
+		this.ghosts.add(ghost);
+	}
+
+	public void setMaze(DrawableMaze maze) {
+		this.maze = maze;
+	}
+
+	public abstract void show();
 }

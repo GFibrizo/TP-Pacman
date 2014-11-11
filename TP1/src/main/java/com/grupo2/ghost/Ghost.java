@@ -23,7 +23,6 @@ public class Ghost extends Character implements IGhost {
     private Personality personality;
     private Coordinate position;
     private final int id;
-    private Direction previousDirection;
 
     /**
      * Create a new instance of the class Ghost in the HunterState.
@@ -40,7 +39,6 @@ public class Ghost extends Character implements IGhost {
     private Ghost() {
         super();
         this.velocity = Constants.getInitialVelocity();
-        this.previousDirection = new NullDirection();
         this.id = Ghost.counter;
         Ghost.counter++;
         this.state = null;
@@ -114,24 +112,7 @@ public class Ghost extends Character implements IGhost {
             personality.stopPacmanChase();
     }
 
-    private Map<Direction, Cell> allowedDirections() {
 
-        Map<Direction, Cell> allowedDirections = new HashMap();
-        if (this.getCurrentCell().canGoUp() && !previousDirection.isOposedTo(new UpDirection())) {
-            allowedDirections.put(new UpDirection(), this.getCurrentCell().getUpperCell());
-        }
-        if (this.getCurrentCell().canGoDown() && !previousDirection.isOposedTo(new DownDirection())) {
-            allowedDirections.put(new DownDirection(), this.getCurrentCell().getLowerCell());
-        }
-        if (this.getCurrentCell().canGoLeft() && !previousDirection.isOposedTo(new LeftDirection())) {
-            allowedDirections.put(new LeftDirection(), this.getCurrentCell().getLeftCell());
-        }
-        if (this.getCurrentCell().canGoRight() && !previousDirection.isOposedTo(new RightDirection())) {
-            allowedDirections.put(new RightDirection(), this.getCurrentCell().getRightCell());
-        }
-        return allowedDirections;
-
-    }
 
     @Override
     public int getNumber() {
