@@ -85,8 +85,6 @@ public class FourthScenarioTest {
         boolean OK1 = theGhost.getPosition().isEqualTo(new Coordinate(1, 1));
         boolean OK2 = !thePacman.isDead();
         boolean OK3 = theGhost.getState().toString().compareTo("presa") == 0;
-        System.out.print(theGhost.getPosition().getX());
-        System.out.print(theGhost.getPosition().getY());
         
         controller = new Controller(() -> new LeftDirection());
         i = 0; 

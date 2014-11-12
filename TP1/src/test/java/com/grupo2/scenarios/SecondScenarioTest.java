@@ -73,7 +73,7 @@ public class SecondScenarioTest {
             }
         }
 
-        Coordinate expectedPosition = new Coordinate(4, 1);
+        Coordinate expectedPosition = new Coordinate(4, 1);       
         boolean positionOK = expectedPosition.isEqualTo(thePacman.getPosition());
 
         assertTrue(positionOK && ballsEaten == 11);
