@@ -53,7 +53,6 @@ public class main {
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setSize(48*maze.getWidth(),48*maze.getHeight());
             frame.setLocationRelativeTo(null);    
-            //frame.setLayout(new GridLayout(19,19));
             Background bgPanel = new Background();            
             bgPanel.setLayout(new GridLayout(19,19));
             
@@ -62,74 +61,23 @@ public class main {
             ballsPanel.setLayout(new GridLayout(19,19));
 
   
-            int i = 0;
             cells.forEach((cell) -> {
          
-                boolean transitable = cell.isTransitable();
-                GraphicNode node = new GraphicNode(48,48,0,0,transitable);
+               boolean transitable = cell.isTransitable();
+               GraphicNode node = new GraphicNode(48,48,0,0,transitable);
 
                if (transitable) {
                     if (cell.hasBigBall()) node.add(new GraphicBigBall(48,48,0,0));
                     if (cell.hasLittleBall()) node.add(new GraphicLittleBall(48,48,0,0));                
                 }
-                bgPanel.add(node);   
+                bgPanel.add(node);                
                 
-                
-            });
-            
-            
+            });            
                         
             
-                        //frame.add(ballsPanel);
             frame.add(bgPanel);
-
             frame.pack();
             frame.setVisible(true);
-                //CharacterBuilder cBuilder = new CharacterXMLBuilder(Paths.get("src", "main", "resources", "laberintos", "PersonajesSimple.xml"));
-		//InputReader iReader = new XMLReader(Paths.get("src", "main", "resources", "pacman"));
-		//View view = new XMLView(Paths.get("src", "main", "resources", "estados"));
-		//View view = new GraphicView();
-		//Game game = new Game(mBuilder, cBuilder, iReader, view);
-		//game.startGame();
-   
-            
-            
-		/*JFrame frame = new JFrame();
-		JPanel p = new JPanel(new GridLayout(19, 19));
-		p.setComponentOrientation(ComponentOrientation.UNKNOWN);
-
-		frame.setSize(800, 600);
-		frame.setTitle("Application");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setLocationRelativeTo(null);
-		frame.setVisible(true);
-		ImageIcon boardBackground = new ImageIcon(Paths.get("src", "main", "graphicResources", "wallCell.png").toString());
-		JLabel l = new JLabel(boardBackground);
-		l.setBounds(0, 0, 60, 60);
-		p.add(l);
-		l = new JLabel(boardBackground);
-		l.setBounds(160, 60, 60, 60);
-		p.add(l);
-
-		p.setBounds(0, 0, 800, 600);
-		p.setSize(800, 600);
-		frame.getContentPane().add(p);
-		frame.pack();*/
-        
-
-        /*GraphicNode cell = new GraphicNode(48,48,0,0,false);
-        GraphicNode cell2 = new GraphicNode(48,48,0,0,false);        
-
-       
-        bgPanel.add(cell);
-        bgPanel.add(cell2);  
-
-        frame.add(bgPanel); */
-
-
-  
-            
-
 	}
 
 }
