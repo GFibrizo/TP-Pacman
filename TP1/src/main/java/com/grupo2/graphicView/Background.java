@@ -16,15 +16,15 @@ public class Background extends JPanel {
 	private final Image bImage;
 
 	public Background() {
-		ImageIcon boardBackground = new ImageIcon(Paths.get("src", "main", "graphicResources", "board.png").toString());
+		ImageIcon boardBackground = new ImageIcon(Paths.get("src", "main", "graphicResources", "background.jpg").toString());
 		this.bImage = boardBackground.getImage();
 		int w = this.bImage.getWidth(this);
 		int h = this.bImage.getHeight(this);
-		this.setPreferredSize(new Dimension(800, 600));
+		this.setPreferredSize(new Dimension(800,450));
 	}
 
 	@Override
 	public void paintComponent(Graphics g) {
-		g.drawImage(this.bImage, 0, 0, 800, 600, null);
+		g.drawImage(this.bImage, 0, 0, null);
 	}
 }
