@@ -26,9 +26,9 @@ public class GraphicNode extends JLabel {
 		this.y = y;
 		ImageIcon boardBackground;
 		if (transitable) {
-			boardBackground = new ImageIcon(Paths.get("src", "main", "graphicResources", "wallCell.png").toString());
+			boardBackground = new ImageIcon(Paths.get("src", "main", "graphicResources", "transitableCell.png").toString());
 		} else {
-			boardBackground = new ImageIcon(Paths.get("src", "main", "graphicResources", "wallCell.png").toString());
+			boardBackground = new ImageIcon(Paths.get("src", "main", "graphicResources", "intransitableCell.png").toString());
 		}
 
 		this.image = boardBackground.getImage();
