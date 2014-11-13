@@ -6,6 +6,8 @@ import com.grupo2.controller.InputReader;
 import com.grupo2.controller.XMLReader;
 import com.grupo2.game.Game;
 import com.grupo2.graphicView.Background;
+import com.grupo2.graphicView.GraphicBigBall;
+import com.grupo2.graphicView.GraphicLittleBall;
 import com.grupo2.graphicView.GraphicNode;
 import com.grupo2.maze.MazeBuilder;
 import com.grupo2.maze.MazeXMLBuilder;
@@ -17,6 +19,7 @@ import com.grupo2.view.XMLView;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.ComponentOrientation;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GridLayout;
 import java.io.IOException;
@@ -28,6 +31,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.OverlayLayout;
 import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
 
@@ -53,13 +57,32 @@ public class main {
             Background bgPanel = new Background();            
             bgPanel.setLayout(new GridLayout(19,19));
             
+            JPanel ballsPanel = new JPanel();
+            ballsPanel.setPreferredSize(new Dimension(912,912));
+            ballsPanel.setLayout(new GridLayout(19,19));
+
+  
+            int i = 0;
             cells.forEach((cell) -> {
+         
                 boolean transitable = cell.isTransitable();
-                bgPanel.add(new GraphicNode(48,48,0,0,transitable));                
+                GraphicNode node = new GraphicNode(48,48,0,0,transitable);
+
+               if (transitable) {
+                    if (cell.hasBigBall()) node.add(new GraphicBigBall(48,48,0,0));
+                    if (cell.hasLittleBall()) node.add(new GraphicLittleBall(48,48,0,0));                
+                }
+                bgPanel.add(node);   
+                
+                
             });
             
-            frame.add(bgPanel);
             
+                        
+            
+                        //frame.add(ballsPanel);
+            frame.add(bgPanel);
+
             frame.pack();
             frame.setVisible(true);
                 //CharacterBuilder cBuilder = new CharacterXMLBuilder(Paths.get("src", "main", "resources", "laberintos", "PersonajesSimple.xml"));

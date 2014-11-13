@@ -11,15 +11,20 @@ import javax.swing.JLabel;
  *
  * @author ivan
  */
-public class GraphicLittleBall extends GraphicBall {
+public class GraphicLittleBall extends JLabel {
 
-
+	protected Image image;
+	protected int width;
+	protected int height;
+	protected int x;
+	protected int y;    
+        
 	public GraphicLittleBall(int width, int height, int x, int y) {
 		this.width = width;
 		this.height = height;
 		this.x = x;
 		this.y = y;
-		ImageIcon boardBackground = boardBackground = new ImageIcon(Paths.get("src", "main", "graphicResources", "transitableCell.png").toString());
+		ImageIcon boardBackground = boardBackground = new ImageIcon(Paths.get("src", "main", "graphicResources", "littleball.png").toString());
 	
 
 		this.image = boardBackground.getImage();
