@@ -84,15 +84,15 @@ public class main {
             view.drawMaze();
             view.show();
             //Thread.sleep(20);
-            int i= 0;
+            /*int i= 0;
             Cell a;
             do {
                 a = (Cell) maze.getNodes().get(i);
                 i++;
-            } while (!a.isTransitable());
+            } while (!a.isTransitable());                   //CODE FOR TEST
             a.setBall(new BigBall());
             view.drawMaze();
-            view.show();
+            view.show();*/
 	}
 
 }
