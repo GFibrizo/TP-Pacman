@@ -44,18 +44,19 @@ public class Game {
 
     public void play() {
         boolean keepPlaying = true;
-
+        int totalScore = 0;
         do {
-            actualLevel.play();
-            //if (!showContinueToNextLevel()) break;
+            int score = actualLevel.play();
+            //if (!showContinueToNextLevel(score)) break;
             levelIndex++;
             try {
                 actualLevel = getNextLevel(levelIndex.toString());
             } catch (ParserConfigurationException ex) {
                 keepPlaying = false;
             }
+            totalScore += score;
         } while (keepPlaying);   
-        //showEndGame();
+        //showEndGame(totalScore);
     }
 
 }

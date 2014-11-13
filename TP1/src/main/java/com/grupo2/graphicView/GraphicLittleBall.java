@@ -20,19 +20,19 @@ public class GraphicLittleBall extends JLabel {
 	protected int y;    
         
 	public GraphicLittleBall(int width, int height, int x, int y) {
-		this.width = width;
-		this.height = height;
-		this.x = x;
-		this.y = y;
-		ImageIcon boardBackground = boardBackground = new ImageIcon(Paths.get("src", "main", "graphicResources", "littleball.png").toString());
-	
+            this.width = width;
+            this.height = height;
+            this.x = x;
+            this.y = y;
+            ImageIcon boardBackground = boardBackground = new ImageIcon(Paths.get("src", "main", "graphicResources", "littleball.png").toString());
 
-		this.image = boardBackground.getImage();
-		setPreferredSize(new Dimension(width, height));
+
+            this.image = boardBackground.getImage();
+            setPreferredSize(new Dimension(width, height));
 	}
 
 	@Override
 	public void paintComponent(Graphics g) {
-		g.drawImage(this.image, this.x, this.y, this.width, this.height, null);
+            g.drawImage(this.image, this.x, this.y, this.width, this.height, null);
 	}
 }

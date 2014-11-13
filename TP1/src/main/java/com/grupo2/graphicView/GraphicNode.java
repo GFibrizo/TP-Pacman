@@ -21,19 +21,19 @@ public class GraphicNode extends JPanel {
 	private int y;
 
 	public GraphicNode(int width, int height, int x, int y, boolean transitable) {
-		this.width = width;
-		this.height = height;
-		this.x = x;
-		this.y = y;
-		ImageIcon boardBackground;
-		if (transitable) {
-			boardBackground = new ImageIcon(Paths.get("src", "main", "graphicResources", "transitableCell.png").toString());
-		} else {
-			boardBackground = new ImageIcon(Paths.get("src", "main", "graphicResources", "intransitableCell.png").toString());
-		}
+            this.width = width;
+            this.height = height;
+            this.x = x;
+            this.y = y;
+            ImageIcon boardBackground;
+            if (transitable) {
+                boardBackground = new ImageIcon(Paths.get("src", "main", "graphicResources", "transitableCell.png").toString());
+            } else {
+                boardBackground = new ImageIcon(Paths.get("src", "main", "graphicResources", "intransitableCell.png").toString());
+            }
 
-		this.image = boardBackground.getImage();
-		setPreferredSize(new Dimension(width, height));
+            this.image = boardBackground.getImage();
+            setPreferredSize(new Dimension(width, height));
 	}
 
 	@Override

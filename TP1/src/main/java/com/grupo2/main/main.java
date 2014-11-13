@@ -14,7 +14,7 @@ import com.grupo2.maze.MazeXMLBuilder;
 import com.grupo2.maze.RawMaze;
 import com.grupo2.view.DrawableNode;
 import com.grupo2.view.GraphicView;
-import com.grupo2.view.View;
+import com.grupo2.view.*;
 import com.grupo2.view.XMLView;
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -34,6 +34,8 @@ import javax.swing.JPanel;
 import javax.swing.OverlayLayout;
 import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
+import com.grupo2.cell.Cell;
+import com.grupo2.balls.BigBall;
 
 /**
  *
@@ -44,10 +46,10 @@ public class main {
 	/**
 	 * @param args the command line arguments
 	 */
-	public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
+	public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException, InterruptedException {
             MazeBuilder mBuilder = new MazeXMLBuilder(Paths.get("src", "main", "resources", "laberintos", "LaberintoSimple.xml"));
             RawMaze maze = mBuilder.buildMaze();
-            ArrayList<DrawableNode> cells = maze.getNodes();
+            /*ArrayList<DrawableNode> cells = maze.getNodes();
             
             JFrame frame = new JFrame("Pacman Game");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -77,7 +79,20 @@ public class main {
             
             frame.add(bgPanel);
             frame.pack();
-            frame.setVisible(true);
+            frame.setVisible(true);*/
+            GraphicView view = new GraphicView(maze);
+            view.drawMaze();
+            view.show();
+            //Thread.sleep(20);
+            int i= 0;
+            Cell a;
+            do {
+                a = (Cell) maze.getNodes().get(i);
+                i++;
+            } while (!a.isTransitable());
+            a.setBall(new BigBall());
+            view.drawMaze();
+            view.show();
 	}
 
 }

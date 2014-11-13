@@ -14,6 +14,7 @@ import com.grupo2.ghost.Ghost;
 import com.grupo2.maze.Maze;
 import com.grupo2.maze.MazeXMLBuilder;
 import com.grupo2.pacman.Pacman;
+import com.grupo2.view.GraphicView;
 import javax.xml.parsers.ParserConfigurationException;
 import java.nio.file.Path;
 import com.grupo2.view.View;
@@ -40,9 +41,14 @@ public class Level {
         map.subscribeSubscribers();
 	this.controller = controller;
         thePacman = map.getPacman();
+        
+        
+        
         this.view = new View();     ///////// NO SE COMO SE TIENE QUE HACER
         this.view.setMaze(map.getMaze());
         this.view.setPacman(map.getPacman());
+        
+        
         map.getGhosts().forEach((Ghost ghost) -> {
             this.view.addGhost(ghost);
         });
@@ -50,7 +56,16 @@ public class Level {
     }
     
     
-    public void play() {
+    private initializeViews() {
+        GraphicView view = new GraphicView(maze);
+            view.drawMaze();
+            view.show();
+    }
+    
+    /** 
+     * @return int score obtained in the level.
+    **/
+    public int play() {
         while (!ended) {
             map.updateModel(controller);
             map.updateView(this.view);
