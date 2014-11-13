@@ -18,6 +18,7 @@ public class Pacman extends Character implements DrawablePacman {
     private Direction nextDirection;
     private boolean alive;
     private int score;
+    private int lifes;
 
     /*public Pacman(final int x, final int y, final Direction dir) {
      super(x, y, dir);
@@ -43,6 +44,7 @@ public class Pacman extends Character implements DrawablePacman {
         this.velocity = Constants.getInitialVelocity()*2;
         this.finishedMovement = 0;
         this.score = 0;
+        this.lifes = 3;
     }
 
     @Override
@@ -80,6 +82,7 @@ public class Pacman extends Character implements DrawablePacman {
     @Override
     public void die() {
         this.alive = false;
+        this.lifes -= 1;
     }
 
     @Override
@@ -89,7 +92,12 @@ public class Pacman extends Character implements DrawablePacman {
 
     @Override
     public boolean hasLives() {
-        return !this.isDead();
+        //return !this.isDead();
+        return (this.lifes > 0);
+    }
+    
+    public int remainingLifes() {
+        return this.lifes;
     }
     
     public void eatBall() {

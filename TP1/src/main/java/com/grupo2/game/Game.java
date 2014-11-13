@@ -1,12 +1,13 @@
 package com.grupo2.game;
 
-import com.grupo2.board.Board;
+
 import com.grupo2.character.CharacterBuilder;
 import com.grupo2.controller.Controller;
 import com.grupo2.controller.InputReader;
-import com.grupo2.interfaces.IGhost;
 import com.grupo2.maze.MazeBuilder;
-import com.grupo2.view.View;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import javax.xml.parsers.ParserConfigurationException;
 
 /**
  *
@@ -14,38 +15,47 @@ import com.grupo2.view.View;
  */
 public class Game {
 
-	private MazeBuilder mazeBuilder;
-	private InputReader reader;
-	private CharacterBuilder charactBuilder;
-	private View view;
+    private MazeBuilder mazeBuilder;
+    private InputReader reader;
+    private CharacterBuilder charactBuilder;
+    private Controller controller;
+    private Level actualLevel;
+    private Integer levelIndex;
 
-	public Game(MazeBuilder mazeBuilder, CharacterBuilder charactBuilder, InputReader reader, View view) {
-		this.mazeBuilder = mazeBuilder;
-		this.reader = reader;
-		this.charactBuilder = charactBuilder;
-		this.view = view;
-	}
+    public Game(MazeBuilder mazeBuilder, CharacterBuilder charactBuilder, InputReader reader) {
+        this.mazeBuilder = mazeBuilder;
+        this.reader = reader;
+        this.charactBuilder = charactBuilder;
+        controller = new Controller(this.reader);
+        levelIndex = 0;
+    }
 
-	//TODO: Builders should depend on pgm arguments or something like that
-	public void startGame() {
+    //TODO: Builders should depend on pgm arguments or something like that
+    public void startGame() throws ParserConfigurationException {
+        actualLevel = getNextLevel(levelIndex.toString());
+    }
 
-		Board map = new Board(this.mazeBuilder, this.charactBuilder);
-		Controller controller = new Controller(this.reader);
-		this.view.setMaze(map.getMaze());
-		this.view.setPacman(map.getPacman());
-		map.getGhosts().forEach((IGhost ghost) -> {
-			this.view.addGhost(ghost);
-		});
-		boolean ended = false;
+    private Level getNextLevel(String index) throws ParserConfigurationException {
+        Path mazePath = Paths.get("src", "main", "resources", "Levels", "Level"+ index, "Maze.xml");
+        Path characterPath = Paths.get("src", "main", "resources", "Levels", "Level"+ index, "Characters.xml");
+        return new Level(mazePath, characterPath, controller);
+    }
 
-		while (!ended) {
-			map.updateModel(controller);
-			map.updateView(this.view);
-			try {
-				Thread.sleep(3000);
-			} catch (InterruptedException ex) {
-				ex.printStackTrace();
-			}
-		}
-	}
+
+    public void play() {
+        boolean keepPlaying = true;
+
+        do {
+            actualLevel.play();
+            //if (!showContinueToNextLevel()) break;
+            levelIndex++;
+            try {
+                actualLevel = getNextLevel(levelIndex.toString());
+            } catch (ParserConfigurationException ex) {
+                keepPlaying = false;
+            }
+        } while (keepPlaying);   
+        //showEndGame();
+    }
+
 }
