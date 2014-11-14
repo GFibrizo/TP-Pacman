@@ -1,13 +1,25 @@
 package com.grupo2.main;
 
+import com.grupo2.balls.NullBall;
+import com.grupo2.character.Coordinate;
 import com.grupo2.controller.Controller;
 import com.grupo2.controller.KeyBoardReader;
+import com.grupo2.graphicView.Background;
+import com.grupo2.graphicView.GraphicBigBall;
+import com.grupo2.graphicView.GraphicLittleBall;
+import com.grupo2.graphicView.GraphicNode;
 import com.grupo2.maze.MazeBuilder;
 import com.grupo2.maze.MazeXMLBuilder;
 import com.grupo2.maze.RawMaze;
+import com.grupo2.view.DrawableNode;
 import com.grupo2.view.GraphicView;
+import java.awt.Dimension;
+import java.awt.GridLayout;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
 import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
 
@@ -20,74 +32,17 @@ public class main {
 	/**
 	 * @param args the command line arguments
 	 */
-<<<<<<< HEAD
+
 	public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
             MazeBuilder mBuilder = new MazeXMLBuilder(Paths.get("src", "main", "resources", "laberintos", "LaberintoSimple.xml"));
             RawMaze maze = mBuilder.buildMaze();
-            ArrayList<DrawableNode> cells = maze.getNodes();
+            ArrayList<DrawableNode> cells = maze.getNodes();            
+            GraphicView view = new GraphicView(maze);
             
-            JFrame frame = new JFrame("Pacman Game");
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setSize(48*maze.getWidth(),48*maze.getHeight());
-            frame.setLocationRelativeTo(null); 
+            view.drawMaze();
+            maze.getCellFromCoordinates(new Coordinate(1,1)).setBall(new NullBall());
+            view.drawMaze();
             
-            Background bgPanel = new Background();            
-            bgPanel.setLayout(new GridLayout(19,19));            
-            JPanel ballsPanel = new JPanel();
-            ballsPanel.setPreferredSize(new Dimension(912,912));
-            ballsPanel.setLayout(new GridLayout(19,19));
-=======
-	public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException, InterruptedException {
-		MazeBuilder mBuilder = new MazeXMLBuilder(Paths.get("src", "main", "resources", "laberintos", "LaberintoSimple.xml"));
-		RawMaze maze = mBuilder.buildMaze();
-		KeyBoardReader kr = new KeyBoardReader();
-		Controller controller = new Controller(kr);
-		/*ArrayList<DrawableNode> cells = maze.getNodes();
->>>>>>> 3bb9ca539eb13f9f717ba2e1dc18fbe26e3a8d23
-
-		 JFrame frame = new JFrame("Pacman Game");
-		 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		 frame.setSize(48*maze.getWidth(),48*maze.getHeight());
-		 frame.setLocationRelativeTo(null);
-		 Background bgPanel = new Background();
-		 bgPanel.setLayout(new GridLayout(19,19));
-
-		 JPanel ballsPanel = new JPanel();
-		 ballsPanel.setPreferredSize(new Dimension(912,912));
-		 ballsPanel.setLayout(new GridLayout(19,19));
-
-
-		 cells.forEach((cell) -> {
-
-		 boolean transitable = cell.isTransitable();
-		 GraphicNode node = new GraphicNode(48,48,0,0,transitable);
-
-		 if (transitable) {
-		 if (cell.hasBigBall()) node.add(new GraphicBigBall(48,48,0,0));
-		 if (cell.hasLittleBall()) node.add(new GraphicLittleBall(48,48,0,0));
-		 }
-		 bgPanel.add(node);
-
-		 });
-
-
-		 frame.add(bgPanel);
-		 frame.pack();
-		 frame.setVisible(true);*/
-		GraphicView view = new GraphicView(maze);
-		view.setKeyListener(kr);
-		view.drawMaze();
-//            view.show();
-		//Thread.sleep(20);
-            /*int i= 0;
-		 Cell a;
-		 do {
-		 a = (Cell) maze.getNodes().get(i);
-		 i++;
-		 } while (!a.isTransitable());                   //CODE FOR TEST
-		 a.setBall(new BigBall());
-		 view.drawMaze();
-		 view.show();*/
 	}
 
 }
