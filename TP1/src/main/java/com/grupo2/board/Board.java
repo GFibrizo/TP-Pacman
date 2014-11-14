@@ -183,5 +183,11 @@ public class Board extends Publisher {
            this.fruitTimer++;
        }
     }    
+    
+    
+    public Fruit getTheFruit() {
+        return this.theFruit;
+    }
+    
 
 }

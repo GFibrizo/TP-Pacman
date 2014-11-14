@@ -36,6 +36,8 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
 import com.grupo2.cell.Cell;
 import com.grupo2.balls.BigBall;
+import com.grupo2.board.Board;
+import com.grupo2.graphicView.ViewsFactory;
 
 /**
  *
@@ -48,7 +50,8 @@ public class main {
 	 */
 	public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException, InterruptedException {
             MazeBuilder mBuilder = new MazeXMLBuilder(Paths.get("src", "main", "resources", "laberintos", "LaberintoSimple.xml"));
-            RawMaze maze = mBuilder.buildMaze();
+            CharacterBuilder cBuilder = new CharacterXMLBuilder(Paths.get("src", "main", "resources", "laberintos", "PersonajesSimple.xml"));
+            //RawMaze maze = mBuilder.buildMaze();
             /*ArrayList<DrawableNode> cells = maze.getNodes();
             
             JFrame frame = new JFrame("Pacman Game");
@@ -80,19 +83,21 @@ public class main {
             frame.add(bgPanel);
             frame.pack();
             frame.setVisible(true);*/
-            GraphicView view = new GraphicView(maze);
-            view.drawMaze();
+            Board board = Board.createBoard(mBuilder, cBuilder);
+            
+            GraphicView view = ViewsFactory.createGraphicView(board);
+            view.drawAll();
             view.show();
-            //Thread.sleep(20);
-            /*int i= 0;
+            Thread.sleep(20);
+            int i= 0;
             Cell a;
             do {
-                a = (Cell) maze.getNodes().get(i);
+                a = (Cell) board.getMaze().getNodes().get(i);
                 i++;
             } while (!a.isTransitable());                   //CODE FOR TEST
             a.setBall(new BigBall());
-            view.drawMaze();
-            view.show();*/
+            view.drawAll();
+            view.show();
 	}
 
 }

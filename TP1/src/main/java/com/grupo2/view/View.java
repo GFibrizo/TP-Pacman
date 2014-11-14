@@ -1,6 +1,7 @@
 package com.grupo2.view;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -9,23 +10,11 @@ import java.util.ArrayList;
 public abstract class View {
 
 	protected DrawableMaze maze;
-	protected DrawablePacman pacman;
-	protected ArrayList<DrawableGhost> ghosts;
+	protected List<ObjectView> views;
 
-	public View() {
-		this.ghosts = new ArrayList<>();
-	}
 
-	public void setPacman(DrawablePacman pacman) {
-		this.pacman = pacman;
-	}
-
-	public void addGhost(DrawableGhost ghost) {
-		this.ghosts.add(ghost);
-	}
-
-	public void setMaze(DrawableMaze maze) {
-		this.maze = maze;
+	public void addObjectViews(List<ObjectView> views) {
+            this.views = views;
 	}
 
 	public abstract void show();

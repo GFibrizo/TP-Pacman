@@ -4,6 +4,8 @@ import com.grupo2.graphicView.Background;
 import com.grupo2.graphicView.GraphicBigBall;
 import com.grupo2.graphicView.GraphicLittleBall;
 import com.grupo2.graphicView.GraphicNode;
+import com.grupo2.balls.BigBall;
+import com.grupo2.balls.LittleBall;
 import java.awt.ComponentOrientation;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -14,22 +16,33 @@ import com.grupo2.maze.Maze;
 
 public class GraphicView extends View {
 
-    private final JFrame frame;
+    private JFrame frame;
     private ArrayList<GraphicNode> gNodes;
     private JPanel p;
-
-    public GraphicView(Maze maze) {
-        frame = new JFrame("Pacman Game");
+    
+    
+    private GraphicView(Maze maze) {
+        this.frame = new JFrame("Pacman Game");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(48*maze.getWidth(),48*maze.getHeight());
         frame.setLocationRelativeTo(null);
         this.maze = maze;
     }
+    
 
-    @Override
-    public void setMaze(DrawableMaze maze) {
-        this.maze = maze;
+    public static GraphicView createGraphicView(Maze maze) {
+        return new GraphicView(maze);
     }
+
+    
+    public void drawAll() {
+        frame.dispose();
+        drawMaze();
+        for (ObjectView view : views)
+            view.repaint();
+    }
+    
+    
 
     public void drawMaze() {
         ArrayList<DrawableNode> cells = this.maze.getNodes();
@@ -44,8 +57,8 @@ public class GraphicView extends View {
            GraphicNode node = new GraphicNode(48,48,0,0,transitable);
 
            if (transitable) {
-                if (cell.hasBigBall()) node.add(new GraphicBigBall(48,48,0,0));
-                if (cell.hasLittleBall()) node.add(new GraphicLittleBall(48,48,0,0));                
+                if (cell.hasBigBall()) node.add(new GraphicBigBall((BigBall)cell.getBall(),0,0));
+                if (cell.hasLittleBall()) node.add(new GraphicLittleBall((LittleBall)cell.getBall(),0,0));                
             }
             bgPanel.add(node);                
 
@@ -54,7 +67,7 @@ public class GraphicView extends View {
 
         frame.add(bgPanel);
         frame.pack();
-        frame.setVisible(true);            
+        frame.setVisible(true);
     }
 
     @Override
