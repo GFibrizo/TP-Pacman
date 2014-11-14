@@ -5,14 +5,17 @@ import com.grupo2.graphicView.GraphicBigBall;
 import com.grupo2.graphicView.GraphicLittleBall;
 import com.grupo2.graphicView.GraphicNode;
 import com.grupo2.balls.BigBall;
+import com.grupo2.maze.Maze;
 import com.grupo2.balls.LittleBall;
 import java.awt.ComponentOrientation;
 import java.awt.Dimension;
 import java.awt.GridLayout;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import com.grupo2.maze.Maze;
+import javax.swing.OverlayLayout;
+import java.awt.LayoutManager;
 
 public class GraphicView extends View {
 
@@ -27,47 +30,58 @@ public class GraphicView extends View {
         frame.setSize(48*maze.getWidth(),48*maze.getHeight());
         frame.setLocationRelativeTo(null);
         this.maze = maze;
+        p = new JPanel();
+    }
+    
+    
+    public static GraphicView createGraphicView(Maze maze) {
+        return new GraphicView(maze);
     }
     
 
-    public static GraphicView createGraphicView(Maze maze) {
-        return new GraphicView(maze);
+    public void drawMaze() {
+        ArrayList<DrawableNode> cells = this.maze.getNodes();
+        Background bgPanel = new Background();
+        bgPanel.setLayout(new GridLayout(19, 19));
+        JPanel ballsPanel = new JPanel();
+        ballsPanel.setPreferredSize(new Dimension(912, 912));
+        ballsPanel.setLayout(new GridLayout(19, 19));
+        LayoutManager overlay = new OverlayLayout(ballsPanel);
+        ballsPanel.setLayout(overlay);
+        cells.forEach((cell) -> {
+
+            boolean transitable = cell.isTransitable();
+            GraphicNode node = new GraphicNode(48, 48, 0, 0, transitable);
+            
+            if (transitable) {
+                if (cell.hasBigBall()) {
+                    node.add(new GraphicBigBall((BigBall)cell.getBall(), 0, 0));
+                }
+                if (cell.hasLittleBall()) {
+                    node.add(new GraphicLittleBall((LittleBall)cell.getBall(), 0, 0));
+                }
+            }
+            bgPanel.add(node);
+        });
+
+        
+        frame.add(bgPanel);
+        frame.pack();
+        frame.setVisible(true);
+        
     }
 
     
     public void drawAll() {
-        frame.dispose();
+        //frame.dispose();
         drawMaze();
         for (ObjectView view : views)
             view.repaint();
     }
     
     
-
-    public void drawMaze() {
-        ArrayList<DrawableNode> cells = this.maze.getNodes();
-        Background bgPanel = new Background();            
-        bgPanel.setLayout(new GridLayout(19,19));            
-        JPanel ballsPanel = new JPanel();
-        ballsPanel.setPreferredSize(new Dimension(912,912));
-        ballsPanel.setLayout(new GridLayout(19,19));
-        cells.forEach((cell) -> {
-
-           boolean transitable = cell.isTransitable();
-           GraphicNode node = new GraphicNode(48,48,0,0,transitable);
-
-           if (transitable) {
-                if (cell.hasBigBall()) node.add(new GraphicBigBall((BigBall)cell.getBall(),0,0));
-                if (cell.hasLittleBall()) node.add(new GraphicLittleBall((LittleBall)cell.getBall(),0,0));                
-            }
-            bgPanel.add(node);                
-
-        });            
-
-
-        frame.add(bgPanel);
-        frame.pack();
-        frame.setVisible(true);
+    public void setKeyListener(KeyListener kl) {
+        this.frame.addKeyListener(kl);
     }
 
     @Override

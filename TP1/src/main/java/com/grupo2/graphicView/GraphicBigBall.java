@@ -1,5 +1,6 @@
 package com.grupo2.graphicView;
 
+import com.grupo2.constants.ViewConstants;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
