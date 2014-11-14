@@ -52,10 +52,10 @@ public class main {
             JFrame frame = new JFrame("Pacman Game");
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setSize(48*maze.getWidth(),48*maze.getHeight());
-            frame.setLocationRelativeTo(null);    
-            Background bgPanel = new Background();            
-            bgPanel.setLayout(new GridLayout(19,19));
+            frame.setLocationRelativeTo(null); 
             
+            Background bgPanel = new Background();            
+            bgPanel.setLayout(new GridLayout(19,19));            
             JPanel ballsPanel = new JPanel();
             ballsPanel.setPreferredSize(new Dimension(912,912));
             ballsPanel.setLayout(new GridLayout(19,19));
