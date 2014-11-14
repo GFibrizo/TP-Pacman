@@ -9,6 +9,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JFrame;
 
 /**
  *
@@ -17,7 +18,7 @@ import javax.swing.JPanel;
 public abstract class ObjectView extends JLabel {
     
     protected Image image;
-    protected int width = ViewConstants.DRAWABLE_WIDTH;
+    protected int width  = ViewConstants.DRAWABLE_WIDTH;
     protected int height = ViewConstants.DRAWABLE_HEIGHT;
     protected int x;
     protected int y; 
@@ -27,7 +28,13 @@ public abstract class ObjectView extends JLabel {
     
     @Override
     public void paintComponent(Graphics g) {
+        //super.paintComponent(g);
         g.drawImage(this.image, this.x, this.y, this.width, this.height, null);
+    }
+    
+    public void setFrame(JFrame frame, JPanel panel) {
+        //panel.add(this);
+        frame.add(this);
     }
     
 }

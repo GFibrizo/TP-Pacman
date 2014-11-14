@@ -12,6 +12,9 @@ import javax.swing.ImageIcon;
 import com.grupo2.directions.LeftDirection;
 import com.grupo2.directions.RightDirection;
 import com.grupo2.constants.ViewConstants;
+import javax.swing.JPanel;
+import javax.swing.OverlayLayout;
+import java.awt.LayoutManager;
 
 /**
  *
@@ -20,6 +23,7 @@ import com.grupo2.constants.ViewConstants;
 public class PacmanView extends ObjectView {
 
     Pacman object;
+    JPanel panel;
     
     public PacmanView(Pacman pacman) {
         this.object = pacman;
@@ -28,7 +32,12 @@ public class PacmanView extends ObjectView {
         ImageIcon boardBackground  = new ImageIcon(ViewConstants.PACMAN_LEFT);
         this.image = boardBackground.getImage();
         setPreferredSize(new Dimension(width, height));
+        panel = new JPanel();
+        LayoutManager overlay = new OverlayLayout(panel);
+        panel.setLayout(overlay);
+        panel.add(this);
     }
+    
     
     
     private ImageIcon chooseImage() {
