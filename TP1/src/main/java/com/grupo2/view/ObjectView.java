@@ -15,26 +15,25 @@ import javax.swing.JFrame;
  *
  * @author fibrizo
  */
-public abstract class ObjectView extends JLabel {
+public abstract class ObjectView extends JPanel {
     
     protected Image image;
     protected int width  = ViewConstants.DRAWABLE_WIDTH;
     protected int height = ViewConstants.DRAWABLE_HEIGHT;
     protected int x;
     protected int y; 
+    protected JPanel panel;
 
     public abstract void update();
     
     
     @Override
     public void paintComponent(Graphics g) {
-        //super.paintComponent(g);
-        g.drawImage(this.image, this.x, this.y, this.width, this.height, null);
+        super.paintComponent(g);
+        System.out.print(this.x);
+        System.out.print(this.y);
+        g.drawImage(this.image, this.x, this.y, this.width, this.height, this);
     }
     
-    public void setFrame(JFrame frame, JPanel panel) {
-        //panel.add(this);
-        frame.add(this);
-    }
     
 }

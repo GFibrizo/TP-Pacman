@@ -44,11 +44,8 @@ public class main {
         MazeBuilder      mBuilder = new MazeXMLBuilder(Paths.get("src", "main", "resources", "laberintos", "LaberintoSimple.xml"));
         CharacterBuilder cBuilder = new CharacterXMLBuilder(Paths.get("src", "main", "resources", "laberintos", "PersonajesSimple.xml"));
         Board board = Board.createBoard(mBuilder, cBuilder);
-        //RawMaze maze = mBuilder.buildMaze();
-        ArrayList<DrawableNode> cells = board.getMaze().getNodes();            
-        //GraphicView view = new GraphicView(maze);
+        ArrayList<DrawableNode> cells = board.getMaze().getNodes();
         GraphicView view = ViewsFactory.createGraphicView(board);
-
         view.drawAll();
         board.getMaze().getCellFromCoordinates(new Coordinate(1,1)).setBall(new NullBall());
         view.drawAll();

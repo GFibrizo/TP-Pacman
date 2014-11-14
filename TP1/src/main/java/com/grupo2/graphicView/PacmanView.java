@@ -22,20 +22,16 @@ import java.awt.LayoutManager;
  */
 public class PacmanView extends ObjectView {
 
-    Pacman object;
-    JPanel panel;
+   private Pacman object;
+
     
     public PacmanView(Pacman pacman) {
         this.object = pacman;
         this.x = object.getPosition().getX();
         this.y = object.getPosition().getY();
-        ImageIcon boardBackground  = new ImageIcon(ViewConstants.PACMAN_LEFT);
+        ImageIcon boardBackground  = new ImageIcon(ViewConstants.PACMAN_RIGHT);
         this.image = boardBackground.getImage();
         setPreferredSize(new Dimension(width, height));
-        panel = new JPanel();
-        LayoutManager overlay = new OverlayLayout(panel);
-        panel.setLayout(overlay);
-        panel.add(this);
     }
     
     
