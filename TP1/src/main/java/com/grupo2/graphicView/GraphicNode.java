@@ -5,7 +5,6 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.nio.file.Paths;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 /**
@@ -38,6 +37,6 @@ public class GraphicNode extends JPanel {
 
 	@Override
 	public void paintComponent(Graphics g) {
-		g.drawImage(this.image, this.x, this.y, this.width, this.height, null);
+		g.drawImage(this.image, this.x, this.y, this.width, this.height, this);
 	}
 }

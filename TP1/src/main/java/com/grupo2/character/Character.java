@@ -6,6 +6,7 @@ import com.grupo2.directions.LeftDirection;
 import com.grupo2.directions.NullDirection;
 import com.grupo2.directions.RightDirection;
 import com.grupo2.directions.UpDirection;
+import com.grupo2.interfaces.Drawable;
 import com.grupo2.interfaces.IPositionable;
 import java.util.HashMap;
 import java.util.Map;
@@ -14,7 +15,7 @@ import java.util.Map;
  *
  * @author fibrizo
  */
-public abstract class Character implements IPositionable {
+public abstract class Character implements Drawable, IPositionable {
 
     //protected Coordinate position;
     protected Direction direction;

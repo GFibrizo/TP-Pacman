@@ -1,4 +1,5 @@
 package com.grupo2.balls;
+import com.grupo2.interfaces.Drawable;
 
 /**
  *

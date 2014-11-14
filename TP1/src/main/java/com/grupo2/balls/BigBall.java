@@ -1,9 +1,6 @@
 package com.grupo2.balls;
 import com.grupo2.board.Board;
-import com.grupo2.eventHandling.Event;
 import com.grupo2.eventHandling.Publisher;
-import com.grupo2.eventHandling.Subscriber;
-import java.util.List;
 
 /**
  *
