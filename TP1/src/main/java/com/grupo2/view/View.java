@@ -9,13 +9,15 @@ import java.util.List;
  */
 public abstract class View {
 
-	protected DrawableMaze maze;
-	protected List<ObjectView> views;
+    protected DrawableMaze maze;
+    protected List<ObjectView> views;
 
 
-	public void addObjectViews(List<ObjectView> views) {
-            this.views = views;
-	}
+    public void addObjectViews(List<ObjectView> views) {
+        this.views = views;
+    }
 
-	public abstract void show();
+    public abstract void show();
+
+    public abstract void update();
 }

@@ -31,6 +31,7 @@ import com.grupo2.character.CharacterXMLBuilder;
 import com.grupo2.board.Board;
 import com.grupo2.pacman.Pacman;
 import com.grupo2.directions.RightDirection;
+import com.grupo2.game.*;
 
 /**
  *
@@ -42,20 +43,24 @@ public class main {
     * @param args the command line arguments
     */
     public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException, InterruptedException {
-        MazeBuilder      mBuilder = new MazeXMLBuilder(Paths.get("src", "main", "resources", "laberintos", "LaberintoSimple.xml"));
+        /*MazeBuilder      mBuilder = new MazeXMLBuilder(Paths.get("src", "main", "resources", "laberintos", "LaberintoSimple.xml"));
         CharacterBuilder cBuilder = new CharacterXMLBuilder(Paths.get("src", "main", "resources", "laberintos", "PersonajesSimple.xml"));
         Board board = Board.createBoard(mBuilder, cBuilder);
         ArrayList<DrawableNode> cells = board.getMaze().getNodes();
         GraphicView view = ViewsFactory.createGraphicView(board);
-        view.drawAll();
+        view.show();
         board.getMaze().getCellFromCoordinates(new Coordinate(1,1)).setBall(new NullBall());
-        view.drawAll();
+        view.show();
         int i = 0;
         while (i < 4) {
             Thread.sleep(200);
             board.updateModel(new Controller(() -> new RightDirection()));
             view.update();
-            view.drawAll();
-        }
+            view.show();
+        }*/
+        
+        Game newGame = new Game();
+        newGame.startGame();
+        newGame.play();
     }
 }

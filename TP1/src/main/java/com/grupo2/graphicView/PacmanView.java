@@ -9,8 +9,7 @@ import com.grupo2.pacman.Pacman;
 import java.awt.Dimension;
 import java.nio.file.Paths;
 import javax.swing.ImageIcon;
-import com.grupo2.directions.LeftDirection;
-import com.grupo2.directions.RightDirection;
+import com.grupo2.directions.*;
 import com.grupo2.constants.ViewConstants;
 import javax.swing.JPanel;
 import javax.swing.OverlayLayout;
@@ -41,6 +40,10 @@ public class PacmanView extends ObjectView {
             return new ImageIcon(ViewConstants.PACMAN_LEFT);
         else if (object.getDirection().EqualTo(new RightDirection()))
             return new ImageIcon(ViewConstants.PACMAN_RIGHT);
+        else if (object.getDirection().EqualTo(new UpDirection()))
+            return new ImageIcon(ViewConstants.PACMAN_UP);
+        else if (object.getDirection().EqualTo(new DownDirection()))
+            return new ImageIcon(ViewConstants.PACMAN_DOWN);
         else
             return null;
             

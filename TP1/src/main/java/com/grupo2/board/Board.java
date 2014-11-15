@@ -171,6 +171,7 @@ public class Board extends Publisher {
     }
 
     public void updateView(View view) {
+        view.update();
         view.show();
     }
 

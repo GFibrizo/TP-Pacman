@@ -39,15 +39,8 @@ public class Level {
         map.subscribeSubscribers();
         this.controller = controller;
         thePacman = map.getPacman();
-        //GraphicView view = new GraphicView(maze);
-        GraphicView view = ViewsFactory.createGraphicView(map);
+        view = ViewsFactory.createGraphicView(map, controller);
         ended = false;
-    }
-
-    private void initializeViews() {
-        GraphicView view =  ViewsFactory.createGraphicView(map);
-        view.drawAll();
-        view.show();
     }
 
     /**
@@ -62,7 +55,7 @@ public class Level {
                 ended = true;
             }
             try {
-                Thread.sleep(3000);
+                Thread.sleep(150);
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
             }

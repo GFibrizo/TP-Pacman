@@ -25,6 +25,9 @@ public class ViewConstants {
     
     public final static String  PACMAN_LEFT = Paths.get("src", "main", "graphicResources", "PacmanLeft.png").toString();
     public final static String  PACMAN_RIGHT = Paths.get("src", "main", "graphicResources", "PacmanRight.png").toString();  
+    public final static String  PACMAN_DOWN = Paths.get("src", "main", "graphicResources", "PacmanDown.png").toString();
+    public final static String  PACMAN_UP = Paths.get("src", "main", "graphicResources", "PacmanUp.png").toString();  
+    
     
     private ViewConstants() {
         //this prevents even the native class from

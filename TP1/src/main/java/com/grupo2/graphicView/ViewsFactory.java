@@ -12,6 +12,8 @@ import com.grupo2.fruit.Fruit;
 import java.util.ArrayList;
 import java.util.List;
 import com.grupo2.view.ObjectView;
+import com.grupo2.controller.Controller;
+import java.awt.event.KeyListener;
 
 /**
  *
@@ -20,7 +22,7 @@ import com.grupo2.view.ObjectView;
 public class ViewsFactory {
     
     
-    public static GraphicView createGraphicView(Board board) {
+    public static GraphicView createGraphicView(Board board, Controller controller) {
         List<Ghost> ghosts = board.getGhosts();
         Pacman pacman = Pacman.getPacman();
         Fruit fruit = board.getTheFruit();
@@ -34,6 +36,7 @@ public class ViewsFactory {
         
         GraphicView theView = GraphicView.createGraphicView(board.getMaze());
         theView.addObjectViews(objectViews);
+        theView.setKeyListener((KeyListener)controller.getReader());
         return theView;
     }
     

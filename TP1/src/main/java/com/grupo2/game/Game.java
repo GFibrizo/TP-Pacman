@@ -8,6 +8,7 @@ import com.grupo2.maze.MazeBuilder;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import javax.xml.parsers.ParserConfigurationException;
+import com.grupo2.controller.KeyBoardReader;
 
 /**
  *
@@ -22,7 +23,8 @@ public class Game {
     private Level actualLevel;
     private Integer levelIndex;
 
-    public Game(MazeBuilder mazeBuilder, CharacterBuilder charactBuilder, InputReader reader) {
+    public Game() {
+        this.reader = new KeyBoardReader();
         this.mazeBuilder = mazeBuilder;
         this.reader = reader;
         this.charactBuilder = charactBuilder;
@@ -36,8 +38,11 @@ public class Game {
     }
 
     private Level getNextLevel(String index) throws ParserConfigurationException {
-        Path mazePath = Paths.get("src", "main", "resources", "Levels", "Level"+ index, "Maze.xml");
-        Path characterPath = Paths.get("src", "main", "resources", "Levels", "Level"+ index, "Characters.xml");
+        Path mazePath = Paths.get("src", "main", "resources", "laberintos", "LaberintoSimple.xml");
+        Path characterPath = Paths.get("src", "main", "resources", "laberintos", "PersonajesSimple.xml");
+
+        //Path mazePath = Paths.get("src", "main", "resources", "Levels", "Level"+ index, "Maze.xml");
+        //Path characterPath = Paths.get("src", "main", "resources", "Levels", "Level"+ index, "Characters.xml");
         return new Level(mazePath, characterPath, controller);
     }
 

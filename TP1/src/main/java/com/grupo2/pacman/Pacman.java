@@ -76,7 +76,8 @@ public class Pacman extends Character implements DrawablePacman {
 
     @Override
     public void setDirection(Direction direction) {
-        this.nextDirection = direction;
+        if(direction != null)
+            this.nextDirection = direction;
     }
 
     @Override

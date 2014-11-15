@@ -43,8 +43,8 @@ public class GraphicView extends View {
         return new GraphicView(maze);
     }
     
-
-    public void drawAll() {
+    @Override
+    public void show() {
         if (p != null)frame.remove(p);
         ArrayList<DrawableNode> cells = this.maze.getNodes();
         Background bgPanel = new Background();
@@ -96,16 +96,10 @@ public class GraphicView extends View {
     }
 
     @Override
-    public void show() {
-        this.frame.add(p);
-    }
-
-    
     public void update() {
         for (ObjectView view : views) {
             view.update();
         }
     }
-    
     
 }
