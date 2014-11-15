@@ -46,7 +46,7 @@ public class Level {
 
     private void initializeViews() {
         GraphicView view =  ViewsFactory.createGraphicView(map);
-        view.drawMaze();
+        view.drawAll();
         view.show();
     }
 

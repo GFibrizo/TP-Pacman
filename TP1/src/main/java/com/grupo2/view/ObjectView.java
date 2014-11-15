@@ -32,7 +32,7 @@ public abstract class ObjectView extends JPanel {
         super.paintComponent(g);
         System.out.print(this.x);
         System.out.print(this.y);
-        g.drawImage(this.image, this.x, this.y, this.width, this.height, this);
+        g.drawImage(this.image, this.x*this.width, this.y*this.height, this.width, this.height, this);
     }
     
     

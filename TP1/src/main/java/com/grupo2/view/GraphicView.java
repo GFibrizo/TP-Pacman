@@ -35,8 +35,7 @@ public class GraphicView extends View {
         //frame.setLayeredPane(lPane);
         frame.setLocationRelativeTo(null);
         this.maze = maze;
-        p = new JPanel();
-        p.setLayout(new OverlayLayout(p));
+        this.p = null;
     }
     
     
@@ -46,6 +45,7 @@ public class GraphicView extends View {
     
 
     public void drawAll() {
+        if (p != null)frame.remove(p);
         ArrayList<DrawableNode> cells = this.maze.getNodes();
         Background bgPanel = new Background();
         bgPanel.setLayout(new GridLayout(19, 19));
@@ -53,7 +53,9 @@ public class GraphicView extends View {
         ballsPanel.setPreferredSize(new Dimension(912, 912));
         ballsPanel.setLayout(new GridLayout(19, 19));
        // ballsPanel.setOpaque(false);
-        //bgPanel.setOpaque(false);
+        bgPanel.setOpaque(false);
+        p = new JPanel();
+        p.setLayout(new OverlayLayout(p));
 
         cells.forEach((cell) -> {
 
@@ -72,22 +74,18 @@ public class GraphicView extends View {
             bgPanel.add(node);
         });
 
+        //OverlayLayout layout = new OverlayLayout(bgPanel);
+        //bgPanel.setLayout(layout);
         for(ObjectView view : views) {
             view.setOpaque(false);
-            p.add(view, new Integer(1));
+            p.add(view);
         }
-        
-        p.add(bgPanel, new Integer(0));
 
+        p.add(bgPanel);
         frame.add(p);
-        
-
-        
         frame.pack();
         frame.setVisible(true);
-        
-        frame.revalidate();
-        
+                
     }
 
    
