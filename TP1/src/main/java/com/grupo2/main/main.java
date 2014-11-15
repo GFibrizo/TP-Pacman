@@ -53,7 +53,7 @@ public class main {
         view.show();
         int i = 0;
         while (i < 4) {
-            Thread.sleep(200);
+            Thread.sleep(50);
             board.updateModel(new Controller(() -> new RightDirection()));
             view.update();
             view.show();

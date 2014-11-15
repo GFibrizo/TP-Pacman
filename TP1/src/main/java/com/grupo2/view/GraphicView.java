@@ -78,6 +78,7 @@ public class GraphicView extends View {
         //bgPanel.setLayout(layout);
         for(ObjectView view : views) {
             view.setOpaque(false);
+            view.setOffset(i);
             p.add(view);
         }
 
