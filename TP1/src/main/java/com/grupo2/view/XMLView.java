@@ -1,5 +1,7 @@
 package com.grupo2.view;
 
+import com.grupo2.board.Board;
+import com.grupo2.pacman.Pacman;
 import java.nio.file.Path;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -79,15 +81,15 @@ public class XMLView extends View {
         DocumentBuilder docBuilder = docFactory.newDocumentBuilder();
         Document doc = docBuilder.newDocument();
         Element rootElement = doc.createElement("juego");
-        int fila = this.pacman.getPosition().getY();
-        int columna = this.pacman.getPosition().getX();
+        int fila = Pacman.getPacman().getPosition().getY();
+        int columna = Pacman.getPacman().getPosition().getX();
         rootElement.setAttribute("posicionPacman", String.valueOf(fila) + String.valueOf(columna));
         rootElement.setAttribute("fila", String.valueOf(fila));
         rootElement.setAttribute("columna", String.valueOf(columna));
-        rootElement.setAttribute("sentido", String.valueOf(this.pacman.getDirection()));
-        rootElement.setAttribute("puntaje", String.valueOf(this.pacman.getScore()));
-        rootElement.setAttribute("finJuego", String.valueOf(!this.pacman.hasLives()));
-        for (DrawableGhost dGhost : this.ghosts) {
+        rootElement.setAttribute("sentido", String.valueOf(Pacman.getPacman().getDirection()));
+        rootElement.setAttribute("puntaje", String.valueOf(Pacman.getPacman().getScore()));
+        rootElement.setAttribute("finJuego", String.valueOf(!Pacman.getPacman().hasLives()));
+        for (DrawableGhost dGhost : Board.getInstance().getGhosts()) {
             Element ghost = doc.createElement("fantasma");
             ghost.setAttribute("id", String.valueOf(dGhost.getNumber()));
             fila = dGhost.getPosition().getY();

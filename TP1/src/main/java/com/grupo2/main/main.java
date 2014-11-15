@@ -22,6 +22,13 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
+import com.grupo2.cell.Cell;
+import com.grupo2.balls.BigBall;
+import com.grupo2.board.Board;
+import com.grupo2.graphicView.ViewsFactory;
+import com.grupo2.character.CharacterBuilder;
+import com.grupo2.character.CharacterXMLBuilder;
+import com.grupo2.board.Board;
 
 /**
  *
@@ -29,10 +36,11 @@ import org.xml.sax.SAXException;
  */
 public class main {
 
-	/**
-	 * @param args the command line arguments
-	 */
+    /**
+    * @param args the command line arguments
+    */
 
+<<<<<<< HEAD
 	public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
             MazeBuilder mBuilder = new MazeXMLBuilder(Paths.get("src", "main", "resources", "laberintos", "LaberintoSimple.xml"));
             RawMaze maze = mBuilder.buildMaze();
@@ -44,5 +52,18 @@ public class main {
             view.drawMaze();
             
 	}
+=======
+    public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
+        MazeBuilder      mBuilder = new MazeXMLBuilder(Paths.get("src", "main", "resources", "laberintos", "LaberintoSimple.xml"));
+        CharacterBuilder cBuilder = new CharacterXMLBuilder(Paths.get("src", "main", "resources", "laberintos", "PersonajesSimple.xml"));
+        Board board = Board.createBoard(mBuilder, cBuilder);
+        ArrayList<DrawableNode> cells = board.getMaze().getNodes();
+        GraphicView view = ViewsFactory.createGraphicView(board);
+        view.drawAll();
+        board.getMaze().getCellFromCoordinates(new Coordinate(1,1)).setBall(new NullBall());
+        view.drawAll();
+
+    }
+>>>>>>> fbd5455bbf3b8c26f0f7745e7c9b21597c160979
 
 }

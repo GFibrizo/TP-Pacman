@@ -1,6 +1,7 @@
 package com.grupo2.view;
 
 import com.grupo2.character.Coordinate;
+import com.grupo2.balls.Ball;
 
 /**
  *
@@ -15,6 +16,8 @@ public interface DrawableNode {
     boolean hasLittleBall();
 
     boolean hasBigBall();
+    
+    Ball getBall();
 
     boolean isRightTransitable();
 
@@ -24,6 +27,6 @@ public interface DrawableNode {
 
     boolean isDownTransitable();
 
-	public boolean isTransitable();
+    public boolean isTransitable();
 
 }
