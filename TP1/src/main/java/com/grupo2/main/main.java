@@ -40,7 +40,7 @@ public class main {
             GraphicView view = new GraphicView(maze);
             
             view.drawMaze();
-            maze.getCellFromCoordinates(new Coordinate(1,1)).setBall(new NullBall());
+            maze.getCellFromCoordinates(new Coordinate(1,1)).setBall(new NullBall());      
             view.drawMaze();
             
 	}
