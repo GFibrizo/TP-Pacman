@@ -20,7 +20,8 @@ import java.util.Random;
 public abstract class Fruit extends Character {
 
     private RandomStrategy randomStrategy = new RandomStrategy();
-            
+    protected static boolean active;
+    
     public Fruit(Maze maze) {
         super();
         this.currentCell = initialCell(maze);
@@ -61,9 +62,7 @@ public abstract class Fruit extends Character {
     
     public abstract void eat(); 
 
-    public abstract boolean isActive();
-    
-    public boolean isDead() {
-            return !isActive();
-    }
+    public static boolean isActive() {
+        return Fruit.active;
+    }    
 }

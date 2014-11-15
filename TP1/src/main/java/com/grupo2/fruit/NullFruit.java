@@ -15,13 +15,9 @@ import com.grupo2.maze.Maze;
 public class NullFruit extends Fruit {
 
     public NullFruit() {
+        this.active = false;
     }
     
-    @Override
-    public boolean isDead() {
-       //To do
-        return true;
-    }
 
     @Override
     public void die() {
@@ -34,9 +30,8 @@ public class NullFruit extends Fruit {
     }
 
     @Override
-    public boolean isActive() {
-        return false;
+    public boolean isDead() {
+        return true;
     }
-    
     
 }
