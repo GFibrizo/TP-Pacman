@@ -44,7 +44,7 @@ public class GraphicView extends View {
     }
     
     @Override
-    public void show() {
+    public void show(int i) {
         if (p != null)frame.remove(p);
         ArrayList<DrawableNode> cells = this.maze.getNodes();
         Background bgPanel = new Background();
@@ -78,7 +78,7 @@ public class GraphicView extends View {
         //bgPanel.setLayout(layout);
         for(ObjectView view : views) {
             view.setOpaque(false);
-            view.setOffset(i);
+            //view.setOffset(i);
             p.add(view);
         }
 

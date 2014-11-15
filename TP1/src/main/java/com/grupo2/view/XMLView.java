@@ -111,7 +111,7 @@ public class XMLView extends View {
     }
 
 	@Override
-    public void show() {
+    public void show(int i) {
         try {
             this.persistMaze();
         } catch (ParserConfigurationException | TransformerException ex) {
@@ -122,6 +122,11 @@ public class XMLView extends View {
         } catch (ParserConfigurationException | TransformerException ex) {
             Logger.getLogger(XMLView.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    @Override
+    public void update() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

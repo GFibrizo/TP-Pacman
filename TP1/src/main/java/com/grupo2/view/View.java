@@ -17,7 +17,7 @@ public abstract class View {
         this.views = views;
     }
 
-    public abstract void show();
+    public abstract void show(int i);
 
     public abstract void update();
 }

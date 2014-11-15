@@ -172,7 +172,9 @@ public class Board extends Publisher {
 
     public void updateView(View view) {
         view.update();
-        view.show();
+        int i = 0;
+        //for(; i < 5; i++)
+            view.show(i);
     }
 
     private void createFruit() {
