@@ -47,15 +47,17 @@ public class main {
         Board board = Board.createBoard(mBuilder, cBuilder);
         ArrayList<DrawableNode> cells = board.getMaze().getNodes();
         GraphicView view = ViewsFactory.createGraphicView(board);
-        view.drawAll();
+        view.drawAll(0);
         board.getMaze().getCellFromCoordinates(new Coordinate(1,1)).setBall(new NullBall());
-        view.drawAll();
+        view.drawAll(0);
         int i = 0;
         while (i < 4) {
-            Thread.sleep(200);
+            Thread.sleep(50);
             board.updateModel(new Controller(() -> new RightDirection()));
             view.update();
-            view.drawAll();
+            for (int j = 1 ; j <= 12 ; j++ ) {
+                view.drawAll(j);
+            }
         }
     }
 }
