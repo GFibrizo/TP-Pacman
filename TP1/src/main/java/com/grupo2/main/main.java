@@ -39,20 +39,6 @@ public class main {
     /**
     * @param args the command line arguments
     */
-
-<<<<<<< HEAD
-	public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
-            MazeBuilder mBuilder = new MazeXMLBuilder(Paths.get("src", "main", "resources", "laberintos", "LaberintoSimple.xml"));
-            RawMaze maze = mBuilder.buildMaze();
-            ArrayList<DrawableNode> cells = maze.getNodes();            
-            GraphicView view = new GraphicView(maze);
-            
-            view.drawMaze();
-            maze.getCellFromCoordinates(new Coordinate(1,1)).setBall(new NullBall());      
-            view.drawMaze();
-            
-	}
-=======
     public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException {
         MazeBuilder      mBuilder = new MazeXMLBuilder(Paths.get("src", "main", "resources", "laberintos", "LaberintoSimple.xml"));
         CharacterBuilder cBuilder = new CharacterXMLBuilder(Paths.get("src", "main", "resources", "laberintos", "PersonajesSimple.xml"));
@@ -62,8 +48,5 @@ public class main {
         view.drawAll();
         board.getMaze().getCellFromCoordinates(new Coordinate(1,1)).setBall(new NullBall());
         view.drawAll();
-
     }
->>>>>>> fbd5455bbf3b8c26f0f7745e7c9b21597c160979
-
 }
