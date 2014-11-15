@@ -100,4 +100,12 @@ public class GraphicView extends View {
         this.frame.add(p);
     }
 
+    
+    public void update() {
+        for (ObjectView view : views) {
+            view.update();
+        }
+    }
+    
+    
 }
