@@ -62,4 +62,8 @@ public abstract class Fruit extends Character {
     public abstract void eat(); 
 
     public abstract boolean isActive();
+    
+    public boolean isDead() {
+            return !isActive();
+    }
 }
