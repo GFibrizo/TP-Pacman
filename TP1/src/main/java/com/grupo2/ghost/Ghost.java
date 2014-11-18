@@ -138,5 +138,28 @@ public class Ghost extends Character implements IGhost {
     public Coordinate getInitialPosition() {
         return this.position;
     }
+    
+    public boolean isPrey() {
+        return this.state.isPrey();
+    }
+    
+    public boolean isHunter() {
+        return this.state.isHunter();
+    }
+    
+    public boolean isDumb() {
+        return this.personality.isDumb();
+    }
 
+    public boolean isLazy() {
+        return this.personality.isLazy();
+    }
+    
+    public boolean isSeeker() {
+        return this.personality.isSeeker();
+    }
+    
+    public boolean isTemperamentalSeeker() {
+        return this.personality.isTemperamentalSeeker();
+    }
 }

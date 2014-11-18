@@ -23,5 +23,13 @@ public abstract class Personality {
     public int getVision() {
         return vision;
     }
+    
+    public abstract boolean isDumb();
+
+    public abstract boolean isLazy();
+    
+    public abstract boolean isSeeker();
+    
+    public abstract boolean isTemperamentalSeeker();
 
 }

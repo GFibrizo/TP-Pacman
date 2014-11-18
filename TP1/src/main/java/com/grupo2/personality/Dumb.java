@@ -45,4 +45,24 @@ public class Dumb extends Personality {
         return "zonzo";
     }
 
+    @Override
+    public boolean isDumb() {
+        return true;
+    }
+
+    @Override
+    public boolean isLazy() {
+        return false;
+    }
+
+    @Override
+    public boolean isSeeker() {
+        return false;
+    }
+    
+    @Override
+    public boolean isTemperamentalSeeker() {
+        return false;
+    }
+
 }

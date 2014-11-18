@@ -75,4 +75,14 @@ public class HunterState extends GhostState {
     public boolean testIfAbleToStopChase() {
         return true;
     }
+
+    @Override
+    public boolean isPrey() {
+        return false;
+    }
+
+    @Override
+    public boolean isHunter() {
+        return true;
+    }
 }

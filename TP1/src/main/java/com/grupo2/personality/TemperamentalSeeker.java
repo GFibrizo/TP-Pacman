@@ -40,5 +40,26 @@ public class TemperamentalSeeker extends Personality {
     public String toString() {
         return "buscador temperamental";
     }
+    
+    
+    @Override
+    public boolean isDumb() {
+        return false;
+    }
+
+    @Override
+    public boolean isLazy() {
+        return false;
+    }
+
+    @Override
+    public boolean isSeeker() {
+        return false;
+    }
+    
+    @Override
+    public boolean isTemperamentalSeeker() {
+        return true;
+    }
 
 }

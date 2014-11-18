@@ -35,6 +35,10 @@ public abstract class GhostState {
      * @return True if the State of the ghost is "Dead". False otherwise.
      */
     public abstract boolean isDead();
+    
+    public abstract boolean isPrey();
+    
+    public abstract boolean isHunter();
 
     /**
      * ***************TRANSITION OF STATES********************
@@ -63,4 +67,5 @@ public abstract class GhostState {
             return false;
         }
     }
+    
 }

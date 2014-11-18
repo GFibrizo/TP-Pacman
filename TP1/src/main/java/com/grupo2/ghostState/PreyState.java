@@ -77,4 +77,14 @@ public class PreyState extends GhostState {
         return false;
     }
 
+    @Override
+    public boolean isPrey() {
+        return true;
+    }
+
+    @Override
+    public boolean isHunter() {
+        return false;
+    }
+
 }

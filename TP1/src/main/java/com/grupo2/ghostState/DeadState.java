@@ -76,4 +76,14 @@ public class DeadState extends GhostState {
     public boolean testIfAbleToStopChase() {
         return false;
     }
+
+    @Override
+    public boolean isPrey() {
+        return false;
+    }
+
+    @Override
+    public boolean isHunter() {
+        return false;
+    }
 }

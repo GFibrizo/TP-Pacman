@@ -41,4 +41,24 @@ public class Lazy extends Personality {
         return "perezoso";
     }
 
+    @Override
+    public boolean isDumb() {
+        return false;
+    }
+
+    @Override
+    public boolean isLazy() {
+        return true;
+    }
+
+    @Override
+    public boolean isSeeker() {
+        return false;
+    }
+    
+    @Override
+    public boolean isTemperamentalSeeker() {
+        return false;
+    }
+    
 }
