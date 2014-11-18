@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.grupo2.scenarios;
 
 import com.grupo2.board.Board;
@@ -29,54 +24,54 @@ import org.junit.Test;
  */
 public class SecondScenarioTest {
 
-    private Pacman thePacman;
-    private Maze maze;
-    private Board map;
+	private Pacman thePacman;
+	private Maze maze;
+	private Board map;
 
-    public SecondScenarioTest() {
-    }
+	public SecondScenarioTest() {
+	}
 
-    @BeforeClass
-    public static void setUpClass() {
-    }
+	@BeforeClass
+	public static void setUpClass() {
+	}
 
-    @AfterClass
-    public static void tearDownClass() {
-    }
+	@AfterClass
+	public static void tearDownClass() {
+	}
 
-    @Before
-    public void setUp() throws ParserConfigurationException {
-        MazeXMLBuilder mazeBuilder = new MazeXMLBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "Laberinto.xml"));
-        CharacterBuilder charBuilder = new CharacterXMLBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "PersonajePacmanSolo.xml"));
-        map = Board.createBoard(mazeBuilder, charBuilder);
-        map.subscribeSubscribers();
-        thePacman = map.getPacman();
-    }
+	@Before
+	public void setUp() throws ParserConfigurationException {
+		MazeXMLBuilder mazeBuilder = new MazeXMLBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "Laberinto.xml"));
+		CharacterBuilder charBuilder = new CharacterXMLBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "PersonajePacmanSolo.xml"));
+		map = Board.createBoard(mazeBuilder, charBuilder);
+		map.subscribeSubscribers();
+		thePacman = map.getPacman();
+	}
 
-    @After
-    public void tearDown() {
-    }
+	@After
+	public void tearDown() {
+	}
 
-    @Test
-    public void PacmanEatsBallsAndRespectsPortals() throws UnsupportedOperationException {
+	@Test
+	public void PacmanEatsBallsAndRespectsPortals() throws UnsupportedOperationException {
 
-        Controller controller = new Controller(() -> new RightDirection());
-        for (int i = 0; i < 13; i++) {
-            map.updateModel(controller);
-        }
+		Controller controller = new Controller(() -> new RightDirection());
+		for (int i = 0; i < 13; i++) {
+			map.updateModel(controller);
+		}
 
-        int ballsEaten = 0;
+		int ballsEaten = 0;
 
-        for (int i = 0; i < 11; i++) {
-            if (map.getMaze().getCellFromCoordinates(new Coordinate(i, 1)).isEmpty()) {
-                ballsEaten++;
-            }
-        }
+		for (int i = 0; i < 11; i++) {
+			if (map.getMaze().getCellFromCoordinates(new Coordinate(i, 1)).isEmpty()) {
+				ballsEaten++;
+			}
+		}
 
-        Coordinate expectedPosition = new Coordinate(4, 1);       
-        boolean positionOK = expectedPosition.isEqualTo(thePacman.getPosition());
+		Coordinate expectedPosition = new Coordinate(4, 1);
+		boolean positionOK = expectedPosition.isEqualTo(thePacman.getPosition());
 
-        assertTrue(positionOK && ballsEaten == 11);
+		assertTrue(positionOK && ballsEaten == 11);
 
-    }
+	}
 }
