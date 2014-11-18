@@ -15,22 +15,27 @@ public class Cherry extends Fruit {
 
     public Cherry(Maze maze) {
         super(maze);
-        this.active = true;
     }
 
     @Override
     public void die() {
         //To do
+        this.alive = false;
     }
 
     @Override
     public void eat() {
-        // Add points and dissapear
+        if (this.alive)
+            // Add points and dissapear
+        return;
     }
 
     @Override
     public boolean isDead() {
-        return false;
+        if (this.alive)
+            return false;
+        return true;
     }
 
+    
 }

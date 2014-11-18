@@ -24,7 +24,7 @@ public abstract class ObjectView extends JPanel {
     @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
-        g.drawImage(this.image, (this.x * this.width), this.y * this.height, this.width, this.height, this);
+        g.drawImage(this.image, (this.x * this.width), (this.y * this.height), this.width, this.height, this);
     }
 
     void setOffset(int i) {

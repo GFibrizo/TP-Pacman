@@ -14,7 +14,6 @@ import com.grupo2.eventHandling.Publisher;
 import com.grupo2.eventHandling.Subscriber;
 import com.grupo2.fruit.Cherry;
 import com.grupo2.fruit.Fruit;
-import com.grupo2.fruit.NullFruit;
 import com.grupo2.ghost.Ghost;
 import com.grupo2.interfaces.IPositionable;
 import com.grupo2.maze.Maze;
@@ -69,7 +68,9 @@ public class Board extends Publisher {
         Cell initialPacmanCell = maze.getCellFromCoordinates(this.maze.getPacmanBegining());
         this.thePacman.setCurrentCell(initialPacmanCell);
         setCellForGhosts();
-        this.theFruit = new NullFruit();
+        //this.theFruit = new NullFruit();
+        this.theFruit = new Cherry(this.maze);
+        this.theFruit.die();
         this.fruitTimer = 0;
         //this.ghosts.forEach((ghost) -> ghost.setPosition(this.maze.getGhostBegining()));
         PacmanArea.CenterAreaOnPacman(thePacman);
@@ -124,9 +125,9 @@ public class Board extends Publisher {
     }
 
     private void resolveColitions() {
-        if (this.theFruit.isActive() && this.collisionWithPacman(theFruit)) {
+        if ((!theFruit.isDead()) && this.collisionWithPacman(theFruit)) {
             this.update(GameEvent.PACMANEATSFRUIT);
-            this.theFruit = new NullFruit();
+            this.theFruit.die();
         }
         for (Ghost ghost : ghosts) {
             if (this.collisionWithPacman(ghost)) {
@@ -147,7 +148,7 @@ public class Board extends Publisher {
         /*this.ghosts.forEach((Ghost ghost) -> {
          ghost.move();
          });*/
-
+        this.theFruit.move();
         for (Ghost ghost : ghosts) {
             ghost.move();
         }
@@ -162,8 +163,10 @@ public class Board extends Publisher {
     }
 
     private void createFruit() {
-        if (this.fruitTimer == Constants.FRUITSPAWNTICKS) {
-            this.theFruit = new Cherry(this.maze);
+        if (!this.theFruit.isDead())
+            return;
+        if (this.fruitTimer >= Constants.FRUITSPAWNTICKS) {
+            theFruit.revive();
             this.fruitTimer = 0;
         } else {
             this.fruitTimer++;

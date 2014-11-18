@@ -16,7 +16,7 @@ public class Pacman extends Character implements DrawablePacman {
     private static Pacman instance;
     private float finishedMovement;
     private Direction nextDirection;
-    private boolean alive;
+    //private boolean alive;
     private int score;
     private int lifes;
 

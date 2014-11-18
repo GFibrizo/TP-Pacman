@@ -14,17 +14,21 @@ import java.util.Map;
  */
 public class PreyState extends GhostState {
 
-    private float time = 0;
+    private float time;
     private MovementStrategy movement;
 
     public PreyState() {
         movement = new ScapeStrategy();
+        finishedMovement = 0;
+        velocity = Constants.getInitialVelocity();
+        time = 0;
     }
 
     @Override
     public Direction getNewDirection(Personality personality, Map<Direction, Cell> allowedDirections) {
         time++;
-        return this.movement.getNewDirection(allowedDirections);
+        Direction dir = this.movement.getNewDirection(allowedDirections);
+        return dir;
     }
 
     /**

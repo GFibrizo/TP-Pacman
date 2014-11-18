@@ -28,8 +28,6 @@ public class GraphicView extends View {
         this.frame = new JFrame("Pacman Game");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(ViewConstants.DRAWABLE_WIDTH * maze.getWidth(), ViewConstants.DRAWABLE_HEIGHT * maze.getHeight());
-        //lPane = new JLayeredPane();
-        //frame.setLayeredPane(lPane);
         frame.setLocationRelativeTo(null);
         this.p = null;
     }
@@ -53,7 +51,6 @@ public class GraphicView extends View {
         JPanel ballsPanel = new JPanel();
         ballsPanel.setPreferredSize(new Dimension(dimensionW, dimensionH));
         ballsPanel.setLayout(new GridLayout(width, height));
-        // ballsPanel.setOpaque(false);
         bgPanel.setOpaque(false);
         p = new JPanel();
         p.setLayout(new OverlayLayout(p));
@@ -75,8 +72,7 @@ public class GraphicView extends View {
             bgPanel.add(node);
         });
 
-        //OverlayLayout layout = new OverlayLayout(bgPanel);
-        //bgPanel.setLayout(layout);
+
         for (ObjectView view : views) {
             view.setOpaque(false);
             //view.setOffset(i);

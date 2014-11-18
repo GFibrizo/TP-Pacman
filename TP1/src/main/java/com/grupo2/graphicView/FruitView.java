@@ -19,7 +19,7 @@ public class FruitView extends ObjectView {
         // drawableObject = ball;
         this.x = fruit.getPosition().getX();
         this.y = fruit.getPosition().getY();
-        ImageIcon boardBackground = new ImageIcon(Paths.get("src", "main", "graphicResources", "fruit.png").toString());
+        ImageIcon boardBackground = new ImageIcon(Paths.get("src", "main", "graphicResources", "cherry1.png").toString());
         this.image = boardBackground.getImage();
         setPreferredSize(new Dimension(width, height));
     }
@@ -28,8 +28,12 @@ public class FruitView extends ObjectView {
     public void update() {
         this.x = object.getPosition().getX();
         this.y = object.getPosition().getY();
-        if (!object.isActive()) {
+        if (object.isDead()) {
             this.image = null;
+        } else {
+            ImageIcon boardBackground = new ImageIcon(Paths.get("src", "main", "graphicResources", "cherry1.png").toString());
+            this.image = boardBackground.getImage();
+            setPreferredSize(new Dimension(width, height)); 
         }
     }
 

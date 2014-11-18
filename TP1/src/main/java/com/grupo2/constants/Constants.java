@@ -18,7 +18,7 @@ public final class Constants {
     private static long TICK_TO_MILISECS = 1000;
     private static float INITIAL_VELOCITY = (float) 0.5;
 
-    private static float PREY_LIMIT_TIME = 30;
+    private static float PREY_LIMIT_TIME = 50;
     private static float DEAD_LIMIT_TIME = 20;
 
     private static float FIRST_RAGE_LIMIT_TIME = 5;
@@ -34,7 +34,7 @@ public final class Constants {
     public static int VISION4 = 12;
     public static float RAGE_BONUS = (float) 0.25;
 
-    public static long FRUITSPAWNTICKS = 500;
+    public static long FRUITSPAWNTICKS = 50;
 
     private Constants() {
         //this prevents even the native class from

@@ -22,8 +22,10 @@ public abstract class Character implements Drawable, IPositionable {
     protected Cell currentCell;
     protected float velocity;
     protected Direction previousDirection;
+    protected boolean alive;
 
     protected Character() {
+        this.alive = true;
         //this.position = null;
         this.direction = null;
         this.currentCell = null;
