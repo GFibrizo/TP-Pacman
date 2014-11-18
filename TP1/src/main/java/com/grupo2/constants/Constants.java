@@ -18,8 +18,8 @@ public final class Constants {
     private static long TICK_TO_MILISECS = 1000;
     private static float INITIAL_VELOCITY = (float) 0.5;
 
-    private static float PREY_LIMIT_TIME = 50;
-    private static float DEAD_LIMIT_TIME = 20;
+    private static float PREY_LIMIT_TIME = 30;
+    private static float DEAD_LIMIT_TIME = 15;
 
     private static float FIRST_RAGE_LIMIT_TIME = 5;
     private static float SECOND_RAGE_LIMIT_TIME = 10;
