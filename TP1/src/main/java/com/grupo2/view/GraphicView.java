@@ -19,86 +19,86 @@ import javax.swing.OverlayLayout;
 
 public class GraphicView extends View {
 
-	private JFrame frame;
-	private JPanel p;
-	private JLayeredPane lPane;
+    private JFrame frame;
+    private JPanel p;
+    private JLayeredPane lPane;
 
-	private GraphicView(Maze maze) {
-		this.maze = maze;
-		this.frame = new JFrame("Pacman Game");
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setSize(ViewConstants.DRAWABLE_WIDTH * maze.getWidth(), ViewConstants.DRAWABLE_HEIGHT * maze.getHeight());
-		//lPane = new JLayeredPane();
-		//frame.setLayeredPane(lPane);
-		frame.setLocationRelativeTo(null);
-		this.p = null;
-	}
+    private GraphicView(Maze maze) {
+        this.maze = maze;
+        this.frame = new JFrame("Pacman Game");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setSize(ViewConstants.DRAWABLE_WIDTH * maze.getWidth(), ViewConstants.DRAWABLE_HEIGHT * maze.getHeight());
+        //lPane = new JLayeredPane();
+        //frame.setLayeredPane(lPane);
+        frame.setLocationRelativeTo(null);
+        this.p = null;
+    }
 
-	public static GraphicView createGraphicView(Maze maze) {
-		return new GraphicView(maze);
-	}
+    public static GraphicView createGraphicView(Maze maze) {
+        return new GraphicView(maze);
+    }
 
-	@Override
-	public void show(int i) {
-		if (p != null) {
-			frame.remove(p);
-		}
-		ArrayList<DrawableNode> cells = this.maze.getNodes();
-		int width = this.maze.getWidth();
-		int height = this.maze.getHeight();
-		int dimensionW = width * ViewConstants.DRAWABLE_WIDTH;
-		int dimensionH = height * ViewConstants.DRAWABLE_HEIGHT;
-		Background bgPanel = new Background(dimensionW, dimensionH);
-		bgPanel.setLayout(new GridLayout(width, height));
-		JPanel ballsPanel = new JPanel();
-		ballsPanel.setPreferredSize(new Dimension(dimensionW, dimensionH));
-		ballsPanel.setLayout(new GridLayout(width, height));
-		// ballsPanel.setOpaque(false);
-		bgPanel.setOpaque(false);
-		p = new JPanel();
-		p.setLayout(new OverlayLayout(p));
+    @Override
+    public void show(int i) {
+        if (p != null) {
+            frame.remove(p);
+        }
+        ArrayList<DrawableNode> cells = this.maze.getNodes();
+        int width = this.maze.getWidth();
+        int height = this.maze.getHeight();
+        int dimensionW = width * ViewConstants.DRAWABLE_WIDTH;
+        int dimensionH = height * ViewConstants.DRAWABLE_HEIGHT;
+        Background bgPanel = new Background(dimensionW, dimensionH);
+        bgPanel.setLayout(new GridLayout(width, height));
+        JPanel ballsPanel = new JPanel();
+        ballsPanel.setPreferredSize(new Dimension(dimensionW, dimensionH));
+        ballsPanel.setLayout(new GridLayout(width, height));
+        // ballsPanel.setOpaque(false);
+        bgPanel.setOpaque(false);
+        p = new JPanel();
+        p.setLayout(new OverlayLayout(p));
 
-		cells.forEach((cell) -> {
+        cells.forEach((cell) -> {
 
-			boolean transitable = cell.isTransitable();
-			GraphicNode node = new GraphicNode(ViewConstants.DRAWABLE_WIDTH, ViewConstants.DRAWABLE_HEIGHT, 0, 0, transitable);
-			node.setOpaque(false);
+            boolean transitable = cell.isTransitable();
+            GraphicNode node = new GraphicNode(ViewConstants.DRAWABLE_WIDTH, ViewConstants.DRAWABLE_HEIGHT, 0, 0, transitable);
+            node.setOpaque(false);
 
-			if (transitable) {
-				if (cell.hasBigBall()) {
-					node.add(new GraphicBigBall((BigBall) cell.getBall(), 0, 0));
-				}
-				if (cell.hasLittleBall()) {
-					node.add(new GraphicLittleBall((LittleBall) cell.getBall(), 0, 0));
-				}
-			}
-			bgPanel.add(node);
-		});
+            if (transitable) {
+                if (cell.hasBigBall()) {
+                    node.add(new GraphicBigBall((BigBall) cell.getBall(), 0, 0));
+                }
+                if (cell.hasLittleBall()) {
+                    node.add(new GraphicLittleBall((LittleBall) cell.getBall(), 0, 0));
+                }
+            }
+            bgPanel.add(node);
+        });
 
-		//OverlayLayout layout = new OverlayLayout(bgPanel);
-		//bgPanel.setLayout(layout);
-		for (ObjectView view : views) {
-			view.setOpaque(false);
-			//view.setOffset(i);
-			p.add(view);
-		}
+        //OverlayLayout layout = new OverlayLayout(bgPanel);
+        //bgPanel.setLayout(layout);
+        for (ObjectView view : views) {
+            view.setOpaque(false);
+            //view.setOffset(i);
+            p.add(view);
+        }
 
-		p.add(bgPanel);
-		frame.add(p);
-		frame.pack();
-		frame.setVisible(true);
+        p.add(bgPanel);
+        frame.add(p);
+        frame.pack();
+        frame.setVisible(true);
 
-	}
+    }
 
-	public void setKeyListener(KeyListener kl) {
-		this.frame.addKeyListener(kl);
-	}
+    public void setKeyListener(KeyListener kl) {
+        this.frame.addKeyListener(kl);
+    }
 
-	@Override
-	public void update() {
-		for (ObjectView view : views) {
-			view.update();
-		}
-	}
+    @Override
+    public void update() {
+        for (ObjectView view : views) {
+            view.update();
+        }
+    }
 
 }

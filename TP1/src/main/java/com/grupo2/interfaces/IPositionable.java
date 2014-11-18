@@ -8,6 +8,8 @@ import com.grupo2.cell.Cell;
  * @author fibrizo
  */
 public interface IPositionable {
+
     public Coordinate getPosition();
+
     public Cell getCurrentCell();
 }

@@ -132,11 +132,11 @@ public class RawMaze implements Maze {
     @Override
     public ArrayList<DrawableNode> getNodes() {
         ArrayList<DrawableNode> dNodes = new ArrayList<>();
-		this.map.stream().forEach((row) -> {
-			row.stream().forEach((cell) -> {
-				dNodes.add(cell);
-			});
-		});
+        this.map.stream().forEach((row) -> {
+            row.stream().forEach((cell) -> {
+                dNodes.add(cell);
+            });
+        });
         return dNodes;
     }
 }

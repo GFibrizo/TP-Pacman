@@ -12,7 +12,6 @@ public abstract class View {
     protected DrawableMaze maze;
     protected List<ObjectView> views;
 
-
     public void addObjectViews(List<ObjectView> views) {
         this.views = views;
     }

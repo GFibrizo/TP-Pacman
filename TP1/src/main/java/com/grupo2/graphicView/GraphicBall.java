@@ -14,12 +14,12 @@ import com.grupo2.balls.*;
  * @author fibrizo
  */
 public abstract class GraphicBall extends JLabel {
-	
+
     protected Image image;
     protected int width;
     protected int height;
     protected int x;
-    protected int y;  
+    protected int y;
     protected Ball ball;
 
     protected void initialize(Ball ball, int x, int y, ImageIcon boardBackground) {
@@ -33,8 +33,9 @@ public abstract class GraphicBall extends JLabel {
     }
 
     public void update() {
-        if (!ball.isEatable()) 
+        if (!ball.isEatable()) {
             this.image = null;
+        }
     }
 
     @Override

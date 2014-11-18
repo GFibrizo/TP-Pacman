@@ -13,7 +13,7 @@ import javax.swing.JLabel;
  * @author ivan
  */
 public class GraphicLittleBall extends GraphicBall {
-    
+
     /**
      *
      * @param ball

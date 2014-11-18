@@ -30,90 +30,90 @@ import org.xml.sax.SAXException;
  */
 public class MazeXMLBuilder implements MazeBuilder {
 
-	private final File xmlFile;
-	Map<String, Function> hash;
+    private final File xmlFile;
+    Map<String, Function> hash;
 
-	public MazeXMLBuilder(Path path) {
-		this.xmlFile = path.toFile();
-		hash = new HashMap<>();
-		hash.put("bolita", (p) -> {
-			return new LittleBall();
-		});
-		hash.put("bolon", (p) -> {
-			return new BigBall();
-		});
-		hash.put("", (p) -> {
-			return new NullBall();
-		});
-	}
+    public MazeXMLBuilder(Path path) {
+        this.xmlFile = path.toFile();
+        hash = new HashMap<>();
+        hash.put("bolita", (p) -> {
+            return new LittleBall();
+        });
+        hash.put("bolon", (p) -> {
+            return new BigBall();
+        });
+        hash.put("", (p) -> {
+            return new NullBall();
+        });
+    }
 
-	private Coordinate getCoords(String attribute) {
-		int half = attribute.length() / 2;
-		int x, y;
-		y = Integer.parseInt(attribute.substring(0, half));
-		x = Integer.parseInt(attribute.substring(half, 2 * half));
+    private Coordinate getCoords(String attribute) {
+        int half = attribute.length() / 2;
+        int x, y;
+        y = Integer.parseInt(attribute.substring(0, half));
+        x = Integer.parseInt(attribute.substring(half, 2 * half));
 
-		return new Coordinate(x, y);
-	}
+        return new Coordinate(x, y);
+    }
 
-	private boolean isUntransitableCell(Element eElement) {
-		String[] cells = new String[]{"izquierda", "derecha", "arriba", "abajo"};
-		for (String cell : cells) {
-			if (!eElement.getAttribute(cell).isEmpty()) {
-				return false;
-			}
-		}
-		return true;
-	}
+    private boolean isUntransitableCell(Element eElement) {
+        String[] cells = new String[]{"izquierda", "derecha", "arriba", "abajo"};
+        for (String cell : cells) {
+            if (!eElement.getAttribute(cell).isEmpty()) {
+                return false;
+            }
+        }
+        return true;
+    }
 
-	@Override
-	public RawMaze buildMaze() {
-		RawMaze maze = null;
-		try {
-			DocumentBuilder dBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-			Document doc;
-			doc = dBuilder.parse(this.xmlFile);
-			doc.getDocumentElement().normalize();
-			Element root = doc.getDocumentElement();
-			int width = Integer.parseInt(root.getAttribute("ancho"));
-			int height = Integer.parseInt(root.getAttribute("alto"));
-			Coordinate initPacman = this.getCoords(root.getAttribute("inicioPacman"));
-			Coordinate initGhosts = this.getCoords(root.getAttribute("inicioFantasmas"));
-			maze = new RawMaze(height, width, initPacman, initGhosts);
+    @Override
+    public RawMaze buildMaze() {
+        RawMaze maze = null;
+        try {
+            DocumentBuilder dBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+            Document doc;
+            doc = dBuilder.parse(this.xmlFile);
+            doc.getDocumentElement().normalize();
+            Element root = doc.getDocumentElement();
+            int width = Integer.parseInt(root.getAttribute("ancho"));
+            int height = Integer.parseInt(root.getAttribute("alto"));
+            Coordinate initPacman = this.getCoords(root.getAttribute("inicioPacman"));
+            Coordinate initGhosts = this.getCoords(root.getAttribute("inicioFantasmas"));
+            maze = new RawMaze(height, width, initPacman, initGhosts);
 
-			width = Integer.parseInt(root.getAttribute("nodoAncho"));
-			height = Integer.parseInt(root.getAttribute("nodoAlto"));
-			maze.setNodeWidth(width);
-			maze.setNodeHeight(height);
-			ViewConstants.setDrawableHeight(height);
-			ViewConstants.setDrawableWidth(width);
+            width = Integer.parseInt(root.getAttribute("nodoAncho"));
+            height = Integer.parseInt(root.getAttribute("nodoAlto"));
+            maze.setNodeWidth(width);
+            maze.setNodeHeight(height);
+            ViewConstants.setDrawableHeight(height);
+            ViewConstants.setDrawableWidth(width);
 
-			NodeList nList = doc.getElementsByTagName("nodo");
-			for (int i = 0; i < nList.getLength(); i++) {
-				Node nNode = nList.item(i);
-				if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-					Element eElement = (Element) nNode;
-					int y = Integer.parseInt(eElement.getAttribute("fila"));
-					int x = Integer.parseInt(eElement.getAttribute("columna"));
-					String content = eElement.getAttribute("contiene");
+            NodeList nList = doc.getElementsByTagName("nodo");
+            for (int i = 0; i < nList.getLength(); i++) {
+                Node nNode = nList.item(i);
+                if (nNode.getNodeType() == Node.ELEMENT_NODE) {
+                    Element eElement = (Element) nNode;
+                    int y = Integer.parseInt(eElement.getAttribute("fila"));
+                    int x = Integer.parseInt(eElement.getAttribute("columna"));
+                    String content = eElement.getAttribute("contiene");
 
-					Cell aCell;
-					if (this.isUntransitableCell(eElement)) {
-						aCell = new Cell(x, y, false);
-					} else {
-						aCell = new Cell(x, y, true);
-						Ball ball = (Ball) hash.get(content).apply(null);
-						aCell.setBall(ball);
-					}
-					maze.addCell(aCell);
-				}
-			}
-			maze.connectCells();
+                    Cell aCell;
+                    if (this.isUntransitableCell(eElement)) {
+                        aCell = new Cell(x, y, false);
+                    } else {
+                        aCell = new Cell(x, y, true);
+                        Ball ball = (Ball) hash.get(content).apply(null);
+                        aCell.setBall(ball);
+                    }
+                    maze.addCell(aCell);
+                }
+            }
+            maze.connectCells();
 
-		} catch (ParserConfigurationException | SAXException | IOException ex) {
-			Logger.getLogger(MazeXMLBuilder.class.getName()).log(Level.SEVERE, null, ex);
-		}
-		return maze;
-	}
+        } catch (ParserConfigurationException | SAXException | IOException ex) {
+            Logger.getLogger(MazeXMLBuilder.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return maze;
+    }
 
 }

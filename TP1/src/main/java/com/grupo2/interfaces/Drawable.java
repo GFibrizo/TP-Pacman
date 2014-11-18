@@ -14,7 +14,10 @@ import com.grupo2.character.Direction;
  * @author Familia
  */
 public interface Drawable {
+
     public Coordinate getPosition();
+
     public Cell getCurrentCell();
+
     public Direction getDirection();
 }

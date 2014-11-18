@@ -17,25 +17,25 @@ import java.util.List;
  */
 public class ViewsFactory {
 
-	public static GraphicView createGraphicView(Board board, Controller controller) {
-		List<Ghost> ghosts = board.getGhosts();
-		Pacman pacman = Pacman.getPacman();
-		Fruit fruit = board.getTheFruit();
+    public static GraphicView createGraphicView(Board board, Controller controller) {
+        List<Ghost> ghosts = board.getGhosts();
+        Pacman pacman = Pacman.getPacman();
+        Fruit fruit = board.getTheFruit();
 
-		List<ObjectView> objectViews = new ArrayList<>();
+        List<ObjectView> objectViews = new ArrayList<>();
 
-       // for (Ghost ghost : ghosts)
-		//   objectViews.add(new GhostView(ghost));
-		objectViews.add(new PacmanView(pacman));
+        // for (Ghost ghost : ghosts)
+        //   objectViews.add(new GhostView(ghost));
+        objectViews.add(new PacmanView(pacman));
         //objectViews.add(new FruitView(fruit));
 
-		GraphicView theView = GraphicView.createGraphicView(board.getMaze());
-		theView.addObjectViews(objectViews);
-		theView.setKeyListener((KeyListener) controller.getReader());
-		return theView;
-	}
+        GraphicView theView = GraphicView.createGraphicView(board.getMaze());
+        theView.addObjectViews(objectViews);
+        theView.setKeyListener((KeyListener) controller.getReader());
+        return theView;
+    }
 
-	private ViewsFactory() {
-	}
+    private ViewsFactory() {
+    }
 
 }

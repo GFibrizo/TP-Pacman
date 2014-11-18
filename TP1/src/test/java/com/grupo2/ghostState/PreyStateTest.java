@@ -38,7 +38,7 @@ public class PreyStateTest {
 
     @Before
     public void setUp() {
-        Constants.setInitialVelocity((float)1.0);
+        Constants.setInitialVelocity((float) 1.0);
         state = new PreyState();
         Pacman pacman = Pacman.createPacman(0, 0, new LeftDirection(), new Cell(0, 0, true));
     }

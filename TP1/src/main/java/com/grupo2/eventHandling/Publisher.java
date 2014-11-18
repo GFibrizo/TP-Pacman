@@ -9,10 +9,9 @@ import java.util.List;
  * @author fibrizo
  */
 public abstract class Publisher {
-    
+
     protected HashMap<Event, List<Subscriber>> subscribers;
-    
-    
+
     public void subscribe(Event event, final Subscriber subscriber) {
         //must check if event is a MazeEvent
         if (!this.subscribers.containsKey(event)) {
@@ -23,11 +22,12 @@ public abstract class Publisher {
 
     public void update(Event event) {
         List<Subscriber> subs = subscribers.get(event);
-        if ((subs == null) || (subs.isEmpty())) return;
+        if ((subs == null) || (subs.isEmpty())) {
+            return;
+        }
         subs.forEach(Subscriber::execute);
     }
 
-    
     public void updateAll(List<Event> events) {
         events.forEach((Event event) -> {
             this.update(event);

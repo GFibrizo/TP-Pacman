@@ -12,25 +12,25 @@ import javax.swing.ImageIcon;
  */
 public class FruitView extends ObjectView {
 
-	private Fruit object;
+    private Fruit object;
 
-	public FruitView(Fruit fruit) {
-		this.object = fruit;
-		// drawableObject = ball;
-		this.x = fruit.getPosition().getX();
-		this.y = fruit.getPosition().getY();
-		ImageIcon boardBackground = new ImageIcon(Paths.get("src", "main", "graphicResources", "fruit.png").toString());
-		this.image = boardBackground.getImage();
-		setPreferredSize(new Dimension(width, height));
-	}
+    public FruitView(Fruit fruit) {
+        this.object = fruit;
+        // drawableObject = ball;
+        this.x = fruit.getPosition().getX();
+        this.y = fruit.getPosition().getY();
+        ImageIcon boardBackground = new ImageIcon(Paths.get("src", "main", "graphicResources", "fruit.png").toString());
+        this.image = boardBackground.getImage();
+        setPreferredSize(new Dimension(width, height));
+    }
 
-	@Override
-	public void update() {
-		this.x = object.getPosition().getX();
-		this.y = object.getPosition().getY();
-		if (!object.isActive()) {
-			this.image = null;
-		}
-	}
+    @Override
+    public void update() {
+        this.x = object.getPosition().getX();
+        this.y = object.getPosition().getY();
+        if (!object.isActive()) {
+            this.image = null;
+        }
+    }
 
 }

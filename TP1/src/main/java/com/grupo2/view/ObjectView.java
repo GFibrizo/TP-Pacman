@@ -11,24 +11,24 @@ import javax.swing.JPanel;
  */
 public abstract class ObjectView extends JPanel {
 
-	protected Image image;
-	protected int width = ViewConstants.DRAWABLE_WIDTH;
-	protected int height = ViewConstants.DRAWABLE_HEIGHT;
-	protected int x;
-	protected int y;
-	protected int offset;
-	protected JPanel panel;
+    protected Image image;
+    protected int width = ViewConstants.DRAWABLE_WIDTH;
+    protected int height = ViewConstants.DRAWABLE_HEIGHT;
+    protected int x;
+    protected int y;
+    protected int offset;
+    protected JPanel panel;
 
-	public abstract void update();
+    public abstract void update();
 
-	@Override
-	public void paintComponent(Graphics g) {
-		super.paintComponent(g);
-		g.drawImage(this.image, (this.x * this.width), this.y * this.height, this.width, this.height, this);
-	}
+    @Override
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
+        g.drawImage(this.image, (this.x * this.width), this.y * this.height, this.width, this.height, this);
+    }
 
-	void setOffset(int i) {
-		this.offset = i;
-	}
+    void setOffset(int i) {
+        this.offset = i;
+    }
 
 }

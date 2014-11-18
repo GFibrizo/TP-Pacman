@@ -41,7 +41,7 @@ public class Pacman extends Character implements DrawablePacman {
         this.nextDirection = new NullDirection();
         this.currentCell = currCell;
         this.alive = true;
-        this.velocity = Constants.getInitialVelocity()*2;
+        this.velocity = Constants.getInitialVelocity() * 2;
         this.finishedMovement = 0;
         this.score = 0;
         this.lifes = 3;
@@ -76,8 +76,9 @@ public class Pacman extends Character implements DrawablePacman {
 
     @Override
     public void setDirection(Direction direction) {
-        if(direction != null)
+        if (direction != null) {
             this.nextDirection = direction;
+        }
     }
 
     @Override
@@ -96,11 +97,11 @@ public class Pacman extends Character implements DrawablePacman {
         //return !this.isDead();
         return (this.lifes > 0);
     }
-    
+
     public int remainingLifes() {
         return this.lifes;
     }
-    
+
     public void eatBall() {
         this.getCurrentCell();
     }

@@ -52,12 +52,12 @@ public class DeadStateTest {
     @Test
     public void testMove() {
         /*Map<Direction, Cell> directions = new HashMap<>();
-        directions.put(new UpDirection(), new Cell(5, 4, true));
-        directions.put(new LeftDirection(), new Cell(4, 5, true));
-        Pacman.createPacman(5, 5, new UpDirection(), new Cell(5, 5, true));
-        Direction newDirection = state.getNewDirection(new Seeker(), directions);
+         directions.put(new UpDirection(), new Cell(5, 4, true));
+         directions.put(new LeftDirection(), new Cell(4, 5, true));
+         Pacman.createPacman(5, 5, new UpDirection(), new Cell(5, 5, true));
+         Direction newDirection = state.getNewDirection(new Seeker(), directions);
 
-        assertTrue(newDirection.isEqualTo(new LeftDirection()));*/
+         assertTrue(newDirection.isEqualTo(new LeftDirection()));*/
     }
 
     /**

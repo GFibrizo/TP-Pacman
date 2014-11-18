@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.grupo2.fruit;
 
 import com.grupo2.maze.Maze;
@@ -17,7 +16,6 @@ public class NullFruit extends Fruit {
     public NullFruit() {
         this.active = false;
     }
-    
 
     @Override
     public void die() {
@@ -33,5 +31,5 @@ public class NullFruit extends Fruit {
     public boolean isDead() {
         return true;
     }
-    
+
 }

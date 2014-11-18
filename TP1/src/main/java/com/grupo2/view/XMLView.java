@@ -110,7 +110,7 @@ public class XMLView extends View {
         this.charTick++;
     }
 
-	@Override
+    @Override
     public void show(int i) {
         try {
             this.persistMaze();

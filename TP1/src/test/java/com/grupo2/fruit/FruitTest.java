@@ -14,41 +14,41 @@ import org.junit.Test;
  */
 public class FruitTest {
 
-	private Fruit aCherry;
+    private Fruit aCherry;
 
-	public FruitTest() {
-	}
+    public FruitTest() {
+    }
 
-	@Before
-	public void setUp() {
+    @Before
+    public void setUp() {
 
-		MazeXMLBuilder mazeBuilder = new MazeXMLBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "Laberinto.xml"));
-		RawMaze maze = mazeBuilder.buildMaze();
-		aCherry = new Cherry(maze);
+        MazeXMLBuilder mazeBuilder = new MazeXMLBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "Laberinto.xml"));
+        RawMaze maze = mazeBuilder.buildMaze();
+        aCherry = new Cherry(maze);
 
-	}
+    }
 
-	@AfterClass
-	public static void tearDownClass() {
-	}
+    @AfterClass
+    public static void tearDownClass() {
+    }
 
-	@Test
-	public void initialPositionOK() {
+    @Test
+    public void initialPositionOK() {
 
-		System.out.println(aCherry.getCurrentCell().getCoords().getX());
-		System.out.println(aCherry.getCurrentCell().getCoords().getY());
-		assertTrue(aCherry.getCurrentCell().isTransitable());
+        System.out.println(aCherry.getCurrentCell().getCoords().getX());
+        System.out.println(aCherry.getCurrentCell().getCoords().getY());
+        assertTrue(aCherry.getCurrentCell().isTransitable());
 
-	}
+    }
 
-	@Test
-	public void oneTickMovement() {
+    @Test
+    public void oneTickMovement() {
 
-		int initialPosX = aCherry.getPosition().getX();
-		aCherry.move();
-		int afterMovementPosX = aCherry.getPosition().getX();
-		assertTrue(afterMovementPosX == initialPosX - 1 || afterMovementPosX == initialPosX + 1);
+        int initialPosX = aCherry.getPosition().getX();
+        aCherry.move();
+        int afterMovementPosX = aCherry.getPosition().getX();
+        assertTrue(afterMovementPosX == initialPosX - 1 || afterMovementPosX == initialPosX + 1);
 
-	}
+    }
 
 }

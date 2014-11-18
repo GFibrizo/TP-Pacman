@@ -19,37 +19,37 @@ import org.junit.Test;
  */
 public class FirstScenarioTest {
 
-	private Pacman thePacman;
-	private MazeXMLBuilder mazeBuilder;
-	private Ghost anOnlyRightGhost;
+    private Pacman thePacman;
+    private MazeXMLBuilder mazeBuilder;
+    private Ghost anOnlyRightGhost;
 
-	public FirstScenarioTest() {
-	}
+    public FirstScenarioTest() {
+    }
 
-	@Before
-	public void setUp() {
-		Constants.setInitialVelocity(1);
-		mazeBuilder = new MazeXMLBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "Laberinto.xml"));
-		RawMaze maze = mazeBuilder.buildMaze();
-		//anOnlyRightGhost = Ghost.createOnlyRightGhost();
-		anOnlyRightGhost = GhostFactory.createOnlyRightGhost();
-		Cell initialGhostCell = maze.getCellFromCoordinates(new Coordinate(0, 1));
-		anOnlyRightGhost.setCurrentCell(initialGhostCell);
-	}
+    @Before
+    public void setUp() {
+        Constants.setInitialVelocity(1);
+        mazeBuilder = new MazeXMLBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "Laberinto.xml"));
+        RawMaze maze = mazeBuilder.buildMaze();
+        //anOnlyRightGhost = Ghost.createOnlyRightGhost();
+        anOnlyRightGhost = GhostFactory.createOnlyRightGhost();
+        Cell initialGhostCell = maze.getCellFromCoordinates(new Coordinate(0, 1));
+        anOnlyRightGhost.setCurrentCell(initialGhostCell);
+    }
 
-	@Test
-	public void GhostShouldMoveTwelvePositions() {
+    @Test
+    public void GhostShouldMoveTwelvePositions() {
 
-		for (int i = 0; i < 12; i++) {
-			anOnlyRightGhost.move();
-		}
+        for (int i = 0; i < 12; i++) {
+            anOnlyRightGhost.move();
+        }
 
-		Coordinate expectedPosition = new Coordinate(1, 1); //DECIA (1,1) estaba MAL
-		boolean positionOK = expectedPosition.isEqualTo(anOnlyRightGhost.getPosition());
-		System.out.print(anOnlyRightGhost.getPosition().getX());
-		System.out.print(anOnlyRightGhost.getPosition().getY());
-		assertTrue(positionOK);
+        Coordinate expectedPosition = new Coordinate(1, 1); //DECIA (1,1) estaba MAL
+        boolean positionOK = expectedPosition.isEqualTo(anOnlyRightGhost.getPosition());
+        System.out.print(anOnlyRightGhost.getPosition().getX());
+        System.out.print(anOnlyRightGhost.getPosition().getY());
+        assertTrue(positionOK);
 
-	}
+    }
 
 }

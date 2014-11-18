@@ -36,7 +36,7 @@ public class BoardTest {
      * Test of collisionBetween method, of class Board.
      */
     @Test
-	public void testCollisionBetween() throws ParserConfigurationException {
+    public void testCollisionBetween() throws ParserConfigurationException {
         Character character = Ghost.createEmptyGhost();
         character.setCurrentCell(new Cell(0, 0, true));
         character.setDirection(new RightDirection());

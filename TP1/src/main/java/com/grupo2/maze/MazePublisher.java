@@ -10,7 +10,6 @@ import java.util.HashMap;
  */
 public class MazePublisher extends Publisher {
 
-
     public static enum MazeEvent implements Event {
 
         PACMANCOLLIDEGHOST, GHOSTREACHEDINTERJECTION, GHOSTISCLOSETOPACMAN //Etc
@@ -28,6 +27,5 @@ public class MazePublisher extends Publisher {
 
         private static final MazePublisher INSTANCE = new MazePublisher();
     }
-
 
 }

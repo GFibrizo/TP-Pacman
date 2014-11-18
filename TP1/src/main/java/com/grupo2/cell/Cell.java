@@ -137,8 +137,8 @@ public class Cell implements DrawableNode {
 
     public boolean isEmpty() {
         /*if (!isTransitable) {
-            throw new UnsupportedOperationException();
-        }*/
+         throw new UnsupportedOperationException();
+         }*/
         return (!ball.isEatable());
     }
 

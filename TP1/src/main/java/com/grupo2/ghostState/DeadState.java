@@ -14,66 +14,66 @@ import java.util.Map;
  */
 public class DeadState extends GhostState {
 
-	private float time;
-	private final MovementStrategy movement;
+    private float time;
+    private final MovementStrategy movement;
 
-	public DeadState() {
-		time = 0;
-		movement = new SearchCageStrategy();
-	}
+    public DeadState() {
+        time = 0;
+        movement = new SearchCageStrategy();
+    }
 
-	@Override
-	public Direction getNewDirection(Personality personality, Map<Direction, Cell> allowedDirections) {
-		time++;
-		return movement.getNewDirection(allowedDirections);
-	}
+    @Override
+    public Direction getNewDirection(Personality personality, Map<Direction, Cell> allowedDirections) {
+        time++;
+        return movement.getNewDirection(allowedDirections);
+    }
 
-	/**
-	 * @return True, because the State of the Ghost is "Dead".
-	 */
-	@Override
-	public boolean isDead() {
-		return true;
-	}
+    /**
+     * @return True, because the State of the Ghost is "Dead".
+     */
+    @Override
+    public boolean isDead() {
+        return true;
+    }
 
-	/* @return the next state of the Ghost. returns this, except that the time
-	 * has passed. In that case returns an instance of HunterState.
-	 */
-	@Override
-	public GhostState returnNextState() {
-		if (time >= Constants.getDeadLimitTime()) {
-			return new HunterState();
-		}
-		return this;
-	}
+    /* @return the next state of the Ghost. returns this, except that the time
+     * has passed. In that case returns an instance of HunterState.
+     */
+    @Override
+    public GhostState returnNextState() {
+        if (time >= Constants.getDeadLimitTime()) {
+            return new HunterState();
+        }
+        return this;
+    }
 
-	@Override
-	public GhostState convertToPrey() {
-		return this;
-	}
+    @Override
+    public GhostState convertToPrey() {
+        return this;
+    }
 
-	@Override
-	public GhostState die() {
-		return this;
-	}
+    @Override
+    public GhostState die() {
+        return this;
+    }
 
-	@Override
-	public GhostState collideWithPacman() {
-		return this;
-	}
+    @Override
+    public GhostState collideWithPacman() {
+        return this;
+    }
 
-	@Override
-	public String toString() {
-		return "muerto";
-	}
+    @Override
+    public String toString() {
+        return "muerto";
+    }
 
-	@Override
-	public boolean testIfAbleToChase() {
-		return false;
-	}
+    @Override
+    public boolean testIfAbleToChase() {
+        return false;
+    }
 
-	@Override
-	public boolean testIfAbleToStopChase() {
-		return false;
-	}
+    @Override
+    public boolean testIfAbleToStopChase() {
+        return false;
+    }
 }

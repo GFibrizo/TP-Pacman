@@ -22,12 +22,13 @@ public abstract class Character implements Drawable, IPositionable {
     protected Cell currentCell;
     protected float velocity;
     protected Direction previousDirection;
+
     protected Character() {
         //this.position = null;
         this.direction = null;
         this.currentCell = null;
         this.velocity = (float) 1.0;
-        this.previousDirection = new NullDirection();        
+        this.previousDirection = new NullDirection();
     }
 
     public abstract void move();
@@ -36,7 +37,7 @@ public abstract class Character implements Drawable, IPositionable {
 
     @Override
     public Coordinate getPosition() {
-        return this.currentCell.getPosition();   
+        return this.currentCell.getPosition();
     }
 
     public Direction getDirection() {
@@ -57,7 +58,7 @@ public abstract class Character implements Drawable, IPositionable {
     public Cell getCurrentCell() {
         return this.currentCell;
     }
-    
+
     protected Map<Direction, Cell> allowedDirections() {
 
         Map<Direction, Cell> allowedDirections = new HashMap();

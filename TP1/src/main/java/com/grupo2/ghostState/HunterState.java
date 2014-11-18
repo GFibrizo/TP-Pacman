@@ -13,12 +13,11 @@ import com.grupo2.directions.NullDirection;
  */
 public class HunterState extends GhostState {
 
-
     public HunterState() {
         velocity = Constants.getInitialVelocity();
         finishedMovement = 0;
     }
-    
+
     @Override
     public Direction getNewDirection(Personality personality, Map<Direction, Cell> allowedDirections) {
         return personality.getNewDirection(allowedDirections);
@@ -66,12 +65,12 @@ public class HunterState extends GhostState {
     public String toString() {
         return "cazador";
     }
-    
+
     @Override
     public boolean testIfAbleToChase() {
         return true;
     }
-    
+
     @Override
     public boolean testIfAbleToStopChase() {
         return true;

@@ -31,7 +31,7 @@ public class GhostTest {
 
     @Before
     public void setUp() {
-        Constants.setInitialVelocity((float)1.0);
+        Constants.setInitialVelocity((float) 1.0);
         ghost = GhostFactory.createOnlyRightGhost();
         Cell currCell = new Cell(0, 0, true);
         currCell.setLeftCell(new Cell(3, 0, false));

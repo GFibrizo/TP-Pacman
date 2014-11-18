@@ -13,7 +13,7 @@ public class Controller {
     public Controller(InputReader reader) {
         this.reader = reader;
     }
-    
+
     public InputReader getReader() {
         return this.reader;
     }

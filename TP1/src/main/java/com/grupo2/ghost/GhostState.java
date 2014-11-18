@@ -10,7 +10,7 @@ import java.util.Map;
  * @author fibrizo
  */
 public abstract class GhostState {
-    
+
     protected float time;
     protected float velocity;
     protected float finishedMovement;
@@ -30,7 +30,7 @@ public abstract class GhostState {
      * the personality
      */
     public abstract Direction getNewDirection(Personality personality, Map<Direction, Cell> allowedDirections);
-    
+
     /**
      * @return True if the State of the ghost is "Dead". False otherwise.
      */
@@ -53,7 +53,7 @@ public abstract class GhostState {
     public abstract boolean testIfAbleToChase();
 
     public abstract boolean testIfAbleToStopChase();
-    
+
     public boolean canMove() {
         finishedMovement += velocity;
         if (finishedMovement >= 1) {

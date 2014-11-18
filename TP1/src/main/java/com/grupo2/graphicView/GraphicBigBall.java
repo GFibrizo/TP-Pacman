@@ -16,8 +16,8 @@ import com.grupo2.balls.BigBall;
  * @author ivan
  */
 public class GraphicBigBall extends GraphicBall {
-	
-     public GraphicBigBall(BigBall ball, int x, int y) {
+
+    public GraphicBigBall(BigBall ball, int x, int y) {
         ImageIcon boardBackground = boardBackground = new ImageIcon(Paths.get("src", "main", "graphicResources", "bigball.png").toString());
         this.initialize(ball, x, y, boardBackground);
     }

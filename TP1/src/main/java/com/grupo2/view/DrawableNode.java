@@ -16,7 +16,7 @@ public interface DrawableNode {
     boolean hasLittleBall();
 
     boolean hasBigBall();
-    
+
     Ball getBall();
 
     boolean isRightTransitable();

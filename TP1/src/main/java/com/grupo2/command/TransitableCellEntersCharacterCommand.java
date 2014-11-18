@@ -10,8 +10,9 @@ import com.grupo2.cell.Cell;
 public class TransitableCellEntersCharacterCommand extends TransitableCellCommand {
 
     public TransitableCellEntersCharacterCommand(Cell aCell) {
-        if (!aCell.isTransitable())
+        if (!aCell.isTransitable()) {
             throw new ExceptionInInitializerError("Error at command instance: the cell was no transitable");
+        }
         this.cell = aCell;
     }
 

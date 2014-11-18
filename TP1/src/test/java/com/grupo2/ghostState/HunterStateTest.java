@@ -40,7 +40,7 @@ public class HunterStateTest {
 
     @Before
     public void setUp() {
-        Constants.setInitialVelocity((float)1.0);
+        Constants.setInitialVelocity((float) 1.0);
         state = new HunterState();
     }
 

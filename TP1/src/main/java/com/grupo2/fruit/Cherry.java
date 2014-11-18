@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package com.grupo2.fruit;
 
 import com.grupo2.maze.Maze;
@@ -16,9 +15,9 @@ public class Cherry extends Fruit {
 
     public Cherry(Maze maze) {
         super(maze);
-        this.active = true;        
+        this.active = true;
     }
-    
+
     @Override
     public void die() {
         //To do
@@ -34,6 +33,4 @@ public class Cherry extends Fruit {
         return false;
     }
 
-
-    
 }

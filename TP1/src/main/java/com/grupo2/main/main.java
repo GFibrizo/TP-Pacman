@@ -14,28 +14,28 @@ import org.xml.sax.SAXException;
  */
 public class main {
 
-	/**
-	 * @param args the command line arguments
-	 */
-	public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException, InterruptedException {
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException, InterruptedException {
 //		MazeBuilder mBuilder = new MazeXMLBuilder(Paths.get("src", "main", "resources", "laberintos", "LaberintoSimple.xml"));
 //		CharacterBuilder cBuilder = new CharacterXMLBuilder(Paths.get("src", "main", "resources", "laberintos", "PersonajesSimple.xml"));
 		/*Board board = Board.createBoard(mBuilder, cBuilder);
-		 ArrayList<DrawableNode> cells = board.getMaze().getNodes();
-		 GraphicView view = ViewsFactory.createGraphicView(board);
-		 view.show();
-		 board.getMaze().getCellFromCoordinates(new Coordinate(1,1)).setBall(new NullBall());
-		 view.show();
-		 int i = 0;
-		 while (i < 4) {
-		 Thread.sleep(50);
-		 board.updateModel(new Controller(() -> new RightDirection()));
-		 view.update();
-		 view.show();
-		 }*/
-		TinySound.init();
-		Game newGame = new Game(new Controller(new KeyBoardReader()));
-		newGame.play();
-		TinySound.shutdown();
-	}
+         ArrayList<DrawableNode> cells = board.getMaze().getNodes();
+         GraphicView view = ViewsFactory.createGraphicView(board);
+         view.show();
+         board.getMaze().getCellFromCoordinates(new Coordinate(1,1)).setBall(new NullBall());
+         view.show();
+         int i = 0;
+         while (i < 4) {
+         Thread.sleep(50);
+         board.updateModel(new Controller(() -> new RightDirection()));
+         view.update();
+         view.show();
+         }*/
+        TinySound.init();
+        Game newGame = new Game(new Controller(new KeyBoardReader()));
+        newGame.play();
+        TinySound.shutdown();
+    }
 }

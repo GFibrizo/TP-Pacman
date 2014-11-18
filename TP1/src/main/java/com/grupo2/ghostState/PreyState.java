@@ -71,10 +71,10 @@ public class PreyState extends GhostState {
     public boolean testIfAbleToChase() {
         return false;
     }
-    
+
     @Override
     public boolean testIfAbleToStopChase() {
         return false;
     }
-    
+
 }

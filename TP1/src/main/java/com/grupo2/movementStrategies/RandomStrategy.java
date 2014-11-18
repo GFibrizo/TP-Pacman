@@ -20,7 +20,7 @@ public class RandomStrategy extends MovementStrategy {
         int range = allowedDirections.size();
         if (range > 0) {
             int index = randomGenerator.nextInt(range);
-            Direction newDir = (Direction)((allowedDirections.keySet().toArray())[index]);
+            Direction newDir = (Direction) ((allowedDirections.keySet().toArray())[index]);
             return newDir;
         }
         return new NullDirection();

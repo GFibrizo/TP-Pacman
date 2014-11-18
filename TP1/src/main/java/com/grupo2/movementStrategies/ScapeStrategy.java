@@ -37,5 +37,5 @@ public class ScapeStrategy extends RandomStrategy {
         return chosenDir;
 
     }
-    
+
 }
