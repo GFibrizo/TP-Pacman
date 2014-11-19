@@ -9,6 +9,8 @@ import com.grupo2.directions.*;
 import com.grupo2.ghostState.DeadState;
 import com.grupo2.ghostState.Personality;
 import com.grupo2.interfaces.IGhost;
+import com.grupo2.maze.Maze;
+import com.grupo2.board.Board;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -63,6 +65,8 @@ public class Ghost extends Character implements IGhost {
     @Override
     public void move() {
         //Direction nextDirection;
+        boolean wasDead = false;
+        boolean isHunter = false;
         if (!direction.isEqualTo(new NullDirection())) {
             previousDirection = direction;
         }
@@ -73,7 +77,16 @@ public class Ghost extends Character implements IGhost {
         direction = state.getNewDirection(personality, directions);
         this.currentCell = direction.stepForward(this.currentCell);
         this.position = this.currentCell.getPosition();
+        
+        if (this.isDead()) wasDead = true;
         this.state = state.returnNextState();
+        if (this.isHunter()) isHunter = true;
+        
+        if ((wasDead) && (isHunter)) {
+            Maze theMaze = Board.getInstance().getMaze();
+            this.currentCell = theMaze.getCellFromCoordinates(theMaze.getGhostBegining());
+            this.position = this.currentCell.getPosition();
+        }
     }
 
     /**

@@ -6,6 +6,7 @@ import com.grupo2.constants.Constants;
 import com.grupo2.ghost.GhostState;
 import com.grupo2.movementStrategies.MovementStrategy;
 import com.grupo2.movementStrategies.SearchCageStrategy;
+import com.grupo2.directions.NullDirection;
 import java.util.Map;
 
 /**
@@ -19,13 +20,16 @@ public class DeadState extends GhostState {
 
     public DeadState() {
         time = 0;
+        velocity = Constants.getInitialVelocity();
+        finishedMovement = 0;
         movement = new SearchCageStrategy();
     }
 
     @Override
     public Direction getNewDirection(Personality personality, Map<Direction, Cell> allowedDirections) {
         time++;
-        return movement.getNewDirection(allowedDirections);
+        //return movement.getNewDirection(allowedDirections);
+        return new NullDirection();
     }
 
     /**
