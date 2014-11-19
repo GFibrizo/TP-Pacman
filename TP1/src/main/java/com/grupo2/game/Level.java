@@ -63,7 +63,7 @@ public class Level {
                 ended = false;
             }
             try {
-                Thread.sleep(200);
+                Thread.sleep(70);
             } catch (InterruptedException ex) {
                 ex.printStackTrace();
             }

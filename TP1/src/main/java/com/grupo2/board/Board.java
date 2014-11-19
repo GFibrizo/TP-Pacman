@@ -43,7 +43,7 @@ public class Board extends Publisher {
 
     public static enum GameEvent implements Event {
 
-        PACMANCOLLIDEGHOST, GHOSTREACHEDINTERJECTION, GHOSTISCLOSETOPACMAN, PACMANEATSBALL, PACMANEATSFRUIT //Etc
+        PACMANCOLLIDEHUNTER, PACMANCOLLIDEGHOST, GHOSTREACHEDINTERJECTION, GHOSTISCLOSETOPACMAN, PACMANEATSBALL, PACMANEATSFRUIT //Etc
     }
 
     public static Board createBoard(MazeBuilder mazeBuilder, CharacterBuilder characterBuilder) {
@@ -77,7 +77,7 @@ public class Board extends Publisher {
     }
 
     public void subscribeSubscribers() {
-        this.subscribe(GameEvent.PACMANCOLLIDEGHOST, new PacmanDiesCommand(thePacman));
+        this.subscribe(GameEvent.PACMANCOLLIDEHUNTER, new PacmanDiesCommand(thePacman));
         this.subscribe(GameEvent.PACMANEATSFRUIT, new FruitEatenCommand(theFruit));
         for (Ghost ghost : ghosts) {
             this.subscribe(GameEvent.PACMANCOLLIDEGHOST, new GhostCollidesCommand(ghost));
@@ -132,6 +132,8 @@ public class Board extends Publisher {
         for (Ghost ghost : ghosts) {
             if (this.collisionWithPacman(ghost)) {
                 this.update(GameEvent.PACMANCOLLIDEGHOST);
+                if (ghost.isHunter())
+                    this.update(GameEvent.PACMANCOLLIDEHUNTER);
                 return;
             }
         }
@@ -175,6 +177,10 @@ public class Board extends Publisher {
 
     public Fruit getTheFruit() {
         return this.theFruit;
+    }
+    
+    public Cell getPacmanBegin() {
+        return this.maze.getCellFromCoordinates(this.maze.getPacmanBegining());
     }
 
 }
