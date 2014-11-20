@@ -34,7 +34,7 @@ public abstract class GraphicBall extends JPanel {
     }
 
     public void update() {
-        ball = (Board.getInstance().getMaze().getCellFromCoordinates(x,y)).getBall();
+        ball = (Board.getInstance().getMaze().getCellFromCoordinates(x, y)).getBall();
         if (!ball.isEatable()) {
             this.image = null;
         }

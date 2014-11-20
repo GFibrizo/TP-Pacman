@@ -46,8 +46,8 @@ public class GhostView extends ObjectView {
             stringState = null;
             termination = null;
         }
-         
-        return new ImageIcon(Paths.get("src", "main", "graphicResources", stringState+termination+".png").toString());
+
+        return new ImageIcon(Paths.get("src", "main", "graphicResources", stringState + termination + ".png").toString());
     }
 
     private String returnNumberOfSprite() {
@@ -59,23 +59,24 @@ public class GhostView extends ObjectView {
             return "Second";
         }
     }
-    
-    
+
     private String returnStringOfDirection() {
-        if (object.getDirection().EqualTo(new UpDirection())) 
+        if (object.getDirection().EqualTo(new UpDirection())) {
             return "Up";
-        if (object.getDirection().EqualTo(new DownDirection()))
+        }
+        if (object.getDirection().EqualTo(new DownDirection())) {
             return "Down";
-        if (object.getDirection().EqualTo(new RightDirection()))
+        }
+        if (object.getDirection().EqualTo(new RightDirection())) {
             return "Right";
-        if (object.getDirection().EqualTo(new LeftDirection()))
+        }
+        if (object.getDirection().EqualTo(new LeftDirection())) {
             return "Left";
+        }
         //Here can be an NullPointerException thrown
         return "Left";
     }
-    
-    
-    
+
     @Override
     public void update() {
         this.x = object.getPosition().getX();

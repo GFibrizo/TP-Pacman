@@ -77,11 +77,15 @@ public class Ghost extends Character implements IGhost {
         direction = state.getNewDirection(personality, directions);
         this.currentCell = direction.stepForward(this.currentCell);
         this.position = this.currentCell.getPosition();
-        
-        if (this.isDead()) wasDead = true;
+
+        if (this.isDead()) {
+            wasDead = true;
+        }
         this.state = state.returnNextState();
-        if (this.isHunter()) isHunter = true;
-        
+        if (this.isHunter()) {
+            isHunter = true;
+        }
+
         if ((wasDead) && (isHunter)) {
             Maze theMaze = Board.getInstance().getMaze();
             this.currentCell = theMaze.getCellFromCoordinates(theMaze.getGhostBegining());
@@ -151,15 +155,15 @@ public class Ghost extends Character implements IGhost {
     public Coordinate getInitialPosition() {
         return this.position;
     }
-    
+
     public boolean isPrey() {
         return this.state.isPrey();
     }
-    
+
     public boolean isHunter() {
         return this.state.isHunter();
     }
-    
+
     public boolean isDumb() {
         return this.personality.isDumb();
     }
@@ -167,11 +171,11 @@ public class Ghost extends Character implements IGhost {
     public boolean isLazy() {
         return this.personality.isLazy();
     }
-    
+
     public boolean isSeeker() {
         return this.personality.isSeeker();
     }
-    
+
     public boolean isTemperamentalSeeker() {
         return this.personality.isTemperamentalSeeker();
     }

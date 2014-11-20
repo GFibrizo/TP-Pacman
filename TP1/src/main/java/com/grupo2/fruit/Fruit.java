@@ -54,21 +54,20 @@ public abstract class Fruit extends Character {
     @Override
     public void move() {
         Random random = new Random();
-        int randNumber = random.nextInt(10)+1;
-        
-        if ( randNumber == 1 ) {
+        int randNumber = random.nextInt(10) + 1;
+
+        if (randNumber == 1) {
             if (!direction.isEqualTo(new NullDirection())) {
                 previousDirection = direction;
             }
             this.direction = this.randomStrategy.getNewDirection(allowedDirections());
             this.currentCell = this.direction.stepForward(this.currentCell);
         }
-        
+
     }
 
     public abstract void eat();
 
-    
     public void revive() {
         this.alive = true;
     }

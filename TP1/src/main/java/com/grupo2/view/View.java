@@ -21,6 +21,6 @@ public abstract class View {
     public abstract void show(int i);
 
     public abstract void update();
-    
+
     public abstract void initialize();
 }

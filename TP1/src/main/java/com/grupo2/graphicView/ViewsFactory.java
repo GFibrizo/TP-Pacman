@@ -24,8 +24,9 @@ public class ViewsFactory {
 
         List<ObjectView> objectViews = new ArrayList<>();
 
-        for (Ghost ghost : ghosts)
-           objectViews.add(new GhostView(ghost));
+        for (Ghost ghost : ghosts) {
+            objectViews.add(new GhostView(ghost));
+        }
         objectViews.add(new PacmanView(pacman));
         objectViews.add(new FruitView(fruit));
 

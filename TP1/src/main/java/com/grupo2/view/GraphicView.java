@@ -43,7 +43,7 @@ public class GraphicView extends View {
         ballsPanel.setLayout(new GridLayout(width, height));
         this.p = new JPanel();
         p.setLayout(new OverlayLayout(p));
-        
+
         ballsViews = new ArrayList<>();
         ArrayList<DrawableNode> cells = this.maze.getNodes();
         cells.forEach((cell) -> {
@@ -52,44 +52,45 @@ public class GraphicView extends View {
             GraphicNode node = new GraphicNode(ViewConstants.DRAWABLE_WIDTH, ViewConstants.DRAWABLE_HEIGHT, 0, 0, transitable);
             node.setOpaque(false);
             GraphicBall ballView = null;
-            
+
             int x = cell.getCoords().getX();
             int y = cell.getCoords().getY();
 
             if (transitable) {
-                if (cell.hasBigBall())
+                if (cell.hasBigBall()) {
                     ballView = new GraphicBigBall((BigBall) cell.getBall(), x, y);
-                 else if (cell.hasLittleBall())
+                } else if (cell.hasLittleBall()) {
                     ballView = new GraphicLittleBall((LittleBall) cell.getBall(), x, y);
+                }
             }
-            if (ballView != null)
+            if (ballView != null) {
                 ballsViews.add(ballView);
+            }
             bgPanel.add(node);
-            
+
         });
-        
-        
+
     }
 
     public static GraphicView createGraphicView(Maze maze) {
         return new GraphicView(maze);
     }
-    
+
     @Override
     public void initialize() {
-        
+
         for (ObjectView view : views) {
             view.setOpaque(false);
             //view.setOffset(i);
             p.add(view);
         }
-        
+
         for (GraphicBall view : ballsViews) {
             view.setOpaque(false);
             p.add(view);
         }
-                
-        p.add(bgPanel);         
+
+        p.add(bgPanel);
         frame.add(p);
         frame.pack();
         frame.setVisible(true);
@@ -97,30 +98,30 @@ public class GraphicView extends View {
 
     @Override
     public void show(int i) {
-        
+
         frame.repaint();
         frame.revalidate();
-        
+
         /*if (p != null) {
-            frame.remove(p);
-            //p.removeAll();
-        }
+         frame.remove(p);
+         //p.removeAll();
+         }
         
 
         
-        for (ObjectView view : views) {
-            view.setOpaque(false);
-            //view.setOffset(i);
-            p.add(view);
-        }
+         for (ObjectView view : views) {
+         view.setOpaque(false);
+         //view.setOffset(i);
+         p.add(view);
+         }
 
-        p.add(bgPanel);        
-        frame.add(p);
-        frame.pack();
-        frame.setVisible(true);
+         p.add(bgPanel);        
+         frame.add(p);
+         frame.pack();
+         frame.setVisible(true);
         
-        frame.revalidate();
-        frame.repaint();*/
+         frame.revalidate();
+         frame.repaint();*/
     }
 
     public void setKeyListener(KeyListener kl) {
@@ -132,7 +133,7 @@ public class GraphicView extends View {
         for (ObjectView view : views) {
             view.update();
         }
-        
+
         for (GraphicBall view : ballsViews) {
             view.update();
         }

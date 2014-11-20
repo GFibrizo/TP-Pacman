@@ -22,7 +22,7 @@ public class ScapeStrategy extends RandomStrategy {
         if (allowedDirections.size() == 1) {
             return allowedDirections.keySet().iterator().next();
         }
-        
+
         Coordinate pacmanPosition = Pacman.getPacman().getPosition();
         int maxDistance = pacmanPosition.distanceTo(allowedDirections.values().iterator().next().getPosition());
         Direction chosenDir = new NullDirection();

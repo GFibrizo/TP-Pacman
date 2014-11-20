@@ -35,8 +35,7 @@ public class Seeker extends Personality {
     public String toString() {
         return "buscador";
     }
-    
-    
+
     @Override
     public boolean isDumb() {
         return false;
@@ -51,7 +50,7 @@ public class Seeker extends Personality {
     public boolean isSeeker() {
         return true;
     }
-    
+
     @Override
     public boolean isTemperamentalSeeker() {
         return false;
