@@ -139,4 +139,9 @@ public class RawMaze implements Maze {
         });
         return dNodes;
     }
+
+    @Override
+    public Cell getCellFromCoordinates(int x, int y) {
+        return map.get(y).get(x);
+    }
 }

@@ -129,4 +129,9 @@ public class XMLView extends View {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
+    @Override
+    public void initialize() {
+        //pass
+    }
+
 }

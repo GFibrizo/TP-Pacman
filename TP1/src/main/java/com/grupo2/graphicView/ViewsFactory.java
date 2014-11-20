@@ -32,6 +32,7 @@ public class ViewsFactory {
         GraphicView theView = GraphicView.createGraphicView(board.getMaze());
         theView.addObjectViews(objectViews);
         theView.setKeyListener((KeyListener) controller.getReader());
+        theView.initialize();
         return theView;
     }
 

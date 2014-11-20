@@ -13,7 +13,7 @@ import javax.swing.JLabel;
  * @author ivan
  */
 public class GraphicLittleBall extends GraphicBall {
-
+    
     /**
      *
      * @param ball
@@ -24,5 +24,5 @@ public class GraphicLittleBall extends GraphicBall {
         ImageIcon boardBackground = boardBackground = new ImageIcon(Paths.get("src", "main", "graphicResources", "littleball.png").toString());
         this.initialize(ball, x, y, boardBackground);
     }
-
+   
 }

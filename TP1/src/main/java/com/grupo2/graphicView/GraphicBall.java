@@ -5,15 +5,16 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.nio.file.Paths;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
+import javax.swing.JPanel;
 import com.grupo2.constants.ViewConstants;
 import com.grupo2.balls.*;
+import com.grupo2.board.Board;
 
 /**
  *
  * @author fibrizo
  */
-public abstract class GraphicBall extends JLabel {
+public abstract class GraphicBall extends JPanel {
 
     protected Image image;
     protected int width;
@@ -33,6 +34,7 @@ public abstract class GraphicBall extends JLabel {
     }
 
     public void update() {
+        ball = (Board.getInstance().getMaze().getCellFromCoordinates(x,y)).getBall();
         if (!ball.isEatable()) {
             this.image = null;
         }
@@ -40,6 +42,7 @@ public abstract class GraphicBall extends JLabel {
 
     @Override
     public void paintComponent(Graphics g) {
-        g.drawImage(this.image, this.x, this.y, this.width, this.height, null);
+        super.paintComponent(g);
+        g.drawImage(this.image, (this.x * this.width), (this.y * this.height), this.width, this.height, this);
     }
 }

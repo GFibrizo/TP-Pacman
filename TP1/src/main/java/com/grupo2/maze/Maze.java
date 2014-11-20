@@ -18,4 +18,6 @@ public interface Maze extends DrawableMaze {
     public boolean areInTheSameCell(IPositionable entity, IPositionable other);
 
     public Cell getCellFromCoordinates(Coordinate coord);
+    
+    public Cell getCellFromCoordinates(int x, int y);
 }
