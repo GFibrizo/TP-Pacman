@@ -25,9 +25,9 @@ public class GraphicView extends View {
     private JLayeredPane lPane;
     private Background bgPanel;
 
-    private GraphicView(Maze maze) {
+    private GraphicView(Maze maze, JFrame frame) {
         this.maze = maze;
-        this.frame = new JFrame("Pacman Game");
+        this.frame = frame; //new JFrame("Pacman Game");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(ViewConstants.DRAWABLE_WIDTH * maze.getWidth(), ViewConstants.DRAWABLE_HEIGHT * maze.getHeight());
         frame.setLocationRelativeTo(null);
@@ -72,8 +72,8 @@ public class GraphicView extends View {
 
     }
 
-    public static GraphicView createGraphicView(Maze maze) {
-        return new GraphicView(maze);
+    public static GraphicView createGraphicView(Maze maze, JFrame frame) {
+        return new GraphicView(maze, frame);
     }
 
     @Override

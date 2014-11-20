@@ -52,9 +52,9 @@ public class Level {
      */
     public int play() {
         this.wakawaka.setLoopPositionBySeconds(1);
-//		this.wakawaka.play(true);
+        this.wakawaka.play(true);
         this.siren.setLoopPositionBySeconds(1);
-//		this.siren.play(true);
+        this.siren.play(true);
 
         while (!ended) {
             map.updateModel(controller);
@@ -68,7 +68,7 @@ public class Level {
                 ex.printStackTrace();
             }
         }
-//		this.wakawaka.stop();
+        this.wakawaka.stop();
         return 0;
     }
 
