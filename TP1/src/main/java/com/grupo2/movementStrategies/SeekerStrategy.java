@@ -10,12 +10,12 @@ import java.util.Map;
  */
 public class SeekerStrategy extends HunterStrategy {
 
-    public SeekerStrategy() {
-    }
+	public SeekerStrategy() {
+	}
 
-    @Override
-    public Direction getNewDirection(Map<Direction, Cell> allowedDirections) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
+	@Override
+	public Direction getNewDirection(Map<Direction, Cell> allowedDirections) {
+		throw new UnsupportedOperationException("Not supported yet.");
+	}
 
 }
