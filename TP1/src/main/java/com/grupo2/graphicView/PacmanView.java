@@ -22,6 +22,7 @@ import javax.swing.ImageIcon;
 public class PacmanView extends ObjectView {
 
     private Pacman object;
+    private int count;
 
     public PacmanView(Pacman pacman) {
         this.object = pacman;
@@ -30,21 +31,24 @@ public class PacmanView extends ObjectView {
         ImageIcon boardBackground = new ImageIcon(ViewConstants.PACMAN_RIGHT);
         this.image = boardBackground.getImage();
         setPreferredSize(new Dimension(width, height));
+        this.count = 1;
     }
 
     private ImageIcon chooseImage() {
-        if (object.getDirection().EqualTo(new LeftDirection())) {
-            return new ImageIcon(ViewConstants.PACMAN_LEFT);
+        directionString = object.getDirection().toString;
+        /*if (object.getDirection().EqualTo(new LeftDirection())) {
+            return new ImageIcon(Paths.get("src", "main", "graphicResources", directionString + count ".png").toString());
         } else if (object.getDirection().EqualTo(new RightDirection())) {
-            return new ImageIcon(ViewConstants.PACMAN_RIGHT);
+            return new ImageIcon(ViewConstants.PACMAN_RIGHT+count);
         } else if (object.getDirection().EqualTo(new UpDirection())) {
             return new ImageIcon(ViewConstants.PACMAN_UP);
         } else if (object.getDirection().EqualTo(new DownDirection())) {
             return new ImageIcon(ViewConstants.PACMAN_DOWN);
         } else {
             return null;
-        }
-
+        }*/
+        this.changeSpriteNumber();
+        return new ImageIcon(Paths.get("src", "main", "graphicResources", directionString + count ".png").toString());
     }
 
     @Override
@@ -54,6 +58,14 @@ public class PacmanView extends ObjectView {
         ImageIcon boardBackground = chooseImage();
         if (boardBackground != null) {
             this.image = boardBackground.getImage();
+        }
+    }
+
+    private void changeSpriteNumber() {
+        if (this.count == 0) {
+            this.count++;
+        } else {
+            this.count = 0;
         }
     }
 
