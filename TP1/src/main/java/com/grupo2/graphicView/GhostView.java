@@ -33,21 +33,21 @@ public class GhostView extends ObjectView {
 
     private ImageIcon chooseImage() {
         // THIS METHOD HAS TO BE CHANGED TO SUPPORT DIRECTIONS OF GHOSTS
-        String stringState;
-        String termination;
+        String spriteName;
+
         if (object.isHunter()) {
-            stringState = "Red";
+            spriteName = "Hunter";
             count = 0;
-            termination = this.returnStringOfDirection();
+            spriteName += this.returnStringOfPersonality();
+            spriteName += this.returnStringOfDirection();
         } else if (object.isPrey()) {
-            stringState = "Blue";
-            termination = this.returnNumberOfSprite();
+            spriteName = "Blue";
+            spriteName += this.returnNumberOfSprite();
         } else {
-            stringState = null;
-            termination = null;
+            spriteName = null;
         }
 
-        return new ImageIcon(Paths.get("src", "main", "graphicResources", stringState + termination + ".png").toString());
+        return new ImageIcon(Paths.get("src", "main", "graphicResources", spriteName + ".png").toString());
     }
 
     private String returnNumberOfSprite() {
@@ -76,6 +76,25 @@ public class GhostView extends ObjectView {
         //Here can be an NullPointerException thrown
         return "Left";
     }
+    
+        private String returnStringOfPersonality() {
+        if (object.isDumb()) {
+            return "Pink";
+        }
+        if (object.isLazy()) {
+            return "SkyBlue";
+        }
+        if (object.isSeeker()) {
+            return "Orange";
+        }
+        if (object.isTemperamentalSeeker()) {
+            return "Red";
+        }
+        //Here can be an NullPointerException thrown
+        return "Red";
+    }
+    
+    
 
     @Override
     public void update() {
