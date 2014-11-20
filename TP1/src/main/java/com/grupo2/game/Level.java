@@ -1,12 +1,12 @@
 package com.grupo2.game;
 
 import com.grupo2.board.Board;
+import com.grupo2.board.Board.GameEvent;
 import com.grupo2.character.CharacterBuilder;
 import com.grupo2.character.CharacterXMLBuilder;
 import com.grupo2.controller.Controller;
-import com.grupo2.ghost.Ghost;
+import com.grupo2.eventHandling.Subscriber;
 import com.grupo2.graphicView.ViewsFactory;
-import com.grupo2.maze.Maze;
 import com.grupo2.maze.MazeXMLBuilder;
 import com.grupo2.pacman.Pacman;
 import com.grupo2.view.View;
@@ -23,8 +23,6 @@ import kuusisto.tinysound.TinySound;
 public class Level {
 
 	private Pacman thePacman;
-	private Ghost theGhost;
-	private Maze maze;
 	private Board map;
 	private Controller controller;
 	private boolean ended;
@@ -37,6 +35,8 @@ public class Level {
 		CharacterBuilder charBuilder = new CharacterXMLBuilder(charactersFilePath);
 		map = Board.createBoard(mazeBuilder, charBuilder);
 		map.subscribeSubscribers();
+		map.subscribe(GameEvent.PACMANEATSLITTLEBALL, new ReachLevelEnd(this));
+		map.subscribe(GameEvent.PACMANEATSBIGBALL, new ReachLevelEnd(this));
 		this.controller = controller;
 		thePacman = map.getPacman();
 		view = ViewsFactory.createGraphicView(map, controller);
@@ -70,6 +70,21 @@ public class Level {
 		}
 //		this.wakawaka.stop();
 		return 0;
+	}
+
+	private class ReachLevelEnd implements Subscriber {
+
+		private Level level;
+
+		public ReachLevelEnd(Level level) {
+			this.level = level;
+		}
+
+		@Override
+		public boolean execute() {
+			this.level.ended = this.level.map.getMaze().isEmpty();
+			return true;
+		}
 	}
 
 }

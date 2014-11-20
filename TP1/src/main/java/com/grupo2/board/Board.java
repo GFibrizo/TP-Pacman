@@ -6,6 +6,7 @@ import com.grupo2.command.FruitEatenCommand;
 import com.grupo2.command.GhostCollidesCommand;
 import com.grupo2.command.GhostConvertToPreyCommand;
 import com.grupo2.command.GhostIsCloseToPacmanCommand;
+import com.grupo2.command.MazeBallEaten;
 import com.grupo2.command.PacmanDiesCommand;
 import com.grupo2.constants.Constants;
 import com.grupo2.controller.Controller;
@@ -59,7 +60,8 @@ public class Board extends Publisher {
 
 	public static enum GameEvent implements Event {
 
-		PACMANCOLLIDEHUNTER, PACMANCOLLIDEGHOST, GHOSTREACHEDINTERJECTION, GHOSTISCLOSETOPACMAN, PACMANEATSBALL, PACMANEATSFRUIT //Etc
+		PACMANCOLLIDEHUNTER, PACMANCOLLIDEGHOST, GHOSTREACHEDINTERJECTION, GHOSTISCLOSETOPACMAN, PACMANEATSBIGBALL,
+		PACMANEATSFRUIT, PACMANEATSLITTLEBALL //Etc
 	}
 
 	public static Board createBoard(MazeBuilder mazeBuilder, CharacterBuilder characterBuilder) {
@@ -99,11 +101,14 @@ public class Board extends Publisher {
 		this.subscribe(GameEvent.PACMANEATSFRUIT, new FruitEatenCommand(theFruit));
 		for (Ghost ghost : ghosts) {
 			this.subscribe(GameEvent.PACMANCOLLIDEGHOST, new GhostCollidesCommand(ghost));
-			this.subscribe(GameEvent.PACMANEATSBALL, new GhostConvertToPreyCommand(ghost));
+			this.subscribe(GameEvent.PACMANEATSBIGBALL, new GhostConvertToPreyCommand(ghost));
 
 			Subscriber sub = new GhostIsCloseToPacmanCommand(ghost);
 			PacmanArea.getInstance().subscribe(PacmanArea.VisionEvent.GHOST_IS_INSIDE, sub);
 		}
+		this.subscribe(GameEvent.PACMANEATSLITTLEBALL, new MazeBallEaten(this.maze));
+		this.subscribe(GameEvent.PACMANEATSBIGBALL, new MazeBallEaten(this.maze));
+
 	}
 
 	public boolean collisionBetween(IPositionable entity, IPositionable otherEntity) {
@@ -142,7 +147,7 @@ public class Board extends Publisher {
 		return this.ghosts;
 	}
 
-	private void resolveColitions() {
+	private void resolveCollitions() {
 		if ((!theFruit.isDead()) && this.collisionWithPacman(theFruit)) {
 			this.update(GameEvent.PACMANEATSFRUIT);
 			this.theFruit.die();
@@ -165,6 +170,7 @@ public class Board extends Publisher {
 		this.pacmanEntersCell();
 		PacmanArea.CenterAreaOnPacman(thePacman);
 		PacmanArea.getInstance().update(PacmanArea.VisionEvent.GHOST_IS_INSIDE);
+		resolveCollitions();
 		//update(GameEvent.PACMANCOLLIDEGHOST);
         /*this.ghosts.forEach((Ghost ghost) -> {
 		 ghost.move();
@@ -173,7 +179,7 @@ public class Board extends Publisher {
 		for (Ghost ghost : ghosts) {
 			ghost.move();
 		}
-		resolveColitions();
+		resolveCollitions();
 	}
 
 	public void updateView(View view) {

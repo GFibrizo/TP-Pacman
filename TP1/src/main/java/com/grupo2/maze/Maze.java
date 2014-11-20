@@ -11,11 +11,15 @@ import com.grupo2.view.DrawableMaze;
  */
 public interface Maze extends DrawableMaze {
 
-    public Coordinate getPacmanBegining();
+	public Coordinate getPacmanBegining();
 
-    public Coordinate getGhostBegining();
+	public Coordinate getGhostBegining();
 
-    public boolean areInTheSameCell(IPositionable entity, IPositionable other);
+	public boolean areInTheSameCell(IPositionable entity, IPositionable other);
 
-    public Cell getCellFromCoordinates(Coordinate coord);
+	public Cell getCellFromCoordinates(Coordinate coord);
+
+	public boolean isEmpty();
+
+	public void ballEated();
 }

@@ -11,7 +11,7 @@ public class BigBall extends Publisher implements Ball {
 
     @Override
     public int isEaten() {
-        Board.getInstance().update(Board.GameEvent.PACMANEATSBALL);
+        Board.getInstance().update(Board.GameEvent.PACMANEATSBIGBALL);
         // INFORMAR EL EVENTO "BOLA GRANDE COMIDA" Y SETEARLE A LA CELDA NULLBALL
         return 30;
     }
