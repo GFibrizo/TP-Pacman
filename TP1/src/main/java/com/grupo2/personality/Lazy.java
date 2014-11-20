@@ -55,10 +55,10 @@ public class Lazy extends Personality {
     public boolean isSeeker() {
         return false;
     }
-    
+
     @Override
     public boolean isTemperamentalSeeker() {
         return false;
     }
-    
+
 }

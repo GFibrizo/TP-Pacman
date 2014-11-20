@@ -36,8 +36,7 @@ public class OnlyRight extends Personality {
     public String toString() {
         return "derechador";
     }
-    
-    
+
     @Override
     public boolean isDumb() {
         return true;
@@ -52,7 +51,7 @@ public class OnlyRight extends Personality {
     public boolean isSeeker() {
         return false;
     }
-    
+
     @Override
     public boolean isTemperamentalSeeker() {
         return false;

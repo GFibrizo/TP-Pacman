@@ -25,17 +25,18 @@ public class Cherry extends Fruit {
 
     @Override
     public void eat() {
-        if (this.alive)
-            // Add points and dissapear
-        return;
+        if (this.alive) // Add points and dissapear
+        {
+            return;
+        }
     }
 
     @Override
     public boolean isDead() {
-        if (this.alive)
+        if (this.alive) {
             return false;
+        }
         return true;
     }
 
-    
 }

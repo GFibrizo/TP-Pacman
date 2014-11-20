@@ -153,4 +153,9 @@ public class RawMaze implements Maze {
 	public void ballEated() {
 		this.qtyBalls--;
 	}
+
+	@Override
+	public Cell getCellFromCoordinates(int x, int y) {
+		return map.get(y).get(x);
+	}
 }

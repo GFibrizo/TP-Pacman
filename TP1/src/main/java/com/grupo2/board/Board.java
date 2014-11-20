@@ -31,70 +31,70 @@ import java.util.HashMap;
  */
 public class Board extends Publisher {
 
-	private Maze maze;
-	private ArrayList<Ghost> ghosts = new ArrayList<>();
-	private Pacman thePacman;
-	private Fruit theFruit;
-	private static Board instance;
-	private long fruitTimer;
+    private Maze maze;
+    private ArrayList<Ghost> ghosts = new ArrayList<>();
+    private Pacman thePacman;
+    private Fruit theFruit;
+    private static Board instance;
+    private long fruitTimer;
 
-	public static Board getInstance() {
-		return instance;
-	}
+    public static Board getInstance() {
+        return instance;
+    }
 
-	private void restart(MazeBuilder mazeBuilder, CharacterBuilder characterBuilder) {
-		this.maze = mazeBuilder.buildMaze();
-		this.subscribers = new HashMap<>();
-		this.ghosts = characterBuilder.getGhosts();
-		this.thePacman = characterBuilder.getPacman();
-		Cell initialPacmanCell = maze.getCellFromCoordinates(this.maze.getPacmanBegining());
-		this.thePacman.setCurrentCell(initialPacmanCell);
-		setCellForGhosts();
-		//this.theFruit = new NullFruit();
-		this.theFruit = new Cherry(this.maze);
-		this.theFruit.die();
-		this.fruitTimer = 0;
-		//this.ghosts.forEach((ghost) -> ghost.setPosition(this.maze.getGhostBegining()));
-		PacmanArea.CenterAreaOnPacman(thePacman);
-	}
+    private void restart(MazeBuilder mazeBuilder, CharacterBuilder characterBuilder) {
+        this.maze = mazeBuilder.buildMaze();
+        this.subscribers = new HashMap<>();
+        this.ghosts = characterBuilder.getGhosts();
+        this.thePacman = characterBuilder.getPacman();
+        Cell initialPacmanCell = maze.getCellFromCoordinates(this.maze.getPacmanBegining());
+        this.thePacman.setCurrentCell(initialPacmanCell);
+        setCellForGhosts();
+        //this.theFruit = new NullFruit();
+        this.theFruit = new Cherry(this.maze);
+        this.theFruit.die();
+        this.fruitTimer = 0;
+        //this.ghosts.forEach((ghost) -> ghost.setPosition(this.maze.getGhostBegining()));
+        PacmanArea.CenterAreaOnPacman(thePacman);
+    }
 
-	public static enum GameEvent implements Event {
+    public static enum GameEvent implements Event {
 
 		PACMANCOLLIDEHUNTER, PACMANCOLLIDEGHOST, GHOSTREACHEDINTERJECTION, GHOSTISCLOSETOPACMAN, PACMANEATSBIGBALL,
 		PACMANEATSFRUIT, PACMANEATSLITTLEBALL //Etc
 	}
 
-	public static Board createBoard(MazeBuilder mazeBuilder, CharacterBuilder characterBuilder) {
-		if (instance == null) {
-			instance = new Board(mazeBuilder, characterBuilder);
-		} else {
-			instance.restart(mazeBuilder, characterBuilder);
-		}
-		return instance;
-	}
+    public static Board createBoard(MazeBuilder mazeBuilder, CharacterBuilder characterBuilder) {
+        if (instance == null) {
+            instance = new Board(mazeBuilder, characterBuilder);
+        } else {
+            instance.restart(mazeBuilder, characterBuilder);
+        }
+        return instance;
+    }
 
-	private void setCellForGhosts() {
-		ghosts.stream().forEach((ghost) -> {
-			Cell initialGhostCell = maze.getCellFromCoordinates(ghost.getInitialPosition());
-			ghost.setCurrentCell(initialGhostCell);
-		});
-	}
+    private void setCellForGhosts() {
+        ghosts.stream().forEach((ghost) -> {
+            Cell initialGhostCell = maze.getCellFromCoordinates(ghost.getInitialPosition());
+            ghost.setCurrentCell(initialGhostCell);
+        });
+    }
 
-	public Board(final MazeBuilder mazeBuilder, final CharacterBuilder characterBuilder) {
-		this.maze = mazeBuilder.buildMaze();
-		this.subscribers = new HashMap<>();
-		this.ghosts = characterBuilder.getGhosts();
-		this.thePacman = characterBuilder.getPacman();
-		Cell initialPacmanCell = maze.getCellFromCoordinates(this.maze.getPacmanBegining());
-		this.thePacman.setCurrentCell(initialPacmanCell);
-		setCellForGhosts();
-		//this.theFruit = new NullFruit();
-		this.theFruit = new Cherry(this.maze);
-		this.theFruit.die();
-		this.fruitTimer = 0;
-		//this.ghosts.forEach((ghost) -> ghost.setPosition(this.maze.getGhostBegining()));
-		PacmanArea.CenterAreaOnPacman(thePacman);
-	}
+    public Board(final MazeBuilder mazeBuilder, final CharacterBuilder characterBuilder) {
+        this.maze = mazeBuilder.buildMaze();
+        this.subscribers = new HashMap<>();
+        this.ghosts = characterBuilder.getGhosts();
+        this.thePacman = characterBuilder.getPacman();
+        Cell initialPacmanCell = maze.getCellFromCoordinates(this.maze.getPacmanBegining());
+        this.thePacman.setCurrentCell(initialPacmanCell);
+        setCellForGhosts();
+        //this.theFruit = new NullFruit();
+        this.theFruit = new Cherry(this.maze);
+        this.theFruit.die();
+        this.fruitTimer = 0;
+        //this.ghosts.forEach((ghost) -> ghost.setPosition(this.maze.getGhostBegining()));
+        PacmanArea.CenterAreaOnPacman(thePacman);
+    }
 
 	public void subscribeSubscribers() {
 		this.subscribe(GameEvent.PACMANCOLLIDEHUNTER, new PacmanDiesCommand(thePacman));
@@ -111,41 +111,41 @@ public class Board extends Publisher {
 
 	}
 
-	public boolean collisionBetween(IPositionable entity, IPositionable otherEntity) {
-		return maze.areInTheSameCell(entity, otherEntity);
-	}
+    public boolean collisionBetween(IPositionable entity, IPositionable otherEntity) {
+        return maze.areInTheSameCell(entity, otherEntity);
+    }
 
-	public boolean collisionWithPacman(IPositionable entity) {
-		return maze.areInTheSameCell(thePacman, entity);
-	}
+    public boolean collisionWithPacman(IPositionable entity) {
+        return maze.areInTheSameCell(thePacman, entity);
+    }
 
-	public void addGhost(Ghost aCharacterToAdd) {
-		this.ghosts.add(aCharacterToAdd);
-	}
+    public void addGhost(Ghost aCharacterToAdd) {
+        this.ghosts.add(aCharacterToAdd);
+    }
 
-	public Pacman getPacman() {
-		return this.thePacman;
-	}
+    public Pacman getPacman() {
+        return this.thePacman;
+    }
 
-	public void pacmanEntersCell() {
-		//Celda en la que está el pacman
-		// MALISIMO
-		//TransitableCell cell = (TransitableCell) this.maze.getCellFromCoordinates(this.thePacman.getPosition());
-		Cell cell = thePacman.getCurrentCell();
-		int points = cell.eatBall();
-	}
+    public void pacmanEntersCell() {
+        //Celda en la que está el pacman
+        // MALISIMO
+        //TransitableCell cell = (TransitableCell) this.maze.getCellFromCoordinates(this.thePacman.getPosition());
+        Cell cell = thePacman.getCurrentCell();
+        int points = cell.eatBall();
+    }
 
-	public Maze getMaze() {
-		return maze;
-	}
+    public Maze getMaze() {
+        return maze;
+    }
 
-	public void isCloseToPacman(IPositionable other) {
+    public void isCloseToPacman(IPositionable other) {
 
-	}
+    }
 
-	public ArrayList<Ghost> getGhosts() {
-		return this.ghosts;
-	}
+    public ArrayList<Ghost> getGhosts() {
+        return this.ghosts;
+    }
 
 	private void resolveCollitions() {
 		if ((!theFruit.isDead()) && this.collisionWithPacman(theFruit)) {
@@ -182,30 +182,30 @@ public class Board extends Publisher {
 		resolveCollitions();
 	}
 
-	public void updateView(View view) {
-		view.update();
-		int i = 0;
-		//for(; i < 5; i++)
-		view.show(i);
-	}
+    public void updateView(View view) {
+        view.update();
+        int i = 0;
+        //for(; i < 5; i++)
+        view.show(i);
+    }
 
-	private void createFruit() {
-		if (this.theFruit.isDead()) {
-			if (this.fruitTimer >= Constants.FRUITSPAWNTICKS) {
-				theFruit.revive();
-				this.fruitTimer = 0;
-			} else {
-				this.fruitTimer++;
-			}
-		}
-	}
+    private void createFruit() {
+        if (this.theFruit.isDead()) {
+            if (this.fruitTimer >= Constants.FRUITSPAWNTICKS) {
+                theFruit.revive();
+                this.fruitTimer = 0;
+            } else {
+                this.fruitTimer++;
+            }
+        }
+    }
 
-	public Fruit getTheFruit() {
-		return this.theFruit;
-	}
+    public Fruit getTheFruit() {
+        return this.theFruit;
+    }
 
-	public Cell getPacmanBegin() {
-		return this.maze.getCellFromCoordinates(this.maze.getPacmanBegining());
-	}
+    public Cell getPacmanBegin() {
+        return this.maze.getCellFromCoordinates(this.maze.getPacmanBegining());
+    }
 
 }

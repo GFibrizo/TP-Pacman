@@ -13,97 +13,97 @@ import com.grupo2.view.DrawablePacman;
  */
 public class Pacman extends Character implements DrawablePacman {
 
-	private static Pacman instance;
-	private float finishedMovement;
-	private Direction nextDirection;
-	//private boolean alive;
-	private int score;
-	private int lives;
+    private static Pacman instance;
+    private float finishedMovement;
+    private Direction nextDirection;
+    //private boolean alive;
+    private int score;
+    private int lives;
 
-	/*public Pacman(final int x, final int y, final Direction dir) {
-	 super(x, y, dir);
-	 this.alive = true;
-	 }*/
-	public static Pacman getPacman() {
-		if (instance == null) {
-			throw new ExceptionInInitializerError("The pacman was not created");
-		}
-		return instance;
-	}
+    /*public Pacman(final int x, final int y, final Direction dir) {
+     super(x, y, dir);
+     this.alive = true;
+     }*/
+    public static Pacman getPacman() {
+        if (instance == null) {
+            throw new ExceptionInInitializerError("The pacman was not created");
+        }
+        return instance;
+    }
 
-	public static Pacman createPacman(final int x, final int y, final Direction dir, Cell begCell) {
-		instance = new Pacman(x, y, dir, begCell);
-		return instance;
-	}
+    public static Pacman createPacman(final int x, final int y, final Direction dir, Cell begCell) {
+        instance = new Pacman(x, y, dir, begCell);
+        return instance;
+    }
 
-	private Pacman(final int x, final int y, final Direction dir, Cell currCell) {
-		this.direction = dir;
-		this.nextDirection = new NullDirection();
-		this.currentCell = currCell;
-		this.alive = true;
-		this.velocity = Constants.getInitialVelocity() * 2;
-		this.finishedMovement = 0;
-		this.score = 0;
-		this.lives = 3;
-	}
+    private Pacman(final int x, final int y, final Direction dir, Cell currCell) {
+        this.direction = dir;
+        this.nextDirection = new NullDirection();
+        this.currentCell = currCell;
+        this.alive = true;
+        this.velocity = Constants.getInitialVelocity() * 2;
+        this.finishedMovement = 0;
+        this.score = 0;
+        this.lives = 3;
+    }
 
-	@Override
-	public void move() {
-		if (this.nextDirection.canGoForward(this.currentCell)) {
-			this.direction = this.nextDirection;
-			this.nextDirection = new NullDirection();
-		}
+    @Override
+    public void move() {
+        if (this.nextDirection.canGoForward(this.currentCell)) {
+            this.direction = this.nextDirection;
+            this.nextDirection = new NullDirection();
+        }
 
-		finishedMovement += velocity;
+        finishedMovement += velocity;
 
-		if (this.direction.canGoForward(this.currentCell)) {
-			if (finishedMovement >= 1) {
-				this.currentCell = this.direction.stepForward(this.currentCell);
-				finishedMovement -= 1;
-			}
-		}
-	}
+        if (this.direction.canGoForward(this.currentCell)) {
+            if (finishedMovement >= 1) {
+                this.currentCell = this.direction.stepForward(this.currentCell);
+                finishedMovement -= 1;
+            }
+        }
+    }
 
-	@Override
-	public boolean isDead() {
-		return !this.alive;
-	}
+    @Override
+    public boolean isDead() {
+        return !this.alive;
+    }
 
-	@Override
-	public void setCurrentCell(Cell currCell) {
-		this.currentCell = currCell;
-	}
+    @Override
+    public void setCurrentCell(Cell currCell) {
+        this.currentCell = currCell;
+    }
 
-	@Override
-	public void setDirection(Direction direction) {
-		if (direction != null) {
-			this.nextDirection = direction;
-		}
-	}
+    @Override
+    public void setDirection(Direction direction) {
+        if (direction != null) {
+            this.nextDirection = direction;
+        }
+    }
 
-	@Override
-	public void die() {
-		this.alive = false;
-		this.lives--;
-	}
+    @Override
+    public void die() {
+        this.alive = false;
+        this.lives--;
+    }
 
-	@Override
-	public int getScore() {
-		return this.score;
-	}
+    @Override
+    public int getScore() {
+        return this.score;
+    }
 
-	@Override
-	public boolean hasLives() {
-		//return !this.isDead();
-		return (this.lives > 0);
-	}
+    @Override
+    public boolean hasLives() {
+        //return !this.isDead();
+        return (this.lives > 0);
+    }
 
-	public int remainingLifes() {
-		return this.lives;
-	}
+    public int remainingLifes() {
+        return this.lives;
+    }
 
-	public void eatBall() {
-		this.getCurrentCell();
-	}
+    public void eatBall() {
+        this.getCurrentCell();
+    }
 
 }

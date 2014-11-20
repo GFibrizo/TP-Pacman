@@ -22,4 +22,6 @@ public interface Maze extends DrawableMaze {
 	public boolean isEmpty();
 
 	public void ballEated();
+
+	public Cell getCellFromCoordinates(int x, int y);
 }

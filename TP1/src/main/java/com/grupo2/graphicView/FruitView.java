@@ -33,7 +33,7 @@ public class FruitView extends ObjectView {
         } else {
             ImageIcon boardBackground = new ImageIcon(Paths.get("src", "main", "graphicResources", "cherry1.png").toString());
             this.image = boardBackground.getImage();
-            setPreferredSize(new Dimension(width, height)); 
+            setPreferredSize(new Dimension(width, height));
         }
     }
 

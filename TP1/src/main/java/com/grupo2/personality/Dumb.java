@@ -59,7 +59,7 @@ public class Dumb extends Personality {
     public boolean isSeeker() {
         return false;
     }
-    
+
     @Override
     public boolean isTemperamentalSeeker() {
         return false;

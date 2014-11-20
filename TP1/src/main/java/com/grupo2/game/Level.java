@@ -42,35 +42,35 @@ public class Level {
 		view = ViewsFactory.createGraphicView(map, controller);
 		ended = false;
 
-		this.wakawaka = TinySound.loadMusic(Paths.get("src", "main", "resources", "sounds", "wakawaka.wav").toFile());
-		this.siren = TinySound.loadMusic(Paths.get("src", "main", "resources", "sounds", "siren.wav").toFile());
-	}
+        this.wakawaka = TinySound.loadMusic(Paths.get("src", "main", "resources", "sounds", "wakawaka.wav").toFile());
+        this.siren = TinySound.loadMusic(Paths.get("src", "main", "resources", "sounds", "siren.wav").toFile());
+    }
 
-	/**
-	 * @return int score obtained in the level.
-	 *
-	 */
-	public int play() {
-		this.wakawaka.setLoopPositionBySeconds(1);
-//		this.wakawaka.play(true);
-		this.siren.setLoopPositionBySeconds(1);
-//		this.siren.play(true);
+    /**
+     * @return int score obtained in the level.
+     *
+     */
+    public int play() {
+        this.wakawaka.setLoopPositionBySeconds(1);
+        this.wakawaka.play(true);
+        this.siren.setLoopPositionBySeconds(1);
+        this.siren.play(true);
 
-		while (!ended) {
-			map.updateModel(controller);
-			map.updateView(this.view);
-			if ((!thePacman.hasLives()) && (thePacman.isDead())) {
-				ended = true;
-			}
-			try {
-				Thread.sleep(100);
-			} catch (InterruptedException ex) {
-				ex.printStackTrace();
-			}
-		}
-//		this.wakawaka.stop();
-		return 0;
-	}
+        while (!ended) {
+            map.updateModel(controller);
+            map.updateView(this.view);
+            if ((!thePacman.hasLives()) && (thePacman.isDead())) {
+                ended = true;
+            }
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+            }
+        }
+        this.wakawaka.stop();
+        return 0;
+    }
 
 	private class ReachLevelEnd implements Subscriber {
 
