@@ -133,6 +133,7 @@ public class Board extends Publisher {
         //TransitableCell cell = (TransitableCell) this.maze.getCellFromCoordinates(this.thePacman.getPosition());
         Cell cell = thePacman.getCurrentCell();
         int points = cell.eatBall();
+        thePacman.incrementScore(points);
     }
 
     public Maze getMaze() {

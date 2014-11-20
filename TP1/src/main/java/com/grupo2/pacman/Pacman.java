@@ -105,5 +105,9 @@ public class Pacman extends Character implements DrawablePacman {
     public void eatBall() {
         this.getCurrentCell();
     }
+    
+    public void incrementScore(int extra) {
+        this.score += extra;
+    }
 
 }

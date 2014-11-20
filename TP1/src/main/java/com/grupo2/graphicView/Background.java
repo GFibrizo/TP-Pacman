@@ -6,6 +6,7 @@ import java.awt.Image;
 import java.nio.file.Paths;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import com.grupo2.constants.ViewConstants;
 
 /**
  *

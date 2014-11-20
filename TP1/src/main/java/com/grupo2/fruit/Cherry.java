@@ -6,6 +6,7 @@
 package com.grupo2.fruit;
 
 import com.grupo2.maze.Maze;
+import com.grupo2.pacman.Pacman;
 
 /**
  *
@@ -26,9 +27,8 @@ public class Cherry extends Fruit {
     @Override
     public void eat() {
         if (this.alive) // Add points and dissapear
-        {
-            return;
-        }
+            Pacman.getPacman().incrementScore(100);
+        this.alive = false;
     }
 
     @Override

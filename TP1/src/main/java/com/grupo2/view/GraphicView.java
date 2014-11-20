@@ -17,6 +17,7 @@ import javax.swing.JFrame;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.OverlayLayout;
+import com.grupo2.graphicView.HudView;
 
 public class GraphicView extends View {
 
@@ -24,6 +25,7 @@ public class GraphicView extends View {
     private JPanel p;
     private JLayeredPane lPane;
     private Background bgPanel;
+    private HudView hud;
 
     private GraphicView(Maze maze, JFrame frame) {
         this.maze = maze;
@@ -43,6 +45,8 @@ public class GraphicView extends View {
         ballsPanel.setLayout(new GridLayout(width, height));
         this.p = new JPanel();
         p.setLayout(new OverlayLayout(p));
+        
+        hud = new HudView(width, height);
 
         ballsViews = new ArrayList<>();
         ArrayList<DrawableNode> cells = this.maze.getNodes();
@@ -84,6 +88,9 @@ public class GraphicView extends View {
             //view.setOffset(i);
             p.add(view);
         }
+        
+        hud.setOpaque(false);
+        p.add(hud);
 
         for (GraphicBall view : ballsViews) {
             view.setOpaque(false);
@@ -133,6 +140,8 @@ public class GraphicView extends View {
         for (ObjectView view : views) {
             view.update();
         }
+        
+        hud.update();
 
         for (GraphicBall view : ballsViews) {
             view.update();
