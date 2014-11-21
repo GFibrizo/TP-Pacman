@@ -15,6 +15,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.PopupMenu;
+import java.awt.Dimension;
 
 /**
  *
@@ -23,16 +24,19 @@ import java.awt.PopupMenu;
 public class ViewsFactory {
 
     private static JFrame frame = new JFrame("Pacman Game");
+    private static JFrame start;
     
     public static void createStartGame() throws InterruptedException {
-        frame.add(new GameStartView());
-        frame.pack();
-        frame.setVisible(true);
-        frame.repaint();
-        frame.revalidate();
-        Thread.sleep(3000);
-        //frame.setVisible(false);
-        frame.getContentPane().removeAll();
+        start = new JFrame("Start");
+        frame.setSize(800, 600);
+        start.setLocationByPlatform(true);
+        //start.setLocationRelativeTo(null);
+        start.add(new GameStartView());
+        start.pack();
+        start.setVisible(true);
+        start.repaint();
+        start.revalidate();
+        Thread.sleep(1000);
     }
 
     public static GraphicView createGraphicView(Board board, Controller controller) {
@@ -47,7 +51,7 @@ public class ViewsFactory {
         }
         objectViews.add(new PacmanView(pacman));
         objectViews.add(new FruitView(fruit));
-
+   
         frame.getContentPane().removeAll();
         frame.repaint();
         frame.revalidate();
@@ -56,6 +60,8 @@ public class ViewsFactory {
         theView.addObjectViews(objectViews);
         theView.setKeyListener((KeyListener) controller.getReader());
         theView.initialize();
+        start.setVisible(false);
+        start.doLayout();
         return theView;
     }
 

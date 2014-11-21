@@ -35,7 +35,7 @@ public class Game {
             Logger.getLogger(Game.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         Constants.initializeConstants(Paths.get("src", "main", "resources", "Constants.json"));
-        //ViewsFactory.createStartGame();
+        ViewsFactory.createStartGame();
     }
 
     private void startLevel() throws ParserConfigurationException {
