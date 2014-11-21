@@ -2,8 +2,6 @@ package com.grupo2.movementStrategies;
 
 import com.grupo2.cell.Cell;
 import com.grupo2.character.Direction;
-import com.grupo2.character.Coordinate;
-import com.grupo2.pacman.Pacman;
 import java.util.Map;
 import com.grupo2.directions.NullDirection;
 

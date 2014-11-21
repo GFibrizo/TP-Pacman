@@ -116,6 +116,8 @@ public class Pacman extends Character implements DrawablePacman {
     public void die() {
         this.alive = false;
         this.lives--;
+        this.finishedMovement = 0;
+        this.nextDirection = new NullDirection();
     }
 
     /**
