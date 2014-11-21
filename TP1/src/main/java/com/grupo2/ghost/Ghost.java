@@ -11,7 +11,6 @@ import com.grupo2.ghostState.Personality;
 import com.grupo2.interfaces.IGhost;
 import com.grupo2.maze.Maze;
 import com.grupo2.board.Board;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -28,16 +27,11 @@ public class Ghost extends Character implements IGhost {
 
     /**
      * Create a new instance of the class Ghost in the HunterState.
-     *
      * @param x CollidingArea in the X axis
      * @param y CollidingArea in the Y axis
      * @param dir Initial Direction
      * @param pers Initial personality of the Ghost
      */
-    /*public Ghost(final int x, final int y, Direction dir, Personality pers) {
-     super(x, y, dir);
-     this.state = new HunterState(pers);
-     }*/
     private Ghost() {
         super();
         this.velocity = Constants.getInitialVelocity();
@@ -64,7 +58,6 @@ public class Ghost extends Character implements IGhost {
      */
     @Override
     public void move() {
-        //Direction nextDirection;
         boolean wasDead = false;
         boolean isHunter = false;
         if (!direction.isEqualTo(new NullDirection())) {
@@ -74,6 +67,11 @@ public class Ghost extends Character implements IGhost {
         if (!state.canMove()) {
             return;
         }
+        if (directions.isEmpty()) {
+            previousDirection = new NullDirection();
+            return;
+        }
+        
         direction = state.getNewDirection(personality, directions);
         this.currentCell = direction.stepForward(this.currentCell);
         this.position = this.currentCell.getPosition();
@@ -91,7 +89,6 @@ public class Ghost extends Character implements IGhost {
             this.currentCell = theMaze.getCellFromCoordinates(theMaze.getGhostBegining());
             this.position = this.currentCell.getPosition();
         }
-
     }
 
     /**
