@@ -29,7 +29,7 @@ public class HunterState extends GhostState {
 
     @Override
     public Direction getNewDirection(Personality personality, Map<Direction, Cell> allowedDirections) {
-        if (time > limitTime) {
+        if ((time > limitTime) && (timeIndex < 3)) {
             limitTime = arrayOfLimitTimes[timeIndex++];
             this.incrementRage();
         }

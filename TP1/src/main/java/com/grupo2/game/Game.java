@@ -1,6 +1,7 @@
 package com.grupo2.game;
 
 import com.grupo2.controller.Controller;
+import com.grupo2.constants.Constants;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -32,6 +33,7 @@ public class Game {
 		} catch (IOException ex) {
 			Logger.getLogger(Game.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
 		}
+                Constants.initializeConstants(Paths.get("src", "main", "resources", "Constants.json"));
 	}
 
 	private void startLevel() throws ParserConfigurationException {

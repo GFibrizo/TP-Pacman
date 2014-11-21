@@ -46,7 +46,7 @@ public class TemperamentalSeeker extends Personality {
         if (chaseOn) 
             movement.setTarget(Pacman.getPacman().getPosition());
         time++;
-        if (time > limitTime) {
+        if ((time > limitTime) && (timeIndex < 3)) {
             limitTime = arrayOfLimitTimes[timeIndex++];
             this.incrementVision();
         }
