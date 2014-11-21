@@ -22,28 +22,46 @@ public class KeyBoardReader implements InputReader, KeyListener {
 
     private Direction readedDirection;
 
+    /**
+     * @return Direction, the direction obtained from the processing of the
+     * key events.
+     */
     @Override
     public Direction getNextDirection() {
         return readedDirection;
     }
 
+    /**
+     * Detection and processing of typed keys events.
+     * @param e 
+     */
     @Override
     public void keyTyped(KeyEvent e) {
-        if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-            readedDirection = new RightDirection();
-        } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-            readedDirection = new LeftDirection();
-        } else if (e.getKeyCode() == KeyEvent.VK_UP) {
-            readedDirection = new UpDirection();
-        } else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-            readedDirection = new DownDirection();
-        } else {
-            readedDirection = new NullDirection();
-        }
+        detectKey(e);
     }
 
+    /**
+     * Detection and processing of pressed keys events.
+     * @param e 
+     */
     @Override
     public void keyPressed(KeyEvent e) {
+        detectKey(e);
+    }
+
+    /**
+     * Detection and processing of released keys events.
+     * @param e 
+     */
+    @Override
+    public void keyReleased(KeyEvent e) {
+    }
+    
+    /**
+     * Detection and processing of the key events.
+     * @param e of type KeyEvent, the incoming event sent from the keyboard.
+     */
+    private void detectKey(KeyEvent e) {
         if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
             readedDirection = new RightDirection();
         } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
@@ -55,20 +73,6 @@ public class KeyBoardReader implements InputReader, KeyListener {
         } else {
             readedDirection = new NullDirection();
         }
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-//		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-////            readedDirection = new RightDirection();
-//			System.out.println("Key typed: " + e.getKeyCode());
-//		} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-//			readedDirection = new LeftDirection();
-//		} else if (e.getKeyCode() == KeyEvent.VK_UP) {
-//			readedDirection = new UpDirection();
-//		} else if (e.getKeyCode() == KeyEvent.VK_DOWN) {
-//			readedDirection = new DownDirection();
-//		}
     }
 
 }
