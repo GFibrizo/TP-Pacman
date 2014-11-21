@@ -17,7 +17,7 @@ public class PacmanArea extends Publisher {
 
     public static enum VisionEvent implements Event {
 
-        GHOST_IS_INSIDE, GHOST_IS_OUTSIDE
+        GHOST_IS_INSIDE, GHOST_IS_OUTSIDE, GHOSTCHANGESPOSITION
     }
 
     private PacmanArea() {

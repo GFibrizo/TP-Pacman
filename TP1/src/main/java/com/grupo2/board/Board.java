@@ -2,25 +2,16 @@ package com.grupo2.board;
 
 import com.grupo2.cell.Cell;
 import com.grupo2.character.CharacterBuilder;
-import com.grupo2.command.FruitEatenCommand;
-import com.grupo2.command.GhostCollidesCommand;
-import com.grupo2.command.GhostConvertToPreyCommand;
-import com.grupo2.command.GhostIsCloseToPacmanCommand;
-import com.grupo2.command.MazeBallEaten;
-import com.grupo2.command.PacmanDiesCommand;
+import com.grupo2.command.*;
 import com.grupo2.constants.Constants;
 import com.grupo2.controller.Controller;
-import com.grupo2.eventHandling.Event;
-import com.grupo2.eventHandling.Publisher;
-import com.grupo2.eventHandling.Subscriber;
-import com.grupo2.fruit.Cherry;
-import com.grupo2.fruit.Fruit;
+import com.grupo2.eventHandling.*;
+import com.grupo2.fruit.*;
 import com.grupo2.ghost.Ghost;
 import com.grupo2.interfaces.IPositionable;
 import com.grupo2.maze.Maze;
 import com.grupo2.maze.MazeBuilder;
-import com.grupo2.pacman.Pacman;
-import com.grupo2.pacman.PacmanArea;
+import com.grupo2.pacman.*;
 import com.grupo2.view.View;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -69,7 +60,7 @@ public class Board extends Publisher {
      */
     public static enum GameEvent implements Event {
         PACMANCOLLIDEHUNTER, PACMANCOLLIDEGHOST, GHOSTREACHEDINTERJECTION, GHOSTISCLOSETOPACMAN, PACMANEATSBIGBALL,
-        PACMANEATSFRUIT, PACMANEATSLITTLEBALL 
+        PACMANEATSFRUIT, PACMANEATSLITTLEBALL
     }
 
     /**
@@ -127,8 +118,13 @@ public class Board extends Publisher {
             this.subscribe(GameEvent.PACMANCOLLIDEGHOST, new GhostCollidesCommand(ghost));
             this.subscribe(GameEvent.PACMANEATSBIGBALL, new GhostConvertToPreyCommand(ghost));
 
-            Subscriber sub = new GhostIsCloseToPacmanCommand(ghost);
-            PacmanArea.getInstance().subscribe(PacmanArea.VisionEvent.GHOST_IS_INSIDE, sub);
+            Subscriber sub = new GhostIsCloseOrFarFromPacmanCommand(ghost);
+            PacmanArea.getInstance().subscribe(PacmanArea.VisionEvent.GHOSTCHANGESPOSITION, sub);
+            //Subscriber sub = new GhostIsCloseToPacmanCommand(ghost);
+            //PacmanArea.getInstance().subscribe(PacmanArea.VisionEvent.GHOST_IS_INSIDE, sub);
+            
+            //sub = new GhostIsFarFromPacmanCommand(ghost);
+            //PacmanArea.getInstance().subscribe(PacmanArea.VisionEvent.GHOST_IS_OUTSIDE, sub);
         }
         this.subscribe(GameEvent.PACMANEATSLITTLEBALL, new MazeBallEaten(this.maze));
         this.subscribe(GameEvent.PACMANEATSBIGBALL, new MazeBallEaten(this.maze));
@@ -232,7 +228,7 @@ public class Board extends Publisher {
         this.createFruit();
         this.pacmanEntersCell();
         PacmanArea.CenterAreaOnPacman(thePacman);
-        PacmanArea.getInstance().update(PacmanArea.VisionEvent.GHOST_IS_INSIDE);
+        PacmanArea.getInstance().update(PacmanArea.VisionEvent.GHOSTCHANGESPOSITION);
         resolveCollitions();
         this.theFruit.move();
         for (Ghost ghost : ghosts) {

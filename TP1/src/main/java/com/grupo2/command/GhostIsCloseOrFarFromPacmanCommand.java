@@ -6,27 +6,27 @@
 package com.grupo2.command;
 
 import com.grupo2.ghost.Ghost;
-import com.grupo2.eventHandling.Subscriber;
 import com.grupo2.pacman.PacmanArea;
+import com.grupo2.eventHandling.Subscriber;
 
 /**
  *
  * @author fibrizo
  */
-public class GhostIsCloseToPacmanCommand implements Subscriber {
+public class GhostIsCloseOrFarFromPacmanCommand implements Subscriber {
+    
+        private Ghost ghost;
 
-    private Ghost ghost;
-
-    public GhostIsCloseToPacmanCommand(Ghost ghost) {
+    public GhostIsCloseOrFarFromPacmanCommand(Ghost ghost) {
         this.ghost = ghost;
     }
 
     @Override
     public void execute() {
-        if (PacmanArea.isInside(ghost)) {
-            //Subscriber sub = new GhostIsFarFromPacmanCommand(ghost);
-            //PacmanArea.getInstance().subscribe(PacmanArea.VisionEvent.GHOST_IS_OUTSIDE, sub);
+        if (PacmanArea.isInside(ghost))
             ghost.beginPacmanChase();
-        }
+        else
+            ghost.stopPacmanChase();
     }
+    
 }

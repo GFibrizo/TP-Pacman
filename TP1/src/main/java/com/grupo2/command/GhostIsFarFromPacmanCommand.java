@@ -24,8 +24,8 @@ public class GhostIsFarFromPacmanCommand implements Subscriber {
     @Override
     public void execute() {
         if (!PacmanArea.isInside(ghost)) {
-            Subscriber sub = new GhostIsCloseToPacmanCommand(ghost);
-            PacmanArea.getInstance().subscribe(PacmanArea.VisionEvent.GHOST_IS_INSIDE, sub);
+          //  Subscriber sub = new GhostIsCloseToPacmanCommand(ghost);
+           // PacmanArea.getInstance().subscribe(PacmanArea.VisionEvent.GHOST_IS_INSIDE, sub);
             ghost.stopPacmanChase();
         }
     }
