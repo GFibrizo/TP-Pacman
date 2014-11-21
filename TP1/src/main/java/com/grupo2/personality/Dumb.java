@@ -9,6 +9,7 @@ import com.grupo2.ghostState.Personality;
 import com.grupo2.maze.MazePublisher;
 import com.grupo2.movementStrategies.ChaseStrategy;
 import com.grupo2.movementStrategies.RandomStrategy;
+import com.grupo2.pacman.Pacman;
 import java.util.Map;
 
 /**
@@ -27,6 +28,7 @@ public class Dumb extends Personality {
 
     @Override
     public Direction getNewDirection(Map<Direction, Cell> allowedDirections) {
+        movement.setTarget(Pacman.getPacman().getPosition());
         return movement.getNewDirection(allowedDirections);
     }
 

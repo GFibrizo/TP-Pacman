@@ -14,6 +14,7 @@ import com.grupo2.ghostState.Personality;
 import com.grupo2.maze.MazePublisher;
 import com.grupo2.movementStrategies.ChaseStrategy;
 import com.grupo2.movementStrategies.RandomStrategy;
+import com.grupo2.pacman.Pacman;
 import java.util.Map;
 
 /**
@@ -21,27 +22,47 @@ import java.util.Map;
  * @author fibrizo
  */
 public class TemperamentalSeeker extends Personality {
+    
+    boolean chaseOn;
+    int time = 0;
+    int timeIndex = 0;
+    float[] arrayOfLimitTimes;
+    float limitTime;
 
     public TemperamentalSeeker() {
         Subscriber sub = new HunterStartsChaseOfPacman(this);
         MazePublisher.getInstance().subscribe(MazePublisher.MazeEvent.GHOSTISCLOSETOPACMAN, sub);
-        movement = new RandomStrategy();
+        movement = new ChaseStrategy();
         vision = Constants.VISION4;
+        chaseOn = false;
+        time = 0;
+        timeIndex = 0;
+        arrayOfLimitTimes = new float[] {Constants.getFirstRageLimitTime(), Constants.getSecondRageLimitTime(), Constants.getThirdRageLimitTime()};
+        limitTime = arrayOfLimitTimes[timeIndex];
     }
 
     @Override
     public Direction getNewDirection(Map<Direction, Cell> allowedDirections) {
+        if (chaseOn) 
+            movement.setTarget(Pacman.getPacman().getPosition());
+        time++;
+        if (time > limitTime) {
+            limitTime = arrayOfLimitTimes[timeIndex++];
+            this.incrementVision();
+        }
+        
         return movement.getNewDirection(allowedDirections);
     }
 
     @Override
     public void beginPacmanChase() {
-        this.movement = new ChaseStrategy();
+        chaseOn = true;
     }
 
     @Override
     public void stopPacmanChase() {
-        this.movement = new RandomStrategy();
+        movement.setTarget(Pacman.getPacman().getPosition());
+        chaseOn = false;
     }
 
     @Override
