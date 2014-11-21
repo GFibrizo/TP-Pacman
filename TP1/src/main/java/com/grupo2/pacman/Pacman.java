@@ -16,14 +16,13 @@ public class Pacman extends Character implements DrawablePacman {
     private static Pacman instance;
     private float finishedMovement;
     private Direction nextDirection;
-    //private boolean alive;
     private int score;
     private int lives;
 
-    /*public Pacman(final int x, final int y, final Direction dir) {
-     super(x, y, dir);
-     this.alive = true;
-     }*/
+    /**
+     * Class method for getting the unique instance of Pacman.
+     * @return Pacman the only one.
+     */
     public static Pacman getPacman() {
         if (instance == null) {
             throw new ExceptionInInitializerError("The pacman was not created");
@@ -31,11 +30,26 @@ public class Pacman extends Character implements DrawablePacman {
         return instance;
     }
 
+    /**
+     * Class method for creating the Pacman instance.
+     * @param x the number of column of the pacman.
+     * @param y the number of row of the pacman.
+     * @param dir the direction of the pacman.
+     * @param begCell the current cell of the pacman.
+     * @return Pacman the instance of Pacman.
+     */
     public static Pacman createPacman(final int x, final int y, final Direction dir, Cell begCell) {
         instance = new Pacman(x, y, dir, begCell);
         return instance;
     }
 
+    /**
+     * Private constructor of the Pacman class
+     * @param x the number of column of the pacman.
+     * @param y the number of row of the pacman.
+     * @param dir the direction of the pacman.
+     * @param currCell 
+     */
     private Pacman(final int x, final int y, final Direction dir, Cell currCell) {
         this.direction = dir;
         this.nextDirection = new NullDirection();
@@ -47,6 +61,9 @@ public class Pacman extends Character implements DrawablePacman {
         this.lives = 3;
     }
 
+    /**
+     * This method has all the logic of the pacman movement.
+     */
     @Override
     public void move() {
         if (this.nextDirection.canGoForward(this.currentCell)) {
@@ -64,16 +81,27 @@ public class Pacman extends Character implements DrawablePacman {
         }
     }
 
+    /**
+     * @return boolean true if the pacman is dead, false otherwise.
+     */
     @Override
     public boolean isDead() {
         return !this.alive;
     }
 
+    /**
+     * Set the current cell that is ocuppying the pacman.
+     * @param currCell 
+     */
     @Override
     public void setCurrentCell(Cell currCell) {
         this.currentCell = currCell;
     }
 
+    /**
+     * Set the direction for the movement of the pacman.
+     * @param direction 
+     */
     @Override
     public void setDirection(Direction direction) {
         if (direction != null) {
@@ -81,31 +109,50 @@ public class Pacman extends Character implements DrawablePacman {
         }
     }
 
+    /**
+     * Sets the state of the Pacman to dead.
+     */
     @Override
     public void die() {
         this.alive = false;
         this.lives--;
     }
 
+    /**
+     * This method returns the score accummulated.
+     * @return int
+     */
     @Override
     public int getScore() {
         return this.score;
     }
 
+    /**
+     * @return boolean, true if the amount of lifes remaining is higher than 3.
+     */
     @Override
     public boolean hasLives() {
-        //return !this.isDead();
         return (this.lives > 0);
     }
 
+    /**
+     * @return int, the amount of remaining lifes.
+     */
     public int remainingLifes() {
         return this.lives;
     }
 
+    /**
+     * For upcoming refactor.
+     */
     public void eatBall() {
         this.getCurrentCell();
     }
 
+    /**
+     * Increments the scored accummulated with the extra value.
+     * @param extra 
+     */
     public void incrementScore(int extra) {
         this.score += extra;
     }
