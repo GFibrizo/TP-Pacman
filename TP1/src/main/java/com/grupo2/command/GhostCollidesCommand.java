@@ -23,10 +23,8 @@ public class GhostCollidesCommand implements Subscriber {
     }
 
     @Override
-    public boolean execute() {
-        if (Board.getInstance().collisionWithPacman(ghost)) {
+    public void execute() {
+        if (Board.getInstance().collisionWithPacman(ghost))
             ghost.onCollisionWithPacman();
-        }
-        return true;
     }
 }

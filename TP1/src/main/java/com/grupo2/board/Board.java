@@ -68,7 +68,6 @@ public class Board extends Publisher {
      * The Events modeled with an enum.
      */
     public static enum GameEvent implements Event {
-
         PACMANCOLLIDEHUNTER, PACMANCOLLIDEGHOST, GHOSTREACHEDINTERJECTION, GHOSTISCLOSETOPACMAN, PACMANEATSBIGBALL,
         PACMANEATSFRUIT, PACMANEATSLITTLEBALL 
     }

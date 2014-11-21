@@ -6,6 +6,6 @@ package com.grupo2.eventHandling;
  */
 public interface Subscriber {
 
-    public boolean execute();
+    public void execute();
 
 }

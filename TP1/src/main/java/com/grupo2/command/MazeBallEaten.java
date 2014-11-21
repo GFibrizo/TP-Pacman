@@ -16,9 +16,8 @@ public class MazeBallEaten implements Subscriber {
     }
 
     @Override
-    public boolean execute() {
+    public void execute() {
         this.maze.ballEated();
-        return true;
     }
 
 }

@@ -17,10 +17,9 @@ public class PacmanDiesCommand implements Subscriber {
     }
 
     @Override
-    public boolean execute() {
+    public void execute() {
         pacman.die();
         pacman.setCurrentCell(Board.getInstance().getPacmanBegin());
-        return true;
     }
 
 }

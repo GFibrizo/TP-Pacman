@@ -13,7 +13,6 @@ public abstract class Publisher {
     protected HashMap<Event, List<Subscriber>> subscribers;
 
     public void subscribe(Event event, final Subscriber subscriber) {
-        //must check if event is a MazeEvent
         if (!this.subscribers.containsKey(event)) {
             this.subscribers.put(event, new LinkedList<>());
         }

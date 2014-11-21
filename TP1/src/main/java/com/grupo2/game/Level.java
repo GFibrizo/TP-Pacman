@@ -85,9 +85,8 @@ public class Level {
         }
 
         @Override
-        public boolean execute() {
+        public void execute() {
             this.level.ended = this.level.map.getMaze().isEmpty();
-            return true;
         }
     }
 
