@@ -55,9 +55,13 @@ public class Game {
 		}
 		while (keepPlaying) {
 			int score = this.actualLevel.play();
+            if (this.actualLevel.gameover()) {
+                this.levelIndex = 0;
+            }
+            
 			//if (!showContinueToNextLevel(score)) break;
 			try {
-				Thread.sleep(100);
+				Thread.sleep(200);
 				this.startLevel();
 			} catch (Exception ex) {
 				keepPlaying = false;

@@ -9,6 +9,7 @@ import com.grupo2.ghostState.Personality;
 import com.grupo2.maze.MazePublisher;
 import com.grupo2.movementStrategies.ChaseStrategy;
 import com.grupo2.movementStrategies.RandomStrategy;
+import com.grupo2.movementStrategies.SeekerStrategy;
 import java.util.Map;
 
 /**
@@ -31,7 +32,7 @@ public class Seeker extends Personality {
 
     @Override
     public void beginPacmanChase() {
-        this.movement = new ChaseStrategy();
+        this.movement = new SeekerStrategy();
     }
 
     @Override
