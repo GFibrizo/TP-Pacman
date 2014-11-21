@@ -38,10 +38,18 @@ public class Board extends Publisher {
     private static Board instance;
     private long fruitTimer;
 
+    /**
+     * @return Board an instance of this board.
+     */
     public static Board getInstance() {
         return instance;
     }
 
+    /**
+     * 
+     * @param mazeBuilder
+     * @param characterBuilder 
+     */
     private void restart(MazeBuilder mazeBuilder, CharacterBuilder characterBuilder) {
         this.maze = mazeBuilder.buildMaze();
         this.subscribers = new HashMap<>();
@@ -56,12 +64,21 @@ public class Board extends Publisher {
         PacmanArea.CenterAreaOnPacman(thePacman);
     }
 
+    /**
+     * The Events modeled with an enum.
+     */
     public static enum GameEvent implements Event {
 
         PACMANCOLLIDEHUNTER, PACMANCOLLIDEGHOST, GHOSTREACHEDINTERJECTION, GHOSTISCLOSETOPACMAN, PACMANEATSBIGBALL,
         PACMANEATSFRUIT, PACMANEATSLITTLEBALL 
     }
 
+    /**
+     * Class method for creating the Board.
+     * @param mazeBuilder that builds the Maze of the Board.
+     * @param characterBuilder that builds the characters of the Board.
+     * @return Board the board created.
+     */
     public static Board createBoard(MazeBuilder mazeBuilder, CharacterBuilder characterBuilder) {
         if (instance == null) {
             instance = new Board(mazeBuilder, characterBuilder);
@@ -71,6 +88,9 @@ public class Board extends Publisher {
         return instance;
     }
 
+    /**
+     * Set the current cell of all the ghosts.
+     */
     private void setCellForGhosts() {
         ghosts.stream().forEach((ghost) -> {
             Cell initialGhostCell = maze.getCellFromCoordinates(ghost.getInitialPosition());
@@ -78,6 +98,11 @@ public class Board extends Publisher {
         });
     }
 
+    /**
+     * Constructor of the class Board
+     * @param mazeBuilder that builds the Maze of the Board.
+     * @param characterBuilder that builds the characters of the Board.
+     */
     public Board(final MazeBuilder mazeBuilder, final CharacterBuilder characterBuilder) {
         this.maze = mazeBuilder.buildMaze();
         this.subscribers = new HashMap<>();
@@ -92,6 +117,10 @@ public class Board extends Publisher {
         PacmanArea.CenterAreaOnPacman(thePacman);
     }
 
+    /**
+     * Subscribe all the subscribers to the corresponding Event with some 
+     * Publisher.
+     */
     public void subscribeSubscribers() {
         this.subscribe(GameEvent.PACMANCOLLIDEHUNTER, new PacmanDiesCommand(thePacman));
         this.subscribe(GameEvent.PACMANEATSFRUIT, new FruitEatenCommand(theFruit));
@@ -107,40 +136,75 @@ public class Board extends Publisher {
 
     }
 
+    /**
+     * @param entity
+     * @param otherEntity
+     * @return boolean true if there is a collition between the positionables.
+     */
     public boolean collisionBetween(IPositionable entity, IPositionable otherEntity) {
         return maze.areInTheSameCell(entity, otherEntity);
     }
 
+    /**
+     * 
+     * @param entity
+     * @return boolean true if there is a collition between the pacman and the
+     * positionable.
+     */
     public boolean collisionWithPacman(IPositionable entity) {
         return maze.areInTheSameCell(thePacman, entity);
     }
 
+    /**
+     * Add ghosts to the list of ghosts of the Board.
+     * @param aCharacterToAdd 
+     */
     public void addGhost(Ghost aCharacterToAdd) {
         this.ghosts.add(aCharacterToAdd);
     }
-
+    
+    /**
+     * @return Pacman devuelve el pacman.
+     */
     public Pacman getPacman() {
         return this.thePacman;
     }
 
+    /**
+     * This method has the responsability for update the pacman when enters
+     * to a cell.
+     */
     public void pacmanEntersCell() {
         Cell cell = thePacman.getCurrentCell();
         int points = cell.eatBall();
         thePacman.incrementScore(points);
     }
 
+    /**
+     * @return Maze 
+     */
     public Maze getMaze() {
         return maze;
     }
 
+    /**
+     * @param other 
+     */
     public void isCloseToPacman(IPositionable other) {
 
     }
 
+    /**
+     * @return ArrayList<Ghost> the list of ghost in the board.
+     */
     public ArrayList<Ghost> getGhosts() {
         return this.ghosts;
     }
-
+    
+    /**
+     * Resolve all the collitions between the pacman, the ghosts and the fruit
+     * updating the states of the subscribers to the collition Events.
+     */
     private void resolveCollitions() {
         if ((!theFruit.isDead()) && this.collisionWithPacman(theFruit)) {
             this.update(GameEvent.PACMANEATSFRUIT);
@@ -157,6 +221,12 @@ public class Board extends Publisher {
         }
     }
 
+    /**
+     * Update the model. All the characters are moved and updated, the 
+     * collitions are resolved.
+     * @param controller is the one that sends messages with the directions
+     * to the pacman.
+     */
     public void updateModel(Controller controller) {
         this.thePacman.setDirection(controller.getPacmanNextDirection());
         this.thePacman.move();
@@ -172,12 +242,20 @@ public class Board extends Publisher {
         resolveCollitions();
     }
 
+    /**
+     * The view is drawed in the window.
+     * @param view is an object composed by the views of all the model 
+     * components.
+     */
     public void updateView(View view) {
         view.update();
         int i = 0;
         view.show(i);
     }
 
+    /**
+     * The fruit of the game is created.
+     */
     private void createFruit() {
         if (this.theFruit.isDead()) {
             if (this.fruitTimer >= Constants.FRUITSPAWNTICKS) {
@@ -189,10 +267,16 @@ public class Board extends Publisher {
         }
     }
 
+    /**
+     * @return Fruit the fruit of the board
+     */
     public Fruit getTheFruit() {
         return this.theFruit;
     }
 
+    /**
+     * @return Cell is the cell where the pacman respawns.
+     */
     public Cell getPacmanBegin() {
         return this.maze.getCellFromCoordinates(this.maze.getPacmanBegining());
     }
