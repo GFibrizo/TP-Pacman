@@ -72,6 +72,10 @@ public class Level {
 		return 0;
 	}
 
+    boolean gameover() {
+        return ! this.thePacman.hasLives();
+    }
+
 	private class ReachLevelEnd implements Subscriber {
 
 		private Level level;

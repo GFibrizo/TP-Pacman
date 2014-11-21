@@ -1,4 +1,4 @@
-<laberinto ancho="18" alto="18" nodoAncho="35" nodoAlto="35" inicioPacman="1310" inicioFantasmas="1009">
+<laberinto ancho="18" alto="18" nodoAncho="30" nodoAlto="30" inicioPacman="1310" inicioFantasmas="1009">
 
     <nodo id="0000" fila="00" columna="00" contiene="" izquierda="" derecha="" arriba="" abajo="" />
     <nodo id="0001" fila="00" columna="01" contiene="" izquierda="" derecha="" arriba="" abajo="" />
@@ -13,7 +13,7 @@
     <nodo id="0010" fila="00" columna="10" contiene="" izquierda="" derecha="" arriba="" abajo="" />
     <nodo id="0011" fila="00" columna="11" contiene="" izquierda="" derecha="" arriba="" abajo="" />
     <nodo id="0012" fila="00" columna="12" contiene="" izquierda="" derecha="" arriba="" abajo="" />
-    <nodo id="0013" fila="00" columna="13" contiene="" izquierda="" derecha="" arriba="" abajo="" />
+    <nodo id="0013" fila="00" columna="13" contiene="bolita" izquierda="" derecha="" arriba="1713" abajo="0001" />
     <nodo id="0014" fila="00" columna="14" contiene="" izquierda="" derecha="" arriba="" abajo="" />
     <nodo id="0015" fila="00" columna="15" contiene="" izquierda="" derecha="" arriba="" abajo="" />
     <nodo id="0016" fila="00" columna="16" contiene="" izquierda="" derecha="" arriba="" abajo="" />
@@ -304,45 +304,42 @@
     <nodo id="1516" fila="15" columna="16" contiene="bolita" izquierda="1515" derecha="1517" arriba="" abajo="" />
     <nodo id="1517" fila="15" columna="17" contiene="bolita" izquierda="1516" derecha="1500" arriba="" abajo="" />
 
-    <nodo id="1600" fila="16" columna="00" contiene="" izquierda="" derecha="" arriba="" abajo="" />
-    <nodo id="1601" fila="16" columna="01" contiene="" izquierda="" derecha="" arriba="" abajo="" />
-    <nodo id="1602" fila="16" columna="02" contiene="bolita" izquierda="1601" derecha="1603" arriba="1502" abajo="1702" />
-    <nodo id="1603" fila="16" columna="03" contiene="bolita" izquierda="1602" derecha="1604" arriba="" abajo="" />
-    <nodo id="1604" fila="16" columna="04" contiene="bolita" izquierda="1603" derecha="1605" arriba="" abajo="" />
-    <nodo id="1605" fila="16" columna="05" contiene="bolita" izquierda="1604" derecha="1606" arriba="" abajo="" />
-    <nodo id="1606" fila="16" columna="06" contiene="bolita" izquierda="1605" derecha="1607" arriba="" abajo="" />
-    <nodo id="1607" fila="16" columna="07" contiene="bolita" izquierda="1606" derecha="1608" arriba="" abajo="" />
-    <nodo id="1608" fila="16" columna="08" contiene="bolita" izquierda="1607" derecha="1609" arriba="" abajo="" />
-    <nodo id="1609" fila="16" columna="09" contiene="bolita" izquierda="1608" derecha="1610" arriba="" abajo="" />
-    <nodo id="1610" fila="16" columna="10" contiene="bolita" izquierda="1609" derecha="" arriba="1510" abajo="" />
-    <nodo id="1611" fila="16" columna="11" contiene="" izquierda="" derecha="" arriba="" abajo="" />
-    <nodo id="1612" fila="16" columna="12" contiene="" izquierda="" derecha="" arriba="" abajo="" />
-    <nodo id="1613" fila="16" columna="13" contiene="bolita" izquierda="" derecha="" arriba="1513" abajo="1713" />
-    <nodo id="1614" fila="16" columna="14" contiene="" izquierda="" derecha="" arriba="" abajo="" />
-    <nodo id="1615" fila="16" columna="15" contiene="" izquierda="" derecha="" arriba="" abajo="" />
-    <nodo id="1616" fila="16" columna="16" contiene="" izquierda="" derecha="" arriba="" abajo="" />
-    <nodo id="1617" fila="16" columna="17" contiene="" izquierda="" derecha="" arriba="" abajo="" />
+    <nodo id="1600" fila="16" columna="00" contiene="bolon" izquierda="17" derecha="17" arriba="16" abajo="" />
+    <nodo id="1601" fila="16" columna="01" contiene="bolita" izquierda="17" derecha="17" arriba="16" abajo="" />
+    <nodo id="1602" fila="16" columna="02" contiene="bolita" izquierda="17" derecha="17" arriba="1602" abajo="0002" />
+    <nodo id="1603" fila="16" columna="03" contiene="bolita" izquierda="17" derecha="17" arriba="16" abajo="" />
+    <nodo id="1604" fila="16" columna="04" contiene="bolita" izquierda="17" derecha="17" arriba="16" abajo="" />
+    <nodo id="1605" fila="16" columna="05" contiene="bolita" izquierda="17" derecha="17" arriba="16" abajo="" />
+    <nodo id="1606" fila="16" columna="06" contiene="bolita" izquierda="17" derecha="17" arriba="16" abajo="" />
+    <nodo id="1607" fila="16" columna="07" contiene="bolita" izquierda="17" derecha="17" arriba="16" abajo="" />
+    <nodo id="1608" fila="16" columna="08" contiene="bolita" izquierda="17" derecha="17" arriba="16" abajo="" />
+    <nodo id="1609" fila="16" columna="09" contiene="bolita" izquierda="17" derecha="17" arriba="16" abajo="" />
+    <nodo id="1610" fila="16" columna="10" contiene="bolita" izquierda="17" derecha="17" arriba="16" abajo="" />
+    <nodo id="1611" fila="16" columna="11" contiene="bolita" izquierda="17" derecha="17" arriba="16" abajo="" />
+    <nodo id="1612" fila="16" columna="12" contiene="bolita" izquierda="17" derecha="17" arriba="16" abajo="" />
+    <nodo id="1613" fila="16" columna="13" contiene="bolita" izquierda="17" derecha="17" arriba="16" abajo="" />
+    <nodo id="1614" fila="16" columna="14" contiene="bolita" izquierda="17" derecha="17" arriba="16" abajo="" />
+    <nodo id="1615" fila="16" columna="15" contiene="bolita" izquierda="17" derecha="17" arriba="16" abajo="" />
+    <nodo id="1616" fila="16" columna="16" contiene="bolita" izquierda="17" derecha="17" arriba="16" abajo="" />
+    <nodo id="1617" fila="16" columna="17" contiene="bolita" izquierda="17" derecha="17" arriba="16" abajo="" />
 
-
-    <nodo id="1700" fila="17" columna="00" contiene="bolon" izquierda="17" derecha="17" arriba="16" abajo="" />
-    <nodo id="1701" fila="17" columna="01" contiene="bolita" izquierda="17" derecha="17" arriba="16" abajo="" />
-    <nodo id="1702" fila="17" columna="02" contiene="bolita" izquierda="17" derecha="17" arriba="1602" abajo="0002" />
-    <nodo id="1703" fila="17" columna="03" contiene="bolita" izquierda="17" derecha="17" arriba="16" abajo="" />
-    <nodo id="1704" fila="17" columna="04" contiene="bolita" izquierda="17" derecha="17" arriba="16" abajo="" />
-    <nodo id="1705" fila="17" columna="05" contiene="bolita" izquierda="17" derecha="17" arriba="16" abajo="" />
-    <nodo id="1706" fila="17" columna="06" contiene="bolita" izquierda="17" derecha="17" arriba="16" abajo="" />
-    <nodo id="1707" fila="17" columna="07" contiene="bolita" izquierda="17" derecha="17" arriba="16" abajo="" />
-    <nodo id="1708" fila="17" columna="08" contiene="bolita" izquierda="17" derecha="17" arriba="16" abajo="" />
-    <nodo id="1709" fila="17" columna="09" contiene="bolita" izquierda="17" derecha="17" arriba="16" abajo="" />
-    <nodo id="1710" fila="17" columna="10" contiene="bolita" izquierda="17" derecha="17" arriba="16" abajo="" />
-    <nodo id="1711" fila="17" columna="11" contiene="bolita" izquierda="17" derecha="17" arriba="16" abajo="" />
-    <nodo id="1712" fila="17" columna="12" contiene="bolita" izquierda="17" derecha="17" arriba="16" abajo="" />
-    <nodo id="1713" fila="17" columna="13" contiene="bolita" izquierda="17" derecha="17" arriba="16" abajo="" />
-    <nodo id="1714" fila="17" columna="14" contiene="bolita" izquierda="17" derecha="17" arriba="16" abajo="" />
-    <nodo id="1715" fila="17" columna="15" contiene="bolita" izquierda="17" derecha="17" arriba="16" abajo="" />
-    <nodo id="1716" fila="17" columna="16" contiene="bolita" izquierda="17" derecha="17" arriba="16" abajo="" />
-    <nodo id="1717" fila="17" columna="17" contiene="bolita" izquierda="17" derecha="17" arriba="16" abajo="" />
-
-
+    <nodo id="1700" fila="17" columna="00" contiene="" izquierda="" derecha="" arriba="" abajo="" />
+    <nodo id="1701" fila="17" columna="01" contiene="" izquierda="" derecha="" arriba="" abajo="" />
+    <nodo id="1702" fila="17" columna="02" contiene="bolita" izquierda="1601" derecha="1603" arriba="1502" abajo="1702" />
+    <nodo id="1703" fila="17" columna="03" contiene="" izquierda="" derecha="" arriba="" abajo="" />
+    <nodo id="1704" fila="17" columna="04" contiene="" izquierda="" derecha="" arriba="" abajo="" />
+    <nodo id="1705" fila="17" columna="05" contiene="" izquierda="" derecha="" arriba="" abajo="" />
+    <nodo id="1706" fila="17" columna="06" contiene="" izquierda="" derecha="" arriba="" abajo="" />
+    <nodo id="1707" fila="17" columna="07" contiene="" izquierda="" derecha="" arriba="" abajo="" />
+    <nodo id="1708" fila="17" columna="08" contiene="" izquierda="" derecha="" arriba="" abajo="" />
+    <nodo id="1709" fila="17" columna="09" contiene="" izquierda="" derecha="" arriba="" abajo="" />
+    <nodo id="1710" fila="17" columna="10" contiene="bolita" izquierda="1609" derecha="" arriba="1510" abajo="" />
+    <nodo id="1711" fila="17" columna="11" contiene="" izquierda="" derecha="" arriba="" abajo="" />
+    <nodo id="1712" fila="17" columna="12" contiene="" izquierda="" derecha="" arriba="" abajo="" />
+    <nodo id="1713" fila="17" columna="13" contiene="bolita" izquierda="" derecha="" arriba="1513" abajo="0013" />
+    <nodo id="1714" fila="17" columna="14" contiene="" izquierda="" derecha="" arriba="" abajo="" />
+    <nodo id="1715" fila="17" columna="15" contiene="" izquierda="" derecha="" arriba="" abajo="" />
+    <nodo id="1716" fila="17" columna="16" contiene="" izquierda="" derecha="" arriba="" abajo="" />
+    <nodo id="1717" fila="17" columna="17" contiene="" izquierda="" derecha="" arriba="" abajo="" />
 
 </laberinto>
