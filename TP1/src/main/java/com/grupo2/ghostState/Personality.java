@@ -24,7 +24,7 @@ public abstract class Personality {
     public int getVision() {
         return vision;
     }
-    
+
     public void incrementVision() {
         vision += Constants.VISION1;
     }

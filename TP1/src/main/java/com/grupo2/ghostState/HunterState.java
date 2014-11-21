@@ -12,18 +12,17 @@ import com.grupo2.directions.NullDirection;
  * @author fibrizo
  */
 public class HunterState extends GhostState {
-    
+
     float limitTime;
     float[] arrayOfLimitTimes;
     int timeIndex;
-    
 
     public HunterState() {
         velocity = Constants.getInitialVelocity();
         finishedMovement = 0;
         time = 0;
         timeIndex = 0;
-        arrayOfLimitTimes = new float[] {Constants.getFirstRageLimitTime(), Constants.getSecondRageLimitTime(), Constants.getThirdRageLimitTime()};
+        arrayOfLimitTimes = new float[]{Constants.getFirstRageLimitTime(), Constants.getSecondRageLimitTime(), Constants.getThirdRageLimitTime()};
         limitTime = arrayOfLimitTimes[timeIndex];
     }
 

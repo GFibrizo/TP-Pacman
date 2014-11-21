@@ -27,7 +27,9 @@ public class Cherry extends Fruit {
     @Override
     public void eat() {
         if (this.alive) // Add points and dissapear
+        {
             Pacman.getPacman().incrementScore(100);
+        }
         this.alive = false;
     }
 

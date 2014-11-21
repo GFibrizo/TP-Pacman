@@ -22,7 +22,7 @@ import java.util.Map;
  * @author fibrizo
  */
 public class TemperamentalSeeker extends Personality {
-    
+
     boolean chaseOn;
     int time = 0;
     int timeIndex = 0;
@@ -37,20 +37,21 @@ public class TemperamentalSeeker extends Personality {
         chaseOn = false;
         time = 0;
         timeIndex = 0;
-        arrayOfLimitTimes = new float[] {Constants.getFirstRageLimitTime(), Constants.getSecondRageLimitTime(), Constants.getThirdRageLimitTime()};
+        arrayOfLimitTimes = new float[]{Constants.getFirstRageLimitTime(), Constants.getSecondRageLimitTime(), Constants.getThirdRageLimitTime()};
         limitTime = arrayOfLimitTimes[timeIndex];
     }
 
     @Override
     public Direction getNewDirection(Map<Direction, Cell> allowedDirections) {
-        if (chaseOn) 
+        if (chaseOn) {
             movement.setTarget(Pacman.getPacman().getPosition());
+        }
         time++;
         if ((time > limitTime) && (timeIndex < 3)) {
             limitTime = arrayOfLimitTimes[timeIndex++];
             this.incrementVision();
         }
-        
+
         return movement.getNewDirection(allowedDirections);
     }
 

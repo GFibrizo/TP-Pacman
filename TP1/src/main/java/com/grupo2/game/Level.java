@@ -22,73 +22,73 @@ import kuusisto.tinysound.TinySound;
  */
 public class Level {
 
-	private Pacman thePacman;
-	private Board map;
-	private Controller controller;
-	private boolean ended;
-	private View view;
-	private final Music wakawaka;
+    private Pacman thePacman;
+    private Board map;
+    private Controller controller;
+    private boolean ended;
+    private View view;
+    private final Music wakawaka;
 //	private final Music siren;
 
-	public Level(Path mazeFilePath, Path charactersFilePath, Controller controller) throws ParserConfigurationException {
-		MazeXMLBuilder mazeBuilder = new MazeXMLBuilder(mazeFilePath);
-		CharacterBuilder charBuilder = new CharacterXMLBuilder(charactersFilePath);
-		map = Board.createBoard(mazeBuilder, charBuilder);
-		map.subscribeSubscribers();
-		map.subscribe(GameEvent.PACMANEATSLITTLEBALL, new ReachLevelEnd(this));
-		map.subscribe(GameEvent.PACMANEATSBIGBALL, new ReachLevelEnd(this));
-		this.controller = controller;
-		thePacman = map.getPacman();
-		view = ViewsFactory.createGraphicView(map, controller);
-		ended = false;
+    public Level(Path mazeFilePath, Path charactersFilePath, Controller controller) throws ParserConfigurationException {
+        MazeXMLBuilder mazeBuilder = new MazeXMLBuilder(mazeFilePath);
+        CharacterBuilder charBuilder = new CharacterXMLBuilder(charactersFilePath);
+        map = Board.createBoard(mazeBuilder, charBuilder);
+        map.subscribeSubscribers();
+        map.subscribe(GameEvent.PACMANEATSLITTLEBALL, new ReachLevelEnd(this));
+        map.subscribe(GameEvent.PACMANEATSBIGBALL, new ReachLevelEnd(this));
+        this.controller = controller;
+        thePacman = map.getPacman();
+        view = ViewsFactory.createGraphicView(map, controller);
+        ended = false;
 
-		this.wakawaka = TinySound.loadMusic(Paths.get("src", "main", "resources", "sounds", "wakawaka.wav").toFile());
+        this.wakawaka = TinySound.loadMusic(Paths.get("src", "main", "resources", "sounds", "wakawaka.wav").toFile());
 //		this.siren = TinySound.loadMusic(Paths.get("src", "main", "resources", "sounds", "siren.wav").toFile());
-	}
+    }
 
-	/**
-	 * @return int score obtained in the level.
-	 *
-	 */
-	public int play() {
-		this.wakawaka.setLoopPositionBySeconds(0.5);
-		this.wakawaka.play(true);
+    /**
+     * @return int score obtained in the level.
+     *
+     */
+    public int play() {
+        this.wakawaka.setLoopPositionBySeconds(0.5);
+        this.wakawaka.play(true);
 //		this.siren.setLoopPositionBySeconds(1);
 //		this.siren.play(true);
 
-		while (!ended) {
-			map.updateModel(controller);
-			map.updateView(this.view);
-			if ((!thePacman.hasLives()) && (thePacman.isDead())) {
-				ended = true;
-			}
-			try {
-				Thread.sleep(200);
-			} catch (InterruptedException ex) {
-				ex.printStackTrace();
-			}
-		}
-		this.wakawaka.stop();
-		return 0;
-	}
-
-    boolean gameover() {
-        return ! this.thePacman.hasLives();
+        while (!ended) {
+            map.updateModel(controller);
+            map.updateView(this.view);
+            if ((!thePacman.hasLives()) && (thePacman.isDead())) {
+                ended = true;
+            }
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+            }
+        }
+        this.wakawaka.stop();
+        return 0;
     }
 
-	private class ReachLevelEnd implements Subscriber {
+    boolean gameover() {
+        return !this.thePacman.hasLives();
+    }
 
-		private Level level;
+    private class ReachLevelEnd implements Subscriber {
 
-		public ReachLevelEnd(Level level) {
-			this.level = level;
-		}
+        private Level level;
 
-		@Override
-		public boolean execute() {
-			this.level.ended = this.level.map.getMaze().isEmpty();
-			return true;
-		}
-	}
+        public ReachLevelEnd(Level level) {
+            this.level = level;
+        }
+
+        @Override
+        public boolean execute() {
+            this.level.ended = this.level.map.getMaze().isEmpty();
+            return true;
+        }
+    }
 
 }

@@ -17,7 +17,7 @@ import javax.swing.JFrame;
  * @author fibrizo
  */
 public class ViewsFactory {
-    
+
     private static JFrame frame = new JFrame("Pacman Game");
 
     public static GraphicView createGraphicView(Board board, Controller controller) {
@@ -32,11 +32,11 @@ public class ViewsFactory {
         }
         objectViews.add(new PacmanView(pacman));
         objectViews.add(new FruitView(fruit));
-        
+
         frame.getContentPane().removeAll();
         frame.repaint();
         frame.revalidate();
-        
+
         GraphicView theView = GraphicView.createGraphicView(board.getMaze(), frame);
         theView.addObjectViews(objectViews);
         theView.setKeyListener((KeyListener) controller.getReader());

@@ -29,7 +29,7 @@ public abstract class MovementStrategy {
     }
 
     public abstract Direction getNewDirection(Map<Direction, Cell> allowedDirections);
-    
+
     public void setTarget(Coordinate coord) {
         target = coord;
     }

@@ -66,7 +66,7 @@ public class Ghost extends Character implements IGhost {
     public void move() {
         //Direction nextDirection;
         boolean wasDead = false;
-        boolean isHunter = false;    
+        boolean isHunter = false;
         if (!direction.isEqualTo(new NullDirection())) {
             previousDirection = direction;
         }
@@ -91,7 +91,7 @@ public class Ghost extends Character implements IGhost {
             this.currentCell = theMaze.getCellFromCoordinates(theMaze.getGhostBegining());
             this.position = this.currentCell.getPosition();
         }
-        
+
     }
 
     /**

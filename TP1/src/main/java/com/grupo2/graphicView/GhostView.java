@@ -76,8 +76,8 @@ public class GhostView extends ObjectView {
         //Here can be an NullPointerException thrown
         return "Left";
     }
-    
-        private String returnStringOfPersonality() {
+
+    private String returnStringOfPersonality() {
         if (object.isDumb()) {
             return "Pink";
         }
@@ -93,8 +93,6 @@ public class GhostView extends ObjectView {
         //Here can be an NullPointerException thrown
         return "Red";
     }
-    
-    
 
     @Override
     public void update() {

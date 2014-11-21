@@ -19,7 +19,7 @@ public class ChaseStrategy extends HunterStrategy {
 
     @Override
     public Direction getNewDirection(Map<Direction, Cell> allowedDirections) {
-        
+
         int minDistance = target.distanceTo(allowedDirections.values().iterator().next().getPosition());
         Direction chosenDir = new NullDirection();
 

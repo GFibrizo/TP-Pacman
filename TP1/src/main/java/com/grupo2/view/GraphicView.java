@@ -45,7 +45,7 @@ public class GraphicView extends View {
         ballsPanel.setLayout(new GridLayout(width, height));
         this.p = new JPanel();
         p.setLayout(new OverlayLayout(p));
-        
+
         hud = new HudView(width, height);
 
         ballsViews = new ArrayList<>();
@@ -88,7 +88,7 @@ public class GraphicView extends View {
             //view.setOffset(i);
             p.add(view);
         }
-        
+
         hud.setOpaque(false);
         p.add(hud);
 
@@ -140,7 +140,7 @@ public class GraphicView extends View {
         for (ObjectView view : views) {
             view.update();
         }
-        
+
         hud.update();
 
         for (GraphicBall view : ballsViews) {
