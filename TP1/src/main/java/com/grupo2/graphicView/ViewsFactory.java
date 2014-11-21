@@ -8,9 +8,13 @@ import com.grupo2.pacman.Pacman;
 import com.grupo2.view.GraphicView;
 import com.grupo2.view.ObjectView;
 import java.awt.event.KeyListener;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import java.awt.PopupMenu;
 
 /**
  *
@@ -19,6 +23,17 @@ import javax.swing.JFrame;
 public class ViewsFactory {
 
     private static JFrame frame = new JFrame("Pacman Game");
+    
+    public static void createStartGame() throws InterruptedException {
+        frame.add(new GameStartView());
+        frame.pack();
+        frame.setVisible(true);
+        frame.repaint();
+        frame.revalidate();
+        Thread.sleep(3000);
+        //frame.setVisible(false);
+        frame.getContentPane().removeAll();
+    }
 
     public static GraphicView createGraphicView(Board board, Controller controller) {
         List<Ghost> ghosts = board.getGhosts();

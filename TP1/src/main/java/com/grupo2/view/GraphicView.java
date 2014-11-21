@@ -29,7 +29,7 @@ public class GraphicView extends View {
 
     private GraphicView(Maze maze, JFrame frame) {
         this.maze = maze;
-        this.frame = frame; //new JFrame("Pacman Game");
+        this.frame = frame; 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(ViewConstants.DRAWABLE_WIDTH * maze.getWidth(), ViewConstants.DRAWABLE_HEIGHT * maze.getHeight());
         frame.setLocationRelativeTo(null);
@@ -85,7 +85,6 @@ public class GraphicView extends View {
 
         for (ObjectView view : views) {
             view.setOpaque(false);
-            //view.setOffset(i);
             p.add(view);
         }
 
@@ -105,30 +104,8 @@ public class GraphicView extends View {
 
     @Override
     public void show(int i) {
-
         frame.repaint();
         frame.revalidate();
-
-        /*if (p != null) {
-         frame.remove(p);
-         //p.removeAll();
-         }
-        
-
-        
-         for (ObjectView view : views) {
-         view.setOpaque(false);
-         //view.setOffset(i);
-         p.add(view);
-         }
-
-         p.add(bgPanel);        
-         frame.add(p);
-         frame.pack();
-         frame.setVisible(true);
-        
-         frame.revalidate();
-         frame.repaint();*/
     }
 
     public void setKeyListener(KeyListener kl) {

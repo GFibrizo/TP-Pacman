@@ -28,17 +28,6 @@ public class PacmanView extends ObjectView {
 
     private ImageIcon chooseImage() {
         String directionString = object.getDirection().toString();
-        /*if (object.getDirection().EqualTo(new LeftDirection())) {
-         return new ImageIcon(Paths.get("src", "main", "graphicResources", directionString + count ".png").toString());
-         } else if (object.getDirection().EqualTo(new RightDirection())) {
-         return new ImageIcon(ViewConstants.PACMAN_RIGHT+count);
-         } else if (object.getDirection().EqualTo(new UpDirection())) {
-         return new ImageIcon(ViewConstants.PACMAN_UP);
-         } else if (object.getDirection().EqualTo(new DownDirection())) {
-         return new ImageIcon(ViewConstants.PACMAN_DOWN);
-         } else {
-         return null;
-         }*/
         this.changeSpriteNumber();
         return new ImageIcon(Paths.get("src", "main", "graphicResources", "Pacman" + directionString + String.valueOf(count) + ".png").toString());
     }

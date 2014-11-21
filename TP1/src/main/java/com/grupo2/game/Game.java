@@ -2,6 +2,7 @@ package com.grupo2.game;
 
 import com.grupo2.controller.Controller;
 import com.grupo2.constants.Constants;
+import com.grupo2.graphicView.ViewsFactory;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -20,7 +21,7 @@ public class Game {
     private int levelIndex;
     private int qtyLevels;
 
-    public Game(Controller controller) {
+    public Game(Controller controller) throws InterruptedException {
         this.controller = controller;
         this.levelIndex = 0;
         this.qtyLevels = 0;
@@ -34,6 +35,7 @@ public class Game {
             Logger.getLogger(Game.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         Constants.initializeConstants(Paths.get("src", "main", "resources", "Constants.json"));
+        //ViewsFactory.createStartGame();
     }
 
     private void startLevel() throws ParserConfigurationException {
@@ -59,6 +61,7 @@ public class Game {
             int score = this.actualLevel.play();
             if (this.actualLevel.gameover()) {
                 this.levelIndex = 0;
+                //break;
             }
 
             //if (!showContinueToNextLevel(score)) break;
@@ -70,7 +73,11 @@ public class Game {
             }
             totalScore += score;
         }
-        //showEndGame(totalScore);
+        //showEndGame();
+    }
+    
+    public void showEndGame() {
+        
     }
 
 }
