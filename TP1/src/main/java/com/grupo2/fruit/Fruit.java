@@ -32,6 +32,11 @@ public abstract class Fruit extends Character {
     public Fruit() {
     }
 
+    /**
+     * Sets the random initial cell of the Fruit in the Board.
+     * @param maze
+     * @return Cell, the cell that contains the fruit.
+     */
     private Cell initialCell(Maze maze) {
         int height = maze.getHeight();
         int width = maze.getWidth();
@@ -47,10 +52,12 @@ public abstract class Fruit extends Character {
             aCell = maze.getCellFromCoordinates(coordinate);
             isTransitable = aCell.isTransitable();
         }
-
         return aCell;
     }
 
+    /**
+     * Contains all the logic of the move for the Fruit.
+     */
     @Override
     public void move() {
         Random random = new Random();
@@ -68,6 +75,9 @@ public abstract class Fruit extends Character {
 
     public abstract void eat();
 
+    /** 
+     * Set to alive the state of the fruit again.
+     */
     public void revive() {
         this.alive = true;
     }
