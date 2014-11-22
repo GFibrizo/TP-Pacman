@@ -50,7 +50,7 @@ public class Level {
      * @return int score obtained in the level.
      *
      */
-    public int play() {
+    public int play() throws InterruptedException {
         this.wakawaka.setLoopPositionBySeconds(0.5);
         this.wakawaka.play(true);
 //		this.siren.setLoopPositionBySeconds(1);
@@ -61,6 +61,8 @@ public class Level {
             map.updateView(this.view);
             if ((!thePacman.hasLives()) && (thePacman.isDead())) {
                 ended = true;
+            } else if (thePacman.isDead()) {
+                Thread.sleep(1000);
             }
             try {
                 Thread.sleep(200);

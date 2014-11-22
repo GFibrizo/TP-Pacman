@@ -66,6 +66,7 @@ public class Pacman extends Character implements DrawablePacman {
      */
     @Override
     public void move() {
+        if (!this.alive) alive = true;
         if (this.nextDirection.canGoForward(this.currentCell)) {
             this.direction = this.nextDirection;
             this.nextDirection = new NullDirection();
