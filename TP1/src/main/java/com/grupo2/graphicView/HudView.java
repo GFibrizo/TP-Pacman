@@ -35,7 +35,6 @@ public class HudView extends ObjectView {
         this.x = 1;
         this.y = 0; //h - 1;
         width = (w * ViewConstants.DRAWABLE_WIDTH) / 3;
-        height = height;
         ImageIcon hudBackground = new ImageIcon(Paths.get("src", "main", "graphicResources", "white.png").toString());
         this.image = hudBackground.getImage();
         setPreferredSize(new Dimension(width, height));

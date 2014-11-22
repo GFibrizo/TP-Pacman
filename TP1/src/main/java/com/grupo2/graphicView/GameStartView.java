@@ -11,15 +11,12 @@ import java.awt.Image;
 import java.nio.file.Paths;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-import javax.swing.JPopupMenu;
-import java.awt.PopupMenu;
 
 /**
  *
  * @author fibrizo
  */
-public class GameStartView extends JPanel {
-       private final Image bImage;
+public class GameStartView extends GamePresentationView {
 
     /**
      * Constructor of the Background class.
@@ -27,19 +24,11 @@ public class GameStartView extends JPanel {
      * @param height of image
      */
     public GameStartView() {
-        int width = 640;
-        int height = 480;
-        ImageIcon start = new ImageIcon(Paths.get("src", "main", "graphicResources", "pacman-start.png").toString());
-        this.bImage = start.getImage();
-        this.setPreferredSize(new Dimension(width, height));
+        super();
     }
 
-    /**
-     * Overrided method for painting the image set in bImage.
-     * @param g 
-     */
     @Override
-    public void paintComponent(Graphics g) {
-        g.drawImage(this.bImage, 0, 0, this);
+    protected ImageIcon initialize() {
+        return new ImageIcon(Paths.get("src", "main", "graphicResources", "pacman-start.png").toString());
     }
 }

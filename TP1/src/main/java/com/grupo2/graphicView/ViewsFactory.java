@@ -28,15 +28,25 @@ public class ViewsFactory {
     
     public static void createStartGame() throws InterruptedException {
         start = new JFrame("Start");
-        frame.setSize(800, 600);
-        start.setLocationByPlatform(true);
-        //start.setLocationRelativeTo(null);
+        start.setSize(640, 480);
+        start.setLocationRelativeTo(null);
         start.add(new GameStartView());
         start.pack();
         start.setVisible(true);
         start.repaint();
         start.revalidate();
         Thread.sleep(1000);
+    }
+    
+    private static void createEndGame() throws InterruptedException {
+        start = new JFrame("Start");
+        start.setSize(640, 480);
+        start.setLocationRelativeTo(null);
+        start.add(new GameStartView());
+        start.pack();
+        start.setVisible(false);
+        start.repaint();
+        start.revalidate();
     }
 
     public static GraphicView createGraphicView(Board board, Controller controller) {
