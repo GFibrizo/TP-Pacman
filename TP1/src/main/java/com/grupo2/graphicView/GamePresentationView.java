@@ -41,6 +41,6 @@ public abstract class GamePresentationView extends JPanel {
      */
     @Override
     public void paintComponent(Graphics g) {
-        g.drawImage(this.bImage, 0, 0, 640, 480, this);
+        g.drawImage(this.bImage, 0, 0, width, height, this);
     }
 }

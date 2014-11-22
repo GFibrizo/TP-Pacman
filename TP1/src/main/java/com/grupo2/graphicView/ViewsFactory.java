@@ -8,14 +8,9 @@ import com.grupo2.pacman.Pacman;
 import com.grupo2.view.GraphicView;
 import com.grupo2.view.ObjectView;
 import java.awt.event.KeyListener;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import java.awt.PopupMenu;
-import java.awt.Dimension;
 
 /**
  *
@@ -38,15 +33,26 @@ public class ViewsFactory {
         Thread.sleep(1000);
     }
     
-    private static void createEndGame() throws InterruptedException {
-        start = new JFrame("Start");
-        start.setSize(640, 480);
+    private static void createEndGame() {
+        start.getContentPane().removeAll();
+        start.setTitle("Game Over");
+        start.setSize(600, 600);
         start.setLocationRelativeTo(null);
-        start.add(new GameStartView());
+        start.add(new GameEndView());
         start.pack();
         start.setVisible(false);
         start.repaint();
         start.revalidate();
+    }
+    
+    public static void showEndGame() throws InterruptedException {
+        start.setVisible(true);
+        frame.setVisible(false);
+        start.repaint();
+        start.revalidate();
+        Thread.sleep(3000);
+        frame.dispose();
+        start.dispose();
     }
 
     public static GraphicView createGraphicView(Board board, Controller controller) {
@@ -71,7 +77,7 @@ public class ViewsFactory {
         theView.setKeyListener((KeyListener) controller.getReader());
         theView.initialize();
         start.setVisible(false);
-        start.doLayout();
+        createEndGame();
         return theView;
     }
 

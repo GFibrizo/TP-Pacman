@@ -49,7 +49,7 @@ public class Game {
         return new Level(mazePath, characterPath, controller);
     }
 
-    public void play() {
+    public void play() throws InterruptedException {
         boolean keepPlaying = true;
         int totalScore = 0;
         try {
@@ -60,8 +60,8 @@ public class Game {
         while (keepPlaying) {
             int score = this.actualLevel.play();
             if (this.actualLevel.gameover()) {
-                this.levelIndex = 0;
-                //break;
+                //this.levelIndex = 0;
+                break;
             }
 
             //if (!showContinueToNextLevel(score)) break;
@@ -73,11 +73,11 @@ public class Game {
             }
             totalScore += score;
         }
-        //showEndGame();
+        showEndGame();
     }
     
-    public void showEndGame() {
-        
+    private void showEndGame() throws InterruptedException {
+        ViewsFactory.showEndGame();
     }
 
 }

@@ -5,8 +5,10 @@
  */
 package com.grupo2.graphicView;
 
+import java.awt.Dimension;
 import java.nio.file.Paths;
 import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 
 /**
  *
@@ -24,6 +26,8 @@ public class GameEndView extends GamePresentationView {
 
     @Override
     protected ImageIcon initialize() {
+        width = 600;
+        height = 600;
         return new ImageIcon(Paths.get("src", "main", "graphicResources", "pacman-game-over.png").toString());
     }
 }
