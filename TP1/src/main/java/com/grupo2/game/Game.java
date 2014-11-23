@@ -60,7 +60,6 @@ public class Game {
         while (keepPlaying) {
             int score = this.actualLevel.play();
             if (this.actualLevel.gameover()) {
-                //this.levelIndex = 0;
                 break;
             }
 

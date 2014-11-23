@@ -6,7 +6,7 @@ import com.grupo2.constants.Constants;
 import com.grupo2.ghost.Ghost;
 import com.grupo2.ghostFactory.GhostFactory;
 import com.grupo2.maze.MazeXMLBuilder;
-import com.grupo2.maze.RawMaze;
+import com.grupo2.maze.Maze;
 import com.grupo2.pacman.Pacman;
 import java.nio.file.Paths;
 import static org.junit.Assert.assertTrue;
@@ -30,7 +30,7 @@ public class FirstScenarioTest {
     public void setUp() {
         Constants.setInitialVelocity(1);
         mazeBuilder = new MazeXMLBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "Laberinto.xml"));
-        RawMaze maze = mazeBuilder.buildMaze();
+        Maze maze = mazeBuilder.buildMaze();
         //anOnlyRightGhost = Ghost.createOnlyRightGhost();
         anOnlyRightGhost = GhostFactory.createOnlyRightGhost();
         Cell initialGhostCell = maze.getCellFromCoordinates(new Coordinate(0, 1));

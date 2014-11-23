@@ -67,8 +67,8 @@ public class MazeXMLBuilder implements MazeBuilder {
     }
 
     @Override
-    public RawMaze buildMaze() {
-        RawMaze maze = null;
+    public Maze buildMaze() {
+        Maze maze = null;
         try {
             DocumentBuilder dBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
             Document doc;
@@ -79,7 +79,7 @@ public class MazeXMLBuilder implements MazeBuilder {
             int height = Integer.parseInt(root.getAttribute("alto"));
             Coordinate initPacman = this.getCoords(root.getAttribute("inicioPacman"));
             Coordinate initGhosts = this.getCoords(root.getAttribute("inicioFantasmas"));
-            maze = new RawMaze(height, width, initPacman, initGhosts);
+            maze = new Maze(height, width, initPacman, initGhosts);
 
             width = Integer.parseInt(root.getAttribute("nodoAncho"));
             height = Integer.parseInt(root.getAttribute("nodoAlto"));

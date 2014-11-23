@@ -11,5 +11,5 @@ public interface MazeBuilder {
      *
      * @return the builded maze
      */
-    RawMaze buildMaze();
+    Maze buildMaze();
 }

@@ -48,11 +48,12 @@ public class Level {
 //		this.siren = TinySound.loadMusic(Paths.get("src", "main", "resources", "sounds", "siren.wav").toFile());
         this.startLevel = TinySound.loadMusic(Paths.get("src", "main", "resources", "sounds", "pacman_beginning.wav").toFile());
         this.death = TinySound.loadMusic(Paths.get("src", "main", "resources", "sounds", "pacman_death.wav").toFile());
-        map.subscribe(Board.GameEvent.PACMANCOLLIDEGHOST, new playDeathMusicCommand(this));
+        map.subscribe(Board.GameEvent.PACMANCOLLIDEHUNTER, new playDeathMusicCommand(this));
     }
 
     /**
      * @return int score obtained in the level.
+     * @throws java.lang.InterruptedException
      *
      */
     public int play() throws InterruptedException {
