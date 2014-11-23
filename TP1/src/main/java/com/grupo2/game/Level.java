@@ -28,6 +28,8 @@ public class Level {
     private boolean ended;
     private View view;
     private final Music wakawaka;
+    private final Music startLevel;
+    private final Music death;
 //	private final Music siren;
 
     public Level(Path mazeFilePath, Path charactersFilePath, Controller controller) throws ParserConfigurationException {
@@ -44,6 +46,9 @@ public class Level {
 
         this.wakawaka = TinySound.loadMusic(Paths.get("src", "main", "resources", "sounds", "wakawaka.wav").toFile());
 //		this.siren = TinySound.loadMusic(Paths.get("src", "main", "resources", "sounds", "siren.wav").toFile());
+        this.startLevel = TinySound.loadMusic(Paths.get("src", "main", "resources", "sounds", "pacman_beginning.wav").toFile());
+        this.death = TinySound.loadMusic(Paths.get("src", "main", "resources", "sounds", "pacman_death.wav").toFile());
+        map.subscribe(Board.GameEvent.PACMANCOLLIDEGHOST, new playDeathMusicCommand(this));
     }
 
     /**
@@ -51,6 +56,9 @@ public class Level {
      *
      */
     public int play() throws InterruptedException {
+        this.startLevel.play(true);
+        Thread.sleep(4200);
+        this.startLevel.stop();
         this.wakawaka.setLoopPositionBySeconds(0.5);
         this.wakawaka.play(true);
 //		this.siren.setLoopPositionBySeconds(1);
@@ -62,7 +70,6 @@ public class Level {
             if ((!thePacman.hasLives()) && (thePacman.isDead())) {
                 ended = true;
             } else if (thePacman.isDead()) {
-                Thread.sleep(1000);
             }
             try {
                 Thread.sleep(200);
@@ -92,4 +99,28 @@ public class Level {
         }
     }
 
+    private class playDeathMusicCommand implements Subscriber {
+
+        private Level level;
+
+        public playDeathMusicCommand(Level level) {
+            this.level = level;
+        }
+
+        @Override
+        public void execute() {
+            level.wakawaka.pause();
+            level.death.play(true);
+            try {
+            Thread.sleep(1200);
+            } catch (InterruptedException ex) {
+                ex.printStackTrace();
+            }
+            level.death.stop();
+            level.wakawaka.play(true);
+        }
+    }
+    
+    
+    
 }
