@@ -42,6 +42,11 @@ public class CharacterXMLBuilder implements CharacterBuilder {
     private ArrayList<Ghost> ghosts;
     private Pacman pacman;
 
+    /**
+     * Constructor of the CharacterXMLBuilder class.
+     * @param path
+     * @throws ParserConfigurationException 
+     */
     public CharacterXMLBuilder(Path path) throws ParserConfigurationException {
         this.path = path;
         try {
@@ -81,6 +86,12 @@ public class CharacterXMLBuilder implements CharacterBuilder {
         this.obtainCharactersFromXML();
     }
 
+    /**
+     * Constructs a character from the Element readed from the XML File.
+     * @param eElement
+     * @param isGhost
+     * @return the character constructed.
+     */
     private Character constructCharacter(Element eElement, boolean isGhost) {
         int y = Integer.parseInt(eElement.getAttribute("fila"));
         int x = Integer.parseInt(eElement.getAttribute("columna"));
@@ -91,12 +102,15 @@ public class CharacterXMLBuilder implements CharacterBuilder {
         }
 
         Coordinate coord = new Coordinate(x, y);
-        //System.out.print(hash.get(eElement.getAttribute("personalidad")).apply(null).getClass().toString());
         Personality pers = (Personality) hash.get(eElement.getAttribute("personalidad")).apply(null);
         GhostState state = (GhostState) hash.get(eElement.getAttribute("estado")).apply(null);
         return GhostFactory.createGhost(state, pers, coord, dir);
     }
 
+    /**
+     * Reads and Parse the XML file obtaining and constructing characters from it.
+     * The characters constructed are saved in the current instance of this class.
+     */
     private void obtainCharactersFromXML() {
         try {
             File xmlFile = path.toFile();
@@ -116,40 +130,14 @@ public class CharacterXMLBuilder implements CharacterBuilder {
         } catch (SAXException | IOException ex) {
             Logger.getLogger(MazeXMLBuilder.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        /*try {
-         //System.out.print(path);
-         File xmlFile = path.toFile();
-         doc = dBuilder.parse(xmlFile);
-         doc.getDocumentElement().normalize();
-         Element root = doc.getDocumentElement();
-         int x = Integer.parseInt(root.getAttribute("fila"));
-         int y = Integer.parseInt(root.getAttribute("columna"));
-         String direction = root.getAttribute("sentido");
-         Direction dir;
-         dir = getDirection(direction);
-         this.pacman = Pacman.createPacman(x, y, dir, null);
-
-         NodeList nList = doc.getElementsByTagName("fantasma");
-         this.ghosts = new ArrayList<>();
-         for (int i = 0; i < nList.getLength(); i++) {
-         Node nNode = nList.item(i);
-         if (nNode.getNodeType() == Node.ELEMENT_NODE) {
-         Element eElement = (Element) nNode;
-         x = Integer.parseInt(eElement.getAttribute("fila"));
-         y = Integer.parseInt(eElement.getAttribute("columna"));
-         direction = eElement.getAttribute("sentido");
-         dir = getDirection(direction);
-         Coordinate coord = new Coordinate(x, y);
-         this.ghosts.add(GhostFactory.createGhost(null, null, coord, dir));
-         //this.ghosts.add(new Ghost(x, y, dir));
-         }
-         }
-         } catch (SAXException | IOException ex) {
-         Logger.getLogger(MazeXMLBuilder.class.getName()).log(Level.SEVERE, null, ex);
-         }*/
     }
 
+    /**
+     * Process the string direction and returns the corresponding Direction
+     * instance.
+     * @param direction
+     * @return the correspondig direction instance. 
+     */
     private Direction getDirection(String direction) {
         Direction dir;
         switch (direction) {
@@ -169,11 +157,17 @@ public class CharacterXMLBuilder implements CharacterBuilder {
         return dir;
     }
 
+    /**
+     * @return the Pacman constructed. 
+     */
     @Override
     public Pacman getPacman() {
         return this.pacman;
     }
 
+    /**
+     * @return a list of the ghost constructed.
+     */
     @Override
     public ArrayList<Ghost> getGhosts() {
         return this.ghosts;

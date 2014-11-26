@@ -1,6 +1,5 @@
 package com.grupo2.balls;
 
-import com.grupo2.interfaces.Drawable;
 
 /**
  *
@@ -8,7 +7,14 @@ import com.grupo2.interfaces.Drawable;
  */
 public interface Ball {
 
+    /**
+     * @return int points obtained for eating the ball. 
+     */
     public int isEaten();
 
+    /**
+     * @return boolean, true or false depending of the type of ball.
+     * true for LittleBall and BigBall. false for NullBall.
+     */
     public boolean isEatable();
 }
