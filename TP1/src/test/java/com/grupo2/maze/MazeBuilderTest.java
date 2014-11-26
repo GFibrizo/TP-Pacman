@@ -18,14 +18,14 @@ import com.grupo2.character.Direction;
  */
 public class MazeBuilderTest {
 
-    private MazeXMLBuilder mazeBuilder;
+    private MazeBuilder mazeBuilder;
 
     public MazeBuilderTest() {
     }
 
     @Before
     public void setUp() {
-        mazeBuilder = new MazeXMLBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "Laberinto.xml"));
+        mazeBuilder = new MazeBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "Laberinto.xml"));
     }
 
     /**

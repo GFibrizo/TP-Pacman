@@ -2,12 +2,12 @@ package com.grupo2.scenarios;
 
 import com.grupo2.board.Board;
 import com.grupo2.character.CharacterBuilder;
-import com.grupo2.character.CharacterXMLBuilder;
+import com.grupo2.character.CharacterBuilder;
 import com.grupo2.character.Coordinate;
 import com.grupo2.controller.Controller;
 import com.grupo2.directions.RightDirection;
 import com.grupo2.maze.Maze;
-import com.grupo2.maze.MazeXMLBuilder;
+import com.grupo2.maze.MazeBuilder;
 import com.grupo2.pacman.Pacman;
 import java.nio.file.Paths;
 import javax.xml.parsers.ParserConfigurationException;
@@ -41,8 +41,8 @@ public class SecondScenarioTest {
 
     @Before
     public void setUp() throws ParserConfigurationException {
-        MazeXMLBuilder mazeBuilder = new MazeXMLBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "Laberinto.xml"));
-        CharacterBuilder charBuilder = new CharacterXMLBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "PersonajePacmanSolo.xml"));
+        MazeBuilder mazeBuilder = new MazeBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "Laberinto.xml"));
+        CharacterBuilder charBuilder = new CharacterBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "PersonajePacmanSolo.xml"));
         map = Board.createBoard(mazeBuilder, charBuilder);
         map.subscribeSubscribers();
         thePacman = map.getPacman();

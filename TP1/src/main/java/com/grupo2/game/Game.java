@@ -21,6 +21,11 @@ public class Game {
     private int levelIndex;
     private int qtyLevels;
 
+    /**
+     * The constructor of the class Game
+     * @param controller of the type Controller. That controls the Pacman movements.
+     * @throws InterruptedException 
+     */
     public Game(Controller controller) throws InterruptedException {
         this.controller = controller;
         this.levelIndex = 0;
@@ -38,17 +43,31 @@ public class Game {
         ViewsFactory.createStartGame();
     }
 
+    /**
+     * Starts the next level. In case of being at the begginig of the game, the
+     * next level is the first.
+     * @throws ParserConfigurationException 
+     */
     private void startLevel() throws ParserConfigurationException {
         this.actualLevel = getNextLevel();
         this.levelIndex = (this.levelIndex + 1) % this.qtyLevels;
     }
 
+    /**
+     * Gets the instance of the next level readed and parsed from the XML files.
+     * @return the instance of the next level of type Level.
+     * @throws ParserConfigurationException 
+     */
     private Level getNextLevel() throws ParserConfigurationException {
         Path mazePath = Paths.get("src", "main", "resources", "Levels", "MazeLevel" + String.valueOf(this.levelIndex) + ".xml");
         Path characterPath = Paths.get("src", "main", "resources", "Levels", "CharactersLevel" + String.valueOf(this.levelIndex) + ".xml");
         return new Level(mazePath, characterPath, controller);
     }
 
+    /**
+     * The game is played.
+     * @throws InterruptedException 
+     */
     public void play() throws InterruptedException {
         boolean keepPlaying = true;
         int totalScore = 0;
@@ -75,6 +94,10 @@ public class Game {
         showEndGame();
     }
     
+    /**
+     * Shows by a window an image that represents the end of the game.
+     * @throws InterruptedException 
+     */
     private void showEndGame() throws InterruptedException {
         ViewsFactory.showEndGame();
     }

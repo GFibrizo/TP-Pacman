@@ -3,11 +3,10 @@ package com.grupo2.game;
 import com.grupo2.board.Board;
 import com.grupo2.board.Board.GameEvent;
 import com.grupo2.character.CharacterBuilder;
-import com.grupo2.character.CharacterXMLBuilder;
 import com.grupo2.controller.Controller;
 import com.grupo2.eventHandling.Subscriber;
 import com.grupo2.graphicView.ViewsFactory;
-import com.grupo2.maze.MazeXMLBuilder;
+import com.grupo2.maze.MazeBuilder;
 import com.grupo2.pacman.Pacman;
 import com.grupo2.view.View;
 import java.nio.file.Path;
@@ -18,7 +17,7 @@ import kuusisto.tinysound.TinySound;
 
 /**
  *
- * @author
+ * @author fibrizo
  */
 public class Level {
 
@@ -32,9 +31,16 @@ public class Level {
     private final Music death;
 //	private final Music siren;
 
+    /**
+     * The constructor of the Level class.
+     * @param mazeFilePath
+     * @param charactersFilePath
+     * @param controller
+     * @throws ParserConfigurationException 
+     */
     public Level(Path mazeFilePath, Path charactersFilePath, Controller controller) throws ParserConfigurationException {
-        MazeXMLBuilder mazeBuilder = new MazeXMLBuilder(mazeFilePath);
-        CharacterBuilder charBuilder = new CharacterXMLBuilder(charactersFilePath);
+        MazeBuilder mazeBuilder = new MazeBuilder(mazeFilePath);
+        CharacterBuilder charBuilder = new CharacterBuilder(charactersFilePath);
         map = Board.createBoard(mazeBuilder, charBuilder);
         map.subscribeSubscribers();
         map.subscribe(GameEvent.PACMANEATSLITTLEBALL, new ReachLevelEnd(this));
@@ -52,9 +58,9 @@ public class Level {
     }
 
     /**
+     * The Level is played.
      * @return int score obtained in the level.
      * @throws java.lang.InterruptedException
-     *
      */
     public int play() throws InterruptedException {
         this.startLevel.play(true);
@@ -82,10 +88,22 @@ public class Level {
         return 0;
     }
 
+    /** 
+     * @return true if the level is over (i.e. the Pacman has no lives left).
+     * returns false otherwise.
+     */
     boolean gameover() {
         return !this.thePacman.hasLives();
     }
 
+    
+    /*************************************************************************/
+    /*************************************************************************/    
+
+    /**
+     * Private class of the class Level. It's a Command that has the logic of
+     * the things that has to happen when the end of level is reached.
+     */
     private class ReachLevelEnd implements Subscriber {
 
         private Level level;
@@ -100,6 +118,15 @@ public class Level {
         }
     }
 
+
+    /*************************************************************************/
+    /*************************************************************************/
+    
+    /**
+     * Private class of the class Level. It's a Command that has the logic of
+     * the things (related to the music) that has to happen when the Pacman is 
+     * dead.
+     */
     private class playDeathMusicCommand implements Subscriber {
 
         private Level level;
@@ -122,6 +149,5 @@ public class Level {
         }
     }
     
-    
-    
+
 }
