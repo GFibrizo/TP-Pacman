@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.grupo2.controller;
 
 import com.grupo2.character.Direction;
@@ -20,7 +15,7 @@ import java.awt.event.KeyListener;
  */
 public class KeyBoardReader implements InputReader, KeyListener {
 
-    private Direction readedDirection;
+	private Direction readedDirection;
 
     /**
      * @return Direction, the direction obtained from the processing of the

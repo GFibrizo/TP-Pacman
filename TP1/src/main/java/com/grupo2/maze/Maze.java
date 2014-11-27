@@ -5,8 +5,8 @@ import com.grupo2.character.Coordinate;
 import com.grupo2.eventHandling.Publisher;
 import com.grupo2.character.Positionable;
 import com.grupo2.view.DrawableNode;
-import java.util.ArrayList;
 import com.grupo2.view.DrawableMaze;
+import java.util.ArrayList;
 
 /**
  *
@@ -74,13 +74,8 @@ public class Maze implements DrawableMaze {
 
     }
 
-    @Override
     public Coordinate getPacmanBegining() {
         return this.initPacman;
-    }
-
-    public Coordinate getGhostBegining() {
-        return this.initGhost;
     }
 
     public void setNodeWidth(int nodeWidth) {
@@ -95,6 +90,7 @@ public class Maze implements DrawableMaze {
         return map.get(coord.getY()).get(coord.getX());
     }
 
+
     public boolean areInTheSameCell(Positionable entity, Positionable other) {
         Cell entityCell = entity.getCurrentCell();
         Cell otherCell = other.getCurrentCell();
@@ -105,6 +101,7 @@ public class Maze implements DrawableMaze {
     public int getWidth() {
         return this.width;
     }
+
 
     @Override
     public int getHeight() {

@@ -55,7 +55,7 @@ public class Ghost extends Character implements DrawableGhost {
      * according to its actual state.
      */
     @Override
-    public void move() {
+    public boolean move() {
         boolean wasDead = false;
         boolean isHunter = false;
         if (!direction.isEqualTo(new NullDirection())) {
@@ -63,13 +63,13 @@ public class Ghost extends Character implements DrawableGhost {
         }
         Map<Direction, Cell> directions = this.allowedDirections();
         if (!state.canMove()) {
-            return;
+            return false;
         }
         if (directions.isEmpty()) {
             previousDirection = new NullDirection();
-            return;
+            return false;
         }
-        
+
         direction = state.getNewDirection(personality, directions);
         this.currentCell = direction.stepForward(this.currentCell);
         this.position = this.currentCell.getPosition();
@@ -84,9 +84,15 @@ public class Ghost extends Character implements DrawableGhost {
 
         if ((wasDead) && (isHunter)) {
             Maze theMaze = Board.getInstance().getMaze();
-            this.currentCell = theMaze.getCellFromCoordinates(theMaze.getGhostBegining());
+            this.currentCell = theMaze.getCellFromCoordinates(theMaze.getGhostsBegining());
             this.position = this.currentCell.getPosition();
         }
+        return true;
+    }
+
+    @Override
+    public void die() {
+        this.state = this.state.die();
     }
 
     /**
@@ -95,19 +101,6 @@ public class Ghost extends Character implements DrawableGhost {
     @Override
     public boolean isDead() {
         return state.isDead();
-    }
-
-    @Override
-    public void die() {
-        this.state = this.state.die();
-    }
-
-    public void convertToPrey() {
-        this.state = state.convertToPrey();
-    }
-
-    public void onCollisionWithPacman() {
-        this.state = state.collideWithPacman(); 
     }
 
     public int getVision() {
@@ -125,6 +118,19 @@ public class Ghost extends Character implements DrawableGhost {
             personality.stopPacmanChase();
         }
     }
+    
+    public void convertToPrey() {
+        this.state = state.convertToPrey();
+    }
+    
+    
+    public void onCollisionWithPacman() {
+        this.state = state.collideWithPacman(); 
+    }
+    
+    public Coordinate getInitialPosition() {
+        return this.position;
+    }
 
     @Override
     public int getNumber() {
@@ -141,12 +147,13 @@ public class Ghost extends Character implements DrawableGhost {
         return this.personality;
     }
 
-    public void setInitialPosition(Coordinate coord) {
-        this.position = coord;
+    @Override
+    public Coordinate getPosition() {
+        return this.position;
     }
 
-    public Coordinate getInitialPosition() {
-        return this.position;
+    public void setPosition(Coordinate coord) {
+        this.position = coord;
     }
 
     public boolean isPrey() {

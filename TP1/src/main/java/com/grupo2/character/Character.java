@@ -20,7 +20,6 @@ public abstract class Character implements Positionable {
     protected Direction previousDirection;
     protected boolean alive;
 
-    
     /**
      * Protected constructor of the class Character. Used by derivative classes.
      */
@@ -35,11 +34,11 @@ public abstract class Character implements Positionable {
     /**
      * Define the way in that the characters will move, will be overriden.
      */
-    public abstract void move();
+    public abstract boolean move();
 
     /**
-     * @return true is the character is dead. False otherwise.
-     * Will be overriden.
+     * @return true is the character is dead. False otherwise. Will be
+     * overriden.
      */
     public abstract boolean isDead();
 
@@ -50,9 +49,9 @@ public abstract class Character implements Positionable {
     public Coordinate getPosition() {
         return this.currentCell.getPosition();
     }
-    
+
     /**
-     * @return the current direction of the character (of class Direction). 
+     * @return the current direction of the character (of class Direction).
      */
     public Direction getDirection() {
         return this.direction;
@@ -65,6 +64,7 @@ public abstract class Character implements Positionable {
 
     /**
      * Sets the current direction.
+     *
      * @param dir of type Direction
      */
     public void setDirection(Direction dir) {
@@ -73,6 +73,7 @@ public abstract class Character implements Positionable {
 
     /**
      * Sets the current Cell.
+     *
      * @param cell of type Cell
      */
     public void setCurrentCell(Cell cell) {
@@ -80,7 +81,7 @@ public abstract class Character implements Positionable {
     }
 
     /**
-     * @return the current Cell. 
+     * @return the current Cell.
      */
     @Override
     public Cell getCurrentCell() {
@@ -88,9 +89,9 @@ public abstract class Character implements Positionable {
     }
 
     /**
-     * @return a Map wiht the pair <Direction, Cell> as <key, value> respectively,
-     * where the keys are the direction allowed to go, and the values are the 
-     * Cells related with that direction.
+     * @return a Map wiht the pair <Direction, Cell> as <key, value>
+     * respectively, where the keys are the direction allowed to go, and the
+     * values are the Cells related with that direction.
      */
     protected Map<Direction, Cell> allowedDirections() {
 
