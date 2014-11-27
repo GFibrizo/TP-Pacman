@@ -120,11 +120,6 @@ public class Board extends Publisher {
 
             Subscriber sub = new GhostIsCloseOrFarFromPacmanCommand(ghost);
             PacmanArea.getInstance().subscribe(PacmanArea.VisionEvent.GHOSTCHANGESPOSITION, sub);
-            //Subscriber sub = new GhostIsCloseToPacmanCommand(ghost);
-            //PacmanArea.getInstance().subscribe(PacmanArea.VisionEvent.GHOST_IS_INSIDE, sub);
-            
-            //sub = new GhostIsFarFromPacmanCommand(ghost);
-            //PacmanArea.getInstance().subscribe(PacmanArea.VisionEvent.GHOST_IS_OUTSIDE, sub);
         }
         this.subscribe(GameEvent.PACMANEATSLITTLEBALL, new MazeBallEaten(this.maze));
         this.subscribe(GameEvent.PACMANEATSBIGBALL, new MazeBallEaten(this.maze));
