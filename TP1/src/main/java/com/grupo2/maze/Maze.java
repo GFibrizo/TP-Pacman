@@ -90,7 +90,6 @@ public class Maze implements DrawableMaze {
         return map.get(coord.getY()).get(coord.getX());
     }
 
-
     public boolean areInTheSameCell(Positionable entity, Positionable other) {
         Cell entityCell = entity.getCurrentCell();
         Cell otherCell = other.getCurrentCell();
@@ -101,7 +100,6 @@ public class Maze implements DrawableMaze {
     public int getWidth() {
         return this.width;
     }
-
 
     @Override
     public int getHeight() {

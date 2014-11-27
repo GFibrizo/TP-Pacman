@@ -17,11 +17,14 @@ import javax.swing.JPanel;
  * @author Familia
  */
 public abstract class GamePresentationView extends JPanel {
+
     protected Image bImage;
     protected int width;
     protected int height;
+
     /**
      * Constructor of the Background class.
+     *
      * @param width of image
      * @param height of image
      */
@@ -34,10 +37,11 @@ public abstract class GamePresentationView extends JPanel {
     }
 
     protected abstract ImageIcon initialize();
-    
+
     /**
      * Overrided method for painting the image set in bImage.
-     * @param g 
+     *
+     * @param g
      */
     @Override
     public void paintComponent(Graphics g) {

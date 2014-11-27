@@ -12,6 +12,7 @@ public class Controller {
 
     /**
      * Constructor of the class Controller.
+     *
      * @param reader of type InputReader
      */
     public Controller(InputReader reader) {

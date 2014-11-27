@@ -8,7 +8,7 @@ import com.grupo2.eventHandling.Subscriber;
  * @author fibrizo
  */
 public class GhostConvertToPreyCommand implements Subscriber {
-    
+
     private Ghost ghost;
 
     public GhostConvertToPreyCommand(Ghost ghost) {

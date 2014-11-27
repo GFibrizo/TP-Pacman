@@ -15,11 +15,11 @@ import java.awt.event.KeyListener;
  */
 public class KeyBoardReader implements InputReader, KeyListener {
 
-	private Direction readedDirection;
+    private Direction readedDirection;
 
     /**
-     * @return Direction, the direction obtained from the processing of the
-     * key events.
+     * @return Direction, the direction obtained from the processing of the key
+     * events.
      */
     @Override
     public Direction getNextDirection() {
@@ -28,7 +28,8 @@ public class KeyBoardReader implements InputReader, KeyListener {
 
     /**
      * Detection and processing of typed keys events.
-     * @param e 
+     *
+     * @param e
      */
     @Override
     public void keyTyped(KeyEvent e) {
@@ -37,7 +38,8 @@ public class KeyBoardReader implements InputReader, KeyListener {
 
     /**
      * Detection and processing of pressed keys events.
-     * @param e 
+     *
+     * @param e
      */
     @Override
     public void keyPressed(KeyEvent e) {
@@ -46,14 +48,16 @@ public class KeyBoardReader implements InputReader, KeyListener {
 
     /**
      * Detection and processing of released keys events.
-     * @param e 
+     *
+     * @param e
      */
     @Override
     public void keyReleased(KeyEvent e) {
     }
-    
+
     /**
      * Detection and processing of the key events.
+     *
      * @param e of type KeyEvent, the incoming event sent from the keyboard.
      */
     private void detectKey(KeyEvent e) {

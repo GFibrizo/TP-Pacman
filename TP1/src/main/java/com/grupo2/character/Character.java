@@ -34,7 +34,7 @@ public abstract class Character implements Positionable {
     /**
      * Define the way in that the characters will move, will be overriden.
      */
-    public abstract boolean move();
+    public abstract void move();
 
     /**
      * @return true is the character is dead. False otherwise. Will be
@@ -43,7 +43,7 @@ public abstract class Character implements Positionable {
     public abstract boolean isDead();
 
     /**
-     * @return the current position of the character. 
+     * @return the current position of the character.
      */
     @Override
     public Coordinate getPosition() {

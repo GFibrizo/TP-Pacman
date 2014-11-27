@@ -29,7 +29,7 @@ public class GraphicView extends View {
 
     private GraphicView(Maze maze, JFrame frame) {
         this.maze = maze;
-        this.frame = frame; 
+        this.frame = frame;
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(ViewConstants.DRAWABLE_WIDTH * maze.getWidth(), ViewConstants.DRAWABLE_HEIGHT * maze.getHeight());
         frame.setLocationRelativeTo(null);
@@ -57,13 +57,15 @@ public class GraphicView extends View {
             int y = cell.getCoords().getY();
 
             if (transitable) {
-                if (cell.hasBigBall())
+                if (cell.hasBigBall()) {
                     ballView = new GraphicBigBall((BigBall) cell.getBall(), x, y);
-                else if (cell.hasLittleBall())
+                } else if (cell.hasLittleBall()) {
                     ballView = new GraphicLittleBall((LittleBall) cell.getBall(), x, y);
+                }
             }
-            if (ballView != null)
+            if (ballView != null) {
                 ballsViews.add(ballView);
+            }
             bgPanel.add(node);
         });
 
@@ -79,15 +81,15 @@ public class GraphicView extends View {
             view.setOpaque(false);
             p.add(view);
         }
-        
+
         hud.setOpaque(false);
         p.add(hud);
-        
+
         for (GraphicBall view : ballsViews) {
             view.setOpaque(false);
             p.add(view);
         }
-        
+
         p.add(bgPanel);
         frame.add(p);
         frame.pack();

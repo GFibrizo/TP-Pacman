@@ -15,8 +15,10 @@ import javax.swing.JPanel;
  * @author Familia
  */
 public class GameEndView extends GamePresentationView {
-        /**
+
+    /**
      * Constructor of the Background class.
+     *
      * @param width of image
      * @param height of image
      */

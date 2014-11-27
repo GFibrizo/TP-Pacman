@@ -14,8 +14,8 @@ import com.grupo2.eventHandling.Subscriber;
  * @author fibrizo
  */
 public class GhostIsCloseOrFarFromPacmanCommand implements Subscriber {
-    
-        private Ghost ghost;
+
+    private Ghost ghost;
 
     public GhostIsCloseOrFarFromPacmanCommand(Ghost ghost) {
         this.ghost = ghost;
@@ -23,10 +23,11 @@ public class GhostIsCloseOrFarFromPacmanCommand implements Subscriber {
 
     @Override
     public void execute() {
-        if (PacmanArea.isInside(ghost))
+        if (PacmanArea.isInside(ghost)) {
             ghost.beginPacmanChase();
-        else
+        } else {
             ghost.stopPacmanChase();
+        }
     }
-    
+
 }

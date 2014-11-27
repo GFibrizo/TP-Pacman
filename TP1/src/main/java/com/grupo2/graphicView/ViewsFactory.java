@@ -20,7 +20,7 @@ public class ViewsFactory {
 
     private static JFrame frame = new JFrame("Pacman Game");
     private static JFrame start;
-    
+
     public static void createStartGame() throws InterruptedException {
         start = new JFrame("Start");
         start.setSize(640, 480);
@@ -32,7 +32,7 @@ public class ViewsFactory {
         start.revalidate();
         Thread.sleep(1000);
     }
-    
+
     private static void createEndGame() {
         start.getContentPane().removeAll();
         start.setTitle("Game Over");
@@ -44,7 +44,7 @@ public class ViewsFactory {
         start.repaint();
         start.revalidate();
     }
-    
+
     public static void showEndGame() throws InterruptedException {
         start.setVisible(true);
         frame.setVisible(false);
@@ -67,7 +67,7 @@ public class ViewsFactory {
         }
         objectViews.add(new PacmanView(pacman));
         objectViews.add(new FruitView(fruit));
-   
+
         frame.getContentPane().removeAll();
         frame.repaint();
         frame.revalidate();

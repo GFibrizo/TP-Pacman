@@ -19,12 +19,12 @@ public class Cell implements DrawableNode {
     private Ball ball;
     private boolean isTransitable;
 
-    
     /**
      * Constructor for the class Cell.
+     *
      * @param x catersian coordinate x
      * @param y cartesian coordinate y
-     * @param isTransitable boolean 
+     * @param isTransitable boolean
      */
     public Cell(int x, int y, boolean isTransitable) {
         this.position = new Coordinate(x, y);
@@ -38,6 +38,7 @@ public class Cell implements DrawableNode {
 
     /**
      * Assigns a Ball instance to the current Cell.
+     *
      * @param aBall instance of Ball.
      */
     public void setBall(Ball aBall) {
@@ -49,8 +50,8 @@ public class Cell implements DrawableNode {
     }
 
     /**
-     * @return the Ball that is contained in the current Cell.
-     * If the cell is not transitable an exception is thrown.
+     * @return the Ball that is contained in the current Cell. If the cell is
+     * not transitable an exception is thrown.
      */
     @Override
     public Ball getBall() {
@@ -78,6 +79,7 @@ public class Cell implements DrawableNode {
 
     /**
      * Sets the cell adyacent to the left.
+     *
      * @param cell of type Cell
      */
     public void setLeftCell(Cell cell) {
@@ -87,6 +89,7 @@ public class Cell implements DrawableNode {
 
     /**
      * Sets the cell adyacent to the right.
+     *
      * @param cell of type Cell
      */
     public void setRightCell(Cell cell) {
@@ -96,7 +99,8 @@ public class Cell implements DrawableNode {
 
     /**
      * Sets the cell down adyacent.
-     * @param cell 
+     *
+     * @param cell
      */
     public void setUpperCell(Cell cell) {
         this.upperCell = cell;
@@ -105,6 +109,7 @@ public class Cell implements DrawableNode {
 
     /**
      * Sets the cell up adyacent.
+     *
      * @param cell of type Cell
      */
     public void setLowerCell(Cell cell) {
@@ -114,6 +119,7 @@ public class Cell implements DrawableNode {
 
     /**
      * Check if the cell is the same that the received by parameter.
+     *
      * @param other of type Cell
      * @return True if the two cells are the same. False otherwise.
      */
@@ -123,6 +129,7 @@ public class Cell implements DrawableNode {
 
     /**
      * The ball contained in the current Cell is eated.
+     *
      * @return the points received for the eating of the ball.
      */
     public int eatBall() {
@@ -143,7 +150,7 @@ public class Cell implements DrawableNode {
 
     /**
      * @return the cell adyacent to the right.
-     */    
+     */
     public Cell getRightCell() {
         return this.rightCell;
     }
@@ -154,7 +161,7 @@ public class Cell implements DrawableNode {
     public Cell getUpperCell() {
         return this.upperCell;
     }
-    
+
     /**
      * @return the cell down ayacent.
      */
@@ -163,40 +170,36 @@ public class Cell implements DrawableNode {
     }
 
     /**
-     * @return true if the upperCell is transitable.
-     * false otherwise.
+     * @return true if the upperCell is transitable. false otherwise.
      */
     public boolean canGoUp() {
         return upperCell.isTransitable();
     }
 
     /**
-     * @return true if the lowerCell is transitable.
-     * false otherwise.
+     * @return true if the lowerCell is transitable. false otherwise.
      */
     public boolean canGoDown() {
         return lowerCell.isTransitable();
     }
 
     /**
-     * @return true if the leftCell is transitable.
-     * false otherwise.
+     * @return true if the leftCell is transitable. false otherwise.
      */
     public boolean canGoLeft() {
         return leftCell.isTransitable();
     }
 
     /**
-     * @return true if the rightCell is transitable.
-     * false otherwise.
+     * @return true if the rightCell is transitable. false otherwise.
      */
     public boolean canGoRight() {
         return rightCell.isTransitable();
     }
 
     /**
-     * @return true if the ball contained in the cell was eated.
-     * false otherwise.
+     * @return true if the ball contained in the cell was eated. false
+     * otherwise.
      */
     @Override
     public boolean isEmpty() {
@@ -204,17 +207,16 @@ public class Cell implements DrawableNode {
     }
 
     /**
-     * @return the position of the current Cell expresed 
-     * using a Coordinate instance.
+     * @return the position of the current Cell expresed using a Coordinate
+     * instance.
      */
     @Override
     public Coordinate getCoords() {
         return this.position;
     }
-    
+
     /**
-     * @return true if the ball contained is a littleBall. 
-     * false otherwise.
+     * @return true if the ball contained is a littleBall. false otherwise.
      */
     @Override
     public boolean hasLittleBall() {
@@ -222,44 +224,39 @@ public class Cell implements DrawableNode {
     }
 
     /**
-     * @return true if the ball contained is a bigBall. 
-     * false otherwise.
+     * @return true if the ball contained is a bigBall. false otherwise.
      */
     @Override
     public boolean hasBigBall() {
         return "bolon".equals(String.valueOf(this.ball));
     }
-    
+
     /**
-     * @return true if the rightCell is transitable.
-     * false otherwise.
+     * @return true if the rightCell is transitable. false otherwise.
      */
     @Override
     public boolean isRightTransitable() {
         return this.canGoRight();
     }
-    
+
     /**
-     * @return true if the leftCell is transitable.
-     * false otherwise.
+     * @return true if the leftCell is transitable. false otherwise.
      */
     @Override
     public boolean isLeftTransitable() {
         return this.canGoLeft();
     }
-    
+
     /**
-     * @return true if the upperCell is transitable.
-     * false otherwise.
+     * @return true if the upperCell is transitable. false otherwise.
      */
     @Override
     public boolean isUpTransitable() {
         return this.canGoUp();
     }
-    
+
     /**
-     * @return true if the lowerCell is transitable.
-     * false otherwise.
+     * @return true if the lowerCell is transitable. false otherwise.
      */
     @Override
     public boolean isDownTransitable() {

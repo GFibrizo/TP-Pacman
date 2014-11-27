@@ -18,6 +18,7 @@ public class Background extends JPanel {
 
     /**
      * Constructor of the Background class.
+     *
      * @param width of image
      * @param height of image
      */
@@ -29,7 +30,8 @@ public class Background extends JPanel {
 
     /**
      * Overrided method for painting the image set in bImage.
-     * @param g 
+     *
+     * @param g
      */
     @Override
     public void paintComponent(Graphics g) {

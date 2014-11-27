@@ -65,7 +65,7 @@ public class HunterState extends GhostState {
 
     @Override
     public GhostState collideWithPacman() {
-        return this; 
+        return this;
     }
 
     public void incrementRage() {

@@ -8,7 +8,6 @@ package com.grupo2.command;
 import com.grupo2.board.Board;
 import com.grupo2.ghost.Ghost;
 import com.grupo2.eventHandling.Subscriber;
-import com.grupo2.pacman.Pacman;
 
 /**
  *
@@ -24,7 +23,8 @@ public class GhostCollidesCommand implements Subscriber {
 
     @Override
     public void execute() {
-        if (Board.getInstance().collisionWithPacman(ghost))
+        if (Board.getInstance().collisionWithPacman(ghost)) {
             ghost.onCollisionWithPacman();
+        }
     }
 }

@@ -25,6 +25,7 @@ public class Ghost extends Character implements DrawableGhost {
 
     /**
      * Create a new instance of the class Ghost in the HunterState.
+     *
      * @param x CollidingArea in the X axis
      * @param y CollidingArea in the Y axis
      * @param dir Initial Direction
@@ -55,7 +56,7 @@ public class Ghost extends Character implements DrawableGhost {
      * according to its actual state.
      */
     @Override
-    public boolean move() {
+    public void move() {
         boolean wasDead = false;
         boolean isHunter = false;
         if (!direction.isEqualTo(new NullDirection())) {
@@ -63,11 +64,11 @@ public class Ghost extends Character implements DrawableGhost {
         }
         Map<Direction, Cell> directions = this.allowedDirections();
         if (!state.canMove()) {
-            return false;
+            return;
         }
         if (directions.isEmpty()) {
             previousDirection = new NullDirection();
-            return false;
+            return;
         }
 
         direction = state.getNewDirection(personality, directions);
@@ -87,7 +88,6 @@ public class Ghost extends Character implements DrawableGhost {
             this.currentCell = theMaze.getCellFromCoordinates(theMaze.getGhostsBegining());
             this.position = this.currentCell.getPosition();
         }
-        return true;
     }
 
     @Override
@@ -118,16 +118,15 @@ public class Ghost extends Character implements DrawableGhost {
             personality.stopPacmanChase();
         }
     }
-    
+
     public void convertToPrey() {
         this.state = state.convertToPrey();
     }
-    
-    
+
     public void onCollisionWithPacman() {
-        this.state = state.collideWithPacman(); 
+        this.state = state.collideWithPacman();
     }
-    
+
     public Coordinate getInitialPosition() {
         return this.position;
     }

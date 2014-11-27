@@ -10,7 +10,7 @@ import com.grupo2.eventHandling.Publisher;
 public class BigBall extends Publisher implements Ball {
 
     /**
-     * @return int points obtained for eating the bigBall. 
+     * @return int points obtained for eating the bigBall.
      */
     @Override
     public int isEaten() {
@@ -27,7 +27,7 @@ public class BigBall extends Publisher implements Ball {
     }
 
     /**
-     * @return String, the string that represents the type of the instance. 
+     * @return String, the string that represents the type of the instance.
      */
     @Override
     public String toString() {

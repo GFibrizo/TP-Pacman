@@ -19,8 +19,7 @@ public class MazePublisher extends Publisher {
     }
 
     /**
-     * Private constructor of the MazePublisher class.
-     * This is a singleton.
+     * Private constructor of the MazePublisher class. This is a singleton.
      */
     private MazePublisher() {
         this.subscribers = new HashMap<>();

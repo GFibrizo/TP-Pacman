@@ -9,7 +9,7 @@ import com.grupo2.board.Board;
 public class LittleBall implements Ball {
 
     /**
-     * @return int points obtained for eating the littleBall. 
+     * @return int points obtained for eating the littleBall.
      */
     @Override
     public int isEaten() {
@@ -26,7 +26,7 @@ public class LittleBall implements Ball {
     }
 
     /**
-     * @return String, the string that represents the type of the instance. 
+     * @return String, the string that represents the type of the instance.
      */
     @Override
     public String toString() {

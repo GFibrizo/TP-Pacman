@@ -20,6 +20,7 @@ public class GameStartView extends GamePresentationView {
 
     /**
      * Constructor of the Background class.
+     *
      * @param width of image
      * @param height of image
      */

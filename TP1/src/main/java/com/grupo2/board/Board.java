@@ -121,7 +121,8 @@ public class Board extends Publisher {
     }
 
     /**
-     * Subscribe all the subscribers to the corresponding Event with some Publisher.
+     * Subscribe all the subscribers to the corresponding Event with some
+     * Publisher.
      */
     public void subscribeSubscribers() {
         this.subscribe(GameEvent.PACMANCOLLIDEHUNTER, new PacmanDiesCommand(this));
@@ -160,130 +161,121 @@ public class Board extends Publisher {
      * @param aCharacterToAdd
      */
     public void addGhost(Ghost aCharacterToAdd) {
-            this.ghosts.add(aCharacterToAdd);
+        this.ghosts.add(aCharacterToAdd);
     }
 
     /**
      * @return the Pacman.
      */
     public Pacman getPacman() {
-            return this.thePacman;
-	}
+        return this.thePacman;
+    }
 
     /**
-     * This method has the responsability for update the pacman when enters to a cell.
+     * This method has the responsability for update the pacman when enters to a
+     * cell.
      */
     public void pacmanEntersCell() {
         Cell cell = thePacman.getCurrentCell();
         int points = cell.eatBall();
         thePacman.incrementScore(points);
     }
-        
-	/**
-	 * @return Maze
-	 */
-	public Maze getMaze() {
-		return maze;
-	}
 
-	/**
-	 * @return ArrayList<Ghost> the list of ghost in the board.
-	 */
-	public ArrayList<Ghost> getGhosts() {
-		return this.ghosts;
-	}
+    /**
+     * @return Maze
+     */
+    public Maze getMaze() {
+        return maze;
+    }
 
-	/**
-	 * Resolve all the collitions between the pacman, the ghosts and the fruit updating the states
-	 * of the subscribers to the collition Events.
-	 */
-	private void resolveCollitions() {
-		if ((!theFruit.isDead()) && this.collisionWithPacman(theFruit)) {
-			this.update(GameEvent.PACMANEATSFRUIT);
-			this.theFruit.die();
-		}
-		for (Ghost ghost : ghosts) {
-			if (this.collisionWithPacman(ghost)) {
-				this.update(GameEvent.PACMANCOLLIDEGHOST);
-				if (ghost.isHunter()) {
-					this.update(GameEvent.PACMANCOLLIDEHUNTER);
-				}
-				return;
-			}
-		}
-	}
+    /**
+     * @return ArrayList<Ghost> the list of ghost in the board.
+     */
+    public ArrayList<Ghost> getGhosts() {
+        return this.ghosts;
+    }
 
-	/**
-	 * Lunch events depending on pacman movement(if has moved)
-	 *
-	 * @param moved says if the pacman has moved
-	 */
-	private void checkMovementEvent(boolean moved) {
-		if (!moved) {
-			this.update(GameEvent.PACMANSTOPMOVING);
-		} else {
-			this.update(GameEvent.PACMANSTARTMOVING);
-		}
-	}
+    /**
+     * Resolve all the collitions between the pacman, the ghosts and the fruit
+     * updating the states of the subscribers to the collition Events.
+     */
+    private void resolveCollitions() {
+        if ((!theFruit.isDead()) && this.collisionWithPacman(theFruit)) {
+            this.update(GameEvent.PACMANEATSFRUIT);
+            this.theFruit.die();
+        }
+        for (Ghost ghost : ghosts) {
+            if (this.collisionWithPacman(ghost)) {
+                this.update(GameEvent.PACMANCOLLIDEGHOST);
+                if (ghost.isHunter()) {
+                    this.update(GameEvent.PACMANCOLLIDEHUNTER);
+                }
+                return;
+            }
+        }
+    }
 
-	/**
-	 * Update the model. All the characters are moved and updated, the collitions are resolved.
-	 *
-	 * @param controller is the one that sends messages with the directions to the pacman.
-	 */
-	public void updateModel(Controller controller) {
-		this.thePacman.setDirection(controller.getPacmanNextDirection());
-		boolean moved = this.thePacman.move();
-		this.checkMovementEvent(moved);
-		this.createFruit();
-		this.pacmanEntersCell();
-		PacmanArea.CenterAreaOnPacman(thePacman);
-		PacmanArea.getInstance().update(PacmanArea.VisionEvent.GHOSTCHANGESPOSITION);
-		resolveCollitions();
-		this.theFruit.move();
-		for (Ghost ghost : ghosts) {
-			ghost.move();
-		}
-		resolveCollitions();
-	}
 
-	/**
-	 * The view is drawed in the window.
-	 *
-	 * @param view is an object composed by the views of all the model components.
-	 */
-	public void updateView(View view) {
-		view.update();
-		int i = 0;
-		view.show(i);
-	}
+    /**
+     * Update the model. All the characters are moved and updated, the
+     * collitions are resolved.
+     *
+     * @param controller is the one that sends messages with the directions to
+     * the pacman.
+     */
+    public void updateModel(Controller controller) {
+        this.thePacman.setDirection(controller.getPacmanNextDirection());
+        this.thePacman.move();
+        this.createFruit();
+        this.pacmanEntersCell();
+        PacmanArea.CenterAreaOnPacman(thePacman);
+        PacmanArea.getInstance().update(PacmanArea.VisionEvent.GHOSTCHANGESPOSITION);
+        resolveCollitions();
+        this.theFruit.move();
+        for (Ghost ghost : ghosts) {
+            ghost.move();
+        }
+        resolveCollitions();
+    }
 
-	/**
-	 * The fruit of the game is created.
-	 */
-	private void createFruit() {
-		if (this.theFruit.isDead()) {
-			if (this.fruitTimer >= Constants.FRUITSPAWNTICKS) {
-				theFruit.revive();
-				this.fruitTimer = 0;
-			} else {
-				this.fruitTimer++;
-			}
-		}
-	}
+    /**
+     * The view is drawed in the window.
+     *
+     * @param view is an object composed by the views of all the model
+     * components.
+     */
+    public void updateView(View view) {
+        view.update();
+        int i = 0;
+        view.show(i);
+    }
 
-	/**
-	 * @return Fruit the fruit of the board
-	 */
-	public Fruit getTheFruit() {
-		return this.theFruit;
-	}
+    /**
+     * The fruit of the game is created.
+     */
+    private void createFruit() {
+        if (this.theFruit.isDead()) {
+            if (this.fruitTimer >= Constants.FRUITSPAWNTICKS) {
+                theFruit.revive();
+                this.fruitTimer = 0;
+            } else {
+                this.fruitTimer++;
+            }
+        }
+    }
 
-	/**
-	 * @return Cell is the cell where the pacman respawns.
-	 */
-	public Cell getPacmanBegin() {
-		return this.maze.getCellFromCoordinates(this.maze.getPacmanBegining());
-	}
+    /**
+     * @return Fruit the fruit of the board
+     */
+    public Fruit getTheFruit() {
+        return this.theFruit;
+    }
+
+    /**
+     * @return Cell is the cell where the pacman respawns.
+     */
+    public Cell getPacmanBegin() {
+        return this.maze.getCellFromCoordinates(this.maze.getPacmanBegining());
+    }
 
 }

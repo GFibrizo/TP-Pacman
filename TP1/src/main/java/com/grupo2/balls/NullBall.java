@@ -7,7 +7,7 @@ package com.grupo2.balls;
 public class NullBall implements Ball {
 
     /**
-     * @return int points obtained for eating the nullBall, that is cero. 
+     * @return int points obtained for eating the nullBall, that is cero.
      */
     @Override
     public int isEaten() {
