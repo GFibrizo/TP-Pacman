@@ -8,7 +8,7 @@ import com.grupo2.controller.Controller;
 import com.grupo2.eventHandling.*;
 import com.grupo2.fruit.*;
 import com.grupo2.ghost.Ghost;
-import com.grupo2.interfaces.Positionable;
+import com.grupo2.character.Positionable;
 import com.grupo2.maze.Maze;
 import com.grupo2.maze.MazeBuilder;
 import com.grupo2.pacman.*;

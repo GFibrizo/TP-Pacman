@@ -1,4 +1,4 @@
-package com.grupo2.interfaces;
+package com.grupo2.character;
 
 import com.grupo2.character.Coordinate;
 import com.grupo2.character.Cell;

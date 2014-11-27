@@ -3,7 +3,7 @@ package com.grupo2.maze;
 import com.grupo2.character.Cell;
 import com.grupo2.character.Coordinate;
 import com.grupo2.eventHandling.Publisher;
-import com.grupo2.interfaces.Positionable;
+import com.grupo2.character.Positionable;
 import com.grupo2.view.DrawableNode;
 import java.util.ArrayList;
 import com.grupo2.view.DrawableMaze;

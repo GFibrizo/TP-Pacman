@@ -5,7 +5,6 @@ import com.grupo2.directions.LeftDirection;
 import com.grupo2.directions.NullDirection;
 import com.grupo2.directions.RightDirection;
 import com.grupo2.directions.UpDirection;
-import com.grupo2.interfaces.Positionable;
 import java.util.HashMap;
 import java.util.Map;
 
