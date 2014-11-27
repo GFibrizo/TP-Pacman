@@ -1,6 +1,5 @@
 package com.grupo2.character;
 
-import com.grupo2.cell.Cell;
 import com.grupo2.directions.*;
 
 /**

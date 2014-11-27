@@ -1,6 +1,6 @@
 package com.grupo2.board;
 
-import com.grupo2.cell.Cell;
+import com.grupo2.character.Cell;
 import com.grupo2.character.CharacterBuilder;
 import com.grupo2.command.*;
 import com.grupo2.constants.Constants;
@@ -8,7 +8,7 @@ import com.grupo2.controller.Controller;
 import com.grupo2.eventHandling.*;
 import com.grupo2.fruit.*;
 import com.grupo2.ghost.Ghost;
-import com.grupo2.interfaces.IPositionable;
+import com.grupo2.interfaces.Positionable;
 import com.grupo2.maze.Maze;
 import com.grupo2.maze.MazeBuilder;
 import com.grupo2.pacman.*;
@@ -131,7 +131,7 @@ public class Board extends Publisher {
      * @param otherEntity
      * @return boolean true if there is a collition between the positionables.
      */
-    public boolean collisionBetween(IPositionable entity, IPositionable otherEntity) {
+    public boolean collisionBetween(Positionable entity, Positionable otherEntity) {
         return maze.areInTheSameCell(entity, otherEntity);
     }
 
@@ -141,7 +141,7 @@ public class Board extends Publisher {
      * @return boolean true if there is a collition between the pacman and the
      * positionable.
      */
-    public boolean collisionWithPacman(IPositionable entity) {
+    public boolean collisionWithPacman(Positionable entity) {
         return maze.areInTheSameCell(thePacman, entity);
     }
 
@@ -180,7 +180,7 @@ public class Board extends Publisher {
     /**
      * @param other 
      */
-    public void isCloseToPacman(IPositionable other) {
+    public void isCloseToPacman(Positionable other) {
 
     }
 

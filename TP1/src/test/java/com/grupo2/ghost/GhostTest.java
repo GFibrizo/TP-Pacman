@@ -1,6 +1,6 @@
 package com.grupo2.ghost;
 
-import com.grupo2.cell.Cell;
+import com.grupo2.character.Cell;
 import com.grupo2.character.Coordinate;
 import com.grupo2.ghostFactory.GhostFactory;
 import org.junit.AfterClass;

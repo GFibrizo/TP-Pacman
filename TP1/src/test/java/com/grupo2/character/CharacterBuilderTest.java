@@ -2,7 +2,6 @@ package com.grupo2.character;
 
 import com.grupo2.directions.LeftDirection;
 import com.grupo2.pacman.Pacman;
-import com.grupo2.cell.Cell;
 import java.nio.file.Paths;
 import static org.junit.Assert.assertTrue;
 import org.junit.Before;

@@ -3,7 +3,7 @@ package com.grupo2.view;
 import com.grupo2.character.Coordinate;
 import com.grupo2.character.Direction;
 import com.grupo2.ghost.GhostState;
-import com.grupo2.ghostState.Personality;
+import com.grupo2.ghost.Personality;
 
 /**
  *

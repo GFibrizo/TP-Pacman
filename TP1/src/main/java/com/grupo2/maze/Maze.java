@@ -1,9 +1,9 @@
 package com.grupo2.maze;
 
-import com.grupo2.cell.Cell;
+import com.grupo2.character.Cell;
 import com.grupo2.character.Coordinate;
 import com.grupo2.eventHandling.Publisher;
-import com.grupo2.interfaces.IPositionable;
+import com.grupo2.interfaces.Positionable;
 import com.grupo2.view.DrawableNode;
 import java.util.ArrayList;
 import com.grupo2.view.DrawableMaze;
@@ -95,7 +95,7 @@ public class Maze implements DrawableMaze {
         return map.get(coord.getY()).get(coord.getX());
     }
 
-    public boolean areInTheSameCell(IPositionable entity, IPositionable other) {
+    public boolean areInTheSameCell(Positionable entity, Positionable other) {
         Cell entityCell = entity.getCurrentCell();
         Cell otherCell = other.getCurrentCell();
         return entityCell.isTheSame(otherCell);

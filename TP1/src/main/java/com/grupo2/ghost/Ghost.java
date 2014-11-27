@@ -1,23 +1,21 @@
 package com.grupo2.ghost;
 
-import com.grupo2.cell.Cell;
+import com.grupo2.character.Cell;
 import com.grupo2.character.Character;
 import com.grupo2.character.Coordinate;
 import com.grupo2.character.Direction;
 import com.grupo2.constants.Constants;
 import com.grupo2.directions.*;
-import com.grupo2.ghostState.DeadState;
-import com.grupo2.ghostState.Personality;
-import com.grupo2.interfaces.IGhost;
 import com.grupo2.maze.Maze;
 import com.grupo2.board.Board;
+import com.grupo2.view.DrawableGhost;
 import java.util.Map;
 
 /**
  *
  * @author ivan
  */
-public class Ghost extends Character implements IGhost {
+public class Ghost extends Character implements DrawableGhost {
 
     private static int counter = 1;
     private GhostState state;
@@ -101,20 +99,17 @@ public class Ghost extends Character implements IGhost {
 
     @Override
     public void die() {
-        this.state = new DeadState();
+        this.state = this.state.die();
     }
 
-    @Override
     public void convertToPrey() {
         this.state = state.convertToPrey();
     }
 
-    @Override
     public void onCollisionWithPacman() {
-        this.state = state.collideWithPacman(); // Lo bueno de esto es que cuando muere un fantasma, en el constructor del DeadState (por ejemplo) podemos informar al juego y sumar puntos, etc.
+        this.state = state.collideWithPacman(); 
     }
 
-    @Override
     public int getVision() {
         return this.personality.getVision();
     }

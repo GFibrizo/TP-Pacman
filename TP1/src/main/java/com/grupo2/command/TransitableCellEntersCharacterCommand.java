@@ -1,7 +1,7 @@
 package com.grupo2.command;
 
 import com.grupo2.balls.NullBall;
-import com.grupo2.cell.Cell;
+import com.grupo2.character.Cell;
 
 /**
  *

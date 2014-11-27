@@ -4,7 +4,7 @@ import com.grupo2.balls.Ball;
 import com.grupo2.balls.BigBall;
 import com.grupo2.balls.LittleBall;
 import com.grupo2.balls.NullBall;
-import com.grupo2.cell.Cell;
+import com.grupo2.character.Cell;
 import com.grupo2.character.Coordinate;
 import com.grupo2.constants.ViewConstants;
 import java.io.File;

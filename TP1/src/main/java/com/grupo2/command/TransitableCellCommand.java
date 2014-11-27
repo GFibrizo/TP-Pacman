@@ -5,7 +5,7 @@
  */
 package com.grupo2.command;
 
-import com.grupo2.cell.Cell;
+import com.grupo2.character.Cell;
 import com.grupo2.eventHandling.Subscriber;
 
 /**

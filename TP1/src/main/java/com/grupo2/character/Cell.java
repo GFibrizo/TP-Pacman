@@ -1,9 +1,7 @@
-package com.grupo2.cell;
+package com.grupo2.character;
 
 import com.grupo2.balls.Ball;
 import com.grupo2.balls.NullBall;
-import com.grupo2.character.Collitionable;
-import com.grupo2.character.Coordinate;
 import com.grupo2.view.DrawableNode;
 
 /**
@@ -12,7 +10,6 @@ import com.grupo2.view.DrawableNode;
  */
 public class Cell implements DrawableNode {
 
-    private Collitionable content;
     private Cell upperCell;
     private Cell lowerCell;
     private Cell leftCell;
@@ -31,7 +28,6 @@ public class Cell implements DrawableNode {
      */
     public Cell(int x, int y, boolean isTransitable) {
         this.position = new Coordinate(x, y);
-        this.content = null;
         this.ball = new NullBall();
         this.isTransitable = isTransitable;
         this.leftCell = null;
@@ -71,17 +67,6 @@ public class Cell implements DrawableNode {
     @Override
     public boolean isTransitable() {
         return isTransitable;
-    }
-
-    /**
-     * @return return the content of the current Cell.
-     */
-    public Collitionable getContent() {
-        if (this.isTransitable) {
-            return this.content;
-        } else {
-            throw new UnsupportedOperationException();
-        }
     }
 
     /**
@@ -125,14 +110,6 @@ public class Cell implements DrawableNode {
     public void setLowerCell(Cell cell) {
         this.lowerCell = cell;
         this.amountOfWays++;
-    }
-
-    /**
-     * Set the content of the current Cell.
-     * @param newContent of type Collitionable.
-     */
-    public void setContent(Collitionable newContent) {
-        this.content = newContent;
     }
 
     /**

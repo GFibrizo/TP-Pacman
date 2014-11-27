@@ -1,6 +1,6 @@
 package com.grupo2.movementStrategies;
 
-import com.grupo2.cell.Cell;
+import com.grupo2.character.Cell;
 import com.grupo2.character.Direction;
 import java.util.Map;
 import com.grupo2.directions.NullDirection;
@@ -9,7 +9,7 @@ import com.grupo2.directions.NullDirection;
  *
  * @author fibrizo
  */
-public class ChaseStrategy extends HunterStrategy {
+public class ChaseStrategy extends MovementStrategy {
 
     public ChaseStrategy() {
         target = null;

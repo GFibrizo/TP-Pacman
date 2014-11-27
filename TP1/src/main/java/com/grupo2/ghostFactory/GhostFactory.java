@@ -6,7 +6,7 @@ import com.grupo2.directions.RightDirection;
 import com.grupo2.ghost.Ghost;
 import com.grupo2.ghost.GhostState;
 import com.grupo2.ghostState.HunterState;
-import com.grupo2.ghostState.Personality;
+import com.grupo2.ghost.Personality;
 
 import com.grupo2.personality.OnlyRight;
 

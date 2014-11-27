@@ -1,5 +1,6 @@
 package com.grupo2.cell;
 
+import com.grupo2.character.Cell;
 import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;

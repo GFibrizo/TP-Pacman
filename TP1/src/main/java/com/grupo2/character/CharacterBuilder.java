@@ -8,7 +8,7 @@ import com.grupo2.ghost.Ghost;
 import com.grupo2.ghost.GhostState;
 import com.grupo2.ghostFactory.GhostFactory;
 import com.grupo2.ghostState.HunterState;
-import com.grupo2.ghostState.Personality;
+import com.grupo2.ghost.Personality;
 import com.grupo2.ghostState.PreyState;
 import com.grupo2.maze.MazeBuilder;
 import com.grupo2.pacman.Pacman;

@@ -1,20 +1,18 @@
 package com.grupo2.character;
 
-import com.grupo2.cell.Cell;
 import com.grupo2.directions.DownDirection;
 import com.grupo2.directions.LeftDirection;
 import com.grupo2.directions.NullDirection;
 import com.grupo2.directions.RightDirection;
 import com.grupo2.directions.UpDirection;
-import com.grupo2.interfaces.Drawable;
-import com.grupo2.interfaces.IPositionable;
+import com.grupo2.interfaces.Positionable;
 import java.util.HashMap;
 import java.util.Map;
 
 /**
  * @author fibrizo
  */
-public abstract class Character implements Drawable, IPositionable {
+public abstract class Character implements Positionable {
 
     //protected Coordinate position;
     protected Direction direction;
@@ -57,7 +55,6 @@ public abstract class Character implements Drawable, IPositionable {
     /**
      * @return the current direction of the character (of class Direction). 
      */
-    @Override
     public Direction getDirection() {
         return this.direction;
     }

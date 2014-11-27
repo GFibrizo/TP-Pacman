@@ -5,10 +5,10 @@
  */
 package com.grupo2.personality;
 
-import com.grupo2.cell.Cell;
+import com.grupo2.character.Cell;
 import com.grupo2.character.Direction;
 import com.grupo2.directions.RightDirection;
-import com.grupo2.ghostState.Personality;
+import com.grupo2.ghost.Personality;
 import java.util.Map;
 
 /**

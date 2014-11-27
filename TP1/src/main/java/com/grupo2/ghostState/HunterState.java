@@ -1,11 +1,11 @@
 package com.grupo2.ghostState;
 
-import com.grupo2.cell.Cell;
+import com.grupo2.ghost.Personality;
+import com.grupo2.character.Cell;
 import com.grupo2.character.Direction;
 import com.grupo2.constants.Constants;
 import com.grupo2.ghost.GhostState;
 import java.util.Map;
-import com.grupo2.directions.NullDirection;
 
 /**
  *
@@ -60,14 +60,12 @@ public class HunterState extends GhostState {
 
     @Override
     public GhostState die() {
-        throw new UnsupportedOperationException("A hunter Ghost can't die");
+        return this;
     }
 
     @Override
     public GhostState collideWithPacman() {
-        // Acá hay que "matar" al pacman.
-        return this; //When a Ghost in Hunter State collides with the Pacman, nothing happens to it, so the state remains the same.
-
+        return this; 
     }
 
     public void incrementRage() {

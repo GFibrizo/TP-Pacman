@@ -6,7 +6,7 @@
 package com.grupo2.command;
 
 import com.grupo2.eventHandling.Subscriber;
-import com.grupo2.ghostState.Personality;
+import com.grupo2.ghost.Personality;
 
 /**
  *

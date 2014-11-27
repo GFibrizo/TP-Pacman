@@ -1,6 +1,6 @@
 package com.grupo2.scenarios;
 
-import com.grupo2.cell.Cell;
+import com.grupo2.character.Cell;
 import com.grupo2.character.Coordinate;
 import com.grupo2.constants.Constants;
 import com.grupo2.ghost.Ghost;

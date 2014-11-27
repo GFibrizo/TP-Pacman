@@ -1,6 +1,6 @@
 package com.grupo2.pacman;
 
-import com.grupo2.cell.Cell;
+import com.grupo2.character.Cell;
 import com.grupo2.character.Coordinate;
 import com.grupo2.directions.LeftDirection;
 import com.grupo2.directions.UpDirection;

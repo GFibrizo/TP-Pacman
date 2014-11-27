@@ -1,11 +1,11 @@
 package com.grupo2.personality;
 
-import com.grupo2.cell.Cell;
+import com.grupo2.character.Cell;
 import com.grupo2.character.Direction;
 import com.grupo2.command.HunterStartsChaseOfPacman;
 import com.grupo2.constants.Constants;
 import com.grupo2.eventHandling.Subscriber;
-import com.grupo2.ghostState.Personality;
+import com.grupo2.ghost.Personality;
 import com.grupo2.maze.MazePublisher;
 import com.grupo2.movementStrategies.ChaseStrategy;
 import com.grupo2.pacman.Pacman;

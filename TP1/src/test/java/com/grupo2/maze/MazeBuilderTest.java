@@ -1,6 +1,6 @@
 package com.grupo2.maze;
 
-import com.grupo2.cell.Cell;
+import com.grupo2.character.Cell;
 import com.grupo2.character.Coordinate;
 import java.nio.file.Paths;
 import static org.junit.Assert.assertFalse;
