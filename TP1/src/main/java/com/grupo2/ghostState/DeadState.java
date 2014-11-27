@@ -1,11 +1,12 @@
 package com.grupo2.ghostState;
 
+import com.grupo2.board.Board;
 import com.grupo2.cell.Cell;
 import com.grupo2.character.Direction;
 import com.grupo2.constants.Constants;
 import com.grupo2.ghost.GhostState;
 import com.grupo2.movementStrategies.MovementStrategy;
-import com.grupo2.movementStrategies.SearchCageStrategy;
+import com.grupo2.movementStrategies.ChaseStrategy;
 import com.grupo2.directions.NullDirection;
 import java.util.Map;
 
@@ -22,7 +23,8 @@ public class DeadState extends GhostState {
         time = 0;
         velocity = Constants.getInitialVelocity();
         finishedMovement = 0;
-        movement = new SearchCageStrategy();
+        movement = new ChaseStrategy();
+        movement.setTarget(Board.getInstance().getMaze().getGhostBegining());
     }
 
     @Override

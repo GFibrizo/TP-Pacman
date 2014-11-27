@@ -17,10 +17,9 @@ public class TransitableCellEntersCharacterCommand extends TransitableCellComman
     }
 
     @Override
-    public boolean execute() {
+    public void execute() {
         this.cell.getBall().isEaten();
         this.cell.setBall(new NullBall());
-        return true;
     }
 
 }

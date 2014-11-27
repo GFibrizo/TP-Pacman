@@ -3,11 +3,11 @@ package com.grupo2.map;
 import com.grupo2.cell.Cell;
 import com.grupo2.board.Board;
 import com.grupo2.character.Character;
-import com.grupo2.character.CharacterXMLBuilder;
+import com.grupo2.character.CharacterBuilder;
 import com.grupo2.directions.LeftDirection;
 import com.grupo2.directions.RightDirection;
 import com.grupo2.ghost.Ghost;
-import com.grupo2.maze.MazeXMLBuilder;
+import com.grupo2.maze.MazeBuilder;
 import java.nio.file.Paths;
 import javax.xml.parsers.ParserConfigurationException;
 import org.junit.AfterClass;
@@ -44,7 +44,7 @@ public class BoardTest {
         other.setCurrentCell(new Cell(0, 0, true));
         other.setDirection(new LeftDirection());
         Board map;
-        map = new Board(new MazeXMLBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "Laberinto.xml")), new CharacterXMLBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "PersonajesPacmanYHunter.xml")));
+        map = new Board(new MazeBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "Laberinto.xml")), new CharacterBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "PersonajesPacmanYHunter.xml")));
         boolean result = map.collisionBetween(character, other);
 
         assertTrue(result);

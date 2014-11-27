@@ -11,6 +11,7 @@ import com.grupo2.command.HunterStartsChaseOfPacman;
 import com.grupo2.constants.Constants;
 import com.grupo2.eventHandling.Subscriber;
 import com.grupo2.ghostState.Personality;
+import com.grupo2.pacman.Pacman;
 import com.grupo2.maze.MazePublisher;
 import com.grupo2.movementStrategies.ChaseStrategy;
 import com.grupo2.movementStrategies.RandomStrategy;
@@ -31,6 +32,7 @@ public class Lazy extends Personality {
 
     @Override
     public Direction getNewDirection(Map<Direction, Cell> allowedDirections) {
+        movement.setTarget(Pacman.getPacman().getPosition());
         return movement.getNewDirection(allowedDirections);
     }
 

@@ -3,6 +3,7 @@ package com.grupo2.ghostState;
 import com.grupo2.cell.Cell;
 import com.grupo2.character.Direction;
 import com.grupo2.movementStrategies.MovementStrategy;
+import com.grupo2.constants.Constants;
 import java.util.Map;
 
 /**
@@ -22,6 +23,10 @@ public abstract class Personality {
 
     public int getVision() {
         return vision;
+    }
+
+    public void incrementVision() {
+        vision += Constants.VISION1;
     }
 
     public abstract boolean isDumb();

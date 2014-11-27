@@ -1,15 +1,10 @@
 package com.grupo2.graphicView;
 
 import com.grupo2.ghost.Ghost;
-import com.grupo2.ghostState.HunterState;
-import com.grupo2.ghostState.PreyState;
 import com.grupo2.view.ObjectView;
 import java.awt.Dimension;
 import java.nio.file.Paths;
 import javax.swing.ImageIcon;
-import java.util.Map;
-import java.util.HashMap;
-import com.grupo2.character.Direction;
 import com.grupo2.directions.*;
 
 /**
@@ -32,9 +27,7 @@ public class GhostView extends ObjectView {
     }
 
     private ImageIcon chooseImage() {
-        // THIS METHOD HAS TO BE CHANGED TO SUPPORT DIRECTIONS OF GHOSTS
         String spriteName;
-
         if (object.isHunter()) {
             spriteName = "Hunter";
             count = 0;
@@ -46,7 +39,6 @@ public class GhostView extends ObjectView {
         } else {
             spriteName = null;
         }
-
         return new ImageIcon(Paths.get("src", "main", "graphicResources", spriteName + ".png").toString());
     }
 
@@ -73,11 +65,10 @@ public class GhostView extends ObjectView {
         if (object.getDirection().EqualTo(new LeftDirection())) {
             return "Left";
         }
-        //Here can be an NullPointerException thrown
         return "Left";
     }
-    
-        private String returnStringOfPersonality() {
+
+    private String returnStringOfPersonality() {
         if (object.isDumb()) {
             return "Pink";
         }
@@ -90,11 +81,8 @@ public class GhostView extends ObjectView {
         if (object.isTemperamentalSeeker()) {
             return "Red";
         }
-        //Here can be an NullPointerException thrown
         return "Red";
     }
-    
-    
 
     @Override
     public void update() {

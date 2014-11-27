@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package com.grupo2.graphicView;
+
 import com.grupo2.constants.ViewConstants;
 import com.grupo2.view.ObjectView;
 import com.grupo2.pacman.Pacman;
@@ -22,29 +23,26 @@ import javax.swing.JPanel;
  * @author fibrizo
  */
 public class HudView extends ObjectView {
-    
+
     private Pacman object;
     private JPanel lifes;
     private JPanel score;
     private JLabel scoreText;
     private JLabel lifesText;
-    
-    
+
     public HudView(int w, int h) {
         object = Pacman.getPacman();
         this.x = 1;
         this.y = 0; //h - 1;
-        width = (w * ViewConstants.DRAWABLE_WIDTH)/3;
-        height = height;
+        width = (w * ViewConstants.DRAWABLE_WIDTH) / 3;
         ImageIcon hudBackground = new ImageIcon(Paths.get("src", "main", "graphicResources", "white.png").toString());
         this.image = hudBackground.getImage();
         setPreferredSize(new Dimension(width, height));
-        
-        
+
         lifesText = new JLabel();
         lifesText.setText("Lifes: " + String.valueOf(object.remainingLifes()));
         this.add(lifesText);
-        
+
         scoreText = new JLabel();
         scoreText.setText("Score: " + (String.valueOf(object.getScore())));
         this.add(scoreText);
@@ -56,5 +54,5 @@ public class HudView extends ObjectView {
         lifesText.setText("Lifes: " + String.valueOf(object.remainingLifes()));
         scoreText.setText("Score: " + (String.valueOf(object.getScore())));
     }
-    
+
 }

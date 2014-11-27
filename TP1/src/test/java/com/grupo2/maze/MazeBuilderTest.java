@@ -18,14 +18,14 @@ import com.grupo2.character.Direction;
  */
 public class MazeBuilderTest {
 
-    private MazeXMLBuilder mazeBuilder;
+    private MazeBuilder mazeBuilder;
 
     public MazeBuilderTest() {
     }
 
     @Before
     public void setUp() {
-        mazeBuilder = new MazeXMLBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "Laberinto.xml"));
+        mazeBuilder = new MazeBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "Laberinto.xml"));
     }
 
     /**
@@ -35,7 +35,7 @@ public class MazeBuilderTest {
     public void buildMazeInitCharactersPositions() {
         // El builder no está parseando la altura ni ancho del xml. Ver.
 
-        RawMaze maze = mazeBuilder.buildMaze();
+        Maze maze = mazeBuilder.buildMaze();
         Coordinate ghostBeg = maze.getGhostBegining();
         Coordinate pacmanBeg = maze.getPacmanBegining();
 
@@ -47,7 +47,7 @@ public class MazeBuilderTest {
 
     @Test
     public void buildMazeUnTransitableCell() {
-        RawMaze maze = mazeBuilder.buildMaze();
+        Maze maze = mazeBuilder.buildMaze();
         Cell cell = maze.getCellFromCoordinates(new Coordinate(0, 0));
 
         assertFalse(cell.isTransitable());
@@ -55,14 +55,14 @@ public class MazeBuilderTest {
 
     @Test
     public void buildMazeTransitableCell() {
-        RawMaze maze = mazeBuilder.buildMaze();
+        Maze maze = mazeBuilder.buildMaze();
         Cell cell = maze.getCellFromCoordinates(new Coordinate(2, 1));
         assertTrue(cell.isTransitable());
     }
 
     @Test
     public void buildMazeAndTravelIt() {
-        RawMaze maze = mazeBuilder.buildMaze();
+        Maze maze = mazeBuilder.buildMaze();
         Cell cell = maze.getCellFromCoordinates(new Coordinate(10, 1));
         int i = 0;
         while ((!cell.getPosition().isEqualTo(new Coordinate(0, 1))) && (i < 11)) {

@@ -9,16 +9,15 @@ import com.grupo2.maze.Maze;
  */
 public class MazeBallEaten implements Subscriber {
 
-	private Maze maze;
+    private Maze maze;
 
-	public MazeBallEaten(Maze maze) {
-		this.maze = maze;
-	}
+    public MazeBallEaten(Maze maze) {
+        this.maze = maze;
+    }
 
-	@Override
-	public boolean execute() {
-		this.maze.ballEated();
-		return true;
-	}
+    @Override
+    public void execute() {
+        this.maze.ballEated();
+    }
 
 }

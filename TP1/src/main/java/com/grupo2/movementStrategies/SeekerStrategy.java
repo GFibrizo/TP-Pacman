@@ -17,44 +17,43 @@ import java.util.Map;
  */
 public class SeekerStrategy extends HunterStrategy {
 
-	public SeekerStrategy() {
-	}
+    public SeekerStrategy() {
+    }
 
-	@Override
-	public Direction getNewDirection(Map<Direction, Cell> allowedDirections) {
+    @Override
+    public Direction getNewDirection(Map<Direction, Cell> allowedDirections) {
 
-		if (allowedDirections.isEmpty()) {
-			return new NullDirection();
-		}
+        if (allowedDirections.isEmpty()) {
+            return new NullDirection();
+        }
 
-		Cell pacmanCell = Pacman.getPacman().getCurrentCell();
-		Coordinate pacmanPosition = null;
-		Direction pacmanDirection = Pacman.getPacman().getDirection();
+        Cell pacmanCell = Pacman.getPacman().getCurrentCell();
+        Coordinate pacmanPosition = null;
+        Direction pacmanDirection = Pacman.getPacman().getDirection();
 
-		if (pacmanDirection.EqualTo(new RightDirection())) {
-			pacmanPosition = pacmanCell.getRightCell().getPosition();
-		} else if (pacmanDirection.EqualTo(new LeftDirection())) {
-			pacmanPosition = pacmanCell.getLeftCell().getPosition();
-		} else if (pacmanDirection.EqualTo(new UpDirection())) {
-			pacmanPosition = pacmanCell.getLowerCell().getPosition();
-		} else if (pacmanDirection.EqualTo(new DownDirection())) {
-			pacmanPosition = pacmanCell.getUpperCell().getPosition();
-		} else {
-			pacmanPosition = pacmanCell.getPosition();
-		}
+        if (pacmanDirection.EqualTo(new RightDirection())) {
+            pacmanPosition = pacmanCell.getRightCell().getPosition();
+        } else if (pacmanDirection.EqualTo(new LeftDirection())) {
+            pacmanPosition = pacmanCell.getLeftCell().getPosition();
+        } else if (pacmanDirection.EqualTo(new UpDirection())) {
+            pacmanPosition = pacmanCell.getLowerCell().getPosition();
+        } else if (pacmanDirection.EqualTo(new DownDirection())) {
+            pacmanPosition = pacmanCell.getUpperCell().getPosition();
+        } else {
+            pacmanPosition = pacmanCell.getPosition();
+        }
 
-//		int minDistance = pacmanPosition.distanceTo(allowedDirections.values().iterator().next().getPosition());
-		Direction chosenDir = new NullDirection();
-		int minDistance = -1;
+        Direction chosenDir = new NullDirection();
+        int minDistance = -1;
 
-		for (Map.Entry<Direction, Cell> entry : allowedDirections.entrySet()) {
-			int distance = pacmanPosition.distanceTo(entry.getValue().getPosition());
-			if (distance <= minDistance || minDistance < 0) {
-				minDistance = distance;
-				chosenDir = entry.getKey();
-			}
-		}
-		return chosenDir;
-	}
+        for (Map.Entry<Direction, Cell> entry : allowedDirections.entrySet()) {
+            int distance = pacmanPosition.distanceTo(entry.getValue().getPosition());
+            if (distance <= minDistance || minDistance < 0) {
+                minDistance = distance;
+                chosenDir = entry.getKey();
+            }
+        }
+        return chosenDir;
+    }
 
 }

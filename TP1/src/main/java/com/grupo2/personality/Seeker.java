@@ -8,8 +8,7 @@ import com.grupo2.eventHandling.Subscriber;
 import com.grupo2.ghostState.Personality;
 import com.grupo2.maze.MazePublisher;
 import com.grupo2.movementStrategies.ChaseStrategy;
-import com.grupo2.movementStrategies.RandomStrategy;
-import com.grupo2.movementStrategies.SeekerStrategy;
+import com.grupo2.pacman.Pacman;
 import java.util.Map;
 
 /**
@@ -18,26 +17,33 @@ import java.util.Map;
  */
 public class Seeker extends Personality {
 
+    boolean chaseOn;
+
     public Seeker() {
         Subscriber sub = new HunterStartsChaseOfPacman(this);
         MazePublisher.getInstance().subscribe(MazePublisher.MazeEvent.GHOSTISCLOSETOPACMAN, sub);
-        movement = new RandomStrategy();
+        movement = new ChaseStrategy();
         vision = Constants.VISION3;
+        chaseOn = false;
     }
 
     @Override
     public Direction getNewDirection(Map<Direction, Cell> allowedDirections) {
+        if (chaseOn) {
+            movement.setTarget(Pacman.getPacman().getPosition());
+        }
         return movement.getNewDirection(allowedDirections);
     }
 
     @Override
     public void beginPacmanChase() {
-        this.movement = new SeekerStrategy();
+        chaseOn = true;
     }
 
     @Override
     public void stopPacmanChase() {
-        this.movement = new RandomStrategy();
+        movement.setTarget(Pacman.getPacman().getPosition());
+        chaseOn = false;
     }
 
     @Override

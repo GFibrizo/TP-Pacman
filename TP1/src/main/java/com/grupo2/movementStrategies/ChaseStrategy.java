@@ -2,8 +2,6 @@ package com.grupo2.movementStrategies;
 
 import com.grupo2.cell.Cell;
 import com.grupo2.character.Direction;
-import com.grupo2.character.Coordinate;
-import com.grupo2.pacman.Pacman;
 import java.util.Map;
 import com.grupo2.directions.NullDirection;
 
@@ -14,12 +12,13 @@ import com.grupo2.directions.NullDirection;
 public class ChaseStrategy extends HunterStrategy {
 
     public ChaseStrategy() {
+        target = null;
     }
 
     @Override
     public Direction getNewDirection(Map<Direction, Cell> allowedDirections) {
-        Coordinate pacmanPosition = Pacman.getPacman().getPosition();
-        int minDistance = pacmanPosition.distanceTo(allowedDirections.values().iterator().next().getPosition());
+
+        int minDistance = target.distanceTo(allowedDirections.values().iterator().next().getPosition());
         Direction chosenDir = new NullDirection();
 
         if (allowedDirections.size() == 1) {
@@ -27,7 +26,7 @@ public class ChaseStrategy extends HunterStrategy {
         }
 
         for (Map.Entry<Direction, Cell> entry : allowedDirections.entrySet()) {
-            int distance = pacmanPosition.distanceTo(entry.getValue().getPosition());
+            int distance = target.distanceTo(entry.getValue().getPosition());
             if (distance < minDistance) {
                 minDistance = distance;
                 chosenDir = entry.getKey();

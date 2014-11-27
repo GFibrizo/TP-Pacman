@@ -13,48 +13,37 @@ import javax.swing.ImageIcon;
  */
 public class PacmanView extends ObjectView {
 
-	private Pacman object;
-	private int count;
+    private Pacman object;
+    private int count;
 
-	public PacmanView(Pacman pacman) {
-		this.object = pacman;
-		this.x = object.getPosition().getX();
-		this.y = object.getPosition().getY();
-		ImageIcon boardBackground = new ImageIcon(ViewConstants.PACMAN_RIGHT);
-		this.image = boardBackground.getImage();
-		setPreferredSize(new Dimension(width, height));
-		this.count = 1;
-	}
+    public PacmanView(Pacman pacman) {
+        this.object = pacman;
+        this.x = object.getPosition().getX();
+        this.y = object.getPosition().getY();
+        ImageIcon boardBackground = new ImageIcon(ViewConstants.PACMAN_RIGHT);
+        this.image = boardBackground.getImage();
+        setPreferredSize(new Dimension(width, height));
+        this.count = 1;
+    }
 
-	private ImageIcon chooseImage() {
-		String directionString = object.getDirection().toString();
-		/*if (object.getDirection().EqualTo(new LeftDirection())) {
-		 return new ImageIcon(Paths.get("src", "main", "graphicResources", directionString + count ".png").toString());
-		 } else if (object.getDirection().EqualTo(new RightDirection())) {
-		 return new ImageIcon(ViewConstants.PACMAN_RIGHT+count);
-		 } else if (object.getDirection().EqualTo(new UpDirection())) {
-		 return new ImageIcon(ViewConstants.PACMAN_UP);
-		 } else if (object.getDirection().EqualTo(new DownDirection())) {
-		 return new ImageIcon(ViewConstants.PACMAN_DOWN);
-		 } else {
-		 return null;
-		 }*/
-		this.changeSpriteNumber();
-		return new ImageIcon(Paths.get("src", "main", "graphicResources", "Pacman" + directionString + String.valueOf(count) + ".png").toString());
-	}
+    private ImageIcon chooseImage() {
+        String directionString = object.getDirection().toString();
+        this.changeSpriteNumber();
+        return new ImageIcon(Paths.get("src", "main", "graphicResources", "Pacman" + directionString + String.valueOf(count) + ".png").toString());
+    }
 
-	@Override
-	public void update() {
-		this.x = object.getPosition().getX();
-		this.y = object.getPosition().getY();
-		ImageIcon boardBackground = chooseImage();
-		if (boardBackground != null) {
-			this.image = boardBackground.getImage();
-		}
-	}
+    @Override
+    public void update() {
+        this.x = object.getPosition().getX();
+        this.y = object.getPosition().getY();
+        ImageIcon boardBackground = chooseImage();
+        if (boardBackground != null) {
+            this.image = boardBackground.getImage();
+        }
+    }
 
-	private void changeSpriteNumber() {
-		count = (count + 1) % 2;
-	}
+    private void changeSpriteNumber() {
+        count = (count + 1) % 2;
+    }
 
 }

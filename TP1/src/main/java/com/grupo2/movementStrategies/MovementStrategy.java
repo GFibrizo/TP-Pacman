@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import com.grupo2.character.Direction;
 import com.grupo2.directions.*;
 import com.grupo2.cell.Cell;
+import com.grupo2.character.Coordinate;
 import java.util.Random;
 
 /**
@@ -16,6 +17,7 @@ public abstract class MovementStrategy {
 
     protected List<Direction> directions;
     protected Random randomGenerator;
+    Coordinate target;
 
     protected MovementStrategy() {
         directions = new ArrayList<>();
@@ -27,4 +29,8 @@ public abstract class MovementStrategy {
     }
 
     public abstract Direction getNewDirection(Map<Direction, Cell> allowedDirections);
+
+    public void setTarget(Coordinate coord) {
+        target = coord;
+    }
 }

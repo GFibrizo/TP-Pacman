@@ -22,13 +22,11 @@ public class GhostIsCloseToPacmanCommand implements Subscriber {
     }
 
     @Override
-    public boolean execute() {
+    public void execute() {
         if (PacmanArea.isInside(ghost)) {
-            Subscriber sub = new GhostIsFarFromPacmanCommand(ghost);
-            PacmanArea.getInstance().subscribe(PacmanArea.VisionEvent.GHOST_IS_OUTSIDE, sub);
+            //Subscriber sub = new GhostIsFarFromPacmanCommand(ghost);
+            //PacmanArea.getInstance().subscribe(PacmanArea.VisionEvent.GHOST_IS_OUTSIDE, sub);
             ghost.beginPacmanChase();
-            return true;
         }
-        return false;
     }
 }

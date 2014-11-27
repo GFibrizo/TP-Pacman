@@ -5,26 +5,28 @@
  */
 package com.grupo2.command;
 
-import com.grupo2.board.Board;
 import com.grupo2.ghost.Ghost;
+import com.grupo2.pacman.PacmanArea;
 import com.grupo2.eventHandling.Subscriber;
-import com.grupo2.pacman.Pacman;
 
 /**
  *
  * @author fibrizo
  */
-public class GhostCollidesCommand implements Subscriber {
+public class GhostIsCloseOrFarFromPacmanCommand implements Subscriber {
+    
+        private Ghost ghost;
 
-    Ghost ghost;
-
-    public GhostCollidesCommand(Ghost ghost) {
+    public GhostIsCloseOrFarFromPacmanCommand(Ghost ghost) {
         this.ghost = ghost;
     }
 
     @Override
     public void execute() {
-        if (Board.getInstance().collisionWithPacman(ghost))
-            ghost.onCollisionWithPacman();
+        if (PacmanArea.isInside(ghost))
+            ghost.beginPacmanChase();
+        else
+            ghost.stopPacmanChase();
     }
+    
 }

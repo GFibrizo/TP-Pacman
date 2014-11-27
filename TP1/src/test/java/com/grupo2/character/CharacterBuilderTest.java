@@ -22,7 +22,7 @@ public class CharacterBuilderTest {
     @Before
     public void setUp() {
         try {
-            charBuilder = new CharacterXMLBuilder(Paths.get("src", "main", "resources", "laberintos", "PersonajesSimple.xml"));
+            charBuilder = new CharacterBuilder(Paths.get("src", "main", "resources", "laberintos", "PersonajesSimple.xml"));
         } catch (Exception e) {
             assert (false);
         }

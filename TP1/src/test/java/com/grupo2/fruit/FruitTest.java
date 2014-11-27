@@ -1,7 +1,7 @@
 package com.grupo2.fruit;
 
-import com.grupo2.maze.MazeXMLBuilder;
-import com.grupo2.maze.RawMaze;
+import com.grupo2.maze.MazeBuilder;
+import com.grupo2.maze.Maze;
 import java.nio.file.Paths;
 import org.junit.AfterClass;
 import static org.junit.Assert.assertTrue;
@@ -22,8 +22,8 @@ public class FruitTest {
     @Before
     public void setUp() {
 
-        MazeXMLBuilder mazeBuilder = new MazeXMLBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "Laberinto.xml"));
-        RawMaze maze = mazeBuilder.buildMaze();
+        MazeBuilder mazeBuilder = new MazeBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "Laberinto.xml"));
+        Maze maze = mazeBuilder.buildMaze();
         aCherry = new Cherry(maze);
 
     }

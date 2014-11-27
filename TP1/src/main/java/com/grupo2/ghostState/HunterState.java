@@ -13,13 +13,26 @@ import com.grupo2.directions.NullDirection;
  */
 public class HunterState extends GhostState {
 
+    float limitTime;
+    float[] arrayOfLimitTimes;
+    int timeIndex;
+
     public HunterState() {
         velocity = Constants.getInitialVelocity();
         finishedMovement = 0;
+        time = 0;
+        timeIndex = 0;
+        arrayOfLimitTimes = new float[]{Constants.getFirstRageLimitTime(), Constants.getSecondRageLimitTime(), Constants.getThirdRageLimitTime()};
+        limitTime = arrayOfLimitTimes[timeIndex];
     }
 
     @Override
     public Direction getNewDirection(Personality personality, Map<Direction, Cell> allowedDirections) {
+        if ((time > limitTime) && (timeIndex < 3)) {
+            limitTime = arrayOfLimitTimes[timeIndex++];
+            this.incrementRage();
+        }
+        time++;
         return personality.getNewDirection(allowedDirections);
     }
 
