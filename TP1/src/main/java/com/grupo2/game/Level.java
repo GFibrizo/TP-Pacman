@@ -14,6 +14,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import javax.xml.parsers.ParserConfigurationException;
 import kuusisto.tinysound.Music;
+import kuusisto.tinysound.Sound;
 import kuusisto.tinysound.TinySound;
 
 /**
@@ -22,28 +23,47 @@ import kuusisto.tinysound.TinySound;
  */
 public class Level {
 
-	private Pacman thePacman;
-	private Board map;
-	private Controller controller;
+	private final Pacman thePacman;
+	private final Board map;
+	private final Controller controller;
 	private boolean ended;
-	private View view;
+	private final View view;
 	private final Music wakawaka;
 //	private final Music siren;
 
 	public Level(Path mazeFilePath, Path charactersFilePath, Controller controller) throws ParserConfigurationException {
 		MazeXMLBuilder mazeBuilder = new MazeXMLBuilder(mazeFilePath);
 		CharacterBuilder charBuilder = new CharacterXMLBuilder(charactersFilePath);
-		map = Board.createBoard(mazeBuilder, charBuilder);
-		map.subscribeSubscribers();
-		map.subscribe(GameEvent.PACMANEATSLITTLEBALL, new ReachLevelEnd(this));
-		map.subscribe(GameEvent.PACMANEATSBIGBALL, new ReachLevelEnd(this));
+		this.map = Board.createBoard(mazeBuilder, charBuilder);
+		this.map.subscribeSubscribers();
 		this.controller = controller;
 		thePacman = map.getPacman();
 		view = ViewsFactory.createGraphicView(map, controller);
 		ended = false;
 
 		this.wakawaka = TinySound.loadMusic(Paths.get("src", "main", "resources", "sounds", "wakawaka.wav").toFile());
+		this.wakawaka.setLoopPositionBySeconds(0.5);
 //		this.siren = TinySound.loadMusic(Paths.get("src", "main", "resources", "sounds", "siren.wav").toFile());
+
+		this.subscribeToEvents();
+	}
+
+	private void subscribeToEvents() {
+		map.subscribe(GameEvent.PACMANSTARTMOVING, new MusicPlayer(this.wakawaka));
+		map.subscribe(GameEvent.PACMANSTOPMOVING, new MusicPauser(this.wakawaka));
+		map.subscribe(GameEvent.PACMANEATSFRUIT, new Subscriber() {
+			private final Sound eatFruit;
+
+			{
+				this.eatFruit = TinySound.loadSound(Paths.get("src", "main", "resources", "sounds", "eatFruit.wav").toFile());
+			}
+
+			@Override
+			public boolean execute() {
+				this.eatFruit.play();
+				return true;
+			}
+		});
 	}
 
 	/**
@@ -51,11 +71,6 @@ public class Level {
 	 *
 	 */
 	public int play() {
-		this.wakawaka.setLoopPositionBySeconds(0.5);
-		this.wakawaka.play(true);
-//		this.siren.setLoopPositionBySeconds(1);
-//		this.siren.play(true);
-
 		while (!ended) {
 			map.updateModel(controller);
 			map.updateView(this.view);
@@ -68,25 +83,58 @@ public class Level {
 				ex.printStackTrace();
 			}
 		}
-		this.wakawaka.stop();
 		return 0;
 	}
 
-    boolean gameover() {
-        return ! this.thePacman.hasLives();
-    }
+	boolean gameover() {
+		return !this.thePacman.hasLives();
+	}
 
 	private class ReachLevelEnd implements Subscriber {
 
 		private Level level;
 
-		public ReachLevelEnd(Level level) {
+		ReachLevelEnd(Level level) {
 			this.level = level;
 		}
 
 		@Override
 		public boolean execute() {
 			this.level.ended = this.level.map.getMaze().isEmpty();
+			return true;
+		}
+	}
+
+	private static class MusicPlayer implements Subscriber {
+
+		private final Music msc;
+
+		public MusicPlayer(Music msc) {
+			this.msc = msc;
+		}
+
+		@Override
+		public boolean execute() {
+			if (this.msc.playing()) {
+				this.msc.resume();
+			} else {
+				this.msc.play(true);
+			}
+			return true;
+		}
+	}
+
+	private static class MusicPauser implements Subscriber {
+
+		private final Music msc;
+
+		public MusicPauser(Music msc) {
+			this.msc = msc;
+		}
+
+		@Override
+		public boolean execute() {
+			this.msc.pause();
 			return true;
 		}
 	}

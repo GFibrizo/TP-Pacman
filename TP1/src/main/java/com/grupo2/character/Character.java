@@ -33,7 +33,7 @@ public abstract class Character implements Drawable, IPositionable {
         this.previousDirection = new NullDirection();
     }
 
-    public abstract void move();
+    public abstract boolean move();
 
     public abstract boolean isDead();
 

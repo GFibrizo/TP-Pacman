@@ -22,11 +22,11 @@ public class SeekerStrategy extends HunterStrategy {
 
 	@Override
 	public Direction getNewDirection(Map<Direction, Cell> allowedDirections) {
-        
-        if (allowedDirections.isEmpty()) {
-            return new NullDirection();
-        }
-        
+
+		if (allowedDirections.isEmpty()) {
+			return new NullDirection();
+		}
+
 		Cell pacmanCell = Pacman.getPacman().getCurrentCell();
 		Coordinate pacmanPosition = null;
 		Direction pacmanDirection = Pacman.getPacman().getDirection();
@@ -37,26 +37,22 @@ public class SeekerStrategy extends HunterStrategy {
 			pacmanPosition = pacmanCell.getLeftCell().getPosition();
 		} else if (pacmanDirection.EqualTo(new UpDirection())) {
 			pacmanPosition = pacmanCell.getLowerCell().getPosition();
-		} else if (pacmanDirection.EqualTo(new DownDirection())){
+		} else if (pacmanDirection.EqualTo(new DownDirection())) {
 			pacmanPosition = pacmanCell.getUpperCell().getPosition();
 		} else {
-            pacmanPosition = pacmanCell.getPosition();
-        }
+			pacmanPosition = pacmanCell.getPosition();
+		}
 
 //		int minDistance = pacmanPosition.distanceTo(allowedDirections.values().iterator().next().getPosition());
 		Direction chosenDir = new NullDirection();
-        int minDistance = -1;
-        System.out.println("mindistance " + String.valueOf(minDistance));
+		int minDistance = -1;
+
 		for (Map.Entry<Direction, Cell> entry : allowedDirections.entrySet()) {
 			int distance = pacmanPosition.distanceTo(entry.getValue().getPosition());
 			if (distance <= minDistance || minDistance < 0) {
 				minDistance = distance;
 				chosenDir = entry.getKey();
 			}
-            System.out.println("mindistance " + String.valueOf(minDistance));
-            System.out.println("distance " + String.valueOf(distance));
-            System.out.println("dir " + chosenDir.toString());
-
 		}
 		return chosenDir;
 	}
