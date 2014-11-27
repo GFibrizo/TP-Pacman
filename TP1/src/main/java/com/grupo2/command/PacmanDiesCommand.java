@@ -2,7 +2,6 @@ package com.grupo2.command;
 
 import com.grupo2.board.Board;
 import com.grupo2.eventHandling.Subscriber;
-import com.grupo2.pacman.Pacman;
 
 /**
  *
@@ -10,16 +9,17 @@ import com.grupo2.pacman.Pacman;
  */
 public class PacmanDiesCommand implements Subscriber {
 
-    Pacman pacman;
+	Board board;
 
-    public PacmanDiesCommand(Pacman pacman) {
-        this.pacman = pacman;
-    }
+	public PacmanDiesCommand(Board board) {
+		this.board = board;
+	}
 
-    @Override
-    public void execute() {
-        pacman.die();
-        pacman.setCurrentCell(Board.getInstance().getPacmanBegin());
-    }
+	@Override
+	public void execute() {
+		this.board.getPacman().die();
+		this.board.getPacman().setCurrentCell(Board.getInstance().getPacmanBegin());
+		this.board.setCellForGhosts();
+	}
 
 }

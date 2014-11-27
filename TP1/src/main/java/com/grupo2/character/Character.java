@@ -16,101 +16,101 @@ import java.util.Map;
  */
 public abstract class Character implements Drawable, IPositionable {
 
-    //protected Coordinate position;
-    protected Direction direction;
-    protected Cell currentCell;
-    protected float velocity;
-    protected Direction previousDirection;
-    protected boolean alive;
+	//protected Coordinate position;
+	protected Direction direction;
+	protected Cell currentCell;
+	protected float velocity;
+	protected Direction previousDirection;
+	protected boolean alive;
 
-    
-    /**
-     * Protected constructor of the class Character. Used by derivative classes.
-     */
-    protected Character() {
-        this.alive = true;
-        this.direction = null;
-        this.currentCell = null;
-        this.velocity = (float) 1.0;
-        this.previousDirection = new NullDirection();
-    }
+	/**
+	 * Protected constructor of the class Character. Used by derivative classes.
+	 */
+	protected Character() {
+		this.alive = true;
+		this.direction = null;
+		this.currentCell = null;
+		this.velocity = (float) 1.0;
+		this.previousDirection = new NullDirection();
+	}
 
-    /**
-     * Define the way in that the characters will move, will be overriden.
-     */
-    public abstract void move();
+	/**
+	 * Define the way in that the characters will move, will be overriden.
+	 */
+	public abstract boolean move();
 
-    /**
-     * @return true is the character is dead. False otherwise.
-     * Will be overriden.
-     */
-    public abstract boolean isDead();
+	/**
+	 * @return true is the character is dead. False otherwise. Will be overriden.
+	 */
+	public abstract boolean isDead();
 
-    /**
-     * @return the current position of the character. 
-     */
-    @Override
-    public Coordinate getPosition() {
-        return this.currentCell.getPosition();
-    }
-    
-    /**
-     * @return the current direction of the character (of class Direction). 
-     */
-    @Override
-    public Direction getDirection() {
-        return this.direction;
-    }
+	/**
+	 * @return the current position of the character.
+	 */
+	@Override
+	public Coordinate getPosition() {
+		return this.currentCell.getPosition();
+	}
 
-    /**
-     * In the inherited classes will be defined the logic of the die method.
-     */
-    public abstract void die();
+	/**
+	 * @return the current direction of the character (of class Direction).
+	 */
+	@Override
+	public Direction getDirection() {
+		return this.direction;
+	}
 
-    /**
-     * Sets the current direction.
-     * @param dir of type Direction
-     */
-    public void setDirection(Direction dir) {
-        direction = dir;
-    }
+	/**
+	 * In the inherited classes will be defined the logic of the die method.
+	 */
+	public abstract void die();
 
-    /**
-     * Sets the current Cell.
-     * @param cell of type Cell
-     */
-    public void setCurrentCell(Cell cell) {
-        currentCell = cell;
-    }
+	/**
+	 * Sets the current direction.
+	 *
+	 * @param dir of type Direction
+	 */
+	public void setDirection(Direction dir) {
+		direction = dir;
+	}
 
-    /**
-     * @return the current Cell. 
-     */
-    @Override
-    public Cell getCurrentCell() {
-        return this.currentCell;
-    }
+	/**
+	 * Sets the current Cell.
+	 *
+	 * @param cell of type Cell
+	 */
+	public void setCurrentCell(Cell cell) {
+		currentCell = cell;
+	}
 
-    /**
-     * @return a Map wiht the pair <Direction, Cell> as <key, value> respectively,
-     * where the keys are the direction allowed to go, and the values are the 
-     * Cells related with that direction.
-     */
-    protected Map<Direction, Cell> allowedDirections() {
+	/**
+	 * @return the current Cell.
+	 */
+	@Override
+	public Cell getCurrentCell() {
+		return this.currentCell;
+	}
 
-        Map<Direction, Cell> allowedDirections = new HashMap();
-        if (this.getCurrentCell().canGoUp() && !previousDirection.isOposedTo(new UpDirection())) {
-            allowedDirections.put(new UpDirection(), this.getCurrentCell().getUpperCell());
-        }
-        if (this.getCurrentCell().canGoDown() && !previousDirection.isOposedTo(new DownDirection())) {
-            allowedDirections.put(new DownDirection(), this.getCurrentCell().getLowerCell());
-        }
-        if (this.getCurrentCell().canGoLeft() && !previousDirection.isOposedTo(new LeftDirection())) {
-            allowedDirections.put(new LeftDirection(), this.getCurrentCell().getLeftCell());
-        }
-        if (this.getCurrentCell().canGoRight() && !previousDirection.isOposedTo(new RightDirection())) {
-            allowedDirections.put(new RightDirection(), this.getCurrentCell().getRightCell());
-        }
-        return allowedDirections;
-    }
+	/**
+	 * @return a Map wiht the pair <Direction, Cell> as <key, value> respectively, where the keys
+	 *         are the direction allowed to go, and the values are the Cells related with that
+	 *         direction.
+	 */
+	protected Map<Direction, Cell> allowedDirections() {
+
+		Map<Direction, Cell> allowedDirections = new HashMap();
+		if (this.getCurrentCell().canGoUp() && !previousDirection.isOposedTo(new UpDirection())) {
+			allowedDirections.put(new UpDirection(), this.getCurrentCell().getUpperCell());
+		}
+		if (this.getCurrentCell().canGoDown() && !previousDirection.isOposedTo(new DownDirection())) {
+			allowedDirections.put(new DownDirection(), this.getCurrentCell().getLowerCell());
+		}
+		if (this.getCurrentCell().canGoLeft() && !previousDirection.isOposedTo(new LeftDirection())) {
+			allowedDirections.put(new LeftDirection(), this.getCurrentCell().getLeftCell());
+		}
+		if (this.getCurrentCell().canGoRight() && !previousDirection.isOposedTo(new RightDirection())) {
+			allowedDirections.put(new RightDirection(), this.getCurrentCell().getRightCell());
+		}
+		return allowedDirections;
+	}
 }

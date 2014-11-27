@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.grupo2.fruit;
 
 import com.grupo2.cell.Cell;
@@ -32,36 +27,39 @@ public abstract class Fruit extends Character {
 	public Fruit() {
 	}
 
-    /**
-     * Sets the random initial cell of the Fruit in the Board.
-     * @param maze
-     * @return Cell, the cell that contains the fruit.
-     */
-    private Cell initialCell(Maze maze) {
-        int height = maze.getHeight();
-        int width = maze.getWidth();
-        Random random = new Random();
-        boolean isTransitable = false;
-        Cell aCell = null;
-        int x, y;
+	/**
+	 * Sets the random initial cell of the Fruit in the Board.
+	 *
+	 * @param maze
+	 * @return Cell, the cell that contains the fruit.
+	 */
+	private Cell initialCell(Maze maze) {
+		int height = maze.getHeight();
+		int width = maze.getWidth();
+		Random random = new Random();
+		boolean isTransitable = false;
+		Cell aCell = null;
+		int x, y;
 
-        while (!isTransitable) {
-            x = random.nextInt(width - 1);
-            y = random.nextInt(height - 1);
-            Coordinate coordinate = new Coordinate(x, y);
-            aCell = maze.getCellFromCoordinates(coordinate);
-            isTransitable = aCell.isTransitable();
-        }
-        return aCell;
-    }
+		while (!isTransitable) {
+			x = random.nextInt(width - 1);
+			y = random.nextInt(height - 1);
+			Coordinate coordinate = new Coordinate(x, y);
+			aCell = maze.getCellFromCoordinates(coordinate);
+			isTransitable = aCell.isTransitable();
+		}
+		return aCell;
+	}
 
-    /**
-     * Contains all the logic of the move for the Fruit.
-     */
-    @Override
-    public void move() {
-        Random random = new Random();
-        int randNumber = random.nextInt(10) + 1;
+	/**
+	 * Contains all the logic of the move for the Fruit.
+	 *
+	 * @return true (should be if could move or not)
+	 */
+	@Override
+	public boolean move() {
+		Random random = new Random();
+		int randNumber = random.nextInt(10) + 1;
 
 		if (randNumber == 1) {
 			if (!direction.isEqualTo(new NullDirection())) {
@@ -75,12 +73,10 @@ public abstract class Fruit extends Character {
 
 	public abstract void eat();
 
-    public abstract void eat();
-
-    /** 
-     * Set to alive the state of the fruit again.
-     */
-    public void revive() {
-        this.alive = true;
-    }
+	/**
+	 * Set to alive the state of the fruit again.
+	 */
+	public void revive() {
+		this.alive = true;
+	}
 }
