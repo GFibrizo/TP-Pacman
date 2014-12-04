@@ -9,15 +9,26 @@ import com.grupo2.maze.Maze;
  */
 public class MazeBallEaten implements Subscriber {
 
-    private Maze maze;
+    /**
+     * Maze on which this command has effect.
+     */
+    private final Maze maze;
 
-    public MazeBallEaten(Maze maze) {
-        this.maze = maze;
+    /**
+     * Constructor.
+     *
+     * @param maze
+     */
+    public MazeBallEaten(final Maze maze) {
+	this.maze = maze;
     }
 
+    /**
+     * overriden execute.
+     */
     @Override
     public void execute() {
-        this.maze.ballEated();
+	this.maze.ballEated();
     }
 
 }

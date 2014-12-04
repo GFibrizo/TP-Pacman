@@ -7,19 +7,20 @@ import com.grupo2.character.Cell;
  *
  * @author mauri
  */
-public class TransitableCellEntersCharacterCommand extends TransitableCellCommand {
+public class TransitableCellEntersCharacterCommand {
+
+    private final Cell cell;
 
     public TransitableCellEntersCharacterCommand(Cell aCell) {
-        if (!aCell.isTransitable()) {
-            throw new ExceptionInInitializerError("Error at command instance: the cell was no transitable");
-        }
-        this.cell = aCell;
+	if (!aCell.isTransitable()) {
+	    throw new ExceptionInInitializerError("Error at command instance: the cell was not transitable");
+	}
+	this.cell = aCell;
     }
 
-    @Override
     public void execute() {
-        this.cell.getBall().isEaten();
-        this.cell.setBall(new NullBall());
+	this.cell.getBall().isEaten();
+	this.cell.setBall(new NullBall());
     }
 
 }

@@ -9,17 +9,28 @@ import com.grupo2.eventHandling.Subscriber;
  */
 public class PacmanDiesCommand implements Subscriber {
 
-    Board board;
+    /**
+     * Board on which this command has effect.
+     */
+    private final Board board;
 
-    public PacmanDiesCommand(Board board) {
-        this.board = board;
+    /**
+     * Constructor.
+     *
+     * @param board
+     */
+    public PacmanDiesCommand(final Board board) {
+	this.board = board;
     }
 
+    /**
+     * overriden execute.
+     */
     @Override
     public void execute() {
-        this.board.getPacman().die();
-        this.board.getPacman().setCurrentCell(Board.getInstance().getPacmanBegin());
-        this.board.setCellForGhosts();
+	this.board.getPacman().die();
+	this.board.getPacman().setCurrentCell(Board.getInstance().getPacmanBegin());
+	this.board.setCellForGhosts();
     }
 
 }

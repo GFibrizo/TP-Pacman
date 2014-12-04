@@ -1,15 +1,20 @@
 package com.grupo2.character;
 
-import com.grupo2.character.Coordinate;
-import com.grupo2.character.Cell;
-
 /**
  *
  * @author fibrizo
  */
 public interface Positionable {
 
+    /**
+     *
+     * @return the Coordinate of the Positionable
+     */
     public Coordinate getPosition();
 
+    /**
+     *
+     * @return the Cell of the Positionable
+     */
     public Cell getCurrentCell();
 }

@@ -17,25 +17,47 @@ public class Coordinate {
      */
     private int y;
 
+    /**
+     * Constructor for Coordinate.
+     *
+     * @param x axis x
+     * @param y axis y
+     */
     public Coordinate(int x, int y) {
-        this.x = x;
-        this.y = y;
+	this.x = x;
+	this.y = y;
     }
 
+    /**
+     * Returns axis x
+     *
+     * @return x
+     */
     public int getX() {
-        return x;
+	return x;
     }
 
+    /**
+     * Returns axis y
+     *
+     * @return y
+     */
     public int getY() {
-        return y;
+	return y;
     }
 
+    /**
+     * Sets axis x
+     */
     public void setX(int x) {
-        this.x = x;
+	this.x = x;
     }
 
+    /**
+     * Sets axis y
+     */
     public void setY(int y) {
-        this.y = y;
+	this.y = y;
     }
 
     /**
@@ -45,11 +67,11 @@ public class Coordinate {
      * @return True if Coordinates are equal, false otherwise
      */
     public boolean isEqualTo(Coordinate other) {
-        if (other == null) {
-            return false;
-        }
-        // Should throw exception. Don't know wich type.
-        return (this.x == other.x) && (this.y == other.y);
+	if (other == null) {
+	    return false;
+	}
+	// Should throw exception. Don't know wich type.
+	return (this.x == other.x) && (this.y == other.y);
     }
 
     /**
@@ -59,9 +81,9 @@ public class Coordinate {
      * @return distance
      */
     public int distanceTo(Coordinate otherCoordinate) {
-        int distanceX = this.getX() - otherCoordinate.getX();
-        int distanceY = this.getY() - otherCoordinate.getY();
-        int valuedDistance = distanceX * distanceX + distanceY * distanceY;
-        return (int) sqrt(valuedDistance);
+	int distanceX = this.getX() - otherCoordinate.getX();
+	int distanceY = this.getY() - otherCoordinate.getY();
+	int valuedDistance = distanceX * distanceX + distanceY * distanceY;
+	return (int) sqrt(valuedDistance);
     }
 }

@@ -13,22 +13,36 @@ import java.util.Map;
  */
 public abstract class Character implements Positionable {
 
-    //protected Coordinate position;
+    /**
+     * Characters Direction
+     */
     protected Direction direction;
+    /**
+     * Characters current Cell
+     */
     protected Cell currentCell;
+    /**
+     * Characters velocity
+     */
     protected float velocity;
+    /**
+     * Characters previous Direction
+     */
     protected Direction previousDirection;
+    /**
+     * Characters status
+     */
     protected boolean alive;
 
     /**
      * Protected constructor of the class Character. Used by derivative classes.
      */
     protected Character() {
-        this.alive = true;
-        this.direction = null;
-        this.currentCell = null;
-        this.velocity = (float) 1.0;
-        this.previousDirection = new NullDirection();
+	this.alive = true;
+	this.direction = null;
+	this.currentCell = null;
+	this.velocity = (float) 1.0;
+	this.previousDirection = new NullDirection();
     }
 
     /**
@@ -37,8 +51,7 @@ public abstract class Character implements Positionable {
     public abstract void move();
 
     /**
-     * @return true is the character is dead. False otherwise. Will be
-     * overriden.
+     * @return true is the character is dead. False otherwise. Will be overriden.
      */
     public abstract boolean isDead();
 
@@ -47,14 +60,14 @@ public abstract class Character implements Positionable {
      */
     @Override
     public Coordinate getPosition() {
-        return this.currentCell.getPosition();
+	return this.currentCell.getPosition();
     }
 
     /**
      * @return the current direction of the character (of class Direction).
      */
     public Direction getDirection() {
-        return this.direction;
+	return this.direction;
     }
 
     /**
@@ -68,7 +81,7 @@ public abstract class Character implements Positionable {
      * @param dir of type Direction
      */
     public void setDirection(Direction dir) {
-        direction = dir;
+	direction = dir;
     }
 
     /**
@@ -77,7 +90,7 @@ public abstract class Character implements Positionable {
      * @param cell of type Cell
      */
     public void setCurrentCell(Cell cell) {
-        currentCell = cell;
+	currentCell = cell;
     }
 
     /**
@@ -85,29 +98,29 @@ public abstract class Character implements Positionable {
      */
     @Override
     public Cell getCurrentCell() {
-        return this.currentCell;
+	return this.currentCell;
     }
 
     /**
      * @return a Map wiht the pair <Direction, Cell> as <key, value>
-     * respectively, where the keys are the direction allowed to go, and the
-     * values are the Cells related with that direction.
+     * respectively, where the keys are the direction allowed to go, and the values are the Cells
+     * related with that direction.
      */
     protected Map<Direction, Cell> allowedDirections() {
 
-        Map<Direction, Cell> allowedDirections = new HashMap();
-        if (this.getCurrentCell().canGoUp() && !previousDirection.isOposedTo(new UpDirection())) {
-            allowedDirections.put(new UpDirection(), this.getCurrentCell().getUpperCell());
-        }
-        if (this.getCurrentCell().canGoDown() && !previousDirection.isOposedTo(new DownDirection())) {
-            allowedDirections.put(new DownDirection(), this.getCurrentCell().getLowerCell());
-        }
-        if (this.getCurrentCell().canGoLeft() && !previousDirection.isOposedTo(new LeftDirection())) {
-            allowedDirections.put(new LeftDirection(), this.getCurrentCell().getLeftCell());
-        }
-        if (this.getCurrentCell().canGoRight() && !previousDirection.isOposedTo(new RightDirection())) {
-            allowedDirections.put(new RightDirection(), this.getCurrentCell().getRightCell());
-        }
-        return allowedDirections;
+	Map<Direction, Cell> allowedDirections = new HashMap();
+	if (this.getCurrentCell().canGoUp() && !previousDirection.isOposedTo(new UpDirection())) {
+	    allowedDirections.put(new UpDirection(), this.getCurrentCell().getUpperCell());
+	}
+	if (this.getCurrentCell().canGoDown() && !previousDirection.isOposedTo(new DownDirection())) {
+	    allowedDirections.put(new DownDirection(), this.getCurrentCell().getLowerCell());
+	}
+	if (this.getCurrentCell().canGoLeft() && !previousDirection.isOposedTo(new LeftDirection())) {
+	    allowedDirections.put(new LeftDirection(), this.getCurrentCell().getLeftCell());
+	}
+	if (this.getCurrentCell().canGoRight() && !previousDirection.isOposedTo(new RightDirection())) {
+	    allowedDirections.put(new RightDirection(), this.getCurrentCell().getRightCell());
+	}
+	return allowedDirections;
     }
 }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.grupo2.command;
 
 import com.grupo2.eventHandling.Subscriber;
@@ -14,14 +9,25 @@ import com.grupo2.ghost.Personality;
  */
 public class HunterStartsChaseOfPacman implements Subscriber {
 
-    Personality ghostPersonality;
+    /**
+     * Personality on which this command has effect.
+     */
+    private final Personality ghostPersonality;
 
+    /**
+     * Constructor.
+     *
+     * @param ghostPersonality
+     */
     public HunterStartsChaseOfPacman(Personality ghostPersonality) {
-        this.ghostPersonality = ghostPersonality;
+	this.ghostPersonality = ghostPersonality;
     }
 
+    /**
+     * overriden execute.
+     */
     @Override
     public void execute() {
-        this.ghostPersonality.beginPacmanChase();
+	this.ghostPersonality.beginPacmanChase();
     }
 }

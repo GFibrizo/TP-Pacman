@@ -8,5 +8,9 @@ import com.grupo2.character.Direction;
  */
 public interface InputReader {
 
+    /**
+     *
+     * @return the next direction obtained from the Reader
+     */
     Direction getNextDirection();
 }
