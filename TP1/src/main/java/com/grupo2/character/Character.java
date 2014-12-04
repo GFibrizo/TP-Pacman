@@ -47,8 +47,10 @@ public abstract class Character implements Positionable {
 
     /**
      * Define the way in that the characters will move, will be overriden.
+     *
+     * @return true if movement was successfull, false otherwise
      */
-    public abstract void move();
+    public abstract boolean move();
 
     /**
      * @return true is the character is dead. False otherwise. Will be overriden.

@@ -1,5 +1,6 @@
 package com.grupo2.constants;
 
+import java.nio.file.Paths;
 import org.junit.AfterClass;
 import static org.junit.Assert.assertTrue;
 import org.junit.BeforeClass;
@@ -27,13 +28,14 @@ public class ConstantsTest {
      */
     @Test
     public void testInitializeConstants() {
-//        Constants.initializeConstants(Paths.get("src", "main", "resources", "Constants.json"));
+	Constants.initializeConstants(Paths.get("src", "main", "resources", "Constants.json"));
 
-        // TODO: acá se deberían probar todos los datos, pero como todos hacen lo mismo, puse 2 random
-        double deadTimeResult = Constants.getDeadLimitTime();
-        double radiusResult = Constants.getGhostRadius();
+	// TODO: acá se deberían probar todos los datos, pero como todos hacen lo mismo, puse 2 random
+	double deadTimeResult = Constants.getDeadLimitTime();
+	double radiusResult = Constants.getGhostRadius();
 
-        assertTrue((radiusResult == 2) && (deadTimeResult == 20));
+	assertTrue((radiusResult == 4) && (deadTimeResult == 15));
+	Constants.restoreConstants();
     }
 
 }

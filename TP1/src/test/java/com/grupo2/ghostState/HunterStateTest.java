@@ -40,13 +40,13 @@ public class HunterStateTest {
 
     @Before
     public void setUp() {
-        Constants.setInitialVelocity((float) 1.0);
-        state = new HunterState();
+	Constants.setInitialVelocity((float) 1.0);
+	state = new HunterState();
     }
 
     @After
     public void tearDown() {
-        state = null;
+	state = null;
     }
 
     /**
@@ -54,13 +54,13 @@ public class HunterStateTest {
      */
     @Test
     public void testMove() {
-        Map<Direction, Cell> directions = new HashMap<>();
-        //directions.put(new UpDirection(), new Cell(5, 4, true));
-        directions.put(new LeftDirection(), new Cell(4, 5, true));
-        Pacman.createPacman(5, 5, new UpDirection(), new Cell(5, 5, true));
-        Direction newDirection = state.getNewDirection(new Dumb(), directions);
+	Map<Direction, Cell> directions = new HashMap<>();
+	//directions.put(new UpDirection(), new Cell(5, 4, true));
+	directions.put(new LeftDirection(), new Cell(4, 5, true));
+	Pacman.createPacman(5, 5, new UpDirection(), new Cell(5, 5, true));
+	Direction newDirection = state.getNewDirection(new Dumb(), directions);
 
-        assertTrue(newDirection.isEqualTo(new LeftDirection()));
+	assertTrue(newDirection.isEqualTo(new LeftDirection()));
     }
 
     /**
@@ -68,9 +68,9 @@ public class HunterStateTest {
      */
     @Test
     public void testIsDead() {
-        boolean expResult = false;
-        boolean result = state.isDead();
-        assertEquals(expResult, result);
+	boolean expResult = false;
+	boolean result = state.isDead();
+	assertEquals(expResult, result);
     }
 
     /**
@@ -78,10 +78,10 @@ public class HunterStateTest {
      */
     @Test
     public void testingReturnNextState() {
-        assertFalse(state.isDead());
-        state = state.returnNextState();
-        assertFalse(state.isDead());
-        assertEquals(state.getClass(), HunterState.class);
+	assertFalse(state.isDead());
+	state = state.returnNextState();
+	assertFalse(state.isDead());
+	assertEquals(state.getClass(), HunterState.class);
     }
 
     /**
@@ -89,9 +89,9 @@ public class HunterStateTest {
      */
     @Test
     public void testConvertToPrey() {
-        GhostState result = state.convertToPrey();
-        System.out.println(result.getClass());
-        assertEquals(result.getClass(), PreyState.class);
+	GhostState result = state.convertToPrey();
+	System.out.println(result.getClass());
+	assertEquals(result.getClass(), PreyState.class);
     }
 
     /**
@@ -99,14 +99,8 @@ public class HunterStateTest {
      */
     @Test
     public void testDie() {
-        boolean flag = false;
-        try {
-            GhostState result = state.die();
-        } catch (Exception e) {
-            flag = true;
-        }
-        assertTrue(flag);
-
+	GhostState result = state.die();
+	assertEquals(state.getClass(), result.getClass());
     }
 
 }

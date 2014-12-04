@@ -1,7 +1,7 @@
 package com.grupo2.fruit;
 
-import com.grupo2.maze.MazeBuilder;
 import com.grupo2.maze.Maze;
+import com.grupo2.maze.MazeBuilder;
 import java.nio.file.Paths;
 import org.junit.AfterClass;
 import static org.junit.Assert.assertTrue;
@@ -22,9 +22,9 @@ public class FruitTest {
     @Before
     public void setUp() {
 
-        MazeBuilder mazeBuilder = new MazeBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "Laberinto.xml"));
-        Maze maze = mazeBuilder.buildMaze();
-        aCherry = new Cherry(maze);
+	MazeBuilder mazeBuilder = new MazeBuilder(Paths.get("src", "main", "resources", "laberintosprueba", "Laberinto.xml"));
+	Maze maze = mazeBuilder.buildMaze();
+	aCherry = new Cherry(maze);
 
     }
 
@@ -34,20 +34,20 @@ public class FruitTest {
 
     @Test
     public void initialPositionOK() {
-
-        System.out.println(aCherry.getCurrentCell().getCoords().getX());
-        System.out.println(aCherry.getCurrentCell().getCoords().getY());
-        assertTrue(aCherry.getCurrentCell().isTransitable());
+	assertTrue(aCherry.getCurrentCell().isTransitable());
 
     }
 
     @Test
     public void oneTickMovement() {
+	int initialPosX = aCherry.getPosition().getX();
+	boolean moved = aCherry.move();
+	while (!moved) {
+	    moved = aCherry.move();
+	}
 
-        int initialPosX = aCherry.getPosition().getX();
-        aCherry.move();
-        int afterMovementPosX = aCherry.getPosition().getX();
-        assertTrue(afterMovementPosX == initialPosX - 1 || afterMovementPosX == initialPosX + 1);
+	int afterMovementPosX = aCherry.getPosition().getX();
+	assertTrue((afterMovementPosX == initialPosX - 1) || (afterMovementPosX == initialPosX + 1));
 
     }
 

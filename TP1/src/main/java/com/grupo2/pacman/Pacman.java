@@ -25,66 +25,68 @@ public class Pacman extends Character implements DrawablePacman {
      * @return Pacman the only one.
      */
     public static Pacman getPacman() {
-        if (instance == null) {
-            throw new ExceptionInInitializerError("The pacman was not created");
-        }
-        return instance;
+	if (instance == null) {
+	    throw new ExceptionInInitializerError("The pacman was not created");
+	}
+	return instance;
     }
 
     /**
      * Class method for creating the Pacman instance.
      *
-     * @param x the number of column of the pacman.
-     * @param y the number of row of the pacman.
-     * @param dir the direction of the pacman.
+     * @param x       the number of column of the pacman.
+     * @param y       the number of row of the pacman.
+     * @param dir     the direction of the pacman.
      * @param begCell the current cell of the pacman.
      * @return Pacman the instance of Pacman.
      */
     public static Pacman createPacman(final int x, final int y, final Direction dir, Cell begCell) {
-        instance = new Pacman(x, y, dir, begCell);
-        return instance;
+	instance = new Pacman(x, y, dir, begCell);
+	return instance;
     }
 
     /**
      * Private constructor of the Pacman class
      *
-     * @param x the number of column of the pacman.
-     * @param y the number of row of the pacman.
-     * @param dir the direction of the pacman.
+     * @param x        the number of column of the pacman.
+     * @param y        the number of row of the pacman.
+     * @param dir      the direction of the pacman.
      * @param currCell
      */
     private Pacman(final int x, final int y, final Direction dir, Cell currCell) {
-        this.direction = dir;
-        this.nextDirection = new NullDirection();
-        this.currentCell = currCell;
-        this.alive = true;
-        this.velocity = Constants.getInitialVelocity() * 2;
-        this.finishedMovement = 0;
-        this.score = 0;
-        this.lives = 3;
+	this.direction = dir;
+	this.nextDirection = new NullDirection();
+	this.currentCell = currCell;
+	this.alive = true;
+	this.velocity = Constants.getInitialVelocity() * 2;
+	this.finishedMovement = 0;
+	this.score = 0;
+	this.lives = 3;
     }
 
     /**
      * This method has all the logic of the pacman movement.
      */
     @Override
-    public void move() {
-        if (!this.alive) {
-            alive = true;
-        }
-        if (this.nextDirection.canGoForward(this.currentCell)) {
-            this.direction = this.nextDirection;
-            this.nextDirection = new NullDirection();
-        }
+    public boolean move() {
+	if (!this.alive) {
+	    alive = true;
+	}
+	if (this.nextDirection.canGoForward(this.currentCell)) {
+	    this.direction = this.nextDirection;
+	    this.nextDirection = new NullDirection();
+	}
 
-        finishedMovement += velocity;
+	finishedMovement += velocity;
 
-        if (this.direction.canGoForward(this.currentCell)) {
-            if (finishedMovement >= 1) {
-                this.currentCell = this.direction.stepForward(this.currentCell);
-                finishedMovement -= 1;
-            }
-        }
+	if (this.direction.canGoForward(this.currentCell)) {
+	    if (finishedMovement >= 1) {
+		this.currentCell = this.direction.stepForward(this.currentCell);
+		finishedMovement -= 1;
+	    }
+	}
+
+	return true;
     }
 
     /**
@@ -92,7 +94,7 @@ public class Pacman extends Character implements DrawablePacman {
      */
     @Override
     public boolean isDead() {
-        return !this.alive;
+	return !this.alive;
     }
 
     /**
@@ -102,7 +104,7 @@ public class Pacman extends Character implements DrawablePacman {
      */
     @Override
     public void setCurrentCell(Cell currCell) {
-        this.currentCell = currCell;
+	this.currentCell = currCell;
     }
 
     /**
@@ -112,9 +114,9 @@ public class Pacman extends Character implements DrawablePacman {
      */
     @Override
     public void setDirection(Direction direction) {
-        if (direction != null) {
-            this.nextDirection = direction;
-        }
+	if (direction != null) {
+	    this.nextDirection = direction;
+	}
     }
 
     /**
@@ -122,10 +124,10 @@ public class Pacman extends Character implements DrawablePacman {
      */
     @Override
     public void die() {
-        this.alive = false;
-        this.lives--;
-        this.finishedMovement = 0;
-        this.nextDirection = new NullDirection();
+	this.alive = false;
+	this.lives--;
+	this.finishedMovement = 0;
+	this.nextDirection = new NullDirection();
     }
 
     /**
@@ -135,7 +137,7 @@ public class Pacman extends Character implements DrawablePacman {
      */
     @Override
     public int getScore() {
-        return this.score;
+	return this.score;
     }
 
     /**
@@ -143,21 +145,21 @@ public class Pacman extends Character implements DrawablePacman {
      */
     @Override
     public boolean hasLives() {
-        return (this.lives > 0);
+	return (this.lives > 0);
     }
 
     /**
      * @return int, the amount of remaining lifes.
      */
     public int remainingLifes() {
-        return this.lives;
+	return this.lives;
     }
 
     /**
      * For upcoming refactor.
      */
     public void eatBall() {
-        this.getCurrentCell();
+	this.getCurrentCell();
     }
 
     /**
@@ -166,7 +168,7 @@ public class Pacman extends Character implements DrawablePacman {
      * @param extra
      */
     public void incrementScore(int extra) {
-        this.score += extra;
+	this.score += extra;
     }
 
 }

@@ -1,17 +1,13 @@
 package com.grupo2.ghostState;
 
-import com.grupo2.character.Cell;
-import com.grupo2.character.Direction;
+import com.grupo2.board.Board;
+import com.grupo2.character.CharacterBuilder;
 import com.grupo2.constants.Constants;
-import com.grupo2.directions.LeftDirection;
-import com.grupo2.directions.UpDirection;
 import com.grupo2.ghost.GhostState;
-import com.grupo2.pacman.Pacman;
-import com.grupo2.personality.Seeker;
-import java.util.HashMap;
-import java.util.Map;
+import com.grupo2.maze.MazeBuilder;
+import java.nio.file.Paths;
+import javax.xml.parsers.ParserConfigurationException;
 import org.junit.After;
-import org.junit.AfterClass;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import org.junit.Before;
@@ -30,16 +26,15 @@ public class DeadStateTest {
     }
 
     @BeforeClass
-    public static void setUpClass() {
-    }
-
-    @AfterClass
-    public static void tearDownClass() {
+    public static void setUpClass() throws ParserConfigurationException {
+	MazeBuilder mazeBuilder = new MazeBuilder(Paths.get("src", "main", "resources", "Levels", "MazeLevel1" + ".xml"));
+	CharacterBuilder charBuilder = new CharacterBuilder(Paths.get("src", "main", "resources", "Levels", "CharactersLevel1" + ".xml"));
+	Board.createBoard(mazeBuilder, charBuilder);
     }
 
     @Before
     public void setUp() {
-        state = new DeadState();
+	state = new DeadState();
     }
 
     @After
@@ -47,27 +42,13 @@ public class DeadStateTest {
     }
 
     /**
-     * Test of move method, of class DeadState.
-     */
-    @Test
-    public void testMove() {
-        /*Map<Direction, Cell> directions = new HashMap<>();
-         directions.put(new UpDirection(), new Cell(5, 4, true));
-         directions.put(new LeftDirection(), new Cell(4, 5, true));
-         Pacman.createPacman(5, 5, new UpDirection(), new Cell(5, 5, true));
-         Direction newDirection = state.getNewDirection(new Seeker(), directions);
-
-         assertTrue(newDirection.isEqualTo(new LeftDirection()));*/
-    }
-
-    /**
      * Test of isDead method, of class DeadState.
      */
     @Test
     public void testIsDead() {
-        boolean expResult = true;
-        boolean result = state.isDead();
-        assertEquals(expResult, result);
+	boolean expResult = true;
+	boolean result = state.isDead();
+	assertEquals(expResult, result);
     }
 
     /**
@@ -75,12 +56,12 @@ public class DeadStateTest {
      */
     @Test
     public void testingReturnNextState() {
-        assertTrue(state.isDead());
-        state = state.returnNextState();
-        assertTrue(state.isDead());
-        Constants.setDeadLimitTime((float) 0);
-        state = state.returnNextState();
-        assertEquals(state.getClass(), HunterState.class);
+	assertTrue(state.isDead());
+	state = state.returnNextState();
+	assertTrue(state.isDead());
+	Constants.setDeadLimitTime((float) 0);
+	state = state.returnNextState();
+	assertEquals(state.getClass(), HunterState.class);
     }
 
     /**
@@ -88,13 +69,8 @@ public class DeadStateTest {
      */
     @Test
     public void testConvertToPrey() {
-        boolean flag = false;
-        try {
-            GhostState result = state.convertToPrey();
-        } catch (AssertionError e) {
-            flag = true;
-        }
-        assertTrue(flag);
+	GhostState result = state.convertToPrey();
+	assertEquals(state.getClass(), result.getClass());
     }
 
     /**
@@ -102,14 +78,8 @@ public class DeadStateTest {
      */
     @Test
     public void testDie() {
-        boolean flag = false;
-        try {
-            GhostState result = state.die();
-        } catch (AssertionError e) {
-            flag = true;
-        }
-        assertTrue(flag);
-
+	GhostState result = state.die();
+	assertEquals(state.getClass(), result.getClass());
     }
 
 }

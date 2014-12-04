@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.grupo2.fruit;
 
 import com.grupo2.maze.Maze;
@@ -20,7 +15,7 @@ public class Cherry extends Fruit {
      * @param maze
      */
     public Cherry(Maze maze) {
-        super(maze);
+	super(maze);
     }
 
     /**
@@ -28,19 +23,19 @@ public class Cherry extends Fruit {
      */
     @Override
     public void die() {
-        this.alive = false;
+	this.alive = false;
     }
 
     /**
-     * If the cherry is alive increments the score of the Pacman by 100. Also
-     * set the Cherry to dead.
+     * If the cherry is alive increments the score of the Pacman by 100. Also set the Cherry to
+     * dead.
      */
     @Override
     public void eat() {
-        if (this.alive) {
-            Pacman.getPacman().incrementScore(100);
-        }
-        this.alive = false;
+	if (this.alive) {
+	    Pacman.getPacman().incrementScore(100);
+	}
+	this.alive = false;
     }
 
     /**
@@ -48,7 +43,7 @@ public class Cherry extends Fruit {
      */
     @Override
     public boolean isDead() {
-        return !this.alive;
+	return !this.alive;
     }
 
 }
