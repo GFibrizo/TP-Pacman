@@ -66,6 +66,10 @@ public class MazeBuilder {
         return true;
     }
 
+    /**
+     * Builds a maze using the xml files in the path.
+     * @return 
+     */
     public Maze buildMaze() {
         Maze maze = null;
         try {

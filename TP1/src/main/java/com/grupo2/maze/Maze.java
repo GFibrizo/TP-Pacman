@@ -26,7 +26,14 @@ public class Maze implements DrawableMaze {
     private int nodeWidth;
     private int nodeHeight;
     private int qtyBalls;
-
+    
+    /**
+     *  Maze constructor
+     * @param height the number of rows.
+     * @param width the number of columns.
+     * @param initPacman the start position of the Pacman.
+     * @param initGhost the start position of the Ghosts. 
+     */
     public Maze(final int height, final int width, Coordinate initPacman, Coordinate initGhost) {
         map = new ArrayList<>(height);
         for (int i = 0; i < height; i++) {
@@ -43,6 +50,10 @@ public class Maze implements DrawableMaze {
         this.initGhost = initGhost;
     }
 
+    /**
+     * Adds to the map the given cell.
+     * @param newCell the cell to be added to the map.
+     */
     public void addCell(final Cell newCell) {
         Coordinate pos = newCell.getPosition();
         map.get(pos.getY()).set(pos.getX(), newCell);
