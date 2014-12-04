@@ -92,6 +92,9 @@ public class Ghost extends Character implements DrawableGhost {
 	return true;
     }
 
+    /**
+     *  Changes the current ghosts state to dead.
+     */
     @Override
     public void die() {
 	this.state = this.state.die();
@@ -109,22 +112,34 @@ public class Ghost extends Character implements DrawableGhost {
 	return this.personality.getVision();
     }
 
+    /**
+     * Starts chasing the Pacman
+     */
     public void beginPacmanChase() {
 	if (state.testIfAbleToChase()) {
 	    personality.beginPacmanChase();
 	}
     }
 
+    /**
+     * Stops chasing the Pacman.
+     */
     public void stopPacmanChase() {
 	if (state.testIfAbleToStopChase()) {
 	    personality.stopPacmanChase();
 	}
     }
 
+    /**
+     * Sets the current ghosts state to Prey.
+     */
     public void convertToPrey() {
 	this.state = state.convertToPrey();
     }
 
+    /**
+     * Reacts a collision based on the current ghost state.
+     */
     public void onCollisionWithPacman() {
 	this.state = state.collideWithPacman();
     }
