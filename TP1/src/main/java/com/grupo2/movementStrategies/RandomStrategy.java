@@ -15,6 +15,11 @@ public class RandomStrategy extends MovementStrategy {
         super();
     }
 
+     /**
+     * 
+     * @param allowedDirections a hash containing the directions that the character can take.
+     * @return the new direction that the character will take.
+     */
     @Override
     public Direction getNewDirection(Map<Direction, Cell> allowedDirections) {
         int range = allowedDirections.size();

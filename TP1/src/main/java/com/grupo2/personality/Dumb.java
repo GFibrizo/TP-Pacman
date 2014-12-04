@@ -19,7 +19,6 @@ import java.util.Map;
 public class Dumb extends Personality {
 
     public Dumb() {
-        // FALTA CORREGIR ESTO
         Subscriber sub = new HunterStartsChaseOfPacman(this);
         MazePublisher.getInstance().subscribe(MazePublisher.MazeEvent.GHOSTISCLOSETOPACMAN, sub);
         movement = new RandomStrategy();
