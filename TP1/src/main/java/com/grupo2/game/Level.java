@@ -60,6 +60,9 @@ public class Level {
 
     }
 
+    /**
+     * Subscribes objects to events like collisions.
+     */
     private void subscribeToEvents() {
         map.subscribe(Board.GameEvent.PACMANCOLLIDEHUNTER, new playDeathMusicCommand(this));
         map.subscribe(GameEvent.PACMANEATSLITTLEBALL, new ReachLevelEnd(this));

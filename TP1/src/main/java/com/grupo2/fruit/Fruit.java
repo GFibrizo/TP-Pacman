@@ -17,6 +17,10 @@ public abstract class Fruit extends Character {
 
     private RandomStrategy randomStrategy = new RandomStrategy();
 
+    /**
+     * Creates the fruit and initializes some values.
+     * @param maze 
+     */
     public Fruit(Maze maze) {
 	super();
 	this.currentCell = initialCell(maze);

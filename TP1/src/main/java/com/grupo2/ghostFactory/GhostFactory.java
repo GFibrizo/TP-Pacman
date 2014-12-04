@@ -16,6 +16,14 @@ import com.grupo2.personality.OnlyRight;
  */
 public class GhostFactory {
 
+    /**
+     * Creates a ghost with specific parameters.
+     * @param state
+     * @param pers
+     * @param coord
+     * @param dir
+     * @return 
+     */
     public static Ghost createGhost(GhostState state, Personality pers,
             Coordinate coord, Direction dir) {
         Ghost newGhost = Ghost.createEmptyGhost();
@@ -26,6 +34,10 @@ public class GhostFactory {
         return newGhost;
     }
 
+    /**
+     * Creates a ghost that only goes right.
+     * @return 
+     */
     public static Ghost createOnlyRightGhost() {
         Ghost aGhost = Ghost.createEmptyGhost();
         aGhost.setState(new HunterState());
